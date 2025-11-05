@@ -3,12 +3,12 @@ using UnityEngine.AI;
 
 public class Enemies : MonoBehaviour
 {
-    NavMeshAgent agent;
+    protected NavMeshAgent agent;
     protected float health;
     protected float currentHealth;
     protected float maxHealth;
     protected Vector3 startPosition;
-    void Start()
+    protected void Start()
     {
         TryGetComponent(out agent);
         startPosition = transform.position;

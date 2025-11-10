@@ -5,24 +5,33 @@ using Zenject.SpaceFighter;
 
 public class EnemyMovement : Enemies
 {
-    [SerializeField] List<Transform> patrolPoints;
-    int currentPositionPatrol;
+    [SerializeField] List<Transform> _patrolPoints;
+    int _currentPositionPatrol;
     EnemyDetector detector;
+
+    public List<Transform> PatrolPoints { get => _patrolPoints; set => _patrolPoints = value; }
+    public int CurrentPositionPatrol { get => _currentPositionPatrol; set => _currentPositionPatrol = value; }
+
     new void Start()
     {
         base.Start();
-        currentPositionPatrol = Random.Range(0, patrolPoints.Count);
-        Debug.Log(patrolPoints[currentPositionPatrol]);
+        _currentPositionPatrol = Random.Range(0, _patrolPoints.Count);
+        Debug.Log(_patrolPoints[_currentPositionPatrol]);
+        
         TryGetComponent(out detector);
     }
 
     void Update()
     {
-        agent.SetDestination(patrolPoints[currentPositionPatrol].transform.position);
-
-        if(detector.PlayerDetected == true)
+        if (detector.PlayerDetected == true)
         {
-            agent.SetDestination(detector.PlayerPosition.transform.position);
+            _anim.SetBool("Follow", true);
+        }
+
+        else
+        {
+            _anim.SetBool("Follow", false);
+            _anim.Play("Patrol");
         }
     }
 }

@@ -2,17 +2,25 @@ using UnityEngine;
 
 public class FollowEnemy : StateMachineBehaviour
 {
+    EnemyMovement anim;
+    EnemyDetector enemyDetector;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        anim = animator.GetComponent<EnemyMovement>();
+        enemyDetector = animator.GetComponent<EnemyDetector>();
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        anim.Agent.SetDestination(enemyDetector.PlayerPosition.transform.position);
+
+        if(enemyDetector.PlayerDetected != true)
+        {
+            anim.Anim.SetBool("Follow", false);
+        }
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -8,6 +8,8 @@ public class PlayerInputs : MonoBehaviour
     public InputAction Move;
     public InputAction Sprint;
     public InputAction Pause;
+    public InputAction Attack;
+    public InputAction interact;
     public Vector2 Direction;
 
     private void Awake()
@@ -16,6 +18,8 @@ public class PlayerInputs : MonoBehaviour
         Jump = actions.FindAction("Jump");
         Sprint = actions.FindAction("Sprint");
         Pause = actions.FindAction("Pause");
+        Attack = actions.FindAction("Attack");
+        interact = actions.FindAction("Interact");
     }
     private void Update()
     {

@@ -3,10 +3,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-
     float speed;
     [SerializeField] float jumpForce;
+    [SerializeField] GameObject zoneJump;
+    [SerializeField] float radiusJump;
+    [SerializeField] LayerMask canJump;
     private bool _canSprint = false;
+    private bool isJumping = false;
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
 
@@ -47,7 +50,30 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpPlayer()
     {
-        Debug.Log("Hola");
-        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        if(isJumping == true)
+        {
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position,radiusJump,canJump);
+
+        if(canJumpPlayer.Length > 0)
+        {
+            isJumping = true;
+        }
+
+        else
+        {
+            isJumping = false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(zoneJump.transform.position, radiusJump);
     }
 }

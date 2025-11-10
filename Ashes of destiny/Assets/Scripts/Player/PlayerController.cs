@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] PlayerInputs inputs;
     [SerializeField] PlayerMovement movement;
+    [SerializeField] AttackPlayer attackPlayer;
+    [SerializeField] PlayerCollisions playerCollisions;
 
     [Inject] LevelController levelController;
 
@@ -14,11 +16,13 @@ public class PlayerController : MonoBehaviour
         inputs.Sprint.started += SprintPlayer;
         inputs.Sprint.canceled += NoSprintPlayer;
         inputs.Pause.started += PauseGame;
+        inputs.Attack.started += AttackPlayer;
+        inputs.interact.started += Interact;
+        inputs.interact.canceled += FinishInteract;
     }
 
     public void Saltar(CallbackContext context)
     {
-        Debug.Log("Boton presionado");
         movement.JumpPlayer();
     }
 
@@ -35,6 +39,21 @@ public class PlayerController : MonoBehaviour
     public void PauseGame(CallbackContext context)
     {
         levelController.PauseGame();
+    }
+
+    public void AttackPlayer(CallbackContext context)
+    {
+       attackPlayer.Attack();
+    }
+
+    public void Interact(CallbackContext context)
+    {
+        playerCollisions.CanInteract = true;
+    }
+
+    public void FinishInteract(CallbackContext context)
+    {
+        playerCollisions.CanInteract = false; 
     }
 
     private void FixedUpdate()

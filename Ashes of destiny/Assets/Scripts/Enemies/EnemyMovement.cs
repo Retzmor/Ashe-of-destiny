@@ -16,8 +16,6 @@ public class EnemyMovement : Enemies
     {
         base.Start();
         _currentPositionPatrol = Random.Range(0, _patrolPoints.Count);
-        Debug.Log(_patrolPoints[_currentPositionPatrol]);
-        
         TryGetComponent(out detector);
     }
 

@@ -22,5 +22,6 @@ public class LevelController : MonoBehaviour
     public void MenuStart()
     {
         SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 1;
     }
 }

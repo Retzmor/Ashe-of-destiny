@@ -7,6 +7,7 @@ public class PlayerInputs : MonoBehaviour
     public InputAction Jump;
     public InputAction Move;
     public InputAction Sprint;
+    public InputAction Pause;
     public Vector2 Direction;
 
     private void Awake()
@@ -14,6 +15,7 @@ public class PlayerInputs : MonoBehaviour
         Move = actions.FindAction("Move");
         Jump = actions.FindAction("Jump");
         Sprint = actions.FindAction("Sprint");
+        Pause = actions.FindAction("Pause");
     }
     private void Update()
     {

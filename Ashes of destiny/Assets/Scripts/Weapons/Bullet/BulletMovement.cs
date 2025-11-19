@@ -8,7 +8,6 @@ public class BulletMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        Debug.Log(gameObject.name);
     }
 
     private void FixedUpdate()

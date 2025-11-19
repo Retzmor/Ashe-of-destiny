@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 337222763}
   - component: {fileID: 337222762}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Elementos
   m_TagString: Ceniza
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1393,7 +1393,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337222755}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!224 &337222760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1488,7 +1488,7 @@ GameObject:
   - component: {fileID: 342695443}
   - component: {fileID: 342695442}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: 0
   m_TagString: Ceniza
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1580,7 +1580,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342695436}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!224 &342695441
 RectTransform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject zoneJump;
     [SerializeField] float radiusJump;
     [SerializeField] LayerMask canJump;
+    [SerializeField] Transform cam;
     private bool _canSprint = false;
     private bool isJumping = false;
 
@@ -26,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if(cam == null)
+        {
+            cam = Camera.main.transform;
+        }
     }
 
     public void CanMovement()
@@ -35,17 +40,35 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-        if(_canSprint == true)
+        speed = _canSprint ? 5f : 2f;
+
+        Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+
+        if (inputDir.sqrMagnitude < 0.01f)
         {
-            speed = 5;
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            return;
         }
 
-        else
-        {
-            speed = 2;
-        }
-            Vector3 moveDir = new Vector3(direction.x, rb.linearVelocity.y, direction.y);
-        rb.linearVelocity = new Vector3(moveDir.x * speed, moveDir.y, moveDir.z * speed);
+        Vector3 camForward = cam.forward;
+        Vector3 camRight = cam.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        Vector3 moveDir = camForward * inputDir.z + camRight * inputDir.x;
+        moveDir.Normalize();
+
+        rb.linearVelocity = new Vector3(
+            moveDir.x * speed,
+            rb.linearVelocity.y,
+            moveDir.z * speed
+        );
+
+        transform.forward = moveDir;
     }
 
     public void JumpPlayer()

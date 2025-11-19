@@ -6,6 +6,8 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] float radiusAttackRange;
     [SerializeField] LayerMask layer;
     [SerializeField] GameObject _currentWeapon;
+    [SerializeField] Transform targetAttack;
+    [SerializeField] GameObject bullet;
 
     bool canAttackMelee = false;
 
@@ -28,8 +30,7 @@ public class AttackPlayer : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("Ataque");
-        // ir craneando como hacer el sistema de ataque
+        GameObject newBullet = Instantiate(bullet, targetAttack.position,targetAttack.rotation);
     }
 
     private void OnDrawGizmos()

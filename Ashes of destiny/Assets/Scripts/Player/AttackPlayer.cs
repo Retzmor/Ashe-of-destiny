@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AttackPlayer : MonoBehaviour
@@ -10,6 +11,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] GameObject bullet;
 
     bool canAttackMelee = false;
+    bool coolDownAttack = true;
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
 
@@ -30,8 +32,20 @@ public class AttackPlayer : MonoBehaviour
 
     public void Attack()
     {
-        GameObject newBullet = Instantiate(bullet, targetAttack.position,targetAttack.rotation);
+        if(coolDownAttack == true)
+        {
+           GameObject newBullet = Instantiate(bullet, targetAttack.position, targetAttack.rotation);
+           StartCoroutine(CooldownAttack());
+        }
     }
+
+    IEnumerator CooldownAttack()
+    {
+        coolDownAttack = false;
+        yield return new WaitForSeconds(5f);
+        coolDownAttack = true;
+    }
+
 
     private void OnDrawGizmos()
     {

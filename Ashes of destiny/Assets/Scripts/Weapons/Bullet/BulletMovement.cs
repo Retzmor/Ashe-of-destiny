@@ -13,5 +13,6 @@ public class BulletMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = transform.forward * speed;
+        Destroy(gameObject, 5f);
     }
 }

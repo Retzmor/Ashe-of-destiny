@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
         inputs.Attack.started += AttackPlayer;
         inputs.interact.started += Interact;
         inputs.interact.canceled += FinishInteract;
+       inputs.MenuSkills.started += MenuSkills;
     }
 
     public void Saltar(CallbackContext context)
@@ -54,6 +55,11 @@ public class PlayerController : MonoBehaviour
     public void FinishInteract(CallbackContext context)
     {
         playerCollisions.CanInteract = false; 
+    }
+
+    public void MenuSkills(CallbackContext context)
+    {
+        levelController.MenuSkill();
     }
 
     private void FixedUpdate()

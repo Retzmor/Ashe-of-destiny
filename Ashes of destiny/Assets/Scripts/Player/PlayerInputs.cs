@@ -10,6 +10,7 @@ public class PlayerInputs : MonoBehaviour
     public InputAction Pause;
     public InputAction Attack;
     public InputAction interact;
+    public InputAction MenuSkills;
     public Vector2 Direction;
 
     private void Awake()
@@ -20,6 +21,8 @@ public class PlayerInputs : MonoBehaviour
         Pause = actions.FindAction("Pause");
         Attack = actions.FindAction("Attack");
         interact = actions.FindAction("Interact");
+        MenuSkills = actions.FindAction("MenuSkills");
+        
     }
     private void Update()
     {

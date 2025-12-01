@@ -14,7 +14,7 @@ public class EnemyDetector : Enemies
     {
         Collider[] zone = Physics.OverlapSphere(transform.position, radius, layerPlayer);
 
-        if(zone.Length != 0)
+        if(zone.Length > 0)
         {
             PlayerDetected = true;
         }

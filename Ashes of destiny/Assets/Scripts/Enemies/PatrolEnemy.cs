@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class PatrolEnemy : StateMachineBehaviour
 {
-    EnemyMovement anim;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    EnemyMovement movement;
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        anim = animator.GetComponent<EnemyMovement>();
+        movement = animator.GetComponent<EnemyMovement>();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        anim.Agent.SetDestination(anim.PatrolPoints[anim.CurrentPositionPatrol].transform.position);
+        if (movement.PatrolPoints.Count == 0)
+            return;
 
-        if(!anim.Agent.pathPending && anim.Agent.remainingDistance <= anim.Agent.stoppingDistance)
+        movement.Agent.SetDestination(movement.PatrolPoints[movement.CurrentPositionPatrol].position);
+
+        if (!movement.Agent.pathPending && movement.Agent.remainingDistance <= movement.Agent.stoppingDistance)
         {
-            anim.CurrentPositionPatrol = Random.Range(0, anim.PatrolPoints.Count);
-            anim.Agent.SetDestination(anim.PatrolPoints[anim.CurrentPositionPatrol].transform.position);
+            movement.CurrentPositionPatrol = Random.Range(0, movement.PatrolPoints.Count);
         }
     }
 

@@ -18,18 +18,15 @@ public class EnemyMovement : Enemies
         _currentPositionPatrol = Random.Range(0, _patrolPoints.Count);
         TryGetComponent(out detector);
     }
-
     void Update()
     {
-        if (detector.PlayerDetected == true)
+        if (detector.PlayerDetected)
         {
             _anim.SetBool("Follow", true);
         }
-
         else
         {
             _anim.SetBool("Follow", false);
-            _anim.Play("Patrol");
         }
     }
 }

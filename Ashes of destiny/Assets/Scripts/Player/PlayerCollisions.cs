@@ -23,11 +23,12 @@ public class PlayerCollisions : MonoBehaviour
         {
             collision.gameObject.TryGetComponent(out Weapon weapon);
             collision.gameObject.TryGetComponent(out Image image);
+            collision.gameObject.TryGetComponent(out Ashes ashe);
+            ashe.DesactiveRock();
             abilitiesPlayer.AddAbility(image);
+            _canInteract = false;
             attackPlayer.CurrentWeapon = collision.gameObject;
-            collision.gameObject.transform.SetParent(transform, true);
             gameplayUIController.UpdateCount();
-            collision.gameObject.SetActive(false);
         }
     }
 }

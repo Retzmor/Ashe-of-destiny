@@ -10,20 +10,21 @@ public class Inventory : MonoBehaviour
     [SerializeField] Button button1;
     [SerializeField] Button button2;
     Ashes ashes;
+    Image currentImage;
     
 
-    public void addItemInventory(GameObject item)
+    public void addItemInventory(GameObject objectItem)
     {
         for(int i = 0; i < slotsInventory.Count; i++)
         {
             if (slotsInventory[i].transform.childCount == 0)
             {
-                item.TryGetComponent(out Weapon weapon);
-                item.TryGetComponent(out Image image);
-                item.TryGetComponent(out Ashes ashe);
+                objectItem.TryGetComponent(out Weapon weapon);
+                objectItem.TryGetComponent(out Image image);
+                objectItem.TryGetComponent(out Ashes ashe);
                 ashes = ashe;
                 ashe.DesactiveRock();
-                abilitiesPlayer.AddAbility(image);
+                abilitiesPlayer.AddAbility(image, objectItem);
                 break;
             }
         }
@@ -37,7 +38,6 @@ public class Inventory : MonoBehaviour
 
     public void ClickBoton2()
     {
-        Debug.Log("");
         attackPlayer.Bullet = ashes.ElementAttack;
         button2.onClick.Invoke();
     }

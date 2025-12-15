@@ -3,6 +3,9 @@ using UnityEngine;
 public class Ashes : MonoBehaviour
 {
     [SerializeField] Animator rock;
+    [SerializeField] GameObject _elementAttack;
+
+    public GameObject ElementAttack { get => _elementAttack; set => _elementAttack = value; }
 
     private void Start()
     {

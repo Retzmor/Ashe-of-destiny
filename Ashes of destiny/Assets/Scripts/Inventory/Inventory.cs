@@ -6,25 +6,11 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] List<Item> slotsInventory;
     [SerializeField] AbilitiesPlayer abilitiesPlayer;
-    GameObject item1;
-    GameObject item2;
-    GameObject item3;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            for(int i = 0; i < slotsInventory.Count; i++)
-            {
-                slotsInventory[i].TryGetComponent<Button>(out Button boton);
-                //boton.onClick
-            }
-        }
-    }
+    [SerializeField] AttackPlayer attackPlayer;
+    [SerializeField] Button button1;
+    [SerializeField] Button button2;
+    Ashes ashes;
+    
 
     public void addItemInventory(GameObject item)
     {
@@ -35,11 +21,24 @@ public class Inventory : MonoBehaviour
                 item.TryGetComponent(out Weapon weapon);
                 item.TryGetComponent(out Image image);
                 item.TryGetComponent(out Ashes ashe);
+                ashes = ashe;
                 ashe.DesactiveRock();
                 abilitiesPlayer.AddAbility(image);
-                item.gameObject.AddComponent<Button>();
                 break;
             }
         }
+    }
+
+    public void ClickBoton1()
+    {
+        attackPlayer.Bullet = ashes.ElementAttack;
+        button1.onClick.Invoke();
+    }
+
+    public void ClickBoton2()
+    {
+        Debug.Log("");
+        attackPlayer.Bullet = ashes.ElementAttack;
+        button2.onClick.Invoke();
     }
 }

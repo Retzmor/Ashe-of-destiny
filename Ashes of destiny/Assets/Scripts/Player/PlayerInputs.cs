@@ -24,7 +24,8 @@ public class PlayerInputs : MonoBehaviour
         Attack = actions.FindAction("Attack");
         interact = actions.FindAction("Interact");
         MenuSkills = actions.FindAction("MenuSkills");
-        
+        Boton1 = actions.FindAction("Boton1");
+        Boton2 = actions.FindAction("Boton2");
     }
     private void Update()
     {

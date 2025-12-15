@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 using static UnityEngine.InputSystem.InputAction;
 public class PlayerController : MonoBehaviour
@@ -7,8 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMovement movement;
     [SerializeField] AttackPlayer attackPlayer;
     [SerializeField] PlayerCollisions playerCollisions;
+    [SerializeField] Button boton1;
+    [SerializeField] Button boton2;
 
     [Inject] LevelController levelController;
+    [Inject] Inventory inventory;
 
     private void Start()
     {
@@ -20,6 +24,8 @@ public class PlayerController : MonoBehaviour
         inputs.interact.started += Interact;
         inputs.interact.canceled += FinishInteract;
         inputs.MenuSkills.started += MenuSkills;
+        inputs.Boton1.started += Boton1Click;
+        inputs.Boton2.started += Boton2Click;
     }
 
     public void Saltar(CallbackContext context)
@@ -60,6 +66,16 @@ public class PlayerController : MonoBehaviour
     public void MenuSkills(CallbackContext context)
     {
         levelController.MenuSkill();
+    }
+
+    public void Boton1Click(CallbackContext context)
+    {
+        inventory.ClickBoton1();
+    }
+
+    public void Boton2Click(CallbackContext context)
+    {
+        inventory.ClickBoton2();
     }
 
     private void FixedUpdate()

@@ -8,12 +8,13 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] LayerMask layer;
     [SerializeField] GameObject _currentWeapon;
     [SerializeField] Transform targetAttack;
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject _bullet;
 
     bool canAttackMelee = false;
     bool coolDownAttack = true;
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
+    public GameObject Bullet { get => _bullet; set => _bullet = value; }
 
     private void FixedUpdate()
     {
@@ -34,7 +35,7 @@ public class AttackPlayer : MonoBehaviour
     {
         if(coolDownAttack == true)
         {
-           GameObject newBullet = Instantiate(bullet, targetAttack.position, targetAttack.rotation);
+           GameObject newBullet = Instantiate(Bullet, targetAttack.position, targetAttack.rotation);
            StartCoroutine(CooldownAttack());
         }
     }

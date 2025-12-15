@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
         inputs.Attack.started += AttackPlayer;
         inputs.interact.started += Interact;
         inputs.interact.canceled += FinishInteract;
-       inputs.MenuSkills.started += MenuSkills;
+        inputs.MenuSkills.started += MenuSkills;
     }
 
     public void Saltar(CallbackContext context)

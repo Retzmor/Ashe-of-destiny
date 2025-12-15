@@ -11,6 +11,8 @@ public class PlayerInputs : MonoBehaviour
     public InputAction Attack;
     public InputAction interact;
     public InputAction MenuSkills;
+    public InputAction Boton1;
+    public InputAction Boton2;
     public Vector2 Direction;
 
     private void Awake()

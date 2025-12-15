@@ -5,6 +5,7 @@ using Zenject;
 public class PlayerCollisions : MonoBehaviour
 {
     [Inject] GameplayUIController gameplayUIController;
+    [Inject] Inventory inventory;
     bool _canInteract = false;
 
     AttackPlayer attackPlayer;
@@ -21,11 +22,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ceniza") && _canInteract == true)
         {
-            collision.gameObject.TryGetComponent(out Weapon weapon);
-            collision.gameObject.TryGetComponent(out Image image);
-            collision.gameObject.TryGetComponent(out Ashes ashe);
-            ashe.DesactiveRock();
-            abilitiesPlayer.AddAbility(image);
+            inventory.addItemInventory(collision.gameObject);
             _canInteract = false;
             attackPlayer.CurrentWeapon = collision.gameObject;
             gameplayUIController.UpdateCount();

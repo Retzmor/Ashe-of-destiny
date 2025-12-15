@@ -7,17 +7,22 @@ using Color = UnityEngine.Color;
 
 public class AbilitiesPlayer : MonoBehaviour
 {
-    [Inject] Item item;
     [SerializeField] List<Button> AshesButton = new List<Button>();
+    private bool[] slotUsed;
+
+    private void Start()
+    {
+        slotUsed = new bool[AshesButton.Count];
+    }
     public void AddAbility(Image image, GameObject objectItem)
     {
         for (int i = 0; i < AshesButton.Count; i++)
         {
-            if(AshesButton[i].image.sprite != null && item.isUsed == false)
+            if (!slotUsed[i])
             {
                 AshesButton[i].image.sprite = image.sprite;
                 AshesButton[i].image.color = Color.white;
-                objectItem.TryGetComponent<Item>(out Item item);
+                slotUsed[i] = true;
                 return;
             }
         }

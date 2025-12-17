@@ -12,9 +12,18 @@ public class AttackPlayer : MonoBehaviour
 
     bool canAttackMelee = false;
     bool coolDownAttack = true;
+    bool coolDown = false;
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
     public GameObject Bullet { get => _bullet; set => _bullet = value; }
+
+    private void Update()
+    {
+        if(coolDown == true)
+        {
+
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -42,9 +51,11 @@ public class AttackPlayer : MonoBehaviour
 
     IEnumerator CooldownAttack()
     {
+        coolDown = true;
         coolDownAttack = false;
         yield return new WaitForSeconds(5f);
         coolDownAttack = true;
+        coolDown = false;
     }
 
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class AttackPlayer : MonoBehaviour
@@ -10,6 +11,8 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Transform targetAttack;
     [SerializeField] GameObject _bullet;
 
+    AbilitiesPlayer abilitiesPlayer;
+
     bool canAttackMelee = false;
     bool coolDownAttack = true;
     bool coolDown = false;
@@ -17,13 +20,11 @@ public class AttackPlayer : MonoBehaviour
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
     public GameObject Bullet { get => _bullet; set => _bullet = value; }
 
-    private void Update()
+    private void Start()
     {
-        if(coolDown == true)
-        {
-
-        }
+        abilitiesPlayer = GetComponent<AbilitiesPlayer>();
     }
+
 
     private void FixedUpdate()
     {
@@ -40,12 +41,16 @@ public class AttackPlayer : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void Attack(Button botonActivo)
     {
         if(coolDownAttack == true)
         {
            GameObject newBullet = Instantiate(Bullet, targetAttack.position, targetAttack.rotation);
            StartCoroutine(CooldownAttack());
+            if (botonActivo != null) 
+            { 
+                StartCoroutine(abilitiesPlayer.CooldownVisual(botonActivo, 5f)); 
+            }
         }
     }
 

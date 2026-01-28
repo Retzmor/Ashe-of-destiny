@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMovement movement;
     [SerializeField] AttackPlayer attackPlayer;
     [SerializeField] PlayerCollisions playerCollisions;
+    AbilitiesPlayer abilitiesPlayer;
     [SerializeField] Button boton1;
     [SerializeField] Button boton2;
+    [SerializeField] private Button botonSeleccionado;
 
     [Inject] LevelController levelController;
     [Inject] Inventory inventory;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
         inputs.MenuSkills.started += MenuSkills;
         inputs.Boton1.started += Boton1Click;
         inputs.Boton2.started += Boton2Click;
+        abilitiesPlayer = GetComponent<AbilitiesPlayer>();
     }
 
     public void Saltar(CallbackContext context)
@@ -50,7 +53,8 @@ public class PlayerController : MonoBehaviour
 
     public void AttackPlayer(CallbackContext context)
     {
-       attackPlayer.Attack();
+       attackPlayer.Attack(botonSeleccionado);
+        Debug.Log("ataque");
     }
 
     public void Interact(CallbackContext context)
@@ -71,11 +75,13 @@ public class PlayerController : MonoBehaviour
     public void Boton1Click(CallbackContext context)
     {
         inventory.ClickBoton1();
+        botonSeleccionado = boton1;
     }
 
     public void Boton2Click(CallbackContext context)
     {
         inventory.ClickBoton2();
+        botonSeleccionado = boton2;
     }
 
     private void FixedUpdate()

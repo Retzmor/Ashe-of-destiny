@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 using Color = UnityEngine.Color;
 
 public class AbilitiesPlayer : MonoBehaviour
@@ -28,5 +27,20 @@ public class AbilitiesPlayer : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public IEnumerator CooldownVisual(Button button, float cooldownTime)
+    {
+        button.image.color = Color.black;
+
+        float elapsed = 0f;
+        while (elapsed < cooldownTime)
+        {
+            elapsed += Time.deltaTime;
+            button.image.color = Color.Lerp(Color.black, Color.white, elapsed / cooldownTime);
+            yield return null;
+        }
+
+        button.image.color = Color.white;
     }
 }

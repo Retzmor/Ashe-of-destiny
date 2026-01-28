@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
                 objectItem.TryGetComponent(out Image image);
                 objectItem.TryGetComponent(out Ashes ashe);
                 ashes = ashe;
+                Debug.Log(ashe.gameObject.name);
                 ashe.DesactiveRock();
                 abilitiesPlayer.AddAbility(image, objectItem);
                 break;

@@ -9,7 +9,6 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] LayerMask layer;
     [SerializeField] GameObject _currentWeapon;
     [SerializeField] Transform targetAttack;
-    [SerializeField] GameObject _bullet;
 
     AbilitiesPlayer abilitiesPlayer;
 
@@ -18,7 +17,6 @@ public class AttackPlayer : MonoBehaviour
     bool coolDown = false;
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
-    public GameObject Bullet { get => _bullet; set => _bullet = value; }
 
     private void Start()
     {
@@ -41,17 +39,27 @@ public class AttackPlayer : MonoBehaviour
         }
     }
 
-    public void Attack(Button botonActivo)
+    public void Attack(Ashes ashes)
     {
-        if(coolDownAttack == true)
+        if (!coolDownAttack)
+            return;
+
+        if (ashes == null)
         {
-           GameObject newBullet = Instantiate(Bullet, targetAttack.position, targetAttack.rotation);
-           StartCoroutine(CooldownAttack());
-            if (botonActivo != null) 
-            { 
-                StartCoroutine(abilitiesPlayer.CooldownVisual(botonActivo, 5f)); 
-            }
+            Debug.Log("? No hay habilidad seleccionada");
+            return;
         }
+
+        if (ashes.ElementAttack == null)
+        {
+            Debug.LogError("? La habilidad no tiene ElementAttack");
+            return;
+        }
+
+        Instantiate(ashes.ElementAttack, targetAttack.position, targetAttack.rotation);
+        ashes.DesactiveRock(); // animación si aplica
+
+        StartCoroutine(CooldownAttack());
     }
 
     IEnumerator CooldownAttack()

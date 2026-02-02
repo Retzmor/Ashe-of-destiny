@@ -5920,8 +5920,9 @@ GameObject:
   - component: {fileID: 206188781}
   - component: {fileID: 206188784}
   - component: {fileID: 206188785}
+  - component: {fileID: 206188786}
   m_Layer: 5
-  m_Name: ButtonCeniza1
+  m_Name: ButtonCeniza2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6054,6 +6055,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particulas: {fileID: 350423061}
+--- !u!114 &206188786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206188779}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &248104343
 GameObject:
   m_ObjectHideFlags: 0
@@ -13381,6 +13397,7 @@ GameObject:
   - component: {fileID: 934228981}
   - component: {fileID: 934228984}
   - component: {fileID: 934228985}
+  - component: {fileID: 934228986}
   m_Layer: 5
   m_Name: ButtonCeniza3
   m_TagString: Untagged
@@ -13516,6 +13533,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particulas: {fileID: 350423061}
+--- !u!114 &934228986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934228979}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &976300168
 GameObject:
   m_ObjectHideFlags: 0
@@ -25147,9 +25179,6 @@ MonoBehaviour:
   movement: {fileID: 1409326966}
   attackPlayer: {fileID: 1409326975}
   playerCollisions: {fileID: 1409326976}
-  boton1: {fileID: 206188781}
-  boton2: {fileID: 1469952435}
-  botonSeleccionado: {fileID: 0}
 --- !u!114 &1409326968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25404,7 +25433,6 @@ MonoBehaviour:
     m_Bits: 0
   _currentWeapon: {fileID: 0}
   targetAttack: {fileID: 1940523855}
-  _bullet: {fileID: 0}
 --- !u!114 &1409326976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25433,6 +25461,7 @@ MonoBehaviour:
   - {fileID: 1469952435}
   - {fileID: 206188781}
   - {fileID: 934228981}
+  slotAshes: []
 --- !u!114 &1409326978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25974,8 +26003,9 @@ GameObject:
   - component: {fileID: 1469952435}
   - component: {fileID: 1469952438}
   - component: {fileID: 1469952439}
+  - component: {fileID: 1469952440}
   m_Layer: 5
-  m_Name: ButtonCeniza2
+  m_Name: ButtonCeniza1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26109,6 +26139,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particulas: {fileID: 399834502}
+--- !u!114 &1469952440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469952433}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1484605364
 GameObject:
   m_ObjectHideFlags: 0

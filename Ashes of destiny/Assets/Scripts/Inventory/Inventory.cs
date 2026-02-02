@@ -30,16 +30,4 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-    public void ClickBoton1()
-    {
-        attackPlayer.Bullet = ashes.ElementAttack;
-        button1.onClick.Invoke();
-    }
-
-    public void ClickBoton2()
-    {
-        attackPlayer.Bullet = ashes.ElementAttack;
-        button2.onClick.Invoke();
-    }
 }

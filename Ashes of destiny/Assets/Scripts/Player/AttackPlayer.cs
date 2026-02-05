@@ -46,20 +46,20 @@ public class AttackPlayer : MonoBehaviour
 
         if (ashes == null)
         {
-            Debug.Log("? No hay habilidad seleccionada");
             return;
         }
 
         if (ashes.ElementAttack == null)
         {
-            Debug.LogError("? La habilidad no tiene ElementAttack");
             return;
         }
 
         Instantiate(ashes.ElementAttack, targetAttack.position, targetAttack.rotation);
-        ashes.DesactiveRock(); // animación si aplica
+        ashes.DesactiveRock();
 
         StartCoroutine(CooldownAttack());
+        StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
+        abilitiesPlayer.particulaActual.DesactiveParticule();
     }
 
     IEnumerator CooldownAttack()
@@ -67,6 +67,7 @@ public class AttackPlayer : MonoBehaviour
         coolDown = true;
         coolDownAttack = false;
         yield return new WaitForSeconds(5f);
+        abilitiesPlayer.particulaActual.ActivasParticulasLoop();
         coolDownAttack = true;
         coolDown = false;
     }

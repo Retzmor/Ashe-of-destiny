@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class HealthPlayer : MonoBehaviour
 {
-    [SerializeField] Slider healthSlider;
+    [SerializeField] Image healthImage;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
     void Start()
     {
-        healthSlider.value = 1;
+        healthImage.fillAmount = 1;
         maxHealth = 100;
         currentHealth = maxHealth;
     }
@@ -19,7 +19,7 @@ public class HealthPlayer : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        healthSlider.value = currentHealth / maxHealth;
+        healthImage.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
         {

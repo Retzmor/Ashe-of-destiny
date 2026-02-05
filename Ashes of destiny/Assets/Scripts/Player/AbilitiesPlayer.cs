@@ -11,7 +11,11 @@ public class AbilitiesPlayer : MonoBehaviour
 
     private bool[] slotUsed;
     private int currentSlotIndex = -1;
+    Button _currentButton;
     public int CurrentSlotIndex => currentSlotIndex;
+    public Particulas particulaActual;
+
+    public Button CurrentButton { get => _currentButton; set => _currentButton = value; }
 
     private void Start()
     {
@@ -27,13 +31,11 @@ public class AbilitiesPlayer : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
                 SelectSlot(i);
+                _currentButton = AshesButton[i];
             }
         }
     }
 
-    // ============================
-    // PARTÍCULAS SOLO AL AGREGAR
-    // ============================
     public void AddAbility(Image image, GameObject objectItem)
     {
         for (int i = 0; i < AshesButton.Count; i++)
@@ -44,7 +46,8 @@ public class AbilitiesPlayer : MonoBehaviour
                 AshesButton[i].image.color = Color.white;
 
                 if (AshesButton[i].TryGetComponent(out Particulas particulas))
-                    particulas.ActivasParticulas();
+                 particulas.ActivasParticulas();
+                particulaActual = particulas;
 
                 slotAshes[i] = objectItem.GetComponent<Ashes>();
                 slotUsed[i] = true;
@@ -53,9 +56,6 @@ public class AbilitiesPlayer : MonoBehaviour
         }
     }
 
-    // ============================
-    // SELECCIÓN SIN PARTÍCULAS
-    // ============================
     public void SelectSlot(int index)
     {
         if (index < 0 || index >= AshesButton.Count)
@@ -64,15 +64,21 @@ public class AbilitiesPlayer : MonoBehaviour
         if (!slotUsed[index])
             return;
 
+        if (particulaActual != null)
+        {
+            particulaActual.DesactiveParticule();
+        }
+
         currentSlotIndex = index;
         UpdateSlotHighlights();
 
-        Debug.Log($"Slot seleccionado: {index + 1}");
+        if (AshesButton[index].TryGetComponent(out Particulas nuevasParticulas))
+        {
+            particulaActual = nuevasParticulas;
+            particulaActual.ActivasParticulasLoop();
+        }
     }
 
-    // ============================
-    // BORDE / RESALTADO
-    // ============================
     private void UpdateSlotHighlights()
     {
         for (int i = 0; i < AshesButton.Count; i++)
@@ -86,9 +92,7 @@ public class AbilitiesPlayer : MonoBehaviour
         }
     }
 
-    // ============================
-    // COOLDOWN VISUAL
-    // ============================
+
     public IEnumerator CooldownVisual(Button button, float cooldownTime)
     {
         button.image.color = Color.black;

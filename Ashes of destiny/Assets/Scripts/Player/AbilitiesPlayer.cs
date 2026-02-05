@@ -46,9 +46,8 @@ public class AbilitiesPlayer : MonoBehaviour
                 AshesButton[i].image.color = Color.white;
 
                 if (AshesButton[i].TryGetComponent(out Particulas particulas))
-                 particulas.ActivasParticulas();
+                particulas.ActivasParticulas();
                 particulaActual = particulas;
-
                 slotAshes[i] = objectItem.GetComponent<Ashes>();
                 slotUsed[i] = true;
                 return;

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AttackPlayer : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class AttackPlayer : MonoBehaviour
     bool coolDownAttack = true;
     bool coolDown = false;
 
+
+    Dictionary<Ashes, Coroutine> cooldowns = new();
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
 
     private void Start()
@@ -26,9 +29,9 @@ public class AttackPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Collider [] zoneAttackMelee = Physics.OverlapSphere(transform.position, radiusAttackMelee, layer);
+        Collider[] zoneAttackMelee = Physics.OverlapSphere(transform.position, radiusAttackMelee, layer);
 
-        if(zoneAttackMelee.Length > 0)
+        if (zoneAttackMelee.Length > 0)
         {
             canAttackMelee = true;
         }
@@ -41,35 +44,35 @@ public class AttackPlayer : MonoBehaviour
 
     public void Attack(Ashes ashes)
     {
-        if (!coolDownAttack)
-            return;
-
         if (ashes == null)
-        {
             return;
-        }
 
         if (ashes.ElementAttack == null)
-        {
             return;
+
+        if (!cooldowns.ContainsKey(ashes))
+            cooldowns.Add(ashes, null);
+
+        if (cooldowns[ashes] == null)
+        {
+            cooldowns[ashes] = StartCoroutine(CooldownAttack(ashes));
+            Instantiate(ashes.ElementAttack, targetAttack.position, targetAttack.rotation);
+            ashes.DesactiveRock();
+            StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
+            abilitiesPlayer.particulaActual.DesactiveParticule();
         }
-
-        Instantiate(ashes.ElementAttack, targetAttack.position, targetAttack.rotation);
-        ashes.DesactiveRock();
-
-        StartCoroutine(CooldownAttack());
-        StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
-        abilitiesPlayer.particulaActual.DesactiveParticule();
     }
 
-    IEnumerator CooldownAttack()
+    IEnumerator CooldownAttack(Ashes ashes)
     {
-        coolDown = true;
-        coolDownAttack = false;
-        yield return new WaitForSeconds(5f);
+        float currentTime = 0;
+        while (currentTime < 5)
+        {
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
         abilitiesPlayer.particulaActual.ActivasParticulasLoop();
-        coolDownAttack = true;
-        coolDown = false;
+        cooldowns[ashes] = null;
     }
 
 

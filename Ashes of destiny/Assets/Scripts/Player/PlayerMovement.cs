@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             moveDir.z * speed
         );
 
-        transform.forward = moveDir;
+        transform.forward = moveDir.normalized;
     }
 
     public void JumpPlayer()
@@ -81,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //transform.rotation = new Quaternion(transform.rotation.x,-cam.rotation.y,transform.rotation.z,transform.rotation.w);
+
         Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position,radiusJump,canJump);
 
         if(canJumpPlayer.Length > 0)

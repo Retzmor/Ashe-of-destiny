@@ -27,6 +27,7 @@ public class EnemyMovement : Enemies
         else
         {
             _anim.SetBool("Follow", false);
+            _anim.Play("Patrol");
         }
     }
 }

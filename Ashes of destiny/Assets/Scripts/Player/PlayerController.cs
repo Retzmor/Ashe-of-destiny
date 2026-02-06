@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
         inputs.interact.started += Interact;
         inputs.interact.canceled += FinishInteract;
         inputs.MenuSkills.started += MenuSkills;
+        inputs.Boton1.started += Button1;
+        inputs.Boton2.started += Button2;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
     }
 
@@ -69,7 +71,17 @@ public class PlayerController : MonoBehaviour
         levelController.MenuSkill();
     }
 
-   
+    public void Button1(CallbackContext context) 
+    {
+        abilitiesPlayer.ButtonOne();
+
+    }
+
+    public void Button2(CallbackContext context) 
+    {
+        abilitiesPlayer.ButtonTwo();
+    }
+
 
     private void FixedUpdate()
     {

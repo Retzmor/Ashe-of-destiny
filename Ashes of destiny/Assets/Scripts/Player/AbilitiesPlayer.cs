@@ -6,7 +6,7 @@ using Color = UnityEngine.Color;
 
 public class AbilitiesPlayer : MonoBehaviour
 {
-    [SerializeField] private List<Button> AshesButton = new List<Button>();
+    [SerializeField] private Button[] AshesButton;
     [SerializeField] private Ashes[] slotAshes;
 
     private bool[] slotUsed;
@@ -19,26 +19,26 @@ public class AbilitiesPlayer : MonoBehaviour
 
     private void Start()
     {
-        slotAshes = new Ashes[AshesButton.Count];
-        slotUsed = new bool[AshesButton.Count];
+        slotAshes = new Ashes[AshesButton.Length];
+        slotUsed = new bool[AshesButton.Length];
         UpdateSlotHighlights();
     }
 
-    private void Update()
+    public void ButtonOne()
     {
-        for (int i = 0; i < AshesButton.Count; i++)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
-            {
-                SelectSlot(i);
-                _currentButton = AshesButton[i];
-            }
-        }
+        SelectSlot(0);
+        _currentButton = AshesButton[0];
+    }
+
+    public void ButtonTwo()
+    {
+        SelectSlot(1);
+        _currentButton = AshesButton[1];
     }
 
     public void AddAbility(Image image, GameObject objectItem)
     {
-        for (int i = 0; i < AshesButton.Count; i++)
+        for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])
             {
@@ -57,7 +57,7 @@ public class AbilitiesPlayer : MonoBehaviour
 
     public void SelectSlot(int index)
     {
-        if (index < 0 || index >= AshesButton.Count)
+        if (index < 0 || index >= AshesButton.Length)
             return;
 
         if (!slotUsed[index])
@@ -80,7 +80,7 @@ public class AbilitiesPlayer : MonoBehaviour
 
     private void UpdateSlotHighlights()
     {
-        for (int i = 0; i < AshesButton.Count; i++)
+        for (int i = 0; i < AshesButton.Length; i++)
         {
             Outline outline = AshesButton[i].GetComponent<Outline>();
 

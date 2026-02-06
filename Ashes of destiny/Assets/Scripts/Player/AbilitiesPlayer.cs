@@ -106,15 +106,6 @@ public class AbilitiesPlayer : MonoBehaviour
 
         button.image.color = Color.white;
     }
-
-    public Button GetSelectedButton()
-    {
-        if (currentSlotIndex < 0 || currentSlotIndex >= AshesButton.Count)
-            return null;
-
-        return AshesButton[currentSlotIndex];
-    }
-
     public Ashes GetSelectedAshes()
     {
         if (currentSlotIndex < 0 || currentSlotIndex >= slotAshes.Length)

@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     public void AttackPlayer(CallbackContext context)
     {
         Ashes ashesActiva = abilitiesPlayer.GetSelectedAshes();
+        if (ashesActiva == null)
+            return;
         attackPlayer.Attack(ashesActiva);
     }
 

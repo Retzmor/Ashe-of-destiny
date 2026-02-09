@@ -12,8 +12,6 @@ public class LevelController : MonoBehaviour
 
     CanvasGroup canvas;
 
-
-
     bool isActiveMenuSkill;
     bool canMenuSkill;
 
@@ -50,7 +48,7 @@ public class LevelController : MonoBehaviour
 
         else
         {
-            canvas.alpha = 1;
+            //canvas.alpha = 1;
         }
 
         if (!isActiveMenuSkill)

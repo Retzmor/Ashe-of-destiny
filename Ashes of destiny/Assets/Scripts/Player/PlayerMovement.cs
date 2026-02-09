@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -62,19 +62,19 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDir = camForward * inputDir.z + camRight * inputDir.x;
         moveDir.Normalize();
 
-        rb.linearVelocity = new Vector3(
-            moveDir.x * speed,
-            rb.linearVelocity.y,
-            moveDir.z * speed
-        );
+        Vector3 horizontalVelocity = new Vector3(moveDir.x * speed, 0, moveDir.z * speed);
+        rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
 
         transform.forward = moveDir.normalized;
     }
 
+
     public void JumpPlayer()
     {
+        Debug.Log("Boton presionado");
         if(isJumping == true)
         {
+            Debug.Log("Salto");
             rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }

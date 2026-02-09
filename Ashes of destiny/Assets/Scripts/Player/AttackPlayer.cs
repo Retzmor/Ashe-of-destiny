@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
+using Zenject;
 
 public class AttackPlayer : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Transform targetAttack;
 
     AbilitiesPlayer abilitiesPlayer;
+    DiContainer _container;
 
     bool canAttackMelee = false;
     bool coolDownAttack = true;
@@ -20,6 +22,12 @@ public class AttackPlayer : MonoBehaviour
 
     Dictionary<Ashes, Coroutine> cooldowns = new();
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
+
+    [Inject]
+    void Construct(DiContainer container)
+    {
+        _container = container;
+    }
 
     private void Start()
     {
@@ -56,7 +64,7 @@ public class AttackPlayer : MonoBehaviour
         if (cooldowns[ashes] == null)
         {
             cooldowns[ashes] = StartCoroutine(CooldownAttack(ashes));
-            Instantiate(ashes.ElementAttack, targetAttack.position, targetAttack.rotation);
+            _container.InstantiatePrefab(ashes.ElementAttack, targetAttack.position, targetAttack.rotation,null);
             ashes.DesactiveRock();
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
             abilitiesPlayer.particulaActual.DesactiveParticule();

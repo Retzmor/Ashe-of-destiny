@@ -8,6 +8,7 @@ TagManager:
   - asteroid
   - Weapon
   - Ceniza
+  - Enemy
   layers:
   - Default
   - TransparentFX

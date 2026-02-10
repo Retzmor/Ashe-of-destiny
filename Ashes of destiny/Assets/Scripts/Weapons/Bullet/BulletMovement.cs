@@ -7,6 +7,8 @@ public class BulletMovement : MonoBehaviour
     Collider colliderBullet;
     Collider colliderPlayer;
     [SerializeField] float speed;
+    [SerializeField] float damage;
+    bool alreadyDamage = false;
 
     [Inject] PlayerCollisions player;
     void Start()
@@ -20,6 +22,19 @@ public class BulletMovement : MonoBehaviour
         foreach (Collider col in player.GetComponentsInChildren<Collider>())
         {
             Physics.IgnoreCollision(colliderBullet, col);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (alreadyDamage)
+            return;
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            alreadyDamage = true;
+            collision.gameObject.TryGetComponent<HealthEnemy>(out HealthEnemy healthEnemy);
+            healthEnemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

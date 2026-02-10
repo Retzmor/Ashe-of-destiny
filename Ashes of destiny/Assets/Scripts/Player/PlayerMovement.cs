@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = _canSprint ? 5f : 2f;
 
+        // Mapear correctamente los ejes
         Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
         if (inputDir.sqrMagnitude < 0.01f)
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        // Direcciones de la cámara
         Vector3 camForward = cam.forward;
         Vector3 camRight = cam.right;
 
@@ -59,19 +61,25 @@ public class PlayerMovement : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
 
-        Vector3 moveDir = camForward * inputDir.z + camRight * inputDir.x;
+        // OJO: aquí el orden importa
+        Vector3 moveDir = (camForward * inputDir.z) + (camRight * inputDir.x);
+
+        // Normalizar
         moveDir.Normalize();
 
-        Vector3 horizontalVelocity = new Vector3(moveDir.x * speed, 0, moveDir.z * speed);
+        // Aplicar velocidad
+        Vector3 horizontalVelocity = moveDir * speed;
         rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
 
-        transform.forward = moveDir.normalized;
+        // Rotar al jugador hacia la dirección de movimiento
+        transform.forward = moveDir;
     }
+
 
 
     public void JumpPlayer()
     {
-        Debug.Log("Boton presionado");
+        Debug.Log("Boton presionado ");
         if(isJumping == true)
         {
             Debug.Log("Salto");

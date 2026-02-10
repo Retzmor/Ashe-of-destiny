@@ -6178,11 +6178,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1004533127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 388.7225, y: 144.8827}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 465.316, y: 131.85101}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &248104345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6230,15 +6230,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6307,7 +6307,7 @@ Transform:
   m_GameObject: {fileID: 252855338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.057, z: 0}
+  m_LocalPosition: {x: 0, y: -0.967, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8076,8 +8076,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -44}
-  m_SizeDelta: {x: 388.7225, y: 144.8827}
+  m_AnchoredPosition: {x: 45.412, y: 10.48}
+  m_SizeDelta: {x: 1052.442, y: 682.844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &774278250
 MonoBehaviour:
@@ -8101,15 +8101,18 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'WASD para moverse.
 
-    presiona la E para agarrar las cenizas
+    presiona la F para agarrar las cenizas
 
     barra
     de espacio para saltar
 
-    Mantener shift + WASD para moverse
+    WASD para moverse y si mantienen presionado el shift,
+    se podra correr :)
 
-    Click izquierdo
-    para disparar'
+    Click izquierdo para disparar
+
+    Con la Q y la E se
+    seleccionan las habilidades(debe tener cenizas para seleccionar y disparar)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8136,8 +8139,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 46
+  m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13796,10 +13799,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0010817702
-  m_Height: 0.0028979986
+  m_Radius: 0.0015250099
+  m_Height: 0.0030500202
   m_Direction: 1
-  m_Center: {x: 0.00002104497, y: 0.00005626428, z: -0.0019712637}
+  m_Center: {x: -0.00042219475, y: 0.00005626428, z: -0.0019712637}
 --- !u!1001 &997221371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25227,7 +25230,6 @@ MonoBehaviour:
   canJump:
     serializedVersion: 2
     m_Bits: 64
-  cam: {fileID: 330585546}
 --- !u!114 &1409326967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26317,9 +26319,10 @@ GameObject:
   - component: {fileID: 1522529493}
   - component: {fileID: 1522529495}
   - component: {fileID: 1522529496}
+  - component: {fileID: 1522529497}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26520,6 +26523,7 @@ MonoBehaviour:
   - {fileID: 1977700484}
   - {fileID: 1816785204}
   - {fileID: 1543207214}
+  forceMovementImpact: 0.1
 --- !u!114 &1522529496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26534,6 +26538,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAttack: 5
   cooldDownAttack: 2
+--- !u!114 &1522529497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522529486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0551854b0fa4e604a81fa7673a6038bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 100
+  healthMin: 50
+  currentHealth: 0
+  material: {fileID: 2100000, guid: d11297780e3f7f045be56d694a91ce84, type: 2}
 --- !u!1001 &1541682355
 PrefabInstance:
   m_ObjectHideFlags: 0

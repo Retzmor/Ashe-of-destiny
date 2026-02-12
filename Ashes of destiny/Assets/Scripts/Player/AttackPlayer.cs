@@ -18,6 +18,7 @@ public class AttackPlayer : MonoBehaviour
     bool canAttackMelee = false;
     bool coolDownAttack = true;
     bool coolDown = false;
+    private bool meleeMode = false;
 
 
     Dictionary<Ashes, Coroutine> cooldowns = new();
@@ -53,7 +54,11 @@ public class AttackPlayer : MonoBehaviour
     public void Attack(Ashes ashes)
     {
         if (ashes == null)
-            return;
+        {
+            Debug.Log("Golpe melee");
+            //aqui llamariamos la funcion de atacar
+        }
+            
 
         if (ashes.ElementAttack == null)
             return;
@@ -63,7 +68,8 @@ public class AttackPlayer : MonoBehaviour
 
         if (cooldowns[ashes] == null)
         {
-            cooldowns[ashes] = StartCoroutine(CooldownAttack(ashes));
+            Particulas particula = abilitiesPlayer.particulaActual;
+            cooldowns[ashes] = StartCoroutine(CooldownAttack(ashes, particula));
             _container.InstantiatePrefab(ashes.ElementAttack, targetAttack.position, targetAttack.rotation,null);
             ashes.DesactiveRock();
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
@@ -71,17 +77,65 @@ public class AttackPlayer : MonoBehaviour
         }
     }
 
-    IEnumerator CooldownAttack(Ashes ashes)
+    IEnumerator CooldownAttack(Ashes ashes, Particulas particula)
     {
         float currentTime = 0;
+
         while (currentTime < 5)
         {
             currentTime += Time.deltaTime;
             yield return null;
         }
-        abilitiesPlayer.particulaActual.ActivasParticulasLoop();
+
+        if (particula != null)
+            particula.ActivasParticulasLoop();
+
         cooldowns[ashes] = null;
     }
+
+    public bool IsOnCooldown(Ashes ashes)
+    {
+        if (ashes == null)
+            return false;
+
+        if (!cooldowns.ContainsKey(ashes))
+            return false;
+
+        return cooldowns[ashes] != null;
+    }
+
+    public void ToggleMeleeMode()
+    {
+        meleeMode = !meleeMode;
+
+        if (meleeMode)
+        {
+            ActivateMelee();
+        }
+        else
+        {
+            DeactivateMelee();
+        }
+    }
+
+    void ActivateMelee()
+    {
+        Debug.Log("Modo melee activado");
+
+        if (_currentWeapon != null)
+            _currentWeapon.SetActive(true);
+
+        abilitiesPlayer.ClearSelection();
+    }
+
+    void DeactivateMelee()
+    {
+        Debug.Log("Modo habilidades activado");
+
+        if (_currentWeapon != null)
+            _currentWeapon.SetActive(false);
+    }
+
 
 
     private void OnDrawGizmos()

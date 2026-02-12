@@ -14,6 +14,7 @@ public class AbilitiesPlayer : MonoBehaviour
     Button _currentButton;
     public int CurrentSlotIndex => currentSlotIndex;
     public Particulas particulaActual;
+    AttackPlayer attackPlayer;
 
     public Button CurrentButton { get => _currentButton; set => _currentButton = value; }
 
@@ -22,6 +23,7 @@ public class AbilitiesPlayer : MonoBehaviour
         slotAshes = new Ashes[AshesButton.Length];
         slotUsed = new bool[AshesButton.Length];
         UpdateSlotHighlights();
+        attackPlayer = GetComponent<AttackPlayer>();
     }
 
     public void ButtonOne()
@@ -42,13 +44,33 @@ public class AbilitiesPlayer : MonoBehaviour
         {
             if (!slotUsed[i])
             {
+                Ashes ashes = objectItem.GetComponent<Ashes>();
+
+                if (ashes == null)
+                {
+                    Debug.LogError("El objeto no tiene componente Ashes");
+                    return;
+                }
+
+                if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
+                {
+                    slotAshes[i] = ashes;
+
+                    if (particulasUI.particulas != null)
+                        Destroy(particulasUI.particulas.gameObject);
+
+                    ParticleSystem nuevaParticula = Instantiate(
+                        ashes.ParticulaPrefab,
+                        particulasUI.transform
+                    );
+
+                    particulasUI.particulas = nuevaParticula;
+                }
+
+
                 AshesButton[i].image.sprite = image.sprite;
                 AshesButton[i].image.color = Color.white;
 
-                if (AshesButton[i].TryGetComponent(out Particulas particulas))
-                particulas.ActivasParticulas();
-                particulaActual = particulas;
-                slotAshes[i] = objectItem.GetComponent<Ashes>();
                 slotUsed[i] = true;
                 return;
             }
@@ -61,6 +83,11 @@ public class AbilitiesPlayer : MonoBehaviour
             return;
 
         if (!slotUsed[index])
+            return;
+
+        Ashes selectedAshes = slotAshes[index];
+
+        if (attackPlayer.IsOnCooldown(selectedAshes))
             return;
 
         if (particulaActual != null)
@@ -78,6 +105,7 @@ public class AbilitiesPlayer : MonoBehaviour
         }
     }
 
+
     private void UpdateSlotHighlights()
     {
         for (int i = 0; i < AshesButton.Length; i++)
@@ -90,6 +118,16 @@ public class AbilitiesPlayer : MonoBehaviour
             outline.enabled = (i == currentSlotIndex && slotUsed[i]);
         }
     }
+
+    public void ClearSelection()
+    {
+        if (particulaActual != null)
+            particulaActual.DesactiveParticule();
+
+        currentSlotIndex = -1;
+        UpdateSlotHighlights();
+    }
+
 
 
     public IEnumerator CooldownVisual(Button button, float cooldownTime)

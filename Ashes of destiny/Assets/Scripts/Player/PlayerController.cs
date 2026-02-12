@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
         inputs.MenuSkills.started += MenuSkills;
         inputs.Boton1.started += Button1;
         inputs.Boton2.started += Button2;
+        inputs.Boton3.started += Button3;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
     }
 
@@ -80,6 +81,11 @@ public class PlayerController : MonoBehaviour
     public void Button2(CallbackContext context) 
     {
         abilitiesPlayer.ButtonTwo();
+    }
+
+    public void Button3(CallbackContext context)
+    {
+        attackPlayer.ToggleMeleeMode();
     }
 
 

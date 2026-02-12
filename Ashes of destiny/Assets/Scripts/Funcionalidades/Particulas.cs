@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Particulas : MonoBehaviour
 {
-    [SerializeField] ParticleSystem particulas;
+    [SerializeField] public ParticleSystem particulas;
 
     private void Start()
     {
-        particulas.Stop();
+        if (particulas != null) 
+        { 
+            particulas.Stop();
+        }
     }
     public void ActivasParticulas()
     {

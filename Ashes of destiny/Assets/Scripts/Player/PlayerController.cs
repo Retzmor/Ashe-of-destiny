@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AttackPlayer attackPlayer;
     [SerializeField] PlayerCollisions playerCollisions;
     AbilitiesPlayer abilitiesPlayer;
+    AimPlayer aimPlayer;
 
     [Inject] LevelController levelController;
     [Inject] Inventory inventory;
@@ -26,7 +27,10 @@ public class PlayerController : MonoBehaviour
         inputs.Boton1.started += Button1;
         inputs.Boton2.started += Button2;
         inputs.Boton3.started += Button3;
+        inputs.Aim.started += AimButton;
+        inputs.Aim.canceled += AimButton;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
+        aimPlayer = GetComponent<AimPlayer>();
     }
 
     public void Saltar(CallbackContext context)
@@ -86,6 +90,14 @@ public class PlayerController : MonoBehaviour
     public void Button3(CallbackContext context)
     {
         attackPlayer.ToggleMeleeMode();
+    }
+
+    public void AimButton(CallbackContext context)
+    {
+        if (context.ReadValueAsButton())
+            aimPlayer.AimActive();
+        else
+            aimPlayer.AimDesactive();
     }
 
 

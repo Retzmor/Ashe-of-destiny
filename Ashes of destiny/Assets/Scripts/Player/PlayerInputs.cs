@@ -14,6 +14,7 @@ public class PlayerInputs : MonoBehaviour
     public InputAction Boton1;
     public InputAction Boton2;
     public InputAction Boton3;
+    public InputAction Aim;
     public Vector2 Direction;
 
     private void Awake()
@@ -28,6 +29,7 @@ public class PlayerInputs : MonoBehaviour
         Boton1 = actions.FindAction("Boton1");
         Boton2 = actions.FindAction("Boton2");
         Boton3 = actions.FindAction("Boton3");
+        Aim = actions.FindAction("Aim");
     }
     private void Update()
     {

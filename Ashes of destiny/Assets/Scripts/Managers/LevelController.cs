@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject panelSkills;
     [SerializeField] GameObject panelGame;
     [SerializeField] Particulas[] particles;
+    [SerializeField] Animator animator;
 
     CanvasGroup canvas;
 
@@ -18,7 +19,9 @@ public class LevelController : MonoBehaviour
     public void PauseGame()
     {
         panelPause.SetActive(true);
-        gameManager.PauseGame();
+        animator.Play("animacion pausa");
+
+       // gameManager.PauseGame();
     }
 
     public void DespausarGame()

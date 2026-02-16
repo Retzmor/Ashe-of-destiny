@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
     {
         panelPause.SetActive(true);
         animator.Play("animacion pausa");
+        Time.timeScale = 0;
 
        // gameManager.PauseGame();
     }
@@ -28,12 +29,18 @@ public class LevelController : MonoBehaviour
     {
         panelPause.SetActive(false);
         gameManager.Despausar();
+        Time.timeScale = 1;
     }
 
     public void MenuStart()
     {
         SceneManager.LoadScene("StartMenu");
         Time.timeScale = 1;
+    }
+
+    public void RestartLevel()
+    {
+        gameManager.GameStart();
     }
 
     public void MenuSkill()

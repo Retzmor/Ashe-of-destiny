@@ -45,25 +45,34 @@ public class LevelController : MonoBehaviour
 
     public void MenuSkill()
     {
-        if(!panelGame.activeSelf)
+        bool isActive = panelSkills.activeSelf;
+
+        if (!isActive)
         {
-            panelGame.SetActive(!panelGame.activeSelf);
-            for(int i = 0; i < particles.Length; i++)
+            panelSkills.SetActive(true);
+            Time.timeScale = 0f;
+
+            for (int i = 0; i < particles.Length; i++)
             {
-                particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva);
-                canvas = canva;
-                canvas.alpha = 0;
+                if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
+                {
+                    canva.alpha = 0;
+                }
             }
         }
-
         else
         {
-            //canvas.alpha = 1;
-        }
+            panelSkills.SetActive(false);
+            Time.timeScale = 1f;
 
-        if (!isActiveMenuSkill)
-        {
-            panelSkills.SetActive(!panelSkills.activeSelf);
+            for (int i = 0; i < particles.Length; i++)
+            {
+                if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
+                {
+                    canva.alpha = 1;
+                }
+            }
         }
     }
+
 }

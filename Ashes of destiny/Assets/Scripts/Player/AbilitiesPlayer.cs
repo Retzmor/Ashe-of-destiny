@@ -40,6 +40,7 @@ public class AbilitiesPlayer : MonoBehaviour
 
     public void AddAbility(Image image, GameObject objectItem)
     {
+
         for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])
@@ -62,6 +63,7 @@ public class AbilitiesPlayer : MonoBehaviour
                     ParticleSystem nuevaParticula = Instantiate(
                         ashes.ParticulaPrefab,
                         particulasUI.transform
+
                     );
 
                     particulasUI.particulas = nuevaParticula;
@@ -83,7 +85,11 @@ public class AbilitiesPlayer : MonoBehaviour
             return;
 
         if (!slotUsed[index])
+        {
+            Debug.Log("Slot vacío, limpiando selección");
+            ClearSelection();
             return;
+        }
 
         Ashes selectedAshes = slotAshes[index];
 
@@ -91,9 +97,7 @@ public class AbilitiesPlayer : MonoBehaviour
             return;
 
         if (particulaActual != null)
-        {
             particulaActual.DesactiveParticule();
-        }
 
         currentSlotIndex = index;
         UpdateSlotHighlights();
@@ -104,6 +108,7 @@ public class AbilitiesPlayer : MonoBehaviour
             particulaActual.ActivasParticulasLoop();
         }
     }
+
 
 
     private void UpdateSlotHighlights()
@@ -146,9 +151,12 @@ public class AbilitiesPlayer : MonoBehaviour
     }
     public Ashes GetSelectedAshes()
     {
-        if (currentSlotIndex < 0 || currentSlotIndex >= slotAshes.Length)
+        if (currentSlotIndex < 0 ||
+            currentSlotIndex >= slotAshes.Length ||
+            !slotUsed[currentSlotIndex])
             return null;
 
         return slotAshes[currentSlotIndex];
     }
+
 }

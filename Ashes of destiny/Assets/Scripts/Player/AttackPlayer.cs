@@ -75,6 +75,7 @@ public class AttackPlayer : MonoBehaviour
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }
+        Debug.Log("Slot actual: " + abilitiesPlayer.CurrentSlotIndex);
     }
 
     IEnumerator CooldownAttack(Ashes ashes, Particulas particula)

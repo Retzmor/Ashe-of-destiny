@@ -63,7 +63,8 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(CallbackContext context)
     {
-        playerCollisions.CanInteract = true;
+        if (context.started)
+            playerCollisions.TryInteract();
     }
 
     public void FinishInteract(CallbackContext context)
@@ -76,14 +77,15 @@ public class PlayerController : MonoBehaviour
         levelController.MenuSkill();
     }
 
-    public void Button1(CallbackContext context) 
+    public void Button1(CallbackContext context)
     {
+        if (!context.started) return;
         abilitiesPlayer.ButtonOne();
-
     }
 
-    public void Button2(CallbackContext context) 
+    public void Button2(CallbackContext context)
     {
+        if (!context.started) return;
         abilitiesPlayer.ButtonTwo();
     }
 

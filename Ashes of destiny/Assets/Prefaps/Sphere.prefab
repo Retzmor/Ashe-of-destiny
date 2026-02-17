@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -2519019008160183091}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Ceniza
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

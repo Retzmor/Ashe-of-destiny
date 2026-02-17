@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -20,22 +20,34 @@ public class PlayerCollisions : MonoBehaviour
     }
 
     public bool CanInteract { get => _canInteract; set => _canInteract = value; }
-    private void OnCollisionStay(Collision collision)
+    GameObject currentItem;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ceniza") && _canInteract == true && canCollision == true)
+        if (collision.gameObject.CompareTag("Ceniza"))
         {
-            inventory.addItemInventory(collision.gameObject);
-            _canInteract = false;
-            attackPlayer.CurrentWeapon = collision.gameObject;
-            gameplayUIController.UpdateCount();
-            StartCoroutine(CoolDownCollision());
+            currentItem = collision.gameObject;
         }
     }
 
-    public IEnumerator CoolDownCollision()
+    private void OnCollisionExit(Collision collision)
     {
-        canCollision = false;
-        yield return new WaitForSeconds(3);
-        canCollision = true;
+        if (collision.gameObject.CompareTag("Ceniza"))
+        {
+            currentItem = null;
+        }
     }
+
+    public void TryInteract()
+    {
+        if (currentItem == null) return;
+
+        inventory.addItemInventory(currentItem);
+        attackPlayer.CurrentWeapon = currentItem;
+        gameplayUIController.UpdateCount();
+
+        currentItem.SetActive(false);
+        currentItem = null;
+    }
+
 }

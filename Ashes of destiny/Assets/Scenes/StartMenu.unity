@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed1ce8c665559ec48a835334b16e5db4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71409c208790ee0489eda64d9bb1c330, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed1ce8c665559ec48a835334b16e5db4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71409c208790ee0489eda64d9bb1c330, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4199,7 +4199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed1ce8c665559ec48a835334b16e5db4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71409c208790ee0489eda64d9bb1c330, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4366,6 +4366,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1692671779}
     m_Modifications:
+    - target: {fileID: 2015148269923144819, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71409c208790ee0489eda64d9bb1c330, type: 3}
     - target: {fileID: 2372563413270442546, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_Name
       value: Panel Options

@@ -2800,6 +2800,8 @@ MonoBehaviour:
   panelPause: {fileID: 345184322}
   panelSkills: {fileID: 1004533126}
   panelGame: {fileID: 1166882070}
+  particles: []
+  animator: {fileID: 0}
 --- !u!4 &829431887
 Transform:
   m_ObjectHideFlags: 0
@@ -3976,6 +3978,42 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  Boton1:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9bc0fc58-c2d3-4544-b824-cec3ea9a6479
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  Boton2:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 857812e6-bd12-4173-9783-2dc3995b8591
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  Boton3:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: aeaf479b-d952-4375-b97c-d24bb3c6b883
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  Aim:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 671e5fc3-cb34-4f00-86fb-75428bb9a408
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   Direction: {x: 0, y: 0}
 --- !u!54 &1409326969
 Rigidbody:
@@ -4135,7 +4173,6 @@ MonoBehaviour:
     m_Bits: 0
   _currentWeapon: {fileID: 0}
   targetAttack: {fileID: 0}
-  bullet: {fileID: 0}
 --- !u!114 &1409326976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4164,6 +4201,8 @@ MonoBehaviour:
   - {fileID: 742797194}
   - {fileID: 1826441102}
   - {fileID: 284741155}
+  slotAshes: []
+  particulaActual: {fileID: 0}
 --- !u!1001 &1413639386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4611,6 +4650,7 @@ MonoBehaviour:
   - {fileID: 1977700484}
   - {fileID: 1816785204}
   - {fileID: 1543207214}
+  forceMovementImpact: 0
 --- !u!1001 &1541682355
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Inject] LevelController levelController;
     [Inject] Inventory inventory;
+    internal bool isAiming;
 
     private void Start()
     {
@@ -27,8 +28,8 @@ public class PlayerController : MonoBehaviour
         inputs.Boton1.started += Button1;
         inputs.Boton2.started += Button2;
         inputs.Boton3.started += Button3;
-        inputs.Aim.started += AimButton;
-        inputs.Aim.canceled += AimButton;
+       // inputs.Aim.started += AimButton;
+        //inputs.Aim.canceled += AimButton;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         aimPlayer = GetComponent<AimPlayer>();
     }
@@ -94,13 +95,10 @@ public class PlayerController : MonoBehaviour
         attackPlayer.ToggleMeleeMode();
     }
 
-    public void AimButton(CallbackContext context)
-    {
-        if (context.ReadValueAsButton())
-            aimPlayer.AimActive();
-        else
-            aimPlayer.AimDesactive();
-    }
+    //public void AimButton(CallbackContext context)
+    //{
+    //    
+    //}
 
 
     private void FixedUpdate()

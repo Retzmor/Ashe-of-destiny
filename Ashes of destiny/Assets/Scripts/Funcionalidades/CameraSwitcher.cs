@@ -13,6 +13,7 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] GameObject crossHairUI;
     [SerializeField] PlayerMovement playerController;
     [SerializeField] PlayerControls input;
+    [SerializeField] GameObject settingsMenu;
 
     InputAction aimAction;
     bool isAiming = false;
@@ -27,6 +28,7 @@ public class CameraSwitcher : MonoBehaviour
         input = new PlayerControls();
         input.Enable();
         aimAction = input.Player.Aim;
+        crossHairUI.gameObject.SetActive(false); 
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void ExitAimMode()
     {
+        crossHairUI?.SetActive(false);
         isAiming = false;
         SnapFreelookBehindPlayer();
         aimCam.Priority = 10;
@@ -71,10 +74,23 @@ public class CameraSwitcher : MonoBehaviour
 
     private void EnterAimMode()
     {
+        crossHairUI.gameObject.SetActive(true);
         isAiming = true;
         SnapAimCameraToPlayerForward(); 
         aimCam.Priority = 20;
         freelookCam.Priority = 10;
         inputAxisController.enabled = false;
+    }
+
+    public void OpenMenu()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseMenu()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

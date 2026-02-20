@@ -41,6 +41,7 @@ public class LevelController : MonoBehaviour
     public void RestartLevel()
     {
         gameManager.GameStart();
+        Time.timeScale = 1;
     }
 
     public void MenuSkill()

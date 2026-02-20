@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMovement movement;
     [SerializeField] AttackPlayer attackPlayer;
     [SerializeField] PlayerCollisions playerCollisions;
+    [SerializeField] CameraSwitcher camSwitcher;
     AbilitiesPlayer abilitiesPlayer;
     AimPlayer aimPlayer;
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
 
     public void PauseGame(CallbackContext context)
     {
+        camSwitcher.OpenMenu();
         levelController.PauseGame();
     }
 

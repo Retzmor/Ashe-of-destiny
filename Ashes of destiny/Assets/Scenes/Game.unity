@@ -5203,6 +5203,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021194010}
   m_CullTransparentMesh: 1
+--- !u!1 &1025413117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1025413118}
+  m_Layer: 3
+  m_Name: CanWalk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1025413118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025413117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: -1.291, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1409326973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063812970
 GameObject:
   m_ObjectHideFlags: 0
@@ -7115,10 +7146,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 5
   zoneJump: {fileID: 252855338}
+  zoneWalk: {fileID: 1025413117}
   radiusJump: 0.1
+  radiusWalk: 0.5
   canJump:
     serializedVersion: 2
     m_Bits: 64
+  canWalk:
+    serializedVersion: 2
+    m_Bits: 192
   cam: {fileID: 0}
   yawTarget: {fileID: 1420588444}
 --- !u!114 &1409326967
@@ -7318,6 +7354,7 @@ Transform:
   - {fileID: 252855339}
   - {fileID: 1420588444}
   - {fileID: 2053630484}
+  - {fileID: 1025413118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -27.848, z: 0}
 --- !u!114 &1409326974
@@ -10968,7 +11005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.7647705, y: -41.998962}
+  m_AnchoredPosition: {x: -6.7650146, y: -41.998993}
   m_SizeDelta: {x: -126.972046, y: -125.06604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989818787

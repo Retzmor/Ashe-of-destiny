@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.ShaderGraph.Internal;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,8 +7,11 @@ public class PlayerMovement : MonoBehaviour
     float speed;
     [SerializeField] float jumpForce;
     [SerializeField] GameObject zoneJump;
+    [SerializeField] GameObject zoneWalk;
     [SerializeField] float radiusJump;
+    [SerializeField] float radiusWalk;
     [SerializeField] LayerMask canJump;
+    [SerializeField] LayerMask canWalk;
     [SerializeField] Transform cam;
     [SerializeField] Transform yawTarget;
     private bool _canSprint = false;
@@ -42,47 +46,50 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-        float speed = _canSprint ? 5f : 2f;
-
-        Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
-
-        if (inputDir.sqrMagnitude > 0.01f)
+      if (IsGrounded())
         {
-            Vector3 forward = isAiming ? transform.forward : cam.forward;
-            Vector3 right = isAiming ? transform.right : cam.right;
+                float speed = _canSprint ? 5f : 2f;
 
-            forward.y = 0;
-            right.y = 0;
-            forward.Normalize();
-            right.Normalize();
+                Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
-            Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
-            moveDir.Normalize();
+                if (inputDir.sqrMagnitude > 0.01f)
+                {
+                    Vector3 forward = isAiming ? transform.forward : cam.forward;
+                    Vector3 right = isAiming ? transform.right : cam.right;
 
-            Vector3 horizontalVelocity = moveDir * speed;
-            rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
+                    forward.y = 0;
+                    right.y = 0;
+                    forward.Normalize();
+                    right.Normalize();
 
-            if (!isAiming)
-            {
-                transform.forward = moveDir;
+                    Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
+                    moveDir.Normalize();
+
+                    Vector3 horizontalVelocity = moveDir * speed;
+                    rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
+
+                    if (!isAiming)
+                    {
+                        transform.forward = moveDir;
+                    }
+                }
+                else
+                {
+                    rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+                }
+
+                if (isAiming && yawTarget != null)
+                {
+                    Vector3 lookDirection = yawTarget.forward;
+                    lookDirection.y = 0;
+
+                    if (lookDirection.sqrMagnitude > 0.01f)
+                    {
+                        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+                    }
+                }
             }
-        }
-        else
-        {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-        }
-
-        if (isAiming && yawTarget != null)
-        {
-            Vector3 lookDirection = yawTarget.forward;
-            lookDirection.y = 0;
-
-            if (lookDirection.sqrMagnitude > 0.01f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-            }
-        }
     }
 
     public void JumpPlayer()
@@ -112,9 +119,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    bool IsGrounded()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.2f, canWalk))
+        {
+            float angle = Vector3.Angle(hit.normal, Vector3.up);
+
+            if (angle < 45f) 
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(zoneJump.transform.position, radiusJump);
+        Gizmos.DrawWireSphere(zoneWalk.transform.position, radiusWalk);
     }
 }

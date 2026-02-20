@@ -49,7 +49,6 @@ public class AbilitiesPlayer : MonoBehaviour
 
                 if (ashes == null)
                 {
-                    Debug.LogError("El objeto no tiene componente Ashes");
                     return;
                 }
 
@@ -86,7 +85,6 @@ public class AbilitiesPlayer : MonoBehaviour
 
         if (!slotUsed[index])
         {
-            Debug.Log("Slot vacío, limpiando selección");
             ClearSelection();
             return;
         }

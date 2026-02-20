@@ -1540,7 +1540,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 30
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -1567,7 +1567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171686221}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15333772, y: 0.000000029449879, z: -0.0000000045698205, w: 0.98817384}
+  m_LocalRotation: {x: 0.10409117, y: -0.000000030552656, z: 0.000000003197632, w: 0.99456775}
   m_LocalPosition: {x: 592.47, y: 162.90607, z: -39.86717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1654,7 +1654,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 1, z: 0}
   Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
@@ -2359,7 +2359,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2385,7 +2385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15333772, y: 0.000000029449877, z: -0.0000000045698205, w: 0.98817384}
+  m_LocalRotation: {x: 0.10409117, y: -0.000000030552656, z: 0.0000000031976317, w: 0.99456775}
   m_LocalPosition: {x: 592.47, y: 162.90607, z: -39.86717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3886,7 +3886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 20.999939, y: -396}
+  m_AnchoredPosition: {x: 20.999756, y: -396}
   m_SizeDelta: {x: 650, y: 330}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &782617419
@@ -6686,7 +6686,7 @@ TerrainCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362695563}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cc5a436c40aa7a94eb48d4079da366df, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7285,7 +7285,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409326965}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: fe397e3af233d19459760d8f5ef37765, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9823,7 +9823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossHairUI: {fileID: 1739629960}
   aimCamera: {fileID: 330585545}
-  maxDistance: 10
+  maxDistance: 15
   crossHairOffSetMultiplier: 0.01
   raycastMask:
     serializedVersion: 2
@@ -10968,7 +10968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.763977, y: -41.99904}
+  m_AnchoredPosition: {x: -6.7647705, y: -41.998962}
   m_SizeDelta: {x: -126.972046, y: -125.06604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989818787

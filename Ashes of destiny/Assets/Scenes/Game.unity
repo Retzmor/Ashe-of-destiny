@@ -3478,7 +3478,8 @@ MonoBehaviour:
   - {fileID: 1420506321}
   - {fileID: 601838298}
   - {fileID: 1849541692}
-  _installerPrefabs: []
+  _installerPrefabs:
+  - {fileID: 641263835373403642, guid: 6a428e4d93c1bfd40b25cfd18bbae4c7, type: 3}
   _autoRun: 1
   OnPreInstall:
     m_PersistentCalls:
@@ -10383,6 +10384,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 16.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 829431886}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ScreenFull
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050606213851163081, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2300070116696842165, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -167.5
@@ -11005,7 +11034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.7650146, y: -41.998993}
+  m_AnchoredPosition: {x: -6.7650146, y: -41.999023}
   m_SizeDelta: {x: -126.972046, y: -125.06604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989818787

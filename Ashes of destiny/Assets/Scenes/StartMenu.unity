@@ -3889,8 +3889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers: []
-  _installerPrefabs:
-  - {fileID: 641263835373403642, guid: 6a428e4d93c1bfd40b25cfd18bbae4c7, type: 3}
+  _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
     m_PersistentCalls:
@@ -4389,6 +4388,10 @@ PrefabInstance:
     - target: {fileID: 2372563413270442546, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_Name
       value: Panel Options
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372563413270442546, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2388689815270276806, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_AnchorMax.y

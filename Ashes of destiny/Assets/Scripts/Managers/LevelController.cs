@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [Inject] GameManager gameManager;
+    [Inject] DisplaySettingsManager displaySettingsManager;
     [SerializeField] GameObject panelPause;
     [SerializeField] GameObject panelSkills;
     [SerializeField] GameObject panelGame;
@@ -30,6 +31,11 @@ public class LevelController : MonoBehaviour
         panelPause.SetActive(false);
         gameManager.Despausar();
         Time.timeScale = 1;
+    }
+
+    public void ScreenFull()
+    {
+        displaySettingsManager.GetFullScreen();
     }
 
     public void MenuStart()

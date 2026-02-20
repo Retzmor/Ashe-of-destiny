@@ -52,7 +52,7 @@ public class AbilitiesPlayer : MonoBehaviour
                     return;
                 }
 
-                if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
+                if (AshesButton[i].TryGetComponent(out Particulas particulasUI) && AshesButton[i] != AshesButton[2])
                 {
                     slotAshes[i] = ashes;
 
@@ -61,17 +61,14 @@ public class AbilitiesPlayer : MonoBehaviour
 
                     ParticleSystem nuevaParticula = Instantiate(
                         ashes.ParticulaPrefab,
-                        particulasUI.transform
-
+                        AshesButton[i].transform
                     );
 
                     particulasUI.particulas = nuevaParticula;
                 }
 
-
                 AshesButton[i].image.sprite = image.sprite;
                 AshesButton[i].image.color = Color.white;
-
                 slotUsed[i] = true;
                 return;
             }

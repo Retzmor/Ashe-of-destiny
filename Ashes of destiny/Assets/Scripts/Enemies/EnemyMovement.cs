@@ -10,8 +10,6 @@ public class EnemyMovement : Enemies
     EnemyDetector detector;
     [SerializeField] float forceMovementImpact;
     bool isKnockbacking = false;
-
-
     public List<Transform> PatrolPoints { get => _patrolPoints; set => _patrolPoints = value; }
     public int CurrentPositionPatrol { get => _currentPositionPatrol; set => _currentPositionPatrol = value; }
 
@@ -30,7 +28,6 @@ public class EnemyMovement : Enemies
         else
         {
             _anim.SetBool("Follow", false);
-            _anim.Play("Patrol");
         }
     }
 
@@ -38,7 +35,6 @@ public class EnemyMovement : Enemies
     {
         // aqui iria la animacion de recibir daño
         Agent.isStopped = true;
-        Debug.Log(Agent.isStopped);
         Rb.isKinematic = true;
         StartCoroutine(StopEnemy());
     }

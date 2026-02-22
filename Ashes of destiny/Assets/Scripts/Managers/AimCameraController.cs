@@ -67,7 +67,6 @@ public class AimCameraController : MonoBehaviour
         yawTarget.rotation = Quaternion.Euler(0, yaw, 0);
         pitchTarget.localRotation = Quaternion.Euler(pitch, 0, 0);
         aimCamera.CameraSide = Mathf.Lerp(aimCamera.CameraSide, targetCameraSide, Time.deltaTime * shoulderSwitchSpeed);
-        Debug.Log(look);
     }
 
     public void OnSwitchShoulder(InputAction.CallbackContext context)

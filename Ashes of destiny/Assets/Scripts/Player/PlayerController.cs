@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     public void MenuSkills(CallbackContext context)
     {
+        camSwitcher.OpenMenu();
         levelController.MenuSkill();
     }
 

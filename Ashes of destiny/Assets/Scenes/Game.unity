@@ -1760,11 +1760,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 219165905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -577, y: -415.3}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -548, y: -388.3}
   m_SizeDelta: {x: 158, y: 154}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206188781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,11 +4698,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 219165905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -703, y: -473}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -669, y: -503}
   m_SizeDelta: {x: 80, y: 40}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934228981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7397,6 +7397,7 @@ MonoBehaviour:
     m_Bits: 0
   _currentWeapon: {fileID: 1420588443}
   targetAttack: {fileID: 2065975962}
+  crosshairController: {fileID: 1739629963}
 --- !u!114 &1409326976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7947,11 +7948,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 219165905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -799.5, y: -415.3}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -770.5, y: -388.3}
   m_SizeDelta: {x: 158, y: 154}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469952435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11326,7 +11327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2065975962
 Transform:
   m_ObjectHideFlags: 0
@@ -11336,7 +11337,7 @@ Transform:
   m_GameObject: {fileID: 2065975961}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00647739, y: -0.13591571, z: -0.047160633, w: 0.9895761}
-  m_LocalPosition: {x: 0, y: -0.070007324, z: 0.6719986}
+  m_LocalPosition: {x: 0.107, y: 0.624, z: 0.164}
   m_LocalScale: {x: 0.5, y: 0.5000001, z: 0.5000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -11372,7 +11373,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065975961}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

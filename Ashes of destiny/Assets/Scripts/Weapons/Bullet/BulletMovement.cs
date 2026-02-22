@@ -17,7 +17,7 @@ public class BulletMovement : MonoBehaviour
         colliderBullet = GetComponent<Collider>();
         colliderPlayer = player.GetComponent<Collider>();
         rb.useGravity = false;
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        rb.linearVelocity = transform.forward * speed;
         Destroy(gameObject, 5f);
         foreach (Collider col in player.GetComponentsInChildren<Collider>())
         {

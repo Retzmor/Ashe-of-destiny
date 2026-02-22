@@ -7,6 +7,8 @@ public class WorldCrossHairController : MonoBehaviour
     [SerializeField] float maxDistance = 20f;
     [SerializeField] float crossHairOffSetMultiplier = 0.01f;
     [SerializeField] LayerMask raycastMask;
+
+    public Vector3 CurrentAimPoint { get; private set; }
     void Start()
     {
         Cursor.visible = false;
@@ -32,6 +34,6 @@ public class WorldCrossHairController : MonoBehaviour
             crossHairUI.forward = aimCamera.transform.forward;
         }
         crossHairUI.transform.position = targetPos;
-
+        CurrentAimPoint = targetPos;
     }
 }

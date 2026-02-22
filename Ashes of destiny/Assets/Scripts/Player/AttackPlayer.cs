@@ -11,9 +11,11 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] LayerMask layer;
     [SerializeField] GameObject _currentWeapon;
     [SerializeField] Transform targetAttack;
+    [SerializeField] WorldCrossHairController crosshairController;
 
     AbilitiesPlayer abilitiesPlayer;
     DiContainer _container;
+
 
     bool canAttackMelee = false;
     bool coolDownAttack = true;
@@ -70,7 +72,16 @@ public class AttackPlayer : MonoBehaviour
         {
             Particulas particula = abilitiesPlayer.particulaActual;
             cooldowns[ashes] = StartCoroutine(CooldownAttack(ashes, particula));
-            _container.InstantiatePrefab(ashes.ElementAttack, targetAttack.position, targetAttack.rotation,null);
+            Vector3 direction = (crosshairController.CurrentAimPoint - targetAttack.position).normalized;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+
+            _container.InstantiatePrefab(
+                ashes.ElementAttack,
+                targetAttack.position,
+                rotation,
+                null
+            );
+
             ashes.DesactiveRock();
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
             abilitiesPlayer.particulaActual.DesactiveParticule();

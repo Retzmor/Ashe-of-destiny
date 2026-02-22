@@ -80,10 +80,13 @@ public class AimCameraController : MonoBehaviour
         Vector3 flatForward = cameraTransform.forward;
         flatForward.y = 0f;
 
-        if(flatForward.sqrMagnitude < 0.001f)
-        return;
+        if (flatForward.sqrMagnitude < 0.001f)
+            return;
+
         yaw = Quaternion.LookRotation(flatForward).eulerAngles.y;
+        pitch = 0f; 
+
         yawTarget.rotation = Quaternion.Euler(0, yaw, 0);
-        pitchTarget.localRotation = Quaternion.Euler(0, 0, 0);
+        pitchTarget.localRotation = Quaternion.Euler(pitch, 0, 0);
     }
 }

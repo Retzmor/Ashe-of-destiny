@@ -4462,7 +4462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 20.999756, y: -396}
+  m_AnchoredPosition: {x: 20.999817, y: -396}
   m_SizeDelta: {x: 650, y: 330}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &782617419
@@ -4579,6 +4579,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785637596}
   m_CullTransparentMesh: 1
+--- !u!1 &788071671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788071672}
+  m_Layer: 0
+  m_Name: TutorialManagerInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788071672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788071671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 67.639984, y: -306.833, z: 12390.919}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788728792
 GameObject:
   m_ObjectHideFlags: 0
@@ -9553,11 +9584,13 @@ MonoBehaviour:
   panelFelicidades: {fileID: 0}
   dialogueManager: {fileID: 695542780}
   cameraManager: {fileID: 1252342477}
-  enemigo1: {fileID: 0}
-  enemigo2: {fileID: 0}
-  enemigo3: {fileID: 0}
   musicaTutorial: {fileID: 0}
-  panelTutorial: {fileID: 0}
+  panelTutorial: {fileID: 1323923215}
+  panelJuego: {fileID: 0}
+  buttonSkip: {fileID: 1032543759}
+  buttonContinue: {fileID: 1032543759}
+  textTitle: {fileID: 1341609113}
+  textDetail: {fileID: 647670761}
 --- !u!4 &1514344673
 Transform:
   m_ObjectHideFlags: 0
@@ -13286,3 +13319,4 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 142557603}
+  - {fileID: 788071672}

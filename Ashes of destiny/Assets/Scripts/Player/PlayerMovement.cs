@@ -16,8 +16,10 @@ public class PlayerMovement : MonoBehaviour
     private bool _canSprint = false;
     private bool isJumping = false;
     internal bool isAiming;
+    bool _canMoving = false;
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
+    public bool CanMoving { get => _canMoving; set => _canMoving = value; }
 
     private void OnEnable()
     {
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-      if (IsGrounded())
+      if (IsGrounded() && _canMoving == true)
         {
                 float speed = _canSprint ? 5f : 2f;
 

@@ -18,6 +18,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject textTitle;
     [SerializeField] GameObject textDetail;
     [SerializeField] GameObject imageMovemente;
+    [SerializeField] GameObject goalMovement;
+    [SerializeField] GameObject treeObstacule;
+    [SerializeField] GameObject goalMovement2;
+    [SerializeField] PlayerMovement player;
+
+    Vector3 playerPosition;
 
 
 
@@ -34,6 +40,7 @@ public class TutorialManager : MonoBehaviour
 
     public void IniciarTutorial()
     {
+        playerPosition = player.transform.position;
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
             "aquí te vamos explicar a como utilizar tus poderes y moverte por estos mundos.",
@@ -75,13 +82,16 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             // cameraManager.EnfocarCamara(0, 3f);
-            TutorialJump();
+            goalMovement.SetActive(true);
+            player.CanMoving = true;
         };
     }   
     
     
     public void TutorialJump()
     {
+        goalMovement.SetActive(false);
+        player.transform.position = playerPosition;
         string[] dialogoMovimiento = {
             "Saltaras con la tecla espacio.",
         };
@@ -90,15 +100,19 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             // cameraManager.EnfocarCamara(0, 3f);
-            TutorialRunning();
+            goalMovement2.SetActive(true);
+            treeObstacule.SetActive(true);
         };
     }
     
 
     public void TutorialRunning()
     {
+        player.transform.position = playerPosition;
+        treeObstacule.SetActive(false);
+        goalMovement2.SetActive(false);
         string[] dialogoMovimiento = {
-            "Saltaras con la tecla shift + awsd puedes correr.",
+            "correras con la tecla shift + awsd puedes correr.",
         };
 
         dialogueManager.SetDialogue(dialogoMovimiento);
@@ -150,59 +164,6 @@ public class TutorialManager : MonoBehaviour
     public void PanelAsheTutorial() 
     { 
         cameraManager.CameraAsheTutorial();
-    }
-
-    //public void EnemigoDerrotado()
-    //{
-    //    enemigosDerrotados++;
-    //    Debug.Log("Enemigos derrotados: " + enemigosDerrotados);
-    //
-    //    if (enemigosDerrotados == 1)
-    //    {
-    //        string[] dialogo = {
-    //            "¡Muy bien!",
-    //            "Ahora enfréntate a los siguientes dos enemigos."                              //este es el segundo texto
-    //        };
-    //
-    //        dialogueManager.SetDialogue(dialogo);
-    //        dialogueManager.OnDialogueEnd = () =>
-    //        {
-    //            StartCoroutine(EnfocarYActivarSiguientesEnemigos());
-    //        };
-    //    }
-    //
-    //    if (enemigosDerrotados == 3)
-    //    {
-    //
-    //        string[] final = {
-    //            "¡Has completado el tutorial!",                                 //este es el ultimo
-    //            "Estás listo para la batalla."
-    //        };
-    //
-    //        dialogueManager.SetDialogue(final);
-    //
-    //        dialogueManager.OnDialogueEnd = () =>
-    //        {
-    //            panelFelicidades.gameObject.SetActive(true);
-    //        };
-    //    }
-    //}
-
-    private IEnumerator ActivarConRetraso(GameObject enemigo, float tiempo)
-    {
-        yield return new WaitForSeconds(tiempo);
-        enemigo.SetActive(true);
-    }
-
-    private IEnumerator EnfocarYActivarSiguientesEnemigos()
-    {
-      //  cameraManager.EnfocarCamara(1, 2.5f);
-        yield return new WaitForSeconds(3f);
-        //enemigo2.SetActive(true);
-
-       // cameraManager.EnfocarCamara(2, 2.5f);
-        yield return new WaitForSeconds(3f);
-        //enemigo3.SetActive(true);
     }
 }
 

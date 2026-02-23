@@ -52,7 +52,7 @@ public class AbilitiesPlayer : MonoBehaviour
                     return;
                 }
 
-                if (AshesButton[i].TryGetComponent(out Particulas particulasUI) && AshesButton[i] != AshesButton[2])
+                if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
                 {
                     slotAshes[i] = ashes;
 

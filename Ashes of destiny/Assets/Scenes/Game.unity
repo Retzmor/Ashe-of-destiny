@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &23960951
 Transform:
   m_ObjectHideFlags: 0
@@ -2128,7 +2128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &219165905
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4683,7 +4683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 20.999756, y: -396}
+  m_AnchoredPosition: {x: 20.999634, y: -396}
   m_SizeDelta: {x: 650, y: 330}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &782617419
@@ -5657,7 +5657,7 @@ RectTransform:
   m_GameObject: {fileID: 934228979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1628504, y: 2.1628504, z: 2.1628504}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 219165905}
@@ -5665,7 +5665,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -669, y: -503}
-  m_SizeDelta: {x: 80, y: 40}
+  m_SizeDelta: {x: 159, y: 154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934228981
 MonoBehaviour:
@@ -5731,7 +5731,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cede27e4f8a3fa544a4c1f73a5a98f36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ad5ab392a47f114a8877b63b4359846, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6891,7 +6891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1166882071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7468,7 +7468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1323923216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9448,7 +9448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -440.3342, y: 0.00024414062}
+  m_AnchoredPosition: {x: -440.33423, y: 0.00024414062}
   m_SizeDelta: {x: -880.665, y: -0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463825662
@@ -9816,7 +9816,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1514344673}
-  - component: {fileID: 1514344672}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -9824,29 +9823,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1514344672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514344671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2484bb8261959154e9560c0c71f0fcf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelFelicidades: {fileID: 0}
-  dialogueManager: {fileID: 695542780}
-  cameraManager: {fileID: 1252342477}
-  musicaTutorial: {fileID: 0}
-  panelTutorial: {fileID: 1323923215}
-  panelJuego: {fileID: 0}
-  buttonSkip: {fileID: 1032543759}
-  buttonContinue: {fileID: 1032543759}
-  textTitle: {fileID: 1341609113}
-  textDetail: {fileID: 647670761}
-  imageMovemente: {fileID: 283827690}
 --- !u!4 &1514344673
 Transform:
   m_ObjectHideFlags: 0
@@ -9887,7 +9863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1522529487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12713,7 +12689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.765869, y: -41.998962}
+  m_AnchoredPosition: {x: -6.7661743, y: -41.998962}
   m_SizeDelta: {x: -126.972046, y: -125.06604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989818787

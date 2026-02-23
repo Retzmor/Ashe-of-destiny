@@ -11746,6 +11746,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 343878556}
     m_Modifications:
+    - target: {fileID: 8051081062753301, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051081062753301, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -776521786, guid: 91abf37677aa7894e9fc9dd241e626e2, type: 3}
     - target: {fileID: 454331762922110326, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -172.6
@@ -11810,10 +11818,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2668627609459880056, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668627609459880056, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -776521786, guid: 91abf37677aa7894e9fc9dd241e626e2, type: 3}
     - target: {fileID: 2919858514678947768, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4105767312740695120, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1960974650, guid: 91abf37677aa7894e9fc9dd241e626e2, type: 3}
+    - target: {fileID: 4454358036552274044, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454358036552274044, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 546138316, guid: 91abf37677aa7894e9fc9dd241e626e2, type: 3}
     - target: {fileID: 4752459224742834265, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -120.7
@@ -11854,6 +11882,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8204916346620468526, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204916346620468526, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 546138316, guid: 91abf37677aa7894e9fc9dd241e626e2, type: 3}
     - target: {fileID: 8458736449345996871, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
       propertyPath: m_Name
       value: Botton de volver
@@ -11898,6 +11934,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9219887346439190256, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1960974650, guid: 91abf37677aa7894e9fc9dd241e626e2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8270415083277686176, guid: 02de9cbdc2d3817419eb12956de31c8f, type: 3}

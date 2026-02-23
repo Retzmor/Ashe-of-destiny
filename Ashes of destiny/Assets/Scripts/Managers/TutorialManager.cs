@@ -19,6 +19,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject buttonContinue;
     [SerializeField] GameObject textTitle;
     [SerializeField] GameObject textDetail;
+    [SerializeField] GameObject imageMovemente;
 
 
 
@@ -56,6 +57,7 @@ public class TutorialManager : MonoBehaviour
         buttonContinue.SetActive(false);
         textTitle.SetActive(false);
         buttonSkip.SetActive(false);
+        imageMovemente.SetActive(true);
         panelTutorial.TryGetComponent<RectTransform>(out RectTransform rectTransform);
         textDetail.TryGetComponent<RectTransform>(out RectTransform rectTransformText);
         textDetail.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI rectTransformTextSize);

@@ -66,31 +66,89 @@ public class TutorialManager : MonoBehaviour
         rectTransformText.anchoredPosition = new Vector2(0,0);
         rectTransformText.sizeDelta = new Vector2(700, 200);
         rectTransformTextSize.fontSize = 25;
+
+        string[] dialogoMovimiento = {
+            "Te podras mover con las teclas AWSD.",
+        };
+
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            // cameraManager.EnfocarCamara(0, 3f);
+            TutorialJump();
+        };
     }   
     
     
     public void TutorialJump()
     {
+        string[] dialogoMovimiento = {
+            "Saltaras con la tecla espacio.",
+        };
 
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            // cameraManager.EnfocarCamara(0, 3f);
+            TutorialRunning();
+        };
     }
     
+
+    public void TutorialRunning()
+    {
+        string[] dialogoMovimiento = {
+            "Saltaras con la tecla shift + awsd puedes correr.",
+        };
+
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            // cameraManager.EnfocarCamara(0, 3f);
+            TutorialWeapons();
+        };
+    }
+
+    //panel cenizas
     public void TutorialWeapons()
     {
+        string[] dialogoMovimiento = {
+            "Con las teclas: Q, E y R.",
+        };
 
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            // cameraManager.EnfocarCamara(0, 3f);
+            TutorialShoot();
+        };
     }
     
     public void TutorialShoot()
     {
+        string[] dialogoMovimiento = {
+            "Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar",
+        };
 
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            // cameraManager.EnfocarCamara(0, 3f);
+            TutorialFinish();
+        };
     }
     
     public void TutorialFinish()
     {
-
+        panelTutorial.SetActive(true);
+        panelTutorial.TryGetComponent<RectTransform>(out RectTransform rectTransform);
+        Vector2 vectorXY = new(0, 0);
+        rectTransform.anchoredPosition = vectorXY;
+        Vector2 vectorWH = new(1920, 900);
+        rectTransform.sizeDelta = vectorWH;
     }
-    
-    public void PanelAsheTutorial()
-    {
+    public void PanelAsheTutorial() 
+    { 
         cameraManager.CameraAsheTutorial();
     }
 

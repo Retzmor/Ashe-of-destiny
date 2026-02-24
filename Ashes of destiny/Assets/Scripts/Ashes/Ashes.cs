@@ -15,7 +15,6 @@ public class Ashes : MonoBehaviour
     }
     public void DesactiveRock()
     {
-        Debug.Log("Animacion");
         rock.SetBool("Take", true);
     }
 }

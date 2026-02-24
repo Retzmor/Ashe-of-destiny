@@ -8,6 +8,7 @@ public class AbilitiesPlayer : MonoBehaviour
 {
     [SerializeField] private Button[] AshesButton;
     [SerializeField] private Ashes[] slotAshes;
+    [SerializeField] TutorialController controller;
 
     private bool[] slotUsed;
     private int currentSlotIndex = -1;
@@ -40,17 +41,18 @@ public class AbilitiesPlayer : MonoBehaviour
 
     public void AddAbility(Image image, GameObject objectItem)
     {
-
+        Ashes ashes = objectItem.GetComponent<Ashes>();
+        Weapon weapon = objectItem.GetComponent<Weapon>();
+        controller.AshesRecolected(weapon);
         for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])
             {
-                Ashes ashes = objectItem.GetComponent<Ashes>();
-
-                if (ashes == null)
+                if (ashes == null || weapon == null)
                 {
                     return;
                 }
+
 
                 if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
                 {
@@ -66,7 +68,6 @@ public class AbilitiesPlayer : MonoBehaviour
 
                     particulasUI.particulas = nuevaParticula;
                 }
-
                 AshesButton[i].image.sprite = image.sprite;
                 AshesButton[i].image.color = Color.white;
                 slotUsed[i] = true;

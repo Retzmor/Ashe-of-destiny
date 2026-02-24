@@ -5,7 +5,7 @@ using Zenject;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    [Inject] GameplayUIController gameplayUIController;
+   
     [Inject] Inventory inventory;
     bool _canInteract = false;
     bool canCollision = true;
@@ -41,11 +41,8 @@ public class PlayerCollisions : MonoBehaviour
     public void TryInteract()
     {
         if (currentItem == null) return;
-
         inventory.addItemInventory(currentItem);
         attackPlayer.CurrentWeapon = currentItem;
-        gameplayUIController.UpdateCount();
-
         currentItem.SetActive(false);
         currentItem = null;
     }

@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
       if (IsGrounded() && _canMoving == true)
         {
-                float speed = _canSprint ? 5f : 2f;
+                float speed = _canSprint ? 8f : 4f;
 
                 Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 

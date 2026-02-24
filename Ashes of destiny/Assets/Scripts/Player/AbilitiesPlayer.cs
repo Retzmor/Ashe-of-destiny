@@ -43,7 +43,7 @@ public class AbilitiesPlayer : MonoBehaviour
     {
         Ashes ashes = objectItem.GetComponent<Ashes>();
         Weapon weapon = objectItem.GetComponent<Weapon>();
-        controller.AshesRecolected(weapon);
+        controller.AshesRecolected();
         for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])

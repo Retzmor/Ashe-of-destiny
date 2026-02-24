@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zenject;
+using System.Collections;
 
 public class GoalJump : MonoBehaviour
 {
@@ -11,8 +12,17 @@ public class GoalJump : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && playerDetected == false)
         {
             playerDetected = true;
-            tutorialManager.TutorialAshes();
+            StartCoroutine(WaitAndActive());
+            
         }
+    }
+
+    IEnumerator WaitAndActive()
+    {
+        yield return new WaitForSeconds(1f);
+        tutorialManager.TutorialAshes();
+
+
     }
 }
 

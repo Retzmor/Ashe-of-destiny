@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zenject;
+using System.Collections;
 
 public class GoalMovement : MonoBehaviour
 {
@@ -10,8 +11,16 @@ public class GoalMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Player") && playerDetected == false)
         {
             playerDetected = true;
-            tutorialManager.TutorialJump();
-            Debug.Log("Jugador Detectado");
+            StartCoroutine(WaitAndActive());
+           
         }
+    }
+
+    IEnumerator WaitAndActive()
+    {
+        yield return new WaitForSeconds(1f);
+
+        tutorialManager.TutorialJump();
+        Debug.Log("Jugador Detectado");
     }
 }

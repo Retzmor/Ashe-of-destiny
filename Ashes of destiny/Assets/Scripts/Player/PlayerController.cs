@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [Inject] LevelController levelController;
     [Inject] Inventory inventory;
+    [Inject] TutorialManager tutorialManager;
     internal bool isAiming;
 
     private void Start()
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         camSwitcher.OpenMenu();
         levelController.MenuSkill();
+        tutorialManager.DesactivePanelTutorial();
     }
 
     public void Button1(CallbackContext context)

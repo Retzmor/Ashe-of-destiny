@@ -24,6 +24,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject goalMovement;
     [SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
+    [SerializeField] GameObject countAshe;
 
     public delegate void PlayerMovementDelegate(bool activarRb);
     public static event PlayerMovementDelegate playerMovementDelegate;
@@ -100,6 +101,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialAshes()
     {
+        countAshe.SetActive(true);
         controller.ResetPositionPlayer();
         controller.StopPlayer();
         treeObstacule.SetActive(false);
@@ -120,7 +122,9 @@ public class TutorialManager : MonoBehaviour
     {
         controller.ResetPositionPlayer();
         controller.StopPlayer();
-        string[] dialogoMovimiento = {"Con las teclas: Q, E y R.",};
+        panelTutorialRectTransform.gameObject.SetActive(true);
+        panelGame.SetActive(false);
+        string[] dialogoMovimiento = {"Presiona la tecla Tab",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
@@ -149,6 +153,11 @@ public class TutorialManager : MonoBehaviour
         panelTutorialRectTransform.anchoredPosition = vectorXY;
         Vector2 vectorWH = new(1920, 900);
         panelTutorialRectTransform.sizeDelta = vectorWH;
+    }
+
+    public void DesactivePanelTutorial()
+    {
+        panelTutorialRectTransform.gameObject.SetActive(false);
     }
 }
 

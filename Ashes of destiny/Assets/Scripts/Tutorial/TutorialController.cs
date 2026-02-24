@@ -21,7 +21,7 @@ public class TutorialController : MonoBehaviour
 
     public void AshesRecolected()
     {
-                
+        manager.TutorialWeapons();        
     }
 
     public void StopPlayer()

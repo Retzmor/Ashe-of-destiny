@@ -12,16 +12,21 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] AudioClip musicaTutorial;
     [SerializeField] GameObject panelTutorial;
-    [SerializeField] GameObject panelJuego;
+    [SerializeField] GameObject panelAshe;
+    [SerializeField] GameObject panelGame;
     [SerializeField] GameObject buttonSkip;
     [SerializeField] GameObject buttonContinue;
     [SerializeField] GameObject textTitle;
     [SerializeField] GameObject textDetail;
     [SerializeField] GameObject imageMovemente;
+    [SerializeField] GameObject imagejump;
     [SerializeField] GameObject goalMovement;
     [SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
     [SerializeField] PlayerMovement player;
+    [SerializeField] CameraSwitcher cameraSwitcher;
+
+    Rigidbody rbPlayer;
 
     Vector3 playerPosition;
 
@@ -35,11 +40,14 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         IniciarTutorial();
+        player.TryGetComponent<Rigidbody>(out Rigidbody rb);
+        rbPlayer = rb;
         // AudioManager.Instance.PlayMusic(musicaTutorial);
     }
 
     public void IniciarTutorial()
     {
+        cameraSwitcher.inputAxisController.enabled = false;
         playerPosition = player.transform.position;
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
@@ -84,13 +92,19 @@ public class TutorialManager : MonoBehaviour
             // cameraManager.EnfocarCamara(0, 3f);
             goalMovement.SetActive(true);
             player.CanMoving = true;
+            cameraSwitcher.inputAxisController.enabled = true;
         };
     }   
     
     
     public void TutorialJump()
     {
+        rbPlayer.isKinematic = true;
+        player.CanMoving = false;
+        cameraSwitcher.inputAxisController.enabled = false;
         goalMovement.SetActive(false);
+        imageMovemente.SetActive(false);
+        imagejump.SetActive(true);
         player.transform.position = playerPosition;
         string[] dialogoMovimiento = {
             "Saltaras con la tecla espacio.",
@@ -102,12 +116,16 @@ public class TutorialManager : MonoBehaviour
             // cameraManager.EnfocarCamara(0, 3f);
             goalMovement2.SetActive(true);
             treeObstacule.SetActive(true);
+            rbPlayer.isKinematic = false;
+            player.CanMoving = true;
+            cameraSwitcher.inputAxisController.enabled = true;
         };
     }
     
 
     public void TutorialRunning()
     {
+
         player.transform.position = playerPosition;
         treeObstacule.SetActive(false);
         goalMovement2.SetActive(false);
@@ -124,6 +142,31 @@ public class TutorialManager : MonoBehaviour
     }
 
     //panel cenizas
+
+    public void TutorialAshes()
+    {
+        rbPlayer.isKinematic = true;
+        treeObstacule.SetActive(false);
+        goalMovement2.SetActive(false);
+        imagejump.SetActive(false);
+        player.CanMoving = false;
+        cameraSwitcher.inputAxisController.enabled = false;
+        player.CanMoving = false;
+        player.transform.position = playerPosition;
+        panelAshe.SetActive(true);
+        panelTutorial.SetActive(false);
+        cameraManager.CameraAsheTutorial();
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            // cameraManager.EnfocarCamara(0, 3f);
+            player.CanMoving = true;
+            cameraSwitcher.inputAxisController.enabled = true;
+            panelAshe.SetActive(false);
+            panelGame.SetActive(true);
+            rbPlayer.isKinematic = false;
+            cameraManager.CameraPlayer();
+        };
+    }
     public void TutorialWeapons()
     {
         string[] dialogoMovimiento = {

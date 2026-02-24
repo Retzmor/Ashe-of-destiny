@@ -9,9 +9,17 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachineBrain mainCamera;
     public void CameraAsheTutorial()
     {
-        mainCamera.DefaultBlend.Time = 1.5f;
+        mainCamera.DefaultBlend.Time = 2f;
         cameraAsheTutorial.Priority = 20;
         cameraAimPerson.Priority = 1;
         cameraThirdPerson.Priority = 1;
+    }
+
+    public void CameraPlayer()
+    {
+        mainCamera.DefaultBlend.Time = 2f;
+        cameraAsheTutorial.Priority = 1;
+        cameraAimPerson.Priority = 2;
+        cameraThirdPerson.Priority = 3;
     }
 }

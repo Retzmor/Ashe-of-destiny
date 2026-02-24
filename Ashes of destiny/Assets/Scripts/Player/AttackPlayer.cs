@@ -23,7 +23,8 @@ public class AttackPlayer : MonoBehaviour
     private bool meleeMode = false;
 
 
-    Dictionary<Ashes, Coroutine> cooldowns = new();
+    Dictionary<int, Coroutine> cooldowns = new();
+
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
 
     [Inject]
@@ -55,23 +56,18 @@ public class AttackPlayer : MonoBehaviour
 
     public void Attack(Ashes ashes)
     {
-        if (ashes == null)
-        {
-            Debug.Log("Golpe melee");
-            //aqui llamariamos la funcion de atacar
-        }
-            
+        int slotIndex = abilitiesPlayer.CurrentSlotIndex;
 
-        if (ashes.ElementAttack == null)
+        if (slotIndex < 0)
             return;
 
-        if (!cooldowns.ContainsKey(ashes))
-            cooldowns.Add(ashes, null);
+        if (!cooldowns.ContainsKey(slotIndex))
+            cooldowns.Add(slotIndex, null);
 
-        if (cooldowns[ashes] == null)
+        if (cooldowns[slotIndex] == null)
         {
-            Particulas particula = abilitiesPlayer.particulaActual;
-            cooldowns[ashes] = StartCoroutine(CooldownAttack(ashes, particula));
+            cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
+
             Vector3 direction = (crosshairController.CurrentAimPoint - targetAttack.position).normalized;
             Quaternion rotation = Quaternion.LookRotation(direction);
 
@@ -82,38 +78,31 @@ public class AttackPlayer : MonoBehaviour
                 null
             );
 
-            ashes.DesactiveRock();
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }
     }
 
-    IEnumerator CooldownAttack(Ashes ashes, Particulas particula)
+    IEnumerator CooldownAttack(int slotIndex)
     {
-        float currentTime = 0;
+        yield return new WaitForSeconds(5f);
 
-        while (currentTime < 5)
-        {
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
+        cooldowns[slotIndex] = null;
 
-        if (particula != null)
-            particula.ActivasParticulasLoop();
-
-        cooldowns[ashes] = null;
+        if (abilitiesPlayer.particulaActual != null)
+            abilitiesPlayer.particulaActual.ActivasParticulasLoop();
     }
 
     public bool IsOnCooldown(Ashes ashes)
     {
-        if (ashes == null)
+        int slotIndex = abilitiesPlayer.CurrentSlotIndex;
+
+        if (!cooldowns.ContainsKey(slotIndex))
             return false;
 
-        if (!cooldowns.ContainsKey(ashes))
-            return false;
-
-        return cooldowns[ashes] != null;
+        return cooldowns[slotIndex] != null;
     }
+
 
     public void ToggleMeleeMode()
     {

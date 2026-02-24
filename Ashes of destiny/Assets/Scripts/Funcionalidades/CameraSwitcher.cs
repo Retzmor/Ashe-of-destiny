@@ -8,17 +8,20 @@ public class CameraSwitcher : MonoBehaviour
 {
     [SerializeField] CinemachineCamera freelookCam;
     [SerializeField] CinemachineCamera aimCam;
-    [SerializeField] CinemachineInputAxisController inputAxisController;
+    [SerializeField] public CinemachineInputAxisController inputAxisController;
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject crossHairUI;
     [SerializeField] PlayerMovement playerController;
     [SerializeField] PlayerControls input;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] CinemachineBrain cinemachineBrain;
+
 
     InputAction aimAction;
     bool isAiming = false;
     Transform yawTarget;
     Transform pitchTarget;
+
 
     AimCameraController aimCamController;
     void Start()
@@ -28,7 +31,7 @@ public class CameraSwitcher : MonoBehaviour
         input = new PlayerControls();
         input.Enable();
         aimAction = input.Player.Aim;
-        crossHairUI.gameObject.SetActive(false); 
+        crossHairUI.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,6 +53,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void ExitAimMode()
     {
+        cinemachineBrain.DefaultBlend.Time = 0.5f;
         crossHairUI?.SetActive(false);
         isAiming = false;
         SnapFreelookBehindPlayer();
@@ -74,6 +78,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void EnterAimMode()
     {
+        cinemachineBrain.DefaultBlend.Time = 0.5f;
         crossHairUI.gameObject.SetActive(true);
         isAiming = true;
         SnapAimCameraToPlayerForward(); 

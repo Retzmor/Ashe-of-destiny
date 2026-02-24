@@ -11,8 +11,7 @@ public class GoalJump : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && playerDetected == false)
         {
             playerDetected = true;
-            tutorialManager.TutorialRunning();
-            Debug.Log("Jugador Detectado");
+            tutorialManager.TutorialAshes();
         }
     }
 }

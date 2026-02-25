@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
     [SerializeField] GameObject countAshe;
+
+    [SerializeField] GameObject panelWin;
+    [SerializeField] GameObject panelLose;
 
     public delegate void PlayerMovementDelegate(bool activarRb);
     public static event PlayerMovementDelegate playerMovementDelegate;
@@ -158,6 +162,19 @@ public class TutorialManager : MonoBehaviour
     public void DesactivePanelTutorial()
     {
         panelTutorialRectTransform.gameObject.SetActive(false);
+    }
+
+    public void TutorialWin()
+    {
+        panelWin.SetActive(true);
+        controller.StopPlayer();
+
+    }
+
+    public void TutorialLose()
+    {
+        panelLose.SetActive(true);
+        controller.StopPlayer();
     }
 }
 

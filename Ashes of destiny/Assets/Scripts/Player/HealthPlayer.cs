@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class HealthPlayer : MonoBehaviour
 {
+    [Inject] TutorialManager tutorialManager;
     [SerializeField] Image healthImage;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
@@ -23,7 +25,7 @@ public class HealthPlayer : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("muerte");
+            tutorialManager.TutorialLose();
         }
     }
 }

@@ -7,6 +7,8 @@ public class GameplayUIController : MonoBehaviour
     [SerializeField] TutorialController tutorialController;
     [SerializeField] GameObject panelSkills;
     [SerializeField] GameObject panelGame;
+    [SerializeField] GameObject panelWin;
+    [SerializeField] GameObject panelLose;
     int countAshe;
 
     public void UpdateCount()
@@ -28,5 +30,15 @@ public class GameplayUIController : MonoBehaviour
     public void ActivePanelGame()
     {
         panelGame.SetActive(true);
+    }
+
+    public void DesactivePanelWin()
+    {
+        panelWin.SetActive(false);
+    }
+
+    public void DesactivePanelLose()
+    {
+        panelLose.SetActive(false);
     }
 }

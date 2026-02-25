@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class ScriptDialogue : MonoBehaviour
 {
@@ -9,10 +10,41 @@ public class ScriptDialogue : MonoBehaviour
     private bool wasSkipped = false;
     private string[] dialogues;
     [SerializeField] GameObject dialoguePanel;
-    [SerializeField] GameObject skipButton;
     public System.Action OnDialogueEnd;
     private bool isWrite = false;
     private int numberText;
+
+    PlayerControls input;
+    InputAction nextAction;
+    float inputCooldown = 0.2f;
+    float lastInputTime;
+
+    private void OnEnable()
+    {
+        input = new PlayerControls();
+        input.Enable();
+
+        input.Dialogue.Enable();
+        nextAction = input.Dialogue.Next;
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
+    private void Update()
+    {
+        if (!dialoguePanel.activeSelf) return;
+
+        if (nextAction.triggered && Time.time - lastInputTime > inputCooldown)
+        {
+            lastInputTime = Time.time;
+            ChangeText();
+        }
+    }
+
+
     // Start is called before the first frame update
 
     public void ChangeText()
@@ -73,7 +105,6 @@ public class ScriptDialogue : MonoBehaviour
     private void DesactiveUI()
     {
         dialoguePanel.SetActive(false);
-        skipButton.SetActive(false);
         OnDialogueEnd?.Invoke();
     }
 
@@ -83,7 +114,6 @@ public class ScriptDialogue : MonoBehaviour
         numberText = 0;
         text.text = string.Empty;
         dialoguePanel.SetActive(true);
-        skipButton.SetActive(true);
         wasSkipped = false;
         StartCoroutine(LineOfText());
     }

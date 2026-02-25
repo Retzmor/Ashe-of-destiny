@@ -22,11 +22,14 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDetailTextMesh;
     [SerializeField] GameObject imageMovemente;
     [SerializeField] GameObject imagejump;
+    [SerializeField] GameObject imageF;
+    [SerializeField] GameObject imageShift;
+    [SerializeField] GameObject imageTab;
     [SerializeField] GameObject goalMovement;
     [SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
     [SerializeField] GameObject countAshe;
-
+    [SerializeField] GameObject enemy;
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
 
@@ -63,6 +66,7 @@ public class TutorialManager : MonoBehaviour
         textTitle.SetActive(false);
         buttonSkip.SetActive(false);
         imageMovemente.SetActive(true);
+        imageShift.SetActive(true);
         textDetail.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI rectTransformTextSize);
         Vector2 vectorXY = new(-520, 300);
         panelTutorialRectTransform.anchoredPosition = vectorXY;
@@ -73,7 +77,7 @@ public class TutorialManager : MonoBehaviour
         rectTransformTextSize.fontSize = 25;
 
         string[] dialogoMovimiento = {
-            "Te podras mover con las teclas AWSD.",
+            "Te podras mover con las teclas AWSD, y si mantienes presionado Shift, correras.",
         };
 
         dialogueManager.SetDialogue(dialogoMovimiento);
@@ -89,6 +93,7 @@ public class TutorialManager : MonoBehaviour
         controller.ResetPositionPlayer();
         controller.StopPlayer();
         goalMovement.SetActive(false);
+        imageShift.SetActive(false);
         imageMovemente.SetActive(false);
         imagejump.SetActive(true);
         string[] dialogoMovimiento = {
@@ -126,6 +131,7 @@ public class TutorialManager : MonoBehaviour
     {
         controller.ResetPositionPlayer();
         controller.StopPlayer();
+        imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
         panelGame.SetActive(false);
         string[] dialogoMovimiento = {"Presiona la tecla Tab",};
@@ -139,14 +145,15 @@ public class TutorialManager : MonoBehaviour
     
     public void TutorialShoot()
     {
+        imageTab.SetActive(false);
         controller.ResetPositionPlayer();
         controller.StartPlayer();
-        string[] dialogoMovimiento = {"Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar",};
+        string[] dialogoMovimiento = {"Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar, para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual, busca al enemigo y acabalo!!!",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
             controller.StartPlayer();
-            TutorialFinish();
+            enemy.SetActive(true);
         };
     }
     

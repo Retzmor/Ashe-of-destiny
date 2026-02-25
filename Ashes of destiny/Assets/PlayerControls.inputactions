@@ -1200,6 +1200,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "be0a270c-9782-4fe9-934e-f2927dd8e446",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "036c504f-0528-414a-9ad1-6b87f50fde4a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fd36f717-701b-4afd-bb03-1c8cf8a64b92",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

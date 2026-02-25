@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using Zenject;
 public class Inventory : MonoBehaviour
 {
     [Inject] GameplayUIController gameplayUIController;
+    [Inject] TutorialManager tutorialManager;
     [SerializeField] List<Item> slotsInventory;
     [SerializeField] AbilitiesPlayer abilitiesPlayer;
     [SerializeField] AttackPlayer attackPlayer;
@@ -38,6 +40,13 @@ public class Inventory : MonoBehaviour
 
         gameplayUIController.DesactivePanelSkills();
         gameplayUIController.ActivePanelGame();
+        StartCoroutine(TutorialShoot());
+
     }
 
+    IEnumerator TutorialShoot()
+    {
+        yield return new WaitForSeconds(1f);
+        tutorialManager.TutorialShoot();
+    }
 }

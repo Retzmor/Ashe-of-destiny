@@ -34,6 +34,7 @@ public class BulletMovement : MonoBehaviour
             alreadyDamage = true;
             collision.gameObject.TryGetComponent<HealthEnemy>(out HealthEnemy healthEnemy);
             healthEnemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
 
         else

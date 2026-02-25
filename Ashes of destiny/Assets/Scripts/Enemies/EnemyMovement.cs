@@ -35,7 +35,6 @@ public class EnemyMovement : Enemies
     {
         // aqui iria la animacion de recibir daño
         Agent.isStopped = true;
-        Rb.isKinematic = true;
         StartCoroutine(StopEnemy());
     }
 
@@ -43,7 +42,5 @@ public class EnemyMovement : Enemies
     {
         yield return new WaitForSeconds(0.5f);
         Agent.isStopped = false;
-        Rb.isKinematic = false;
-        Debug.Log(Agent.isStopped);
     }
 }

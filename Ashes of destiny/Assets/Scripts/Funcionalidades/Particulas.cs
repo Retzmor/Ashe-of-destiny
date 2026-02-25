@@ -2,31 +2,28 @@ using UnityEngine;
 
 public class Particulas : MonoBehaviour
 {
-    [SerializeField] public ParticleSystem particulas;
+    public ParticleSystem particulas; 
 
-    private void Start()
-    {
-        if (particulas != null) 
-        { 
-            particulas.Stop();
-        }
-    }
     public void ActivasParticulas()
     {
+        if (particulas == null) return;
         particulas.Play();
     }
 
     public void ActivasParticulasLoop()
     {
+        if (particulas == null) return;
+
         var main = particulas.main;
-        particulas.Play();
         main.loop = true;
+        particulas.Play();
     }
 
     public void DesactiveParticule()
     {
+        if (particulas == null) return;
+
         var main = particulas.main;
-        particulas.Play();
         main.loop = false;
         particulas.Stop();
     }

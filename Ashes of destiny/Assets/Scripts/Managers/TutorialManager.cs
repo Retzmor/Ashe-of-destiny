@@ -133,7 +133,7 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             controller.StartPlayer();
-            TutorialShoot();
+            //TutorialShoot();
         };
     }
     
@@ -166,15 +166,23 @@ public class TutorialManager : MonoBehaviour
 
     public void TutorialWin()
     {
+        EnableCursor();
         panelWin.SetActive(true);
         controller.StopPlayer();
-
     }
 
     public void TutorialLose()
     {
+        EnableCursor();
         panelLose.SetActive(true);
         controller.StopPlayer();
     }
+
+    public void EnableCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
 }
 

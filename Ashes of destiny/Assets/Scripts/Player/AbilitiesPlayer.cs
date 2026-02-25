@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
@@ -39,26 +38,24 @@ public class AbilitiesPlayer : MonoBehaviour
         _currentButton = AshesButton[1];
     }
 
-    public void AddAbility(Image image, GameObject objectItem)
+    public void AddAbility(Ashes ashes, Sprite icon)
     {
-        Ashes ashes = objectItem.GetComponent<Ashes>();
-        Weapon weapon = objectItem.GetComponent<Weapon>();
+        if (ashes == null)
+            return;
+
         for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])
             {
-                if (ashes == null || weapon == null)
-                {
-                    return;
-                }
-
-
                 if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
                 {
                     slotAshes[i] = ashes;
 
                     if (particulasUI.particulas != null)
-                        Destroy(particulasUI.particulas.gameObject);
+                    {
+                        Destroy(particulasUI.particulas);
+                        particulasUI.particulas = null;
+                    }
 
                     ParticleSystem nuevaParticula = Instantiate(
                         ashes.ParticulaPrefab,
@@ -67,13 +64,17 @@ public class AbilitiesPlayer : MonoBehaviour
 
                     particulasUI.particulas = nuevaParticula;
                 }
-                AshesButton[i].image.sprite = image.sprite;
+
+                AshesButton[i].image.sprite = icon;
                 AshesButton[i].image.color = Color.white;
+
                 slotUsed[i] = true;
                 return;
             }
         }
     }
+
+
 
     public void SelectSlot(int index)
     {

@@ -24,22 +24,20 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void AsheFireButton(GameObject objectItem)
+    public void AsheFireButton(Ashes ashesData)
     {
-        for (int i = 0; i < slotsInventory.Count; i++)
-        {
-            if (slotsInventory[i].transform.childCount == 0)
-            {
-                objectItem.TryGetComponent(out Weapon weapon);
-                objectItem.TryGetComponent(out Image image);
-                objectItem.TryGetComponent(out Ashes ashe);
-                ashes = ashe;
-                ashe.DesactiveRock();
-                abilitiesPlayer.AddAbility(image, objectItem);
-                gameplayUIController.DesactivePanelSkills();
-                gameplayUIController.ActivePanelGame();
-                break;
-            }
-        }
+        if (ashesData == null)
+            return;
+        Time.timeScale = 1f;
+
+        ashesData.DesactiveRock(); 
+
+        Sprite icon = ashesData.GetComponent<Image>().sprite;
+
+        abilitiesPlayer.AddAbility(ashesData, icon);
+
+        gameplayUIController.DesactivePanelSkills();
+        gameplayUIController.ActivePanelGame();
     }
+
 }

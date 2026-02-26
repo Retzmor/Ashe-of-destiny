@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -17,8 +18,16 @@ public class CountItems : MonoBehaviour
         if(_countAshesCurrent == _canBuyItemFire)
         {
             inventory.CanBuyItemFire = true;
+            _countAshesCurrent = 0;
             gameplayUIController.CountAshe = 0;
             gameplayUIController.TextMeshPro.text = gameplayUIController.CountAshe.ToString();
+            StartCoroutine(coolDownClick());
         }
+    }
+
+    IEnumerator coolDownClick()
+    {
+        yield return new WaitForEndOfFrame();
+        inventory.CanBuyItemFire = false;
     }
 }

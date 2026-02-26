@@ -33,6 +33,7 @@ public class Inventory : MonoBehaviour
     public void AsheFireButton(Ashes ashesData)
     {
         countItem.TryBuyItemFire();
+        Debug.Log(CanBuyItemFire);
         if (CanBuyItemFire == true)
         {
             if (ashesData == null)

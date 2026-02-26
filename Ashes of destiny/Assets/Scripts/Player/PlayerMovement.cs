@@ -47,50 +47,50 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-      if (IsGrounded() && _canMoving == true)
+        if (IsGrounded() && _canMoving == true)
         {
-                float speed = _canSprint ? 8f : 4f;
+            float speed = _canSprint ? 8f : 4f;
 
-                Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+            Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
-                if (inputDir.sqrMagnitude > 0.01f)
+            if (inputDir.sqrMagnitude > 0.01f)
+            {
+                Vector3 forward = isAiming ? transform.forward : cam.forward;
+                Vector3 right = isAiming ? transform.right : cam.right;
+
+                forward.y = 0;
+                right.y = 0;
+                forward.Normalize();
+                right.Normalize();
+
+                Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
+                moveDir.Normalize();
+
+                Vector3 horizontalVelocity = moveDir * speed;
+                rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
+
+                if (!isAiming)
                 {
-                    Vector3 forward = isAiming ? transform.forward : cam.forward;
-                    Vector3 right = isAiming ? transform.right : cam.right;
-
-                    forward.y = 0;
-                    right.y = 0;
-                    forward.Normalize();
-                    right.Normalize();
-
-                    Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
-                    moveDir.Normalize();
-
-                    Vector3 horizontalVelocity = moveDir * speed;
-                    rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
-
-                    if (!isAiming)
-                    {
-                        transform.forward = moveDir;
-                    }
-                }
-                else
-                {
-                    rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-                }
-
-                if (isAiming && yawTarget != null)
-                {
-                    Vector3 lookDirection = yawTarget.forward;
-                    lookDirection.y = 0;
-
-                    if (lookDirection.sqrMagnitude > 0.01f)
-                    {
-                        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-                    }
+                    transform.forward = moveDir;
                 }
             }
+            else
+            {
+                rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            }
+
+            if (isAiming && yawTarget != null)
+            {
+                Vector3 lookDirection = yawTarget.forward;
+                lookDirection.y = 0;
+
+                if (lookDirection.sqrMagnitude > 0.01f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+                }
+            }
+        }
     }
 
     public void JumpPlayer()

@@ -11,6 +11,9 @@ public class TutorialController : MonoBehaviour
     int countAshe;
     Rigidbody rbPlayer;
     Vector3 positionPlayerStart;
+    bool _skipTutorial = false;
+
+    public bool SkipTutorial { get => _skipTutorial; set => _skipTutorial = value; }
 
     private void Start()
     {
@@ -21,6 +24,7 @@ public class TutorialController : MonoBehaviour
 
     public void AshesRecolected()
     {
+        if(SkipTutorial == false)
         manager.TutorialWeapons();        
     }
 

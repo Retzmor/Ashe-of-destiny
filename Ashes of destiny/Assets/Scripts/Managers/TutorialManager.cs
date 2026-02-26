@@ -32,6 +32,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
+    [SerializeField] Inventory inventory;
 
     public delegate void PlayerMovementDelegate(bool activarRb);
     public static event PlayerMovementDelegate playerMovementDelegate;
@@ -191,5 +192,15 @@ public class TutorialManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void NoTutorial()
+    {
+        countAshe.SetActive(true);
+        enemy.SetActive(true);
+        panelTutorialRectTransform.gameObject.SetActive(false);
+        panelGame.SetActive(true);
+        controller.SkipTutorial = true;
+        inventory.TutorialSkip = true;
+        controller.StartPlayer();
+    }
 }
 

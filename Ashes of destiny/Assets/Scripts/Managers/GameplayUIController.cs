@@ -9,14 +9,19 @@ public class GameplayUIController : MonoBehaviour
     [SerializeField] GameObject panelGame;
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
-    int countAshe;
+    [SerializeField] CountItems countItems;
+    int _countAshe;
+
+    public int CountAshe { get => _countAshe; set => _countAshe = value; }
+    public TextMeshProUGUI TextMeshPro { get => textMeshPro; set => textMeshPro = value; }
 
     public void UpdateCount()
     {
-        countAshe++;
-        textMeshPro.text = countAshe.ToString();
+        _countAshe++;
+        countItems.CountAshesCurrent = _countAshe;
+        TextMeshPro.text = _countAshe.ToString();
 
-        if(countAshe >= 4)
+        if(CountAshe >= 4)
         {
             tutorialController.AshesRecolected();
         }

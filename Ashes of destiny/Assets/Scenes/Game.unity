@@ -1868,6 +1868,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1165488461}
   - {fileID: 695542781}
   - {fileID: 1514344673}
   - {fileID: 1252342475}
@@ -4107,6 +4108,8 @@ MonoBehaviour:
   button2: {fileID: 206188781}
   asheWater: {fileID: 0}
   asheFire: {fileID: 0}
+  imageFire: {fileID: 1646944326}
+  countItem: {fileID: 2035252230}
 --- !u!4 &473050074
 Transform:
   m_ObjectHideFlags: 0
@@ -5527,7 +5530,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1514344674}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: TutorialFinish
+        m_MethodName: NoTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6412,8 +6415,7 @@ Transform:
   m_LocalPosition: {x: 398.7854, y: 492.64917, z: -9793.465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1165488461}
+  m_Children: []
   m_Father: {fileID: 163621752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!225 &829431888
@@ -8418,6 +8420,7 @@ MonoBehaviour:
   panelGame: {fileID: 1166882070}
   panelWin: {fileID: 245700790}
   panelLose: {fileID: 91692083}
+  countItems: {fileID: 2035252230}
 --- !u!4 &1165488461
 Transform:
   m_ObjectHideFlags: 0
@@ -8427,11 +8430,11 @@ Transform:
   m_GameObject: {fileID: 1165488459}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 217.61676, y: -43.33429, z: -4.375}
+  m_LocalPosition: {x: 616.40216, y: 449.31488, z: -9797.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 829431887}
+  m_Father: {fileID: 163621752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1166882070
 GameObject:
@@ -11814,6 +11817,7 @@ MonoBehaviour:
   enemy: {fileID: 1522529486}
   panelWin: {fileID: 245700790}
   panelLose: {fileID: 91692083}
+  inventory: {fileID: 473050073}
 --- !u!1 &1522529486
 GameObject:
   m_ObjectHideFlags: 0
@@ -13057,7 +13061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: Fuego
-  descriptionText: Hace quemar a los enemigos durante 5 segundos
+  descriptionText: "Hace da\xF1o al enemigo (se necesitan 4 cenizas para desbloquearlo)"
   toolTipDelay: 0.5
 --- !u!1 &1648407243
 GameObject:
@@ -15632,6 +15636,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2035252229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035252231}
+  - component: {fileID: 2035252230}
+  m_Layer: 0
+  m_Name: CountAshes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2035252230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035252229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f39ada3b46fa74ab28ea0b3da55367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 473050073}
+  gameplayUIController: {fileID: 1165488460}
+--- !u!4 &2035252231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035252229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.86844, y: -272.23383, z: 19930.014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2053630484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c4ec30b5041a8c4192ab6bb0f0983a3, type: 3}
@@ -16519,6 +16569,7 @@ SceneRoots:
   - {fileID: 1522529491}
   - {fileID: 1321124214}
   - {fileID: 1578798125}
+  - {fileID: 2035252231}
   - {fileID: 1361537140}
   - {fileID: 1958486384}
   - {fileID: 1331742120}

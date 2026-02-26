@@ -15,33 +15,44 @@ public class Inventory : MonoBehaviour
     [SerializeField] Button button2;
     [SerializeField] Ashes asheWater;
     [SerializeField] Ashes asheFire;
+    [SerializeField] Image imageFire;
+    [SerializeField] CountItems countItem;
+    bool _tutorialSkip = false;
+    bool _canBuyItemFire = false;
 
     Ashes ashes;
 
-
+    public bool TutorialSkip { get => _tutorialSkip; set => _tutorialSkip = value; }
+    public bool CanBuyItemFire { get => _canBuyItemFire; set => _canBuyItemFire = value; }
 
     public void addItemInventory(GameObject objectItem)
     {
         gameplayUIController.UpdateCount();
-        
     }
 
     public void AsheFireButton(Ashes ashesData)
     {
-        if (ashesData == null)
-            return;
-        Time.timeScale = 1f;
+        countItem.TryBuyItemFire();
+        if (CanBuyItemFire == true)
+        {
+            if (ashesData == null)
+                return;
+            Time.timeScale = 1f;
 
-        ashesData.DesactiveRock(); 
+            ashesData.DesactiveRock();
 
-        Sprite icon = ashesData.GetComponent<Image>().sprite;
+            Sprite icon = ashesData.GetComponent<Image>().sprite;
 
-        abilitiesPlayer.AddAbility(ashesData, icon);
+            abilitiesPlayer.AddAbility(ashesData, icon);
+            imageFire.color = Color.white;
 
-        gameplayUIController.DesactivePanelSkills();
-        gameplayUIController.ActivePanelGame();
-        StartCoroutine(TutorialShoot());
-
+            gameplayUIController.DesactivePanelSkills();
+            gameplayUIController.ActivePanelGame();
+            if (_tutorialSkip == false)
+            {
+                StartCoroutine(TutorialShoot());
+            }
+        }
     }
 
     IEnumerator TutorialShoot()

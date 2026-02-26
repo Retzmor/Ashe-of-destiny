@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     internal bool isAiming;
     bool _canMoving = false;
-
+    Vector3 lookDirection;
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
 
@@ -73,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.forward = moveDir;
                 }
+                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+               transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
             }
             else
             {
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (isAiming && yawTarget != null)
             {
-                Vector3 lookDirection = yawTarget.forward;
+                lookDirection = yawTarget.forward;
                 lookDirection.y = 0;
 
                 if (lookDirection.sqrMagnitude > 0.01f)
@@ -95,18 +97,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpPlayer()
     {
-        Debug.Log("Boton presionado ");
         if(isJumping == true)
         {
-            Debug.Log("Salto");
             rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }
 
     private void FixedUpdate()
     {
-        //transform.rotation = new Quaternion(transform.rotation.x,-cam.rotation.y,transform.rotation.z,transform.rotation.w);
-
         Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position,radiusJump,canJump);
 
         if(canJumpPlayer.Length > 0)

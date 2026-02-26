@@ -18,51 +18,92 @@ public class OptionsUIHandler : BaseUIPanel
     public override void Start()
     {
         base.Start();
-        LoadResolution();
+
         LoadSliders();
         FullScreenToggle();
-        LoadQualityChange();
+
+        if (resolutionDropdown != null && qualityDropdown != null)
+        {
+            LoadResolution();
+            LoadQualityChange();
+        }
     }
+
+    private void OnEnable()
+    {
+        sliderMusic.value = audioManager.GetMusicVolume();
+        sliderSFX.value = audioManager.GetSFXVolume();
+        sliderMaster.value = audioManager.GetMasterVolume();
+
+        sliderMusic.onValueChanged.RemoveAllListeners();
+        sliderMusic.onValueChanged.AddListener(audioManager.ChangeMusicVolume);
+
+        sliderSFX.onValueChanged.RemoveAllListeners();
+        sliderSFX.onValueChanged.AddListener(audioManager.ChangeSFXVolume);
+
+        sliderMaster.onValueChanged.RemoveAllListeners();
+        sliderMaster.onValueChanged.AddListener(audioManager.ChangeMasterVolume);
+    }
+
+
 
     public void LoadQualityChange()
     {
+        qualityDropdown.ClearOptions(); 
         qualityDropdown.AddOptions(displayManager.GetQualityName());
+
+        qualityDropdown.value = displayManager.GetQualityLevel();
+        qualityDropdown.RefreshShownValue();
+
+        qualityDropdown.onValueChanged.RemoveAllListeners();
         qualityDropdown.onValueChanged.AddListener(delegate
         {
             displayManager.QualityChange(qualityDropdown.value);
         });
-
-        qualityDropdown.value = displayManager.GetQualityLevel();
     }
 
     public void FullScreenToggle()
     {
+        fullScreenToggle.isOn = displayManager.GetFullScreen();
+
+        fullScreenToggle.onValueChanged.RemoveAllListeners();
         fullScreenToggle.onValueChanged.AddListener(delegate
         {
             displayManager.SetFullScreen(fullScreenToggle.isOn);
         });
-
-        fullScreenToggle.isOn = displayManager.GetFullScreen();
-
     }
+
     public void LoadResolution()
     {
-        List<string> resolutions = new();
+        resolutionDropdown.ClearOptions();
+        resolutionDropdown.onValueChanged.RemoveAllListeners();
 
-        foreach (var item in Screen.resolutions)
+        List<string> resolutions = new();
+        int currentResIndex = 0;
+
+        for (int i = 0; i < Screen.resolutions.Length; i++)
         {
-            resolutions.Add(resolutionGame(item));
+            var res = Screen.resolutions[i];
+            resolutions.Add(resolutionGame(res));
+
+            if (res.width == Screen.currentResolution.width &&
+                res.height == Screen.currentResolution.height)
+            {
+                currentResIndex = i;
+            }
         }
         resolutionDropdown.AddOptions(resolutions);
-
+        resolutionDropdown.value = currentResIndex;
+        resolutionDropdown.RefreshShownValue();
         resolutionDropdown.onValueChanged.AddListener(delegate
         {
             displayManager.SetResolution(resolutionDropdown.value);
         });
     }
+
     public string resolutionGame(Resolution resolution)
     {
-        return resolution.width + " x " + resolution.height + " rate " + resolution.refreshRateRatio.value.ToString("F0");
+        return resolution.width + " x " + resolution.height;
     }
 
     public void LoadSliders()

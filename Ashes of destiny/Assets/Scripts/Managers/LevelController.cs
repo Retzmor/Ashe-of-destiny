@@ -35,7 +35,8 @@ public class LevelController : MonoBehaviour
 
     public void ScreenFull()
     {
-        displaySettingsManager.GetFullScreen();
+        bool isFull = displaySettingsManager.GetFullScreen();
+        displaySettingsManager.SetFullScreen(!isFull);
     }
 
     public void MenuStart()

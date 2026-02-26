@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
     float speed;
+    [SerializeField] float rotationSpeed = 6f;
     [SerializeField] float jumpForce;
     [SerializeField] GameObject zoneJump;
     [SerializeField] GameObject zoneWalk;
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     internal bool isAiming;
     bool _canMoving = false;
     Vector3 lookDirection;
+    Vector3 currentMoveDir;
+
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
 
@@ -47,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-        if (IsGrounded() && _canMoving == true)
+        if (IsGrounded() && _canMoving)
         {
             float speed = _canSprint ? 8f : 4f;
 
@@ -65,16 +68,12 @@ public class PlayerMovement : MonoBehaviour
 
                 Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
                 moveDir.Normalize();
-
-                Vector3 horizontalVelocity = moveDir * speed;
-                rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
-
+                currentMoveDir = moveDir * speed;
                 if (!isAiming)
                 {
-                    transform.forward = moveDir;
+                    Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+                    transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, rotationSpeed * Time.deltaTime);
                 }
-                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-               transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
             }
             else
             {
@@ -83,17 +82,23 @@ public class PlayerMovement : MonoBehaviour
 
             if (isAiming && yawTarget != null)
             {
-                lookDirection = yawTarget.forward;
+                Vector3 lookDirection = yawTarget.forward;
                 lookDirection.y = 0;
 
                 if (lookDirection.sqrMagnitude > 0.01f)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+                    transform.rotation = Quaternion.RotateTowards(
+                        transform.rotation,
+                        targetRotation,
+                        rotationSpeed * 360f * Time.deltaTime
+                    );
                 }
             }
         }
     }
+
 
     public void JumpPlayer()
     {
@@ -105,8 +110,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (rb.isKinematic) return;
+        rb.linearVelocity = new Vector3(currentMoveDir.x, rb.linearVelocity.y, currentMoveDir.z);
         Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position,radiusJump,canJump);
-
         if(canJumpPlayer.Length > 0)
         {
             isJumping = true;

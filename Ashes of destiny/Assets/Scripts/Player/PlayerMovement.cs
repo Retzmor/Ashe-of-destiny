@@ -77,7 +77,14 @@ public class PlayerMovement : MonoBehaviour
                     moveDir.z * speed
                 );
             }
+            if (!isAiming)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
+            }
         }
+
+
         else
         {
             if (IsGrounded())

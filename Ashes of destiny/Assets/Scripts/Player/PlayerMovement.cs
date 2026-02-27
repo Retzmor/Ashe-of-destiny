@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
                 moveDir.Normalize();
                 currentMoveDir = moveDir * speed;
+                if (rb.isKinematic) return;
+                rb.linearVelocity = new Vector3(currentMoveDir.x, rb.linearVelocity.y, currentMoveDir.z);
                 if (!isAiming)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(moveDir);
@@ -110,8 +112,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.isKinematic) return;
-        rb.linearVelocity = new Vector3(currentMoveDir.x, rb.linearVelocity.y, currentMoveDir.z);
         Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position,radiusJump,canJump);
         if(canJumpPlayer.Length > 0)
         {

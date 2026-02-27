@@ -4925,7 +4925,7 @@ MonoBehaviour:
   button2: {fileID: 206188781}
   asheWater: {fileID: 0}
   asheFire: {fileID: 0}
-  imageFire: {fileID: 1646944326}
+  imageFire: {fileID: 0}
   countItem: {fileID: 2035252230}
 --- !u!4 &473050074
 Transform:
@@ -7584,7 +7584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelPause: {fileID: 345184322}
-  panelSkills: {fileID: 1004533126}
+  panelSkills: {fileID: 0}
   panelGame: {fileID: 1166882070}
   particles:
   - {fileID: 1469952439}
@@ -9702,7 +9702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1752898115}
   tutorialController: {fileID: 98608805}
-  panelSkills: {fileID: 1004533126}
+  panelSkills: {fileID: 0}
   panelGame: {fileID: 1166882070}
   panelWin: {fileID: 245700790}
   panelLose: {fileID: 91692083}
@@ -18357,7 +18357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7570589909053700315, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -94.6
+      value: 141.01
       objectReference: {fileID: 0}
     - target: {fileID: 7570589909053700315, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18377,7 +18377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7570589909053700315, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 199.4
+      value: 71.54
       objectReference: {fileID: 0}
     - target: {fileID: 7570589909053700315, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18450,7 +18450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 877320991693343554, guid: 086b395f18070d5408b234df7f1a7076, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56.059998
+      value: 165.02
       objectReference: {fileID: 0}
     - target: {fileID: 877320991693343554, guid: 086b395f18070d5408b234df7f1a7076, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18470,7 +18470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 877320991693343554, guid: 086b395f18070d5408b234df7f1a7076, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 167.68
+      value: 84.99
       objectReference: {fileID: 0}
     - target: {fileID: 877320991693343554, guid: 086b395f18070d5408b234df7f1a7076, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18551,7 +18551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8105304541764264723, guid: 184ffa4ff3c937f49967a699f4faa997, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.96
+      value: 143.07
       objectReference: {fileID: 0}
     - target: {fileID: 8105304541764264723, guid: 184ffa4ff3c937f49967a699f4faa997, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18571,7 +18571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8105304541764264723, guid: 184ffa4ff3c937f49967a699f4faa997, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 213.87999
+      value: 94.4
       objectReference: {fileID: 0}
     - target: {fileID: 8105304541764264723, guid: 184ffa4ff3c937f49967a699f4faa997, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18737,7 +18737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6383426099766262937, guid: a5964fc7a0f633c4a884a464fee5c9b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.059998
+      value: 168.1
       objectReference: {fileID: 0}
     - target: {fileID: 6383426099766262937, guid: a5964fc7a0f633c4a884a464fee5c9b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18757,7 +18757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6383426099766262937, guid: a5964fc7a0f633c4a884a464fee5c9b0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.48
+      value: 103.89
       objectReference: {fileID: 0}
     - target: {fileID: 6383426099766262937, guid: a5964fc7a0f633c4a884a464fee5c9b0, type: 3}
       propertyPath: m_AnchoredPosition.y

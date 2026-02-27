@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if(cam == null)
+        if (cam == null)
         {
             cam = Camera.main.transform;
         }
@@ -50,70 +50,59 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-        if (IsGrounded() && _canMoving)
+        if (!_canMoving) return;
+
+        float speed = _canSprint ? 8f : 4f;
+
+        Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+
+        if (inputDir.sqrMagnitude > 0.01f)
         {
-            float speed = _canSprint ? 8f : 4f;
+            Vector3 forward = isAiming ? transform.forward : cam.forward;
+            Vector3 right = isAiming ? transform.right : cam.right;
 
-            Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+            forward.y = 0;
+            right.y = 0;
+            forward.Normalize();
+            right.Normalize();
 
-            if (inputDir.sqrMagnitude > 0.01f)
+            Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
+            moveDir.Normalize();
+
+            if (IsGrounded())
             {
-                Vector3 forward = isAiming ? transform.forward : cam.forward;
-                Vector3 right = isAiming ? transform.right : cam.right;
-
-                forward.y = 0;
-                right.y = 0;
-                forward.Normalize();
-                right.Normalize();
-
-                Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
-                moveDir.Normalize();
-                currentMoveDir = moveDir * speed;
-                if (rb.isKinematic) return;
-                rb.linearVelocity = new Vector3(currentMoveDir.x, rb.linearVelocity.y, currentMoveDir.z);
-                if (!isAiming)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-                    transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, rotationSpeed * Time.deltaTime);
-                }
+                rb.linearVelocity = new Vector3(
+                    moveDir.x * speed,
+                    rb.linearVelocity.y,
+                    moveDir.z * speed
+                );
             }
-            else
+        }
+        else
+        {
+            if (IsGrounded())
             {
                 rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-            }
-
-            if (isAiming && yawTarget != null)
-            {
-                Vector3 lookDirection = yawTarget.forward;
-                lookDirection.y = 0;
-
-                if (lookDirection.sqrMagnitude > 0.01f)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-
-                    transform.rotation = Quaternion.RotateTowards(
-                        transform.rotation,
-                        targetRotation,
-                        rotationSpeed * 360f * Time.deltaTime
-                    );
-                }
             }
         }
     }
 
-
     public void JumpPlayer()
     {
-        if(isJumping == true)
+        if (IsGrounded())
         {
-            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            Vector3 currentVelocity = rb.linearVelocity;
+
+            rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
     private void FixedUpdate()
     {
-        Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position,radiusJump,canJump);
-        if(canJumpPlayer.Length > 0)
+        Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position, radiusJump, canJump);
+        if (canJumpPlayer.Length > 0)
         {
             isJumping = true;
         }
@@ -132,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         {
             float angle = Vector3.Angle(hit.normal, Vector3.up);
 
-            if (angle < 45f) 
+            if (angle < 45f)
             {
                 return true;
             }

@@ -50,50 +50,73 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-        if (!_canMoving) return;
-
-        float speed = _canSprint ? 8f : 4f;
-
-        Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
-
-        if (inputDir.sqrMagnitude > 0.01f)
+        if (IsGrounded() && _canMoving)
         {
-            Vector3 forward = isAiming ? transform.forward : cam.forward;
-            Vector3 right = isAiming ? transform.right : cam.right;
+            float speed = _canSprint ? 8f : 4f;
 
-            forward.y = 0;
-            right.y = 0;
-            forward.Normalize();
-            right.Normalize();
+            Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
-            Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
-            moveDir.Normalize();
+            if (inputDir.sqrMagnitude > 0.01f)
+            {
+                Vector3 forward = isAiming ? transform.forward : cam.forward;
+                Vector3 right = isAiming ? transform.right : cam.right;
 
-            if (IsGrounded())
+                forward.y = 0;
+                right.y = 0;
+                forward.Normalize();
+                right.Normalize();
+
+                Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
+                moveDir.Normalize();
+
+                currentMoveDir = moveDir * speed;
+
+                if (rb.isKinematic) return;
+
+                rb.linearVelocity = new Vector3(
+                    currentMoveDir.x,
+                    rb.linearVelocity.y,
+                    currentMoveDir.z
+                );
+
+                if (!isAiming)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+
+                    transform.rotation = Quaternion.Slerp(
+                        transform.rotation,
+                        targetRotation,
+                        rotationSpeed * Time.deltaTime
+                    );
+                }
+            }
+            else
             {
                 rb.linearVelocity = new Vector3(
-                    moveDir.x * speed,
+                    0,
                     rb.linearVelocity.y,
-                    moveDir.z * speed
+                    0
                 );
             }
-            if (!isAiming)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-                transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
-            }
-        }
 
-
-        else
-        {
-            if (IsGrounded())
+            if (isAiming && yawTarget != null)
             {
-                rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+                Vector3 lookDirection = yawTarget.forward;
+                lookDirection.y = 0;
+
+                if (lookDirection.sqrMagnitude > 0.01f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+
+                    transform.rotation = Quaternion.RotateTowards(
+                        transform.rotation,
+                        targetRotation,
+                        rotationSpeed * 360f * Time.deltaTime
+                    );
+                }
             }
         }
     }
-
     public void JumpPlayer()
     {
         if (IsGrounded())

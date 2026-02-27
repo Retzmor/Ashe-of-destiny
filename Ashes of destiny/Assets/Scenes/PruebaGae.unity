@@ -18546,6 +18546,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 582380434785633428, guid: fc7ae054b06918c47b2a7285f607d9c2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582380434785633428, guid: fc7ae054b06918c47b2a7285f607d9c2, type: 3}
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1303095795}

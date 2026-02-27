@@ -20,8 +20,7 @@ public class HealthEnemy : MonoBehaviour
     {
         currentHealth -= damage;
         enemyMovement.TakeDamageEffect();
-        Debug.Log("Take bullet enemy");
-
+        //aqui iria la animacion de recibir daño
         if (currentHealth < healthMin)
         {
             // aqui deberia curarse o tirar alguna habilidad poderosa

@@ -15,14 +15,10 @@ public class AttackPlayer : MonoBehaviour
 
     AbilitiesPlayer abilitiesPlayer;
     DiContainer _container;
-
-
     bool canAttackMelee = false;
     bool coolDownAttack = true;
     bool coolDown = false;
     private bool meleeMode = false;
-
-
     Dictionary<int, Coroutine> cooldowns = new();
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
@@ -32,12 +28,10 @@ public class AttackPlayer : MonoBehaviour
     {
         _container = container;
     }
-
     private void Start()
     {
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
     }
-
 
     private void FixedUpdate()
     {
@@ -53,7 +47,6 @@ public class AttackPlayer : MonoBehaviour
             canAttackMelee = false;
         }
     }
-
     public void Attack(Ashes ashes)
     {
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
@@ -102,8 +95,6 @@ public class AttackPlayer : MonoBehaviour
 
         return cooldowns[slotIndex] != null;
     }
-
-
     public void ToggleMeleeMode()
     {
         meleeMode = !meleeMode;
@@ -120,8 +111,6 @@ public class AttackPlayer : MonoBehaviour
 
     void ActivateMelee()
     {
-        Debug.Log("Modo melee activado");
-
         if (_currentWeapon != null)
             _currentWeapon.SetActive(true);
 
@@ -130,14 +119,9 @@ public class AttackPlayer : MonoBehaviour
 
     void DeactivateMelee()
     {
-        Debug.Log("Modo habilidades activado");
-
         if (_currentWeapon != null)
             _currentWeapon.SetActive(false);
     }
-
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -91,7 +91,6 @@ public class TutorialManager : MonoBehaviour
     
     public void TutorialJump()
     {
-        controller.ResetPositionPlayer();
         controller.StopPlayer();
         goalMovement.SetActive(false);
         imageShift.SetActive(false);
@@ -112,7 +111,6 @@ public class TutorialManager : MonoBehaviour
     public void TutorialAshes()
     {
         countAshe.SetActive(true);
-        controller.ResetPositionPlayer();
         controller.StopPlayer();
         treeObstacule.SetActive(false);
         goalMovement2.SetActive(false);
@@ -130,7 +128,6 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialWeapons()
     {
-        controller.ResetPositionPlayer();
         controller.StopPlayer();
         imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
@@ -147,7 +144,6 @@ public class TutorialManager : MonoBehaviour
     public void TutorialShoot()
     {
         imageTab.SetActive(false);
-        controller.ResetPositionPlayer();
         controller.StartPlayer();
         string[] dialogoMovimiento = {"Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar, para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual, busca al enemigo y acabalo!!!",};
         dialogueManager.SetDialogue(dialogoMovimiento);

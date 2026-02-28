@@ -40,6 +40,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Oleaje: 1
+    - _QueueControl: 0
     - _Velocidad_Oleaje: 0.2
     m_Colors: []
   m_BuildTextureStacks: []

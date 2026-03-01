@@ -11,8 +11,10 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
     [SerializeField] CameraManager cameraManager;
+    PlayerMovement playerMovement;
     void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
         healthImage.fillAmount = 1;
         maxHealth = 100;
         currentHealth = maxHealth;
@@ -36,11 +38,19 @@ public class HealthPlayer : MonoBehaviour
     {
         cameraManager.CameraDie();
         StartCoroutine(DieCameraPlayer());
+        StartCoroutine(StopMovementPlayer());
     }
 
     IEnumerator DieCameraPlayer()
     {
         yield return new WaitForSeconds(3f);
         tutorialManager.TutorialLose();
+    }
+
+    IEnumerator StopMovementPlayer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerMovement.Rb.isKinematic = true;
+
     }
 }

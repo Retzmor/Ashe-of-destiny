@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class WoodCollision : MonoBehaviour
 {
-    Animator[] animators;
+    Rigidbody[] rb;
     private void Start()
     {
-        animators = GetComponentsInChildren<Animator>();
+        rb = GetComponentsInChildren<Rigidbody>();
     }
 
     public void AnimationWoodBroke()
     {
         Debug.Log("Animacion madera");
 
-        foreach (Animator anim in animators)
+        foreach (Rigidbody rb in rb)
         {
-            anim.SetBool("Broke", true);
+            rb.isKinematic = false;
         }
-
         Destroy(gameObject, 5f);
     }
 }

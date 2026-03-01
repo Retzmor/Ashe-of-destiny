@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
+    public Rigidbody Rb { get => rb; set => rb = value; }
 
     private void OnEnable()
     {
@@ -71,11 +72,11 @@ public class PlayerMovement : MonoBehaviour
 
                 currentMoveDir = moveDir * speed;
 
-                if (rb.isKinematic) return;
+                if (Rb.isKinematic) return;
 
                 rb.linearVelocity = new Vector3(
                     currentMoveDir.x,
-                    rb.linearVelocity.y,
+                    Rb.linearVelocity.y,
                     currentMoveDir.z
                 );
 
@@ -94,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector3(
                     0,
-                    rb.linearVelocity.y,
+                    Rb.linearVelocity.y,
                     0
                 );
             }
@@ -123,9 +124,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 currentVelocity = rb.linearVelocity;
 
-            rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+            Rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
 
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 

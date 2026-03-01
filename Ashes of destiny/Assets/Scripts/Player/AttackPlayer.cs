@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using Zenject;
+using System;
 
 public class AttackPlayer : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] GameObject _currentWeapon;
     [SerializeField] Transform targetAttack;
     [SerializeField] WorldCrossHairController crosshairController;
+    [SerializeField] Transform targetAttackMelee;
 
     AbilitiesPlayer abilitiesPlayer;
     DiContainer _container;
@@ -33,20 +35,6 @@ public class AttackPlayer : MonoBehaviour
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
     }
 
-    private void FixedUpdate()
-    {
-        Collider[] zoneAttackMelee = Physics.OverlapSphere(transform.position, radiusAttackMelee, layer);
-
-        if (zoneAttackMelee.Length > 0)
-        {
-            canAttackMelee = true;
-        }
-
-        else
-        {
-            canAttackMelee = false;
-        }
-    }
     public void Attack(Ashes ashes)
     {
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
@@ -93,7 +81,7 @@ public class AttackPlayer : MonoBehaviour
         if (!cooldowns.ContainsKey(slotIndex))
             return false;
 
-        return cooldowns[slotIndex] != null;
+         return cooldowns[slotIndex] != null;
     }
     public void ToggleMeleeMode()
     {
@@ -122,9 +110,31 @@ public class AttackPlayer : MonoBehaviour
         if (_currentWeapon != null)
             _currentWeapon.SetActive(false);
     }
+    internal void AttackMelee()
+    {
+
+        Collider[] hitEnemies = Physics.OverlapSphere(targetAttackMelee.position,radiusAttackMelee,layer);
+        if (hitEnemies.Length == 0)
+        {
+            Debug.Log("No golpeó a nadie");
+            return;
+        }
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log("Dentro del for");
+            if (enemy.GetComponentInParent<WoodCollision>())
+            {
+                Debug.Log("wood");
+                WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
+                wood.AnimationWoodBroke();
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radiusAttackMelee);
+        Gizmos.DrawWireSphere(targetAttackMelee.position, radiusAttackMelee);
     }
 }

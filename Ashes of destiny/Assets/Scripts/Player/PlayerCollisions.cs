@@ -12,11 +12,13 @@ public class PlayerCollisions : MonoBehaviour
 
     AttackPlayer attackPlayer;
     AbilitiesPlayer abilitiesPlayer;
+    HealthPlayer healthPlayer;
 
     private void Start()
     {
         attackPlayer = GetComponent<AttackPlayer>();
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
+        healthPlayer = GetComponent<HealthPlayer>();
     }
 
     public bool CanInteract { get => _canInteract; set => _canInteract = value; }
@@ -45,6 +47,14 @@ public class PlayerCollisions : MonoBehaviour
         attackPlayer.CurrentWeapon = currentItem;
         currentItem.SetActive(false);
         currentItem = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("KillZone"))
+        {
+            healthPlayer.Die();
+        }
     }
 
 }

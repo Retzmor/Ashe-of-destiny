@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -8,6 +10,7 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] Image healthImage;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
+    [SerializeField] CameraManager cameraManager;
     void Start()
     {
         healthImage.fillAmount = 1;
@@ -25,7 +28,19 @@ public class HealthPlayer : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            tutorialManager.TutorialLose();
+            Die();
         }
+    }
+
+    internal void Die()
+    {
+        cameraManager.CameraDie();
+        StartCoroutine(DieCameraPlayer());
+    }
+
+    IEnumerator DieCameraPlayer()
+    {
+        yield return new WaitForSeconds(3f);
+        tutorialManager.TutorialLose();
     }
 }

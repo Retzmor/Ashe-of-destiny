@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
         inputs.MenuSkills.started += MenuSkills;
         inputs.Boton1.started += Button1;
         inputs.Boton2.started += Button2;
-        inputs.Boton3.started += Button3;
-       // inputs.Aim.started += AimButton;
+        inputs.Boton3.started += MeleeAttack;
+        // inputs.Aim.started += AimButton;
         //inputs.Aim.canceled += AimButton;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         aimPlayer = GetComponent<AimPlayer>();
@@ -59,10 +59,18 @@ public class PlayerController : MonoBehaviour
 
     public void AttackPlayer(CallbackContext context)
     {
+        if (!context.started) return;
+
         Ashes ashesActiva = abilitiesPlayer.GetSelectedAshes();
-        if (ashesActiva == null)
-            return;
-        attackPlayer.Attack(ashesActiva);
+
+        if (ashesActiva != null)
+        {
+            attackPlayer.Attack(ashesActiva);
+        }
+        else
+        {
+            attackPlayer.AttackMelee();
+        }
     }
 
     public void Interact(CallbackContext context)
@@ -94,10 +102,12 @@ public class PlayerController : MonoBehaviour
         if (!context.started) return;
         abilitiesPlayer.ButtonTwo();
     }
-
-    public void Button3(CallbackContext context)
+    public void MeleeAttack(CallbackContext context)
     {
-        attackPlayer.ToggleMeleeMode();
+        Debug.Log("holeee");
+        if (!context.started) return;
+
+        attackPlayer.AttackMelee();
     }
 
     //public void AimButton(CallbackCon

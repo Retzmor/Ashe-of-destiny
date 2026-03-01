@@ -9,6 +9,8 @@ TagManager:
   - Weapon
   - Ceniza
   - Enemy
+  - KillZone
+  - Wood
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Jump
   - Floor
   - Bullet
-  - 
+  - Enemies
   - 
   - 
   - 

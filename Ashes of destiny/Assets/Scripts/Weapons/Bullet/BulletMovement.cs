@@ -37,6 +37,13 @@ public class BulletMovement : MonoBehaviour
             Destroy(gameObject);
         }
 
+        else if (collision.gameObject.CompareTag("Wood"))
+        {
+            collision.gameObject.TryGetComponent<WoodCollision>(out WoodCollision wood);
+            wood.AnimationWoodBroke();
+            Destroy(gameObject);
+        }
+
         else
         {
             Destroy(gameObject);

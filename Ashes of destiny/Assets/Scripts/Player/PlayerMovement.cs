@@ -3,6 +3,7 @@
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
+    PlayerComponent playerComponent;
     float speed;
     [SerializeField] float rotationSpeed = 6f;
     [SerializeField] float jumpForce;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 lookDirection;
     Vector3 currentMoveDir;
 
+
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerComponent = GetComponent<PlayerComponent>();
         if (cam == null)
         {
             cam = Camera.main.transform;
@@ -54,8 +57,19 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded() && _canMoving)
         {
             float speed = _canSprint ? 8f : 4f;
+            if(_canSprint)
+            {
+                playerComponent.Animator.SetBool("Run", true);
+                playerComponent.Animator.SetBool("Walk", false);
+            }
 
-            Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+            else
+            {
+                playerComponent.Animator.SetBool("Run", false);
+                playerComponent.Animator.SetBool("Walk", true);
+            }
+
+                Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
             if (inputDir.sqrMagnitude > 0.01f)
             {
@@ -98,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
                     Rb.linearVelocity.y,
                     0
                 );
+                playerComponent.Animator.SetBool("Walk", false);
             }
 
             if (isAiming && yawTarget != null)
@@ -122,10 +137,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded())
         {
+            playerComponent.Animator.SetTrigger("Jump");
             Vector3 currentVelocity = rb.linearVelocity;
-
             Rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
-
             Rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }

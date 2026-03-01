@@ -13,12 +13,14 @@ public class PlayerCollisions : MonoBehaviour
     AttackPlayer attackPlayer;
     AbilitiesPlayer abilitiesPlayer;
     HealthPlayer healthPlayer;
+    PlayerComponent playerComponent;
 
     private void Start()
     {
         attackPlayer = GetComponent<AttackPlayer>();
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         healthPlayer = GetComponent<HealthPlayer>();
+        playerComponent = GetComponent<PlayerComponent>();
     }
 
     public bool CanInteract { get => _canInteract; set => _canInteract = value; }
@@ -43,6 +45,7 @@ public class PlayerCollisions : MonoBehaviour
     public void TryInteract()
     {
         if (currentItem == null) return;
+        playerComponent.Animator.SetTrigger("Take");
         inventory.addItemInventory(currentItem);
         attackPlayer.CurrentWeapon = currentItem;
         currentItem.SetActive(false);

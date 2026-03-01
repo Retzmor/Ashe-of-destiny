@@ -14,25 +14,15 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Transform targetAttack;
     [SerializeField] WorldCrossHairController crosshairController;
     [SerializeField] Transform targetAttackMelee;
-
     AbilitiesPlayer abilitiesPlayer;
+    PlayerComponent playerComponent;
     DiContainer _container;
-    bool canAttackMelee = false;
-    bool coolDownAttack = true;
-    bool coolDown = false;
-    private bool meleeMode = false;
     Dictionary<int, Coroutine> cooldowns = new();
-
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
-
-    [Inject]
-    void Construct(DiContainer container)
-    {
-        _container = container;
-    }
     private void Start()
     {
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
+        playerComponent = GetComponent<PlayerComponent>();
     }
 
     public void Attack(Ashes ashes)
@@ -83,49 +73,19 @@ public class AttackPlayer : MonoBehaviour
 
          return cooldowns[slotIndex] != null;
     }
-    public void ToggleMeleeMode()
-    {
-        meleeMode = !meleeMode;
-
-        if (meleeMode)
-        {
-            ActivateMelee();
-        }
-        else
-        {
-            DeactivateMelee();
-        }
-    }
-
-    void ActivateMelee()
-    {
-        if (_currentWeapon != null)
-            _currentWeapon.SetActive(true);
-
-        abilitiesPlayer.ClearSelection();
-    }
-
-    void DeactivateMelee()
-    {
-        if (_currentWeapon != null)
-            _currentWeapon.SetActive(false);
-    }
     internal void AttackMelee()
     {
-
         Collider[] hitEnemies = Physics.OverlapSphere(targetAttackMelee.position,radiusAttackMelee,layer);
         if (hitEnemies.Length == 0)
         {
-            Debug.Log("No golpeó a nadie");
-            return;
+            playerComponent.Animator.SetTrigger("Attack");
         }
 
         foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log("Dentro del for");
             if (enemy.GetComponentInParent<WoodCollision>())
             {
-                Debug.Log("wood");
+                playerComponent.Animator.SetTrigger("Attack");
                 WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
                 wood.AnimationWoodBroke();
             }

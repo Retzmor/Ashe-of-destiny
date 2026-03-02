@@ -45,8 +45,7 @@ public class Inventory : MonoBehaviour
             Sprite icon = ashesData.GetComponent<Image>().sprite;
 
             abilitiesPlayer.AddAbility(ashesData, icon);
-            imageFire.color = Color.white;
-
+            //imageFire.color = Color.white;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
             if (_tutorialSkip == false)

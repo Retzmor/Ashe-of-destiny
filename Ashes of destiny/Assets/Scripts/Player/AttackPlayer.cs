@@ -16,8 +16,10 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Transform targetAttackMelee;
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
-    DiContainer _container;
+    [Inject] private DiContainer _container;
     Dictionary<int, Coroutine> cooldowns = new();
+
+
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
     private void Start()
     {

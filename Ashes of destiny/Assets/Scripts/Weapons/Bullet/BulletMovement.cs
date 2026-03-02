@@ -5,45 +5,63 @@ public class BulletMovement : MonoBehaviour
 {
     Rigidbody rb;
     Collider colliderBullet;
-    Collider colliderPlayer;
+
     [SerializeField] float speed;
     [SerializeField] float damage;
+
     bool alreadyDamage = false;
 
     [Inject] PlayerCollisions player;
-    void Start()
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        colliderBullet = GetComponent<Collider>();
-        colliderPlayer = player.GetComponent<Collider>();
         rb.useGravity = false;
-        rb.linearVelocity = transform.forward * speed;
-        Destroy(gameObject, 5f);
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.linearVelocity = transform.forward * 20f;
+
+    }
+    void Start()
+    {
+        colliderBullet = GetComponent<Collider>();
+
         foreach (Collider col in player.GetComponentsInChildren<Collider>())
         {
             Physics.IgnoreCollision(colliderBullet, col);
         }
+
+        Destroy(gameObject, 5f);
+    }
+
+    public void SetDirection(Vector3 dir)
+    {
+        rb.linearVelocity = dir.normalized * speed;  
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (alreadyDamage)
-            return;
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (alreadyDamage) return;
+
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             alreadyDamage = true;
-            collision.gameObject.TryGetComponent<HealthEnemy>(out HealthEnemy healthEnemy);
-            healthEnemy.TakeDamage(damage);
+
+            if (collision.gameObject.TryGetComponent(out HealthEnemy healthEnemy))
+            {
+                healthEnemy.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
-
         else if (collision.gameObject.CompareTag("Wood"))
         {
-            collision.gameObject.TryGetComponent<WoodCollision>(out WoodCollision wood);
-            wood.AnimationWoodBroke();
+            if (collision.gameObject.TryGetComponent(out WoodCollision wood))
+            {
+                wood.AnimationWoodBroke();
+            }
+
             Destroy(gameObject);
         }
-
         else
         {
             Destroy(gameObject);

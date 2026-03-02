@@ -13,12 +13,12 @@ public class PatrolEnemy : StateMachineBehaviour
         if (movement.PatrolPoints.Count == 0)
             return;
 
-        //movement.Agent.SetDestination(movement.PatrolPoints[movement.CurrentPositionPatrol].position);
+       movement.Agent.SetDestination(movement.PatrolPoints[movement.CurrentPositionPatrol].position);
 
-       // if (!movement.Agent.pathPending && movement.Agent.remainingDistance <= movement.Agent.stoppingDistance)
-        //{
-          //  movement.CurrentPositionPatrol = Random.Range(0, movement.PatrolPoints.Count);
-        //}
+       if (!movement.Agent.pathPending && movement.Agent.remainingDistance <= movement.Agent.stoppingDistance)
+       {
+          movement.CurrentPositionPatrol = Random.Range(0, movement.PatrolPoints.Count);
+       }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

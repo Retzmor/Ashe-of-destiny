@@ -145,7 +145,8 @@ public class TutorialManager : MonoBehaviour
     {
         imageTab.SetActive(false);
         controller.StartPlayer();
-        string[] dialogoMovimiento = {"Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar, para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual, busca al enemigo y acabalo!!!",};
+        string[] dialogoMovimiento = {"Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar", 
+        "para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual, busca al enemigo y acabalo!!!",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {

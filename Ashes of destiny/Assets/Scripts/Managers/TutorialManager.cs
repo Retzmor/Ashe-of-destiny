@@ -33,6 +33,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
     [SerializeField] Inventory inventory;
+    [SerializeField] GameObject arrowAnimation;
+    Animator animatorArrow;
 
     public delegate void PlayerMovementDelegate(bool activarRb);
     public static event PlayerMovementDelegate playerMovementDelegate;
@@ -42,6 +44,8 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         IniciarTutorial();
+        arrowAnimation.TryGetComponent<Animator>(out Animator anim);
+        animatorArrow = anim;
         // AudioManager.Instance.PlayMusic(musicaTutorial);
     }
 
@@ -132,6 +136,8 @@ public class TutorialManager : MonoBehaviour
         imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
         panelGame.SetActive(false);
+        arrowAnimation.SetActive(true);
+        StartCoroutine(WaitForTheNextFrame());
         string[] dialogoMovimiento = {"Presiona la tecla Tab",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
@@ -140,21 +146,40 @@ public class TutorialManager : MonoBehaviour
             //TutorialShoot();
         };
     }
+
+    IEnumerator WaitForTheNextFrame()
+    {
+        yield return new WaitForSeconds(1);
+        animatorArrow.SetTrigger("Play");
+    }
     
     public void TutorialShoot()
     {
         imageTab.SetActive(false);
         controller.StartPlayer();
-        string[] dialogoMovimiento = {"Con el click derecho del mouse apuntas, con el izquirdo disparas, debes tener una habilidad seleccionada para disparar", 
-        "para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual, busca al enemigo y acabalo!!!",};
+        string[] dialogoMovimiento = { 
+        "para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual",};
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+            enemy.SetActive(true);
+            TutorialAim();
+        };
+    }
+
+    public void TutorialAim()
+    {
+        imageTab.SetActive(false);
+        controller.StartPlayer();
+        string[] dialogoMovimiento = {
+        "Manteniendo el click derecho del mouse, apuntas, y con el izquierdo, dispara",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
             controller.StartPlayer();
-            enemy.SetActive(true);
         };
     }
-    
+
     public void TutorialFinish()
     {
         panelTutorialRectTransform.gameObject.SetActive(true);

@@ -44,12 +44,14 @@ public class AttackPlayer : MonoBehaviour
             Vector3 direction = (crosshairController.CurrentAimPoint - targetAttack.position).normalized;
             Quaternion rotation = Quaternion.LookRotation(direction);
 
-            _container.InstantiatePrefab(
-                ashes.ElementAttack,
-                targetAttack.position,
-                rotation,
-                null
-            );
+            GameObject bullet = _container.InstantiatePrefab(
+    ashes.ElementAttack,
+    targetAttack.position,
+    Quaternion.identity,
+    null
+);
+
+            bullet.GetComponent<BulletMovement>().SetDirection(direction);
 
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
             abilitiesPlayer.particulaActual.DesactiveParticule();

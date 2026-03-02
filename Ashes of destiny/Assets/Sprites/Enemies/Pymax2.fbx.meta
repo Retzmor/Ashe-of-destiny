@@ -3,7 +3,17 @@ guid: ce0b24f3c8e99ab4293c54bba86e09f6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 194972d15f37a444da99ce76899d6caf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PielTherian
+    second: {fileID: 2100000, guid: 246eba7d77a639842a4c770d9b410c1e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

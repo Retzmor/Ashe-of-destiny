@@ -3,12 +3,32 @@ guid: 7322bee29ddac7440811845fe872cefa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Canilleras
+    second: {fileID: 8817904963259947095, guid: 0c4ec30b5041a8c4192ab6bb0f0983a3, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piel
+    second: {fileID: 5275700054231763996, guid: 0c4ec30b5041a8c4192ab6bb0f0983a3, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tono de piel
+    second: {fileID: 5275700054231763996, guid: 0c4ec30b5041a8c4192ab6bb0f0983a3, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZAPATOS
+    second: {fileID: 7652628097922001044, guid: 0c4ec30b5041a8c4192ab6bb0f0983a3, type: 3}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

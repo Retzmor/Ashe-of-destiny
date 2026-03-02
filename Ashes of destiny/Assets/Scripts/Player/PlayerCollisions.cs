@@ -8,8 +8,6 @@ public class PlayerCollisions : MonoBehaviour
    
     [Inject] Inventory inventory;
     bool _canInteract = false;
-    bool canCollision = true;
-
     AttackPlayer attackPlayer;
     AbilitiesPlayer abilitiesPlayer;
     HealthPlayer healthPlayer;

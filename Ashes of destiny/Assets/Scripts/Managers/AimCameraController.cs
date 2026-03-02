@@ -10,10 +10,8 @@ public class AimCameraController : MonoBehaviour
     [SerializeField] InputActionReference lookInput;
     [SerializeField] InputActionReference switchShouldInput;
     [SerializeField] float mouseSensibility = 0.5f;
-    [SerializeField] float gamepadSensibility = 0.5f;
+    //[SerializeField] float gamepadSensibility = 0.5f;
     [SerializeField] float sensibility = 1.5f;
-    [SerializeField] float pitchMin = -40;
-    [SerializeField] float pitchMax = 80;
     [SerializeField] CinemachineThirdPersonFollow aimCamera;
     [SerializeField] float shoulderSwitchSpeed = 5;
 

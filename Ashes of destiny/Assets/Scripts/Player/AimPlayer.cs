@@ -5,7 +5,6 @@ public class AimPlayer : MonoBehaviour
 {
     [SerializeField] CinemachineCamera camMain;
     [SerializeField] CinemachineCamera camAim;
-    bool isAim = false;
     public void AimActive()
     {
         camAim.gameObject.SetActive(true);

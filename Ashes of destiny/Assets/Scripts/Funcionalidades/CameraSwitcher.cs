@@ -20,8 +20,6 @@ public class CameraSwitcher : MonoBehaviour
     bool isAiming = false;
     Transform yawTarget;
     Transform pitchTarget;
-    bool isMenuOpen = false;
-
 
     AimCameraController aimCamController;
     void Start()

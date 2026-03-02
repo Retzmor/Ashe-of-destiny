@@ -34,18 +34,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject panelLose;
     [SerializeField] Inventory inventory;
     [SerializeField] GameObject arrowAnimation;
-    Animator animatorArrow;
-
-    public delegate void PlayerMovementDelegate(bool activarRb);
-    public static event PlayerMovementDelegate playerMovementDelegate;
-
-    private int enemigosDerrotados = 0;
-
+    [SerializeField] GameObject goalAttackMelee;
+    [SerializeField] Animator animArrow;
     void Start()
     {
         IniciarTutorial();
-        arrowAnimation.TryGetComponent<Animator>(out Animator anim);
-        animatorArrow = anim;
         // AudioManager.Instance.PlayMusic(musicaTutorial);
     }
 
@@ -112,8 +105,25 @@ public class TutorialManager : MonoBehaviour
             treeObstacule.SetActive(true);
         };
     }
+
+    public void TutorialMelee()
+    {
+        controller.StartPlayer();
+        goalAttackMelee.SetActive(true);
+        goalMovement2.SetActive(false);
+        imagejump.SetActive(false);
+        string[] dialogoMovimiento = {
+        "Con el click derecho del mouse podras golpear cuerpo a cuerpo",
+        "rompe las tablas que bloquean tu camino!!"};
+        dialogueManager.SetDialogue(dialogoMovimiento);
+        dialogueManager.OnDialogueEnd = () =>
+        {
+
+        };
+    }
     public void TutorialAshes()
     {
+        goalAttackMelee.SetActive(false);
         countAshe.SetActive(true);
         controller.StopPlayer();
         treeObstacule.SetActive(false);
@@ -137,28 +147,22 @@ public class TutorialManager : MonoBehaviour
         panelTutorialRectTransform.gameObject.SetActive(true);
         panelGame.SetActive(false);
         arrowAnimation.SetActive(true);
-        StartCoroutine(WaitForTheNextFrame());
-        string[] dialogoMovimiento = {"Presiona la tecla Tab",};
+        StartCoroutine(WaitAnimator());
+        string[] dialogoMovimiento = { "Presiona la tecla Tab", };
         dialogueManager.SetDialogue(dialogoMovimiento);
-        dialogueManager.OnDialogueEnd = () =>
-        {
-            controller.StartPlayer();
-            //TutorialShoot();
-        };
     }
-
-    IEnumerator WaitForTheNextFrame()
+    IEnumerator WaitAnimator()
     {
         yield return new WaitForSeconds(1);
-        animatorArrow.SetTrigger("Play");
+        animArrow.SetBool("Arrow", true);
     }
-    
     public void TutorialShoot()
     {
         imageTab.SetActive(false);
         controller.StartPlayer();
         string[] dialogoMovimiento = { 
-        "para seleccionar las habilidades se usan las teclas Q y E, se mostrara la seleccionada de manera visual",};
+        "para seleccionar las habilidades se usan las teclas Q y E",
+        "se mostrara la seleccionada de manera visual",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
@@ -172,7 +176,8 @@ public class TutorialManager : MonoBehaviour
         imageTab.SetActive(false);
         controller.StartPlayer();
         string[] dialogoMovimiento = {
-        "Manteniendo el click derecho del mouse, apuntas, y con el izquierdo, dispara",};
+        "Manteniendo el click derecho del mouse, apuntas,",
+        " y con el izquierdo, dispara",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {

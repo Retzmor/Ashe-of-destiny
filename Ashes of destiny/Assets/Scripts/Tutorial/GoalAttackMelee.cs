@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 using System.Collections;
 
-public class GoalJump : MonoBehaviour
+public class GoalAttackMelee : MonoBehaviour
 {
     [Inject] TutorialManager tutorialManager;
     bool playerDetected = false;
@@ -19,7 +19,6 @@ public class GoalJump : MonoBehaviour
     IEnumerator WaitAndActive()
     {
         yield return new WaitForSeconds(1f);
-        tutorialManager.TutorialMelee();
+        tutorialManager.TutorialAshes();
     }
 }
-

@@ -37,7 +37,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject arrowAnimation;
     [SerializeField] GameObject goalAttackMelee;
     [SerializeField] Animator animArrow;
+    [SerializeField] GameObject MouseRight;
+    [SerializeField] GameObject MouseLeft;
     [SerializeField] PlayerController playerController;
+    [SerializeField] Image imageE;
+    [SerializeField] Image imageQ;
 
     [Inject] LevelController levelController;
 
@@ -128,6 +132,7 @@ public class TutorialManager : MonoBehaviour
         goalAttackMelee.SetActive(true);
         goalMovement2.SetActive(false);
         imagejump.SetActive(false);
+        MouseRight.SetActive(true);
         string[] dialogoMovimiento = {
         "Con el click derecho del mouse podras golpear cuerpo a cuerpo",
         "rompe las tablas que bloquean tu camino!!"};
@@ -139,6 +144,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialAshes()
     {
+        MouseRight.SetActive(false);
         goalAttackMelee.SetActive(false);
         countAshe.SetActive(true);
         controller.StopPlayer();
@@ -176,6 +182,8 @@ public class TutorialManager : MonoBehaviour
     {
         imageTab.SetActive(false);
         controller.StartPlayer();
+        imageE.gameObject.SetActive(true);
+        imageQ.gameObject.SetActive(true);
         string[] dialogoMovimiento = { 
         "para seleccionar las habilidades se usan las teclas Q y E",
         "se mostrara la seleccionada de manera visual",};
@@ -189,8 +197,12 @@ public class TutorialManager : MonoBehaviour
 
     public void TutorialAim()
     {
+        imageE.gameObject.SetActive(false);
+        imageQ.gameObject.SetActive(false);
         imageTab.SetActive(false);
         controller.StartPlayer();
+        MouseRight.SetActive(true);
+        MouseLeft.SetActive(true);
         string[] dialogoMovimiento = {
         "Manteniendo el click derecho del mouse, apuntas,",
         " y con el izquierdo, dispara",};

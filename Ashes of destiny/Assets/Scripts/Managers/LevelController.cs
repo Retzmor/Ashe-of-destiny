@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject panelGame;
     [SerializeField] Particulas[] particles;
     [SerializeField] Animator animator;
+    public bool CanOpenMenus = true;
 
     CanvasGroup canvas;
 
@@ -36,6 +37,7 @@ public class LevelController : MonoBehaviour
     bool canMenuSkill;
     public void PauseGame()
     {
+        if (!CanOpenMenus) return;
         if (currentMenu == MenuState.Pause)
         {
             CloseAllMenus();
@@ -98,6 +100,7 @@ public class LevelController : MonoBehaviour
 
     public void MenuSkill()
     {
+        if (!CanOpenMenus) return;
         if (currentMenu == MenuState.Skills)
         {
             CloseAllMenus();

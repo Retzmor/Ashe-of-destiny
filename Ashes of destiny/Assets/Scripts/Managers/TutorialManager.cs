@@ -39,6 +39,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Animator animArrow;
     [SerializeField] PlayerController playerController;
 
+    [Inject] LevelController levelController;
+
     void Start()
     {
         IniciarTutorial();
@@ -49,6 +51,7 @@ public class TutorialManager : MonoBehaviour
     {
         controller.StopPlayer();
         playerController.inputs.DisableInputs();
+        levelController.CanOpenMenus = false;
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
             "aquí te vamos explicar a como utilizar tus poderes y moverte por estos mundos.",
@@ -61,6 +64,7 @@ public class TutorialManager : MonoBehaviour
             TutorialMovement();
             controller.StartPlayer();
             playerController.inputs.EnableInputs();
+            levelController.CanOpenMenus = true;
         };
     }
     public void TutorialMovement()

@@ -48,7 +48,7 @@ public class TutorialManager : MonoBehaviour
     public void IniciarTutorial()
     {
         controller.StopPlayer();
-        playerController.inputs.InputsEnabled = false;
+        playerController.inputs.DisableInputs();
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
             "aquí te vamos explicar a como utilizar tus poderes y moverte por estos mundos.",
@@ -60,7 +60,7 @@ public class TutorialManager : MonoBehaviour
         {
             TutorialMovement();
             controller.StartPlayer();
-            playerController.inputs.InputsEnabled = true;
+            playerController.inputs.EnableInputs();
         };
     }
     public void TutorialMovement()

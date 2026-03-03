@@ -105,8 +105,7 @@ public class PlayerController : MonoBehaviour
 
     public void MenuSkills(CallbackContext context)
     {
-        if (!inputs.InputsEnabled) return;
-        if (!context.started) return;
+
         camSwitcher.OpenMenu();
         levelController.MenuSkill();
         tutorialManager.DesactivePanelTutorial();

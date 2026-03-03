@@ -4,6 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    enum MenuState
+    {
+        None,
+        Pause,
+        Skills
+    }
+
+    enum PauseSubState
+    {
+        Main,
+        Options
+    }
+
+    PauseSubState pauseState;
+    [SerializeField] GameObject panelOptions;
+
+    MenuState currentMenu = MenuState.None;
+
     [Inject] GameManager gameManager;
     [Inject] DisplaySettingsManager displaySettingsManager;
     [SerializeField] GameObject panelPause;
@@ -16,22 +34,49 @@ public class LevelController : MonoBehaviour
 
     bool isActiveMenuSkill;
     bool canMenuSkill;
-
     public void PauseGame()
     {
+        if (currentMenu == MenuState.Pause)
+        {
+            CloseAllMenus();
+            currentMenu = MenuState.None;
+            return;
+        }
+
+        CloseAllMenus();
+
         panelPause.SetActive(true);
-        animator.Play("animacion pausa");
+        panelOptions.SetActive(false);
+
         Time.timeScale = 0;
 
-       // gameManager.PauseGame();
+        pauseState = PauseSubState.Main;
+        currentMenu = MenuState.Pause;
+    }
+    public void OpenOptions()
+    {
+        if (currentMenu != MenuState.Pause) return;
+
+        panelPause.SetActive(false);
+        panelOptions.SetActive(true);
+
+        pauseState = PauseSubState.Options;
     }
 
+    public void CloseOptions()
+    {
+        panelOptions.SetActive(false);
+        panelPause.SetActive(true);      
+
+        pauseState = PauseSubState.Main;
+    }
     public void DespausarGame()
     {
-        panelPause.SetActive(false);
+        CloseAllMenus();
+        currentMenu = MenuState.None;
         gameManager.Despausar();
-        Time.timeScale = 1;
     }
+
 
     public void ScreenFull()
     {
@@ -53,34 +98,45 @@ public class LevelController : MonoBehaviour
 
     public void MenuSkill()
     {
-        bool isActive = panelSkills.activeSelf;
-
-        if (!isActive)
+        if (currentMenu == MenuState.Skills)
         {
-            panelSkills.SetActive(true);
-            Time.timeScale = 0f;
+            CloseAllMenus();
+            currentMenu = MenuState.None;
+            return;
+        }
 
-            for (int i = 0; i < particles.Length; i++)
+        CloseAllMenus();
+
+        panelSkills.SetActive(true);
+        Time.timeScale = 0f;
+
+        for (int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
             {
-                if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
-                {
-                    canva.alpha = 0;
-                }
+                canva.alpha = 0;
             }
         }
-        else
-        {
-            panelSkills.SetActive(false);
-            Time.timeScale = 1f;
 
-            for (int i = 0; i < particles.Length; i++)
+        currentMenu = MenuState.Skills;
+    }
+    void CloseAllMenus()
+    {
+        panelPause.SetActive(false);
+        panelSkills.SetActive(false);
+        panelOptions.SetActive(false);
+
+        pauseState = PauseSubState.Main;
+
+        for (int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
             {
-                if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
-                {
-                    canva.alpha = 1;
-                }
+                canva.alpha = 1;
             }
         }
+
+        Time.timeScale = 1f;
     }
 
 }

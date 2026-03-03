@@ -12,9 +12,11 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] CameraManager cameraManager;
     PlayerMovement playerMovement;
+    PlayerComponent playerComponent;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerComponent = GetComponent<PlayerComponent>();
         healthImage.fillAmount = 1;
         maxHealth = 100;
         currentHealth = maxHealth;
@@ -34,8 +36,9 @@ public class HealthPlayer : MonoBehaviour
         }
     }
 
-    internal void Die()
+    public void Die()
     {
+        playerComponent.Animator.SetTrigger("Death");
         cameraManager.CameraDie();
         StartCoroutine(DieCameraPlayer());
         StartCoroutine(StopMovementPlayer());

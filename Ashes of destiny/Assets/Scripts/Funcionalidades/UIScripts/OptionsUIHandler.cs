@@ -8,6 +8,7 @@ public class OptionsUIHandler : BaseUIPanel
 {
     [Inject] AudioManager audioManager;
     [Inject] DisplaySettingsManager displayManager;
+
     [SerializeField] Slider sliderMusic;
     [SerializeField] Slider sliderSFX;
     [SerializeField] Slider sliderMaster;
@@ -18,7 +19,6 @@ public class OptionsUIHandler : BaseUIPanel
     public override void Start()
     {
         base.Start();
-
         LoadSliders();
         FullScreenToggle();
 
@@ -45,11 +45,9 @@ public class OptionsUIHandler : BaseUIPanel
         sliderMaster.onValueChanged.AddListener(audioManager.ChangeMasterVolume);
     }
 
-
-
     public void LoadQualityChange()
     {
-        qualityDropdown.ClearOptions(); 
+        qualityDropdown.ClearOptions();
         qualityDropdown.AddOptions(displayManager.GetQualityName());
 
         qualityDropdown.value = displayManager.GetQualityLevel();
@@ -92,9 +90,11 @@ public class OptionsUIHandler : BaseUIPanel
                 currentResIndex = i;
             }
         }
+
         resolutionDropdown.AddOptions(resolutions);
         resolutionDropdown.value = currentResIndex;
         resolutionDropdown.RefreshShownValue();
+
         resolutionDropdown.onValueChanged.AddListener(delegate
         {
             displayManager.SetResolution(resolutionDropdown.value);
@@ -128,4 +128,3 @@ public class OptionsUIHandler : BaseUIPanel
         sliderMaster.value = audioManager.GetMasterVolume();
     }
 }
-

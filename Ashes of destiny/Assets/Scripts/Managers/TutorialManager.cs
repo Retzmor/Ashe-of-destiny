@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 using Zenject;
 
 public class TutorialManager : MonoBehaviour
@@ -36,6 +37,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject arrowAnimation;
     [SerializeField] GameObject goalAttackMelee;
     [SerializeField] Animator animArrow;
+    [SerializeField] PlayerController playerController;
+
     void Start()
     {
         IniciarTutorial();
@@ -45,6 +48,7 @@ public class TutorialManager : MonoBehaviour
     public void IniciarTutorial()
     {
         controller.StopPlayer();
+        playerController.inputs.InputsEnabled = false;
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
             "aquí te vamos explicar a como utilizar tus poderes y moverte por estos mundos.",
@@ -55,10 +59,14 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             TutorialMovement();
+            controller.StartPlayer();
+            playerController.inputs.InputsEnabled = true;
         };
     }
     public void TutorialMovement()
     {
+        controller.StopPlayer();
+        playerController.DisableInputs();
         panelTutorialRectTransform.gameObject.SetActive(true);
         buttonContinue.SetActive(false);
         textTitle.SetActive(false);
@@ -75,7 +83,8 @@ public class TutorialManager : MonoBehaviour
         rectTransformTextSize.fontSize = 25;
 
         string[] dialogoMovimiento = {
-            "Te podras mover con las teclas AWSD, y si mantienes presionado Shift, correras.",
+            "Te podras mover con las teclas AWSD,",
+            "y si mantienes presionado Shift, correras.",
         };
 
         dialogueManager.SetDialogue(dialogoMovimiento);
@@ -83,6 +92,9 @@ public class TutorialManager : MonoBehaviour
         {
             controller.StartPlayer();
             goalMovement.SetActive(true);
+            controller.StartPlayer();
+            playerController.EnableInputs();
+
         };
     }   
     

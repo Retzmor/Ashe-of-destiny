@@ -1228,6 +1228,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DisableInput",
+            "id": "90868f34-e256-467c-b581-a9493288713f",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "ff0202f3-412a-4ae8-a361-bb13cdb6628d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "768fb1fa-3032-4c3d-b0b6-94948d9eab95",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

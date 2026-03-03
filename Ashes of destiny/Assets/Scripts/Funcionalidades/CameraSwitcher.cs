@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class CameraSwitcher : MonoBehaviour
 {
@@ -12,11 +13,11 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject crossHairUI;
     [SerializeField] PlayerMovement playerController;
-    [SerializeField] PlayerControls input;
     [SerializeField] GameObject settingsMenu;
     [SerializeField] CinemachineBrain cinemachineBrain;
     [SerializeField] PlayerComponent playerComponent;
-    InputAction aimAction;
+    [SerializeField] PlayerInputs inputs;
+
     bool isAiming = false;
     Transform yawTarget;
     Transform pitchTarget;
@@ -26,16 +27,14 @@ public class CameraSwitcher : MonoBehaviour
     {
         aimCamController = aimCam.GetComponent<AimCameraController>();
         inputAxisController = freelookCam.GetComponent<CinemachineInputAxisController>();
-        input = new PlayerControls();
-        input.Enable();
-        aimAction = input.Player.Aim;
         crossHairUI.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool aimPressed = aimAction.IsPressed();
+        if (!inputs.InputsEnabled) return;
+        bool aimPressed = inputs.Aim.IsPressed();
         playerController.isAiming = aimPressed;
 
         if(!isAiming && aimPressed)
@@ -98,4 +97,15 @@ public class CameraSwitcher : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void DisableCameraInput()
+    {
+        inputAxisController.enabled = false;
+    }
+
+    public void EnableCameraInput()
+    {
+        inputAxisController.enabled = true;
+    }
+
 }

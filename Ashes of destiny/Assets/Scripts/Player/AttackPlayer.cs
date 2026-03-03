@@ -41,15 +41,17 @@ public class AttackPlayer : MonoBehaviour
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
 
-            Vector3 direction = (crosshairController.CurrentAimPoint - targetAttack.position).normalized;
-            Quaternion rotation = Quaternion.LookRotation(direction);
+            Ray ray = crosshairController.aimCamera.ScreenPointToRay(
+                new Vector3(Screen.width / 2f, Screen.height / 2f, 0f)
+            );
+            Vector3 direction = ray.direction;
 
             GameObject bullet = _container.InstantiatePrefab(
-    ashes.ElementAttack,
-    targetAttack.position,
-    Quaternion.identity,
-    null
-);
+                ashes.ElementAttack,
+                targetAttack.position,
+                Quaternion.LookRotation(direction),
+                null
+            );
 
             bullet.GetComponent<BulletMovement>().SetDirection(direction);
 
@@ -57,6 +59,7 @@ public class AttackPlayer : MonoBehaviour
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }
     }
+
 
     IEnumerator CooldownAttack(int slotIndex)
     {

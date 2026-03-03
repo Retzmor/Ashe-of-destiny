@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputs : MonoBehaviour
 {
+    public bool InputsEnabled = true;
     [SerializeField] InputActionAsset actions;
     public InputAction Jump;
     public InputAction Move;
@@ -31,8 +32,41 @@ public class PlayerInputs : MonoBehaviour
         Boton3 = actions.FindAction("Boton3");
         Aim = actions.FindAction("Aim");
     }
+
+    private void Start()
+    {
+        Debug.Log(gameObject.name);
+    }
+
+    private void OnEnable()
+    {
+        actions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        actions.Disable();
+    }
+
     private void Update()
     {
+        if (!InputsEnabled)
+        {
+            Direction = Vector2.zero;
+            return;
+        }
+
         Direction = Move.ReadValue<Vector2>();
     }
+
+    public void EnableInputs()
+    {
+        actions.Enable();
+    }
+
+    public void DisableInputs()
+    {
+        actions.Disable();
+    }
+
 }

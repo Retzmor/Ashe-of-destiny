@@ -1,21 +1,28 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Zenject;
 using static UnityEngine.InputSystem.InputAction;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] PlayerInputs inputs;
+    [SerializeField] public PlayerInputs inputs;
     [SerializeField] PlayerMovement movement;
     [SerializeField] AttackPlayer attackPlayer;
     [SerializeField] PlayerCollisions playerCollisions;
     [SerializeField] CameraSwitcher camSwitcher;
     AbilitiesPlayer abilitiesPlayer;
     AimPlayer aimPlayer;
-
+    PlayerInput playerInput;
     [Inject] LevelController levelController;
     [Inject] Inventory inventory;
     [Inject] TutorialManager tutorialManager;
     internal bool isAiming;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     private void Start()
     {
@@ -38,27 +45,36 @@ public class PlayerController : MonoBehaviour
 
     public void Saltar(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
+        if (!context.started) return;
         movement.JumpPlayer();
     }
 
     public void SprintPlayer(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
+        if (!context.started) return;
         movement.CanSprint = true;
     }
 
     public void NoSprintPlayer(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
+        if (!context.started) return;
         movement.CanSprint = false;
     }
 
     public void PauseGame(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
+    if (!context.started) return;
         camSwitcher.OpenMenu();
         levelController.PauseGame();
     }
 
     public void AttackPlayer(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
 
         Ashes ashesActiva = abilitiesPlayer.GetSelectedAshes();
@@ -75,17 +91,22 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
         if (context.started)
             playerCollisions.TryInteract();
     }
 
     public void FinishInteract(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
+        if (!context.started) return;
         playerCollisions.CanInteract = false; 
     }
 
     public void MenuSkills(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
+        if (!context.started) return;
         camSwitcher.OpenMenu();
         levelController.MenuSkill();
         tutorialManager.DesactivePanelTutorial();
@@ -93,23 +114,36 @@ public class PlayerController : MonoBehaviour
 
     public void Button1(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
         abilitiesPlayer.ButtonOne();
     }
 
     public void Button2(CallbackContext context)
     {
+        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
         abilitiesPlayer.ButtonTwo();
     }
     public void MeleeAttack(CallbackContext context)
     {
-        Debug.Log("holeee");
+        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
-
         attackPlayer.AttackMelee();
     }
+    public void DisableInputs()
+    {
+        inputs.DisableInputs();
+        camSwitcher.DisableCameraInput();
 
+    }
+
+    public void EnableInputs()
+    {
+        inputs.EnableInputs();
+        camSwitcher.EnableCameraInput();
+
+    }
     //public void AimButton(CallbackCon
     //context)
     //{

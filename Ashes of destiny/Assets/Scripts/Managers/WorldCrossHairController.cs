@@ -3,7 +3,7 @@ using UnityEngine;
 public class WorldCrossHairController : MonoBehaviour
 {
     [SerializeField] RectTransform crossHairUI;
-    [SerializeField] Camera aimCamera;
+    [SerializeField] public Camera aimCamera;
     [SerializeField] float maxDistance = 20f;
     [SerializeField] float crossHairOffSetMultiplier = 0.01f;
     [SerializeField] LayerMask raycastMask;

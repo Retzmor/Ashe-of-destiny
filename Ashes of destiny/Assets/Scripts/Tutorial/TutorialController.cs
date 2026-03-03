@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Zenject;
@@ -8,6 +9,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] PlayerMovement player;
     [SerializeField] CameraSwitcher cameraSwitcher;
     [SerializeField] Weapon[] ashes;
+    [SerializeField] TextMeshProUGUI textSpace;
     int countAshe;
     Rigidbody rbPlayer;
     Vector3 positionPlayerStart;

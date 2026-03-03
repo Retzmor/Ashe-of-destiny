@@ -16,7 +16,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] RectTransform panelTutorialRectTransform;
     [SerializeField] GameObject panelAshe;
     [SerializeField] GameObject panelGame;
-    [SerializeField] GameObject buttonSkip;
     [SerializeField] GameObject buttonContinue;
     [SerializeField] GameObject textTitle;
     [SerializeField] RectTransform textDetail;
@@ -78,7 +77,6 @@ public class TutorialManager : MonoBehaviour
         panelTutorialRectTransform.gameObject.SetActive(true);
         buttonContinue.SetActive(false);
         textTitle.SetActive(false);
-        buttonSkip.SetActive(false);
         imageMovemente.SetActive(true);
         imageShift.SetActive(true);
         textDetail.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI rectTransformTextSize);

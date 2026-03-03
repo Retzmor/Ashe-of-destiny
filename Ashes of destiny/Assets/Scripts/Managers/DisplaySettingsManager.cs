@@ -9,14 +9,30 @@ public class DisplaySettingsManager : MonoBehaviour
     private void Awake()
     {
         QualityChange(PlayerPrefs.HasKey(qualityKey) ? PlayerPrefs.GetInt(qualityKey) : 0);
-        //SetResolution(PlayerPrefs.HasKey("ResRate") ? PlayerPrefs.GetInt("ResRate") : 0);
+
+        if (PlayerPrefs.HasKey("ResWidth") && PlayerPrefs.HasKey("ResHeight"))
+        {
+            int width = PlayerPrefs.GetInt("ResWidth");
+            int height = PlayerPrefs.GetInt("ResHeight");
+
+            Screen.SetResolution(width, height, Screen.fullScreen);
+        }
     }
-    public void SetResolution(int index)
+
+    public void SetResolution(Resolution resolution)
     {
-        Resolution selectedResolution = Screen.resolutions[index];
-        PlayerPrefs.SetInt("ResRate", (int)selectedResolution.refreshRateRatio.numerator);
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
+        PlayerPrefs.SetInt("ResWidth", resolution.width);
+        PlayerPrefs.SetInt("ResHeight", resolution.height);
+
+        Screen.SetResolution(
+            resolution.width,
+            resolution.height,
+            Screen.fullScreenMode,
+            resolution.refreshRateRatio
+        );
     }
+
+
 
     public void QualityChange(int quality)
     {

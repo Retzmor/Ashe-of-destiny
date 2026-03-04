@@ -53,7 +53,7 @@ public class TutorialManager : MonoBehaviour
     public void IniciarTutorial()
     {
         controller.StopPlayer();
-        playerController.inputs.DisableInputs();
+        playerController.DisableInputs();
         levelController.CanOpenMenus = false;
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
@@ -66,12 +66,13 @@ public class TutorialManager : MonoBehaviour
         {
             TutorialMovement();
             controller.StartPlayer();
-            playerController.inputs.EnableInputs();
+            playerController.EnableInputs();
             levelController.CanOpenMenus = true;
         };
     }
     public void TutorialMovement()
     {
+        levelController.CanOpenMenus = false;
         controller.StopPlayer();
         playerController.DisableInputs();
         panelTutorialRectTransform.gameObject.SetActive(true);
@@ -100,12 +101,14 @@ public class TutorialManager : MonoBehaviour
             goalMovement.SetActive(true);
             controller.StartPlayer();
             playerController.EnableInputs();
-
+            levelController.CanOpenMenus = true;
         };
     }   
     
     public void TutorialJump()
     {
+        playerController.DisableInputs();
+        levelController.CanOpenMenus = false;
         controller.StopPlayer();
         goalMovement.SetActive(false);
         imageShift.SetActive(false);
@@ -121,11 +124,15 @@ public class TutorialManager : MonoBehaviour
             controller.StartPlayer();
             goalMovement2.SetActive(true);
             treeObstacule.SetActive(true);
+            levelController.CanOpenMenus = true;
+            playerController.EnableInputs();
         };
     }
 
     public void TutorialMelee()
     {
+        playerController.DisableInputs();
+        levelController.CanOpenMenus = false;
         controller.StartPlayer();
         goalAttackMelee.SetActive(true);
         goalMovement2.SetActive(false);
@@ -137,11 +144,14 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
-
+            levelController.CanOpenMenus = true;
+            playerController.EnableInputs();
         };
     }
     public void TutorialAshes()
     {
+        playerController.DisableInputs();
+        levelController.CanOpenMenus = false;
         MouseRight.SetActive(false);
         goalAttackMelee.SetActive(false);
         countAshe.SetActive(true);
@@ -158,6 +168,8 @@ public class TutorialManager : MonoBehaviour
             panelAshe.SetActive(false);
             panelGame.SetActive(true);
             cameraManager.CameraPlayer();
+            levelController.CanOpenMenus = true;
+            playerController.EnableInputs();
         };
     }
     public void TutorialWeapons()
@@ -178,6 +190,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialShoot()
     {
+        playerController.DisableInputs();
         imageTab.SetActive(false);
         controller.StartPlayer();
         imageE.gameObject.SetActive(true);
@@ -190,11 +203,13 @@ public class TutorialManager : MonoBehaviour
         {
             enemy.SetActive(true);
             TutorialAim();
+            playerController.EnableInputs();
         };
     }
 
     public void TutorialAim()
     {
+        playerController.DisableInputs();
         imageE.gameObject.SetActive(false);
         imageQ.gameObject.SetActive(false);
         imageTab.SetActive(false);
@@ -207,6 +222,7 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
+            playerController.EnableInputs();
             controller.StartPlayer();
         };
     }

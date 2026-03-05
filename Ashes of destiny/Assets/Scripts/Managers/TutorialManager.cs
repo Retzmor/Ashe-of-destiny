@@ -41,6 +41,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] Image imageE;
     [SerializeField] Image imageQ;
+    [SerializeField] PlayerMovement playerMovement;
 
     [Inject] LevelController levelController;
 
@@ -179,6 +180,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialWeapons()
     {
+        playerMovement.IsJumping = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         controller.StopPlayer();
@@ -197,7 +199,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialShoot()
     {
-        playerController.DisableInputs();
+        controller.ActiveTextSpace();
         imageTab.SetActive(false);
         controller.StopPlayer();
         imageE.gameObject.SetActive(true);
@@ -210,13 +212,13 @@ public class TutorialManager : MonoBehaviour
         {
             enemy.SetActive(true);
             TutorialAim();
-            playerController.EnableInputs();
-            controller.StartPlayer();
         };
     }
 
     public void TutorialAim()
     {
+        controller.ActiveTextSpace();
+        playerMovement.IsJumping = false;
         playerController.DisableInputs();
         imageE.gameObject.SetActive(false);
         imageQ.gameObject.SetActive(false);
@@ -232,6 +234,8 @@ public class TutorialManager : MonoBehaviour
         {
             playerController.EnableInputs();
             controller.StartPlayer();
+            playerMovement.IsJumping = true;
+            controller.ActiveTextSpace();
         };
     }
 

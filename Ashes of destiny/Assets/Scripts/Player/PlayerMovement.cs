@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform cam;
     [SerializeField] Transform yawTarget;
     private bool _canSprint = false;
-    private bool isJumping = false;
+    private bool _isJumping = true;
     internal bool isAiming;
     bool _canMoving = false;
     Vector3 lookDirection;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
+    public bool IsJumping { get => _isJumping; set => _isJumping = value; }
 
     private void OnEnable()
     {
@@ -135,26 +136,12 @@ public class PlayerMovement : MonoBehaviour
     }
     public void JumpPlayer()
     {
-        if (IsGrounded())
+        if (IsGrounded() && _isJumping == true)
         {
             playerComponent.Animator.SetTrigger("Jump");
             Vector3 currentVelocity = rb.linearVelocity;
             Rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
             Rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        Collider[] canJumpPlayer = Physics.OverlapSphere(zoneJump.transform.position, radiusJump, canJump);
-        if (canJumpPlayer.Length > 0)
-        {
-            isJumping = true;
-        }
-
-        else
-        {
-            isJumping = false;
         }
     }
 

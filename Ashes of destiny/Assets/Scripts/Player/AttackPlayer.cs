@@ -85,14 +85,14 @@ public class AttackPlayer : MonoBehaviour
         Collider[] hitEnemies = Physics.OverlapSphere(targetAttackMelee.position,radiusAttackMelee,layer);
         if (hitEnemies.Length == 0)
         {
-            playerComponent.Animator.SetTrigger("Attack");
+            playerComponent.Animator.SetTrigger("AttackMelee");
         }
 
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy.GetComponentInParent<WoodCollision>())
             {
-                playerComponent.Animator.SetTrigger("Attack");
+                playerComponent.Animator.SetTrigger("AttackMelee");
                 WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
                 wood.AnimationWoodBroke();
             }

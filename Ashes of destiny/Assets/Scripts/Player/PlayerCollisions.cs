@@ -43,7 +43,7 @@ public class PlayerCollisions : MonoBehaviour
     public void TryInteract()
     {
         if (currentItem == null) return;
-        playerComponent.Animator.SetTrigger("Take");
+       // playerComponent.Animator.SetTrigger("Take");
         inventory.addItemInventory(currentItem);
         attackPlayer.CurrentWeapon = currentItem;
         currentItem.SetActive(false);

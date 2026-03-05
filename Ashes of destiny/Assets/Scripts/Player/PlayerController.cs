@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [Inject] Inventory inventory;
     [Inject] TutorialManager tutorialManager;
     internal bool isAiming;
+    private bool inputsLocked;
 
     private void Start()
     {
@@ -54,9 +55,11 @@ public class PlayerController : MonoBehaviour
     public void NoSprintPlayer(CallbackContext context)
     {
         if (!inputs.InputsEnabled) return;
-        if (!context.started) return;
+        if (!context.canceled) return;
+
         movement.CanSprint = false;
     }
+
 
     public void PauseGame(CallbackContext context)
     {
@@ -70,12 +73,15 @@ public class PlayerController : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (!context.started) return;
-
-        Ashes ashesActiva = abilitiesPlayer.GetSelectedAshes();
-
-        if (ashesActiva != null)
+        if (inputsLocked) return;
+        if (movement.isAiming)
         {
-            attackPlayer.Attack(ashesActiva);
+            Ashes ashesActiva = abilitiesPlayer.GetSelectedAshes();
+
+            if (ashesActiva != null)
+            {
+                attackPlayer.Attack(ashesActiva);
+            }
         }
         else
         {
@@ -129,6 +135,7 @@ public class PlayerController : MonoBehaviour
         inputs.DisableInputs();
         camSwitcher.DisableCameraInput();
         inputs.enabled = false;
+        inputsLocked = true;
     }
 
     public void EnableInputs()
@@ -136,6 +143,7 @@ public class PlayerController : MonoBehaviour
         inputs.EnableInputs();
         camSwitcher.EnableCameraInput();
         inputs.enabled = true;
+        inputsLocked = false;
     }
     //public void AimButton(CallbackCon
     //context)

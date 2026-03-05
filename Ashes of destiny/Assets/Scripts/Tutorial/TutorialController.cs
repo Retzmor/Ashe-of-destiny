@@ -48,4 +48,14 @@ public class TutorialController : MonoBehaviour
     {
         player.transform.position = positionPlayerStart;
     }
+
+    public void DesactiveTextSpace()
+    {
+        textSpace.gameObject.SetActive(false);
+    }
+
+    public void ActiveTextSpace()
+    {
+        textSpace.gameObject.SetActive(true);
+    }
 }

@@ -65,21 +65,18 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             TutorialMovement();
-            controller.StartPlayer();
-            playerController.EnableInputs();
             levelController.CanOpenMenus = true;
         };
     }
     public void TutorialMovement()
     {
         levelController.CanOpenMenus = false;
-        controller.StopPlayer();
-        playerController.DisableInputs();
         panelTutorialRectTransform.gameObject.SetActive(true);
         buttonContinue.SetActive(false);
         textTitle.SetActive(false);
         imageMovemente.SetActive(true);
         imageShift.SetActive(true);
+        playerController.DisableInputs();
         textDetail.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI rectTransformTextSize);
         Vector2 vectorXY = new(-520, 300);
         panelTutorialRectTransform.anchoredPosition = vectorXY;
@@ -97,7 +94,6 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
-            controller.StartPlayer();
             goalMovement.SetActive(true);
             controller.StartPlayer();
             playerController.EnableInputs();

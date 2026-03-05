@@ -13,16 +13,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CameraSwitcher camSwitcher;
     AbilitiesPlayer abilitiesPlayer;
     AimPlayer aimPlayer;
-    PlayerInput playerInput;
     [Inject] LevelController levelController;
     [Inject] Inventory inventory;
     [Inject] TutorialManager tutorialManager;
     internal bool isAiming;
-
-    private void Awake()
-    {
-        playerInput = GetComponent<PlayerInput>();
-    }
 
     private void Start()
     {
@@ -134,14 +128,14 @@ public class PlayerController : MonoBehaviour
     {
         inputs.DisableInputs();
         camSwitcher.DisableCameraInput();
-
+        inputs.enabled = false;
     }
 
     public void EnableInputs()
     {
         inputs.EnableInputs();
         camSwitcher.EnableCameraInput();
-
+        inputs.enabled = true;
     }
     //public void AimButton(CallbackCon
     //context)

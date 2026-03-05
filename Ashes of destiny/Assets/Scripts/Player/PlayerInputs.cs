@@ -33,11 +33,6 @@ public class PlayerInputs : MonoBehaviour
         Aim = actions.FindAction("Aim");
     }
 
-    private void Start()
-    {
-        Debug.Log(gameObject.name);
-    }
-
     private void OnEnable()
     {
         actions.Enable();

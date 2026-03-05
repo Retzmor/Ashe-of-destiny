@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AttackPlayer attackPlayer;
     [SerializeField] PlayerCollisions playerCollisions;
     [SerializeField] CameraSwitcher camSwitcher;
+    [SerializeField] public CinemachineInputAxisController inputAxisController;
     AbilitiesPlayer abilitiesPlayer;
     AimPlayer aimPlayer;
     [Inject] LevelController levelController;
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
     if (!context.started) return;
         camSwitcher.OpenMenu();
         levelController.PauseGame();
+        camSwitcher.DisableCameraInput();
     }
 
     public void AttackPlayer(CallbackContext context)

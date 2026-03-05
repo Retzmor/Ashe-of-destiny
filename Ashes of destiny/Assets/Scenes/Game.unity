@@ -8096,6 +8096,7 @@ MonoBehaviour:
   - {fileID: 1469952439}
   - {fileID: 934228985}
   animator: {fileID: 345184326}
+  camSwitcher: {fileID: 1252342476}
   CanOpenMenus: 1
 --- !u!4 &829431887
 Transform:
@@ -20426,6 +20427,10 @@ PrefabInstance:
       propertyPath: camSwitcher
       value: 
       objectReference: {fileID: 1252342476}
+    - target: {fileID: 1858844897775126325, guid: fc7ae054b06918c47b2a7285f607d9c2, type: 3}
+      propertyPath: inputAxisController
+      value: 
+      objectReference: {fileID: 171686225}
     - target: {fileID: 2375029883210604170, guid: fc7ae054b06918c47b2a7285f607d9c2, type: 3}
       propertyPath: controller
       value: 

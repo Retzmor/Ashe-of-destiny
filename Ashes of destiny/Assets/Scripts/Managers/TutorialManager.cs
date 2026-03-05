@@ -153,6 +153,8 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialAshes()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         playerController.DisableInputs();
         levelController.CanOpenMenus = false;
         MouseRight.SetActive(false);
@@ -177,6 +179,8 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialWeapons()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         controller.StopPlayer();
         imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
@@ -195,7 +199,7 @@ public class TutorialManager : MonoBehaviour
     {
         playerController.DisableInputs();
         imageTab.SetActive(false);
-        controller.StartPlayer();
+        controller.StopPlayer();
         imageE.gameObject.SetActive(true);
         imageQ.gameObject.SetActive(true);
         string[] dialogoMovimiento = { 
@@ -207,6 +211,7 @@ public class TutorialManager : MonoBehaviour
             enemy.SetActive(true);
             TutorialAim();
             playerController.EnableInputs();
+            controller.StartPlayer();
         };
     }
 
@@ -216,7 +221,7 @@ public class TutorialManager : MonoBehaviour
         imageE.gameObject.SetActive(false);
         imageQ.gameObject.SetActive(false);
         imageTab.SetActive(false);
-        controller.StartPlayer();
+        controller.StopPlayer();
         MouseRight.SetActive(true);
         MouseLeft.SetActive(true);
         string[] dialogoMovimiento = {

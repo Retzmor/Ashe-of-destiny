@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject panelGame;
     [SerializeField] Particulas[] particles;
     [SerializeField] Animator animator;
+    [SerializeField] CameraSwitcher camSwitcher;
     public bool CanOpenMenus = true;
 
     CanvasGroup canvas;
@@ -140,6 +141,7 @@ public class LevelController : MonoBehaviour
         }
 
         Time.timeScale = 1f;
+        camSwitcher.EnableCameraInput();
     }
 
 }

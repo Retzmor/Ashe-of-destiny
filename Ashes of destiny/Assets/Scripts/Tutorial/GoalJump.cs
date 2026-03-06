@@ -7,9 +7,9 @@ public class GoalJump : MonoBehaviour
     [Inject] TutorialManager tutorialManager;
     bool playerDetected = false;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
-        if (collision.gameObject.CompareTag("Player") && playerDetected == false)
+        if (other.gameObject.CompareTag("Player") && playerDetected == false)
         {
             playerDetected = true;
             StartCoroutine(WaitAndActive());
@@ -18,7 +18,7 @@ public class GoalJump : MonoBehaviour
 
     IEnumerator WaitAndActive()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         tutorialManager.TutorialMelee();
     }
 }

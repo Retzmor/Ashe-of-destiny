@@ -136,7 +136,7 @@ public class TutorialManager : MonoBehaviour
         controller.ActiveTextSpace();
         playerController.DisableInputs();
         levelController.CanOpenMenus = false;
-        controller.StartPlayer();
+        controller.StopPlayer();
         goalAttackMelee.SetActive(true);
         goalMovement2.SetActive(false);
         imagejump.SetActive(false);
@@ -150,6 +150,7 @@ public class TutorialManager : MonoBehaviour
             levelController.CanOpenMenus = true;
             playerController.EnableInputs();
             controller.DesactiveTextSpace();
+            controller.StartPlayer();
         };
     }
     public void TutorialAshes()

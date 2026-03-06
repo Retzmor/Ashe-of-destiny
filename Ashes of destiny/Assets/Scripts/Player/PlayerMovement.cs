@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     PlayerComponent playerComponent;
     float speed;
-    [SerializeField] float rotationSpeed = 6f;
+    [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float jumpForce;
     [SerializeField] GameObject zoneJump;
     [SerializeField] GameObject zoneWalk;
@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
                     transform.rotation = Quaternion.RotateTowards(
                         transform.rotation,
                         targetRotation,
-                        rotationSpeed * 360f * Time.deltaTime
+                        rotationSpeed * 190f * Time.deltaTime
                     );
                 }
             }

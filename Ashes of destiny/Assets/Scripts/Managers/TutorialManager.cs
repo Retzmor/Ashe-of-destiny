@@ -81,13 +81,13 @@ public class TutorialManager : MonoBehaviour
         imageShift.SetActive(true);
         playerController.DisableInputs();
         textDetail.TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI rectTransformTextSize);
-        Vector2 vectorXY = new(-520, 300);
+        Vector2 vectorXY = new(-550, 300);
         panelTutorialRectTransform.anchoredPosition = vectorXY;
-        Vector2 vectorWH = new(885, 300);
+        Vector2 vectorWH = new(885, 400);
         panelTutorialRectTransform.sizeDelta=  vectorWH;
         //panelTutorialRectTransform.anchoredPosition = new Vector2(0,0);    NO RECUERDO PA QUE ERA AJAJAJ
-        panelTutorialRectTransform.sizeDelta = new Vector2(700, 200);
-        rectTransformTextSize.fontSize = 25;
+        panelTutorialRectTransform.sizeDelta = new Vector2(900, 350);
+        rectTransformTextSize.fontSize = 40;
 
         string[] dialogoMovimiento = {
             "Te podras mover con las teclas AWSD,",
@@ -142,7 +142,7 @@ public class TutorialManager : MonoBehaviour
         imagejump.SetActive(false);
         MouseRight.SetActive(true);
         string[] dialogoMovimiento = {
-        "Con el click derecho del mouse podras golpear cuerpo a cuerpo",
+        "Con el click derecho del mouse podras golpearas",
         "rompe las tablas que bloquean tu camino!!"};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>

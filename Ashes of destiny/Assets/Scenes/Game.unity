@@ -3424,7 +3424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 319, y: -26}
+  m_AnchoredPosition: {x: 456.65704, y: -26}
   m_SizeDelta: {x: 405, y: 249}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &283827692
@@ -11922,7 +11922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 107, y: -26}
+  m_AnchoredPosition: {x: 244.65704, y: -26}
   m_SizeDelta: {x: 120, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1301026775
@@ -17997,7 +17997,7 @@ Transform:
   m_GameObject: {fileID: 1894827369}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3303662, y: 0.08852132, z: -0.2432103, w: 0.90767336}
-  m_LocalPosition: {x: -0.68, y: 15.789, z: 18.534}
+  m_LocalPosition: {x: -0.68, y: 15.91, z: 18.4}
   m_LocalScale: {x: 0.5, y: 0.5000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18018,12 +18018,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.24, y: 10.240003, z: 0}
-  m_Center: {x: 0, y: -0.000036239624, z: 0.0037254682}
+  m_Size: {x: 10.23998, y: 10.240003, z: 0.0000015166588}
+  m_Center: {x: 0.000010013622, y: -0.000036239227, z: 0.0037247099}
 --- !u!212 &1894827373
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19259,7 +19259,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

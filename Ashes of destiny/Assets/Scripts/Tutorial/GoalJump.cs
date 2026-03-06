@@ -15,7 +15,6 @@ public class GoalJump : MonoBehaviour
             StartCoroutine(WaitAndActive());
         }
     }
-
     IEnumerator WaitAndActive()
     {
         yield return new WaitForSeconds(0.2f);

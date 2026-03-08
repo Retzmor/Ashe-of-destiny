@@ -26,7 +26,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject imageShift;
     [SerializeField] GameObject imageTab;
     [SerializeField] GameObject goalMovement;
-    [SerializeField] GameObject treeObstacule;
+    //[SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
     [SerializeField] GameObject countAshe;
     [SerializeField] GameObject enemy;
@@ -124,7 +124,7 @@ public class TutorialManager : MonoBehaviour
         {
             controller.StartPlayer();
             goalMovement2.SetActive(true);
-            treeObstacule.SetActive(true);
+           // treeObstacule.SetActive(true);
             levelController.CanOpenMenus = true;
             playerController.EnableInputs();
             controller.DesactiveTextSpace();
@@ -163,7 +163,7 @@ public class TutorialManager : MonoBehaviour
         goalAttackMelee.SetActive(false);
         countAshe.SetActive(true);
         controller.StopPlayer();
-        treeObstacule.SetActive(false);
+       // treeObstacule.SetActive(false);
         goalMovement2.SetActive(false);
         imagejump.SetActive(false);
         panelAshe.SetActive(true);

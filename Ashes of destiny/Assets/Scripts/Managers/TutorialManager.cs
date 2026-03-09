@@ -54,6 +54,7 @@ public class TutorialManager : MonoBehaviour
 
     public void IniciarTutorial()
     {
+        playerMovement.jump = false;
         levelController.UnlockCursor();
         controller.StopPlayer();
         playerController.DisableInputs();
@@ -71,10 +72,12 @@ public class TutorialManager : MonoBehaviour
             TutorialMovement();
             levelController.CanOpenMenus = true;
             levelController.LockCursor();
+            playerMovement.jump = true;
         };
     }
     public void TutorialMovement()
     {
+        controller.StopPlayer();
         controller.ActiveTextSpace();
         levelController.CanOpenMenus = false;
         panelTutorialRectTransform.gameObject.SetActive(true);
@@ -105,6 +108,7 @@ public class TutorialManager : MonoBehaviour
             playerController.EnableInputs();
             levelController.CanOpenMenus = true;
             controller.DesactiveTextSpace();
+            controller.StartPlayer();
         };
     }   
     
@@ -185,6 +189,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialWeapons()
     {
+        controller.ActiveTextSpace();
         playerMovement.IsJumping = false;
         levelController.CanOpenMenus = true;
         Cursor.visible = false;

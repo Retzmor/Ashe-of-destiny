@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isJumping = true;
     internal bool isAiming;
     bool _canMoving = false;
+    public bool jump = false;
     Vector3 lookDirection;
     Vector3 currentMoveDir;
 
@@ -131,7 +132,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void JumpPlayer()
     {
-        if (IsGrounded())
+        
+        if (IsGrounded() && jump == true)
         {
             playerComponent.Animator.SetTrigger("Jump");
 

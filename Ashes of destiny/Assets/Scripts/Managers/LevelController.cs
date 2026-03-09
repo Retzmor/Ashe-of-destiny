@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
@@ -54,8 +55,7 @@ public class LevelController : MonoBehaviour
 
     public void UnlockCursor()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        StartCoroutine(UnlockCursorNextFrame());
     }
     public void PauseGame()
     {
@@ -166,5 +166,11 @@ public class LevelController : MonoBehaviour
         Time.timeScale = 1f;
         camSwitcher.EnableCameraInput();
         LockCursor();
+    }
+    IEnumerator UnlockCursorNextFrame()
+    {
+        yield return null;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

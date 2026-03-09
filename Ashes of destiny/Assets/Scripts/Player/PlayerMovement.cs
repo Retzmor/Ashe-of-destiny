@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask canWalk;
     [SerializeField] Transform cam;
     [SerializeField] Transform yawTarget;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] float groundDistance = 0.3f;
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
@@ -55,22 +57,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
-        if (IsGrounded() && _canMoving)
+        if (_canMoving)
         {
             float speed = _canSprint ? 8f : 4f;
-            if(_canSprint)
+
+            if (_canSprint)
             {
                 playerComponent.Animator.SetBool("Run", true);
                 playerComponent.Animator.SetBool("Walk", false);
             }
-
             else
             {
                 playerComponent.Animator.SetBool("Run", false);
                 playerComponent.Animator.SetBool("Walk", true);
             }
 
-                Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+            Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
             if (inputDir.sqrMagnitude > 0.01f)
             {
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
                 forward.y = 0;
                 right.y = 0;
+
                 forward.Normalize();
                 right.Normalize();
 
@@ -113,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
                     Rb.linearVelocity.y,
                     0
                 );
+
                 playerComponent.Animator.SetBool("Walk", false);
             }
 
@@ -136,30 +140,25 @@ public class PlayerMovement : MonoBehaviour
     }
     public void JumpPlayer()
     {
-        if (IsGrounded() && _isJumping == true)
+        if (_isJumping == true)
         {
             playerComponent.Animator.SetTrigger("Jump");
+
             Vector3 currentVelocity = rb.linearVelocity;
-            Rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+
+            Rb.linearVelocity = new Vector3(
+                currentVelocity.x,
+                0f,
+                currentVelocity.z
+            );
+
             Rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
     bool IsGrounded()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.2f, canWalk))
-        {
-            float angle = Vector3.Angle(hit.normal, Vector3.up);
-
-            if (angle < 45f)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, canWalk);
     }
 
     private void OnDrawGizmos()

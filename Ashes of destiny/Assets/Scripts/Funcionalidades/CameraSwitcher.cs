@@ -17,7 +17,7 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] CinemachineBrain cinemachineBrain;
     [SerializeField] PlayerComponent playerComponent;
     [SerializeField] PlayerInputs inputs;
-
+    [SerializeField] TutorialController tutorialController;
     bool isAiming = false;
     Transform yawTarget;
     Transform pitchTarget;
@@ -51,6 +51,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void ExitAimMode()
     {
+        tutorialController.StartPlayer();
         playerComponent.Animator.SetBool("Aim", false);
         cinemachineBrain.DefaultBlend.Time = 0.5f;
         crossHairUI?.SetActive(false);
@@ -77,6 +78,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void EnterAimMode()
     {
+        tutorialController.StopPlayer();
         playerComponent.Animator.SetBool("Aim", true);
         cinemachineBrain.DefaultBlend.Time = 0.5f;
         crossHairUI.gameObject.SetActive(true);

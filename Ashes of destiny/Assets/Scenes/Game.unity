@@ -21148,6 +21148,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
       objectReference: {fileID: 0}
+    - target: {fileID: 1723849159132112286, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}
+      propertyPath: _elementAttack
+      value: 
+      objectReference: {fileID: 3843193732701751438, guid: b4020e9c78c668345bf28ce6c8064aaf, type: 3}
     - target: {fileID: 4144059889915889544, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}
       propertyPath: m_Name
       value: cenizas

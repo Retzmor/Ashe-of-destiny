@@ -8,6 +8,7 @@ public class BulletMovement : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float damage;
+    [SerializeField] float rotationSpeed = 800f;
 
     bool alreadyDamage = false;
 
@@ -66,5 +67,10 @@ public class BulletMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
     }
 }

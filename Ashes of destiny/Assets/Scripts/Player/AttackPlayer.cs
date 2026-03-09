@@ -40,7 +40,7 @@ public class AttackPlayer : MonoBehaviour
         if (cooldowns[slotIndex] == null)
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
-
+            playerComponent.Animator.SetTrigger("Shoot");
             Ray ray = crosshairController.aimCamera.ScreenPointToRay(
                 new Vector3(Screen.width / 2f, Screen.height / 2f, 0f)
             );

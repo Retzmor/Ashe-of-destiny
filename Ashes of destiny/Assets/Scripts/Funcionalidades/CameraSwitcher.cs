@@ -93,7 +93,7 @@ public class CameraSwitcher : MonoBehaviour
     }
 
     public void CloseMenu()
-    {
+    { 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

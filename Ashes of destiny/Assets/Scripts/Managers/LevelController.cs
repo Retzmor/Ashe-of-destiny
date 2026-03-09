@@ -1,9 +1,11 @@
 using UnityEngine;
-using Zenject;
 using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
+using Zenject;
 
 public class LevelController : MonoBehaviour
 {
+    [SerializeField] PlayerInputs inputs;
     enum MenuState
     {
         None,
@@ -61,8 +63,7 @@ public class LevelController : MonoBehaviour
 
         if (currentMenu == MenuState.Pause)
         {
-            CloseAllMenus();
-            currentMenu = MenuState.None;
+            DespausarGame();
             return;
         }
 
@@ -70,11 +71,17 @@ public class LevelController : MonoBehaviour
 
         panelPause.SetActive(true);
         panelOptions.SetActive(false);
+
         Time.timeScale = 0;
+
+        inputs.DisableInputs();           
+        camSwitcher.DisableCameraInput(); 
         UnlockCursor();
+
         pauseState = PauseSubState.Main;
         currentMenu = MenuState.Pause;
     }
+
 
     public void OpenOptions()
     {
@@ -97,6 +104,8 @@ public class LevelController : MonoBehaviour
         CloseAllMenus();
         currentMenu = MenuState.None;
         gameManager.Despausar();
+        inputs.EnableInputs();           
+        camSwitcher.EnableCameraInput();
     }
 
     public void ScreenFull()

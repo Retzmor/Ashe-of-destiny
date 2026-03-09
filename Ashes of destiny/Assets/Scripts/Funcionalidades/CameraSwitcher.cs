@@ -34,6 +34,7 @@ public class CameraSwitcher : MonoBehaviour
     void Update()
     {
         if (!inputs.InputsEnabled) return;
+        if (Time.timeScale == 0) return;
         bool aimPressed = inputs.Aim.IsPressed();
         playerController.isAiming = aimPressed;
 

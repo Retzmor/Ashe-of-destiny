@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform yawTarget;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundDistance = 0.3f;
+    [SerializeField] Transform pivot;
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
@@ -101,12 +102,7 @@ public class PlayerMovement : MonoBehaviour
                 if (!isAiming)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-
-                    transform.rotation = Quaternion.Slerp(
-                        transform.rotation,
-                        targetRotation,
-                        rotationSpeed * Time.deltaTime
-                    );
+                    transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
                 }
             }
             else
@@ -128,31 +124,26 @@ public class PlayerMovement : MonoBehaviour
                 if (lookDirection.sqrMagnitude > 0.01f)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-
-                    transform.rotation = Quaternion.RotateTowards(
-                        transform.rotation,
-                        targetRotation,
-                        rotationSpeed * 190f * Time.deltaTime
-                    );
+                    transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
                 }
             }
         }
     }
     public void JumpPlayer()
     {
-        if (_isJumping == true)
+        if (IsGrounded())
         {
             playerComponent.Animator.SetTrigger("Jump");
 
             Vector3 currentVelocity = rb.linearVelocity;
 
-            Rb.linearVelocity = new Vector3(
+            rb.linearVelocity = new Vector3(
                 currentVelocity.x,
                 0f,
                 currentVelocity.z
             );
 
-            Rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 

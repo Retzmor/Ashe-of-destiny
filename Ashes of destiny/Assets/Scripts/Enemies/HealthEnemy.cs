@@ -3,34 +3,36 @@ using Zenject;
 
 public class HealthEnemy : MonoBehaviour
 {
-    [Inject] TutorialManager tutorialManager;   
+    [Inject] TutorialManager tutorialManager;
+
     [SerializeField] float healthMax;
-    [SerializeField] float healthMin;
     [SerializeField] float currentHealth;
-    [SerializeField] Material material;
+
+    EnemyHealthBar healthBar;
+
     EnemyMovement enemyMovement;
+
     void Start()
     {
         currentHealth = healthMax;
         enemyMovement = GetComponent<EnemyMovement>();
-        material = GetComponent<Material>();
+        healthBar = GetComponent<EnemyHealthBar>();
+
+        healthBar.SetMaxHealth(healthMax);
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        enemyMovement.TakeDamageEffect();
-        //aqui iria la animacion de recibir daño
-        if (currentHealth < healthMin)
-        {
-            // aqui deberia curarse o tirar alguna habilidad poderosa
-            //material.color = Color.green; ;
-        }
 
-        if(currentHealth <= 0)
+        enemyMovement.TakeDamageEffect();
+
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
         {
             Death();
-        } 
+        }
     }
 
     public void Death()

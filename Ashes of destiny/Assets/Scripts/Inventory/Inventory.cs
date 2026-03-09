@@ -114,7 +114,7 @@ public class Inventory : MonoBehaviour
             gameplayUIController.ActivePanelGame();
             if (_tutorialSkip == false)
             {
-                StartCoroutine(TutorialShoot());
+                StartCoroutine(TutorialShoot());   
             }
         }
     }

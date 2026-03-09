@@ -5,13 +5,17 @@ using Zenject;
 
 public class PlayerCollisions : MonoBehaviour
 {
-   
     [Inject] Inventory inventory;
+    [SerializeField] Animator animator;
+    [SerializeField] TutorialController controller;
     bool _canInteract = false;
     AttackPlayer attackPlayer;
     AbilitiesPlayer abilitiesPlayer;
     HealthPlayer healthPlayer;
     PlayerComponent playerComponent;
+    PlayerController playerController;
+    PlayerMovement playerMovement;
+
 
     private void Start()
     {
@@ -19,6 +23,8 @@ public class PlayerCollisions : MonoBehaviour
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         healthPlayer = GetComponent<HealthPlayer>();
         playerComponent = GetComponent<PlayerComponent>();
+        playerController = GetComponent<PlayerController>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public bool CanInteract { get => _canInteract; set => _canInteract = value; }
@@ -43,7 +49,7 @@ public class PlayerCollisions : MonoBehaviour
     public void TryInteract()
     {
         if (currentItem == null) return;
-       // playerComponent.Animator.SetTrigger("Take");
+        PlayPickAshAnimation();
         inventory.addItemInventory(currentItem);
         attackPlayer.CurrentWeapon = currentItem;
         currentItem.SetActive(false);
@@ -58,4 +64,10 @@ public class PlayerCollisions : MonoBehaviour
         }
     }
 
+    public void PlayPickAshAnimation()
+    {
+        controller.StopPlayer();
+        playerController.DisableInputs();
+        animator.SetTrigger("Take");
+    }
 }

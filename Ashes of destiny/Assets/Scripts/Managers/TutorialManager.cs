@@ -48,11 +48,13 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         IniciarTutorial();
+        levelController.UnlockCursor();
         // AudioManager.Instance.PlayMusic(musicaTutorial);
     }
 
     public void IniciarTutorial()
     {
+        levelController.UnlockCursor();
         controller.StopPlayer();
         playerController.DisableInputs();
         controller.DesactiveTextSpace();
@@ -68,6 +70,7 @@ public class TutorialManager : MonoBehaviour
         {
             TutorialMovement();
             levelController.CanOpenMenus = true;
+            levelController.LockCursor();
         };
     }
     public void TutorialMovement()
@@ -171,6 +174,7 @@ public class TutorialManager : MonoBehaviour
         cameraManager.CameraAsheTutorial();
         dialogueManager.OnDialogueEnd = () =>
         {
+            levelController.LockCursor();
             controller.StartPlayer();
             panelAshe.SetActive(false);
             panelGame.SetActive(true);
@@ -182,6 +186,7 @@ public class TutorialManager : MonoBehaviour
     public void TutorialWeapons()
     {
         playerMovement.IsJumping = false;
+        levelController.CanOpenMenus = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         controller.StopPlayer();
@@ -200,6 +205,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialShoot()
     {
+        levelController.LockCursor();
         controller.ActiveTextSpace();
         imageTab.SetActive(false);
         controller.StopPlayer();
@@ -236,7 +242,7 @@ public class TutorialManager : MonoBehaviour
             playerController.EnableInputs();
             controller.StartPlayer();
             playerMovement.IsJumping = true;
-            controller.ActiveTextSpace();
+            controller.DesactiveTextSpace();
         };
     }
 

@@ -22,12 +22,18 @@ public class Inventory : MonoBehaviour
     [SerializeField] Sprite imageRockActive;
     [SerializeField] Sprite imageAirActive;
     [SerializeField] CountItems countItem;
+    PlayerController playerController;
     bool _tutorialSkip = false;
     bool _canBuyItemFire = false;
 
 
     public bool TutorialSkip { get => _tutorialSkip; set => _tutorialSkip = value; }
     public bool CanBuyItemFire { get => _canBuyItemFire; set => _canBuyItemFire = value; }
+
+    private void Start()
+    {
+        playerController = abilitiesPlayer.gameObject.GetComponent<PlayerController>();
+    }
 
     public void addItemInventory(GameObject objectItem)
     {
@@ -118,6 +124,8 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+
 
     IEnumerator TutorialShoot()
     {

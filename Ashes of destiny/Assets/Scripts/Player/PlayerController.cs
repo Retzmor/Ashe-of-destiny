@@ -110,8 +110,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (!context.started) return;
+        levelController.MenuSkill();   
         camSwitcher.OpenMenu();
-        levelController.MenuSkill();
     }
 
     public void Button1(CallbackContext context)
@@ -147,6 +147,11 @@ public class PlayerController : MonoBehaviour
         camSwitcher.EnableCameraInput();
         inputs.enabled = true;
         inputsLocked = false;
+    }
+
+    public void OnPickAshAnimationEnd()
+    {
+       EnableInputs();
     }
     //public void AimButton(CallbackCon
     //context)

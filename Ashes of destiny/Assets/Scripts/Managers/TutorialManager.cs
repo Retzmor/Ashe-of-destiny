@@ -217,7 +217,7 @@ public class TutorialManager : MonoBehaviour
         imageE.gameObject.SetActive(true);
         imageQ.gameObject.SetActive(true);
         string[] dialogoMovimiento = { 
-        "para seleccionar las habilidades se usan las teclas Q y E",
+        "seleccione las habilidades con las teclas Q y E",
         "se mostrara la seleccionada de manera visual",};
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>

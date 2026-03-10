@@ -129,26 +129,28 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        JumpPlayer();
     }
     public void JumpPlayer()
     {
-        
-        if (IsGrounded() && jump == true)
+        if (IsGrounded() && jump)
         {
             playerComponent.Animator.SetTrigger("Jump");
-
-            Vector3 currentVelocity = rb.linearVelocity;
-
-            rb.linearVelocity = new Vector3(
-                currentVelocity.x,
-                0f,
-                currentVelocity.z
-            );
-
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jump = false;
         }
     }
+    public void ApplyJumpForce()
+    {
+        Vector3 currentVelocity = rb.linearVelocity;
 
+        rb.linearVelocity = new Vector3(
+            currentVelocity.x,
+            0f,
+            currentVelocity.z
+        );
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
     bool IsGrounded()
     {
         return Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, canWalk);

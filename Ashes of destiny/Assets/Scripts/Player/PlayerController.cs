@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (!context.started) return;
-        movement.JumpPlayer();
+
+        movement.jump = true;
     }
 
     public void SprintPlayer(CallbackContext context)

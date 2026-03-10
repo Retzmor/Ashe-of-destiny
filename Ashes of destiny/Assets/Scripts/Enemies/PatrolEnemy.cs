@@ -5,7 +5,7 @@ public class PatrolEnemy : StateMachineBehaviour
     EnemyMovement movement;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        movement = animator.GetComponent<EnemyMovement>();
+        movement = animator.GetComponentInParent<EnemyMovement>();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

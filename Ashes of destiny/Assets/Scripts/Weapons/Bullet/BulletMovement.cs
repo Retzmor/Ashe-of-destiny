@@ -18,9 +18,7 @@ public class BulletMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        rb.linearVelocity = transform.forward * 20f;
-
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
     void Start()
     {
@@ -36,7 +34,10 @@ public class BulletMovement : MonoBehaviour
 
     public void SetDirection(Vector3 dir)
     {
-        rb.linearVelocity = dir.normalized * speed;  
+        dir.Normalize();
+        transform.forward = dir;
+        rb.linearVelocity = dir * speed;
+        Debug.DrawRay(transform.position, dir * 10f, Color.red, 2f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -65,6 +66,7 @@ public class BulletMovement : MonoBehaviour
         }
         else
         {
+            Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
     }

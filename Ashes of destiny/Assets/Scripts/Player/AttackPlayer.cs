@@ -41,17 +41,16 @@ public class AttackPlayer : MonoBehaviour
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
             playerComponent.Animator.SetTrigger("Shoot");
-            Ray ray = crosshairController.aimCamera.ScreenPointToRay(
-                new Vector3(Screen.width / 2f, Screen.height / 2f, 0f)
-            );
-            Vector3 direction = ray.direction;
-
+            Vector3 targetPoint = crosshairController.CurrentAimPoint;
+            Vector3 direction = (targetPoint - targetAttack.position).normalized;
+            Vector3 spawnPos = targetAttack.position + direction * 0.2f;
             GameObject bullet = _container.InstantiatePrefab(
-                ashes.ElementAttack,
-                targetAttack.position,
-                Quaternion.LookRotation(direction),
-                null
-            );
+      ashes.ElementAttack,
+      spawnPos,
+      Quaternion.LookRotation(direction),
+      null
+  );
+
 
             bullet.GetComponent<BulletMovement>().SetDirection(direction);
 

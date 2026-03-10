@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (!context.started) return;
-
+        if (!movement.canJumping) return;
         movement.jump = true;
     }
 

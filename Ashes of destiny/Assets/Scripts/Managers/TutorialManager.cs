@@ -54,7 +54,7 @@ public class TutorialManager : MonoBehaviour
 
     public void IniciarTutorial()
     {
-        playerMovement.jump = false;
+        playerMovement.canJumping = false;
         levelController.UnlockCursor();
         controller.StopPlayer();
         playerController.DisableInputs();
@@ -72,7 +72,6 @@ public class TutorialManager : MonoBehaviour
             TutorialMovement();
             levelController.CanOpenMenus = true;
             levelController.LockCursor();
-            playerMovement.jump = true;
         };
     }
     public void TutorialMovement()
@@ -129,6 +128,7 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
+            playerMovement.canJumping = true;
             controller.StartPlayer();
             goalMovement2.SetActive(true);
            // treeObstacule.SetActive(true);
@@ -210,6 +210,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialShoot()
     {
+        playerController.DisableInputs();
         levelController.LockCursor();
         controller.ActiveTextSpace();
         imageTab.SetActive(false);
@@ -223,6 +224,7 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             enemy.SetActive(true);
+            playerController.EnableInputs();
             TutorialAim();
         };
     }
@@ -230,7 +232,7 @@ public class TutorialManager : MonoBehaviour
     public void TutorialAim()
     {
         controller.ActiveTextSpace();
-        playerMovement.IsJumping = false;
+        playerMovement.jump = false;
         playerController.DisableInputs();
         imageE.gameObject.SetActive(false);
         imageQ.gameObject.SetActive(false);
@@ -246,7 +248,7 @@ public class TutorialManager : MonoBehaviour
         {
             playerController.EnableInputs();
             controller.StartPlayer();
-            playerMovement.IsJumping = true;
+            playerMovement.jump = true;
             controller.DesactiveTextSpace();
         };
     }

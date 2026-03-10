@@ -52,7 +52,8 @@ public class PlayerCollisions : MonoBehaviour
         PlayPickAshAnimation();
         inventory.addItemInventory(currentItem);
         attackPlayer.CurrentWeapon = currentItem;
-        currentItem.SetActive(false);
+        Ashes anim = currentItem.GetComponentInChildren<Ashes>();
+        anim.rock.SetTrigger("Take");
         currentItem = null;
     }
 

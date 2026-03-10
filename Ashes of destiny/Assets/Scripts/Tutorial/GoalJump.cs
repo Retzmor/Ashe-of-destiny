@@ -5,6 +5,7 @@ using System.Collections;
 public class GoalJump : MonoBehaviour
 {
     [Inject] TutorialManager tutorialManager;
+    [SerializeField] PlayerComponent player;
     bool playerDetected = false;
 
     private void OnTriggerEnter(UnityEngine.Collider other)
@@ -12,6 +13,7 @@ public class GoalJump : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && playerDetected == false)
         {
             playerDetected = true;
+            player.Animator.SetBool("Run", false);
             StartCoroutine(WaitAndActive());
         }
     }

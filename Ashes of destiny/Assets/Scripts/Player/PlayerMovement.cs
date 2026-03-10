@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jump = false;
     Vector3 lookDirection;
     Vector3 currentMoveDir;
+    public bool canJumping = true;
 
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
@@ -133,14 +134,19 @@ public class PlayerMovement : MonoBehaviour
     }
     public void JumpPlayer()
     {
-        if (IsGrounded() && jump)
+        if (!canJumping) return;
+        if (!jump) return;
+
+        if (IsGrounded())
         {
             playerComponent.Animator.SetTrigger("Jump");
             jump = false;
         }
     }
+
     public void ApplyJumpForce()
     {
+        if (!canJumping) return;
         Vector3 currentVelocity = rb.linearVelocity;
 
         rb.linearVelocity = new Vector3(

@@ -11,7 +11,6 @@ public class WorldCrossHairController : MonoBehaviour
     public Vector3 CurrentAimPoint { get; private set; }
     void Start()
     {
-        Debug.Log(gameObject.name);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

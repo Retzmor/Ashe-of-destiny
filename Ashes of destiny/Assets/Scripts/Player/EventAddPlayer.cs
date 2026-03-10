@@ -15,6 +15,5 @@ public class EventAddPlayer : MonoBehaviour
     public void JumpEvent()
     {
         playerMovement.ApplyJumpForce();
-        Debug.Log("saltooo");
     }
 }

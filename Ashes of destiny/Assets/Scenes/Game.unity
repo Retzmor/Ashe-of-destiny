@@ -6790,6 +6790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9655abacaf89cb489c01ef1c4c6a3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1409326985}
 --- !u!65 &593009311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10513,6 +10514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4174a4c2bac7d38478f75d2318cc08ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1409326985}
 --- !u!65 &899957805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15817,6 +15819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928ad00bd7dc26746a1a68ccc9e59dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1409326985}
 --- !u!65 &1425629529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25910,6 +25913,7 @@ MonoBehaviour:
   groundDistance: 0.3
   pivot: {fileID: 0}
   jump: 0
+  canJumping: 1
 --- !u!23 &1847893675832462604
 MeshRenderer:
   m_ObjectHideFlags: 0

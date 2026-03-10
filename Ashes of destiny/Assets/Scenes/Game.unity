@@ -2248,6 +2248,7 @@ Transform:
   - {fileID: 829431887}
   - {fileID: 98608804}
   - {fileID: 2131609006}
+  - {fileID: 262186088}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163798838
@@ -3563,12 +3564,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262186085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.785412, y: 285.14917, z: -9793.465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 163621752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &271046025
 GameObject:
@@ -4779,6 +4780,7 @@ GameObject:
   - component: {fileID: 381908269}
   - component: {fileID: 381908271}
   - component: {fileID: 381908272}
+  - component: {fileID: 381908273}
   m_Layer: 0
   m_Name: AimCamera
   m_TagString: Untagged
@@ -4890,6 +4892,25 @@ MonoBehaviour:
   sensibility: 1.5
   aimCamera: {fileID: 381908271}
   shoulderSwitchSpeed: 5
+--- !u!114 &381908273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381908264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScanRecursively: 1
+  SuppressInputWhileBlending: 1
+  IgnoreTimeScale: 0
+  m_ControllerManager:
+    Controllers: []
+  PlayerIndex: -1
+  AutoEnableInputs: 1
 --- !u!1001 &387329130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25915,6 +25936,7 @@ MonoBehaviour:
   groundCheck: {fileID: 6497477450795685604}
   groundDistance: 0.3
   pivot: {fileID: 0}
+  aimRotationSpeed: 15
   jump: 0
   canJumping: 1
 --- !u!23 &1847893675832462604
@@ -27013,7 +27035,6 @@ SceneRoots:
   - {fileID: 1257863183}
   - {fileID: 343878556}
   - {fileID: 455808570}
-  - {fileID: 262186088}
   - {fileID: 163621752}
   - {fileID: 650282453}
   - {fileID: 810733468}

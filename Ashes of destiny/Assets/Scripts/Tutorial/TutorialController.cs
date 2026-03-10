@@ -47,8 +47,6 @@ public class TutorialController : MonoBehaviour
         }
 
         rbPlayer.linearVelocity = Vector3.zero;
-        rbPlayer.angularVelocity = Vector3.zero;
-
         player.GetComponent<PlayerComponent>().Animator.SetBool("Run", false);
         player.GetComponent<PlayerComponent>().Animator.SetBool("Walk", false);
 

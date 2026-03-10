@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundDistance = 0.3f;
     [SerializeField] Transform pivot;
+    [SerializeField] float aimRotationSpeed = 720f;
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
@@ -26,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 lookDirection;
     Vector3 currentMoveDir;
     public bool canJumping = true;
-
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
@@ -53,6 +53,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (isAiming)
+        {
+            Vector3 lookDirection = yawTarget.forward;
+            lookDirection.y = 0;
+            if(lookDirection.sqrMagnitude > 0.01f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,Time.deltaTime * 10f);
+            }
+        }
+    }
     public void CanMovement()
     {
         rb.isKinematic = false;
@@ -116,18 +129,6 @@ public class PlayerMovement : MonoBehaviour
                 );
 
                 playerComponent.Animator.SetBool("Walk", false);
-            }
-
-            if (isAiming && yawTarget != null)
-            {
-                Vector3 lookDirection = yawTarget.forward;
-                lookDirection.y = 0;
-
-                if (lookDirection.sqrMagnitude > 0.01f)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                    transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
-                }
             }
         }
         JumpPlayer();

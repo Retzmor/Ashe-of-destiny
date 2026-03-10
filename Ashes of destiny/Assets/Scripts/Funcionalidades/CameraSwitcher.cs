@@ -19,9 +19,6 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] PlayerInputs inputs;
     [SerializeField] TutorialController tutorialController;
     bool isAiming = false;
-    Transform yawTarget;
-    Transform pitchTarget;
-
     AimCameraController aimCamController;
     void Start()
     {

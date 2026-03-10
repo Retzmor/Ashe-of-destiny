@@ -20,18 +20,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform pivot;
     [SerializeField] float aimRotationSpeed = 720f;
     private bool _canSprint = false;
-    private bool _isJumping = true;
     internal bool isAiming;
     bool _canMoving = false;
     public bool jump = false;
     Vector3 lookDirection;
     Vector3 currentMoveDir;
     public bool canJumping = true;
-
+    bool jumpRequested;
+    bool isJumping;
+    bool hasJumped;
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
-    public bool IsJumping { get => _isJumping; set => _isJumping = value; }
 
     private void OnEnable()
     {
@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        JumpPlayer();
         if (isAiming)
         {
             Vector3 lookDirection = yawTarget.forward;
@@ -65,6 +66,20 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,Time.deltaTime * 10f);
             }
         }
+    }
+
+    private void Update()
+    {
+        if (IsGrounded() && hasJumped)
+        {
+            isJumping = false;
+            hasJumped = false;
+        }
+    }
+
+    public bool IsJumping
+    {
+        get { return isJumping; }
     }
     public void CanMovement()
     {
@@ -131,23 +146,25 @@ public class PlayerMovement : MonoBehaviour
                 playerComponent.Animator.SetBool("Walk", false);
             }
         }
-        JumpPlayer();
     }
     public void JumpPlayer()
     {
         if (!canJumping) return;
         if (!jump) return;
-
-        if (IsGrounded())
-        {
-            playerComponent.Animator.SetTrigger("Jump");
-            jump = false;
-        }
+        if (!IsGrounded()) return;
+        if (isJumping) return;
+        playerComponent.Animator.SetTrigger("Jump");
+        jumpRequested = true;
+        isJumping = true;
+        jump = false;
     }
-
     public void ApplyJumpForce()
     {
-        if (!canJumping) return;
+        if (!jumpRequested) return;
+
+        jumpRequested = false;
+        hasJumped = true;
+
         Vector3 currentVelocity = rb.linearVelocity;
 
         rb.linearVelocity = new Vector3(
@@ -158,7 +175,9 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-    bool IsGrounded()
+
+
+    public bool IsGrounded()
     {
         return Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, canWalk);
     }

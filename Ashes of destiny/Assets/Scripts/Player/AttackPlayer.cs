@@ -33,10 +33,8 @@ public class AttackPlayer : MonoBehaviour
 
         if (slotIndex < 0)
             return;
-
         if (!cooldowns.ContainsKey(slotIndex))
             cooldowns.Add(slotIndex, null);
-
         if (cooldowns[slotIndex] == null)
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
@@ -50,7 +48,6 @@ public class AttackPlayer : MonoBehaviour
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }
     }
-
 
     IEnumerator CooldownAttack(int slotIndex)
     {

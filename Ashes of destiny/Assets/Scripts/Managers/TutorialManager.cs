@@ -192,7 +192,7 @@ public class TutorialManager : MonoBehaviour
     public void TutorialWeapons()
     {
         controller.ActiveTextSpace();
-        playerMovement.IsJumping = false;
+        playerMovement.jump = false;
         levelController.CanOpenMenus = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -14,6 +14,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Transform targetAttack;
     [SerializeField] WorldCrossHairController crosshairController;
     [SerializeField] Transform targetAttackMelee;
+    [SerializeField] Particulas particulas;
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
     [Inject] private DiContainer _container;
@@ -74,6 +75,8 @@ public class AttackPlayer : MonoBehaviour
         if (hitEnemies.Length == 0)
         {
             playerComponent.Animator.SetTrigger("AttackMelee");
+            particulas.ActivasParticulas();
+            StartCoroutine(ParticuleDesactive());
         }
 
         foreach (Collider enemy in hitEnemies)
@@ -85,6 +88,12 @@ public class AttackPlayer : MonoBehaviour
                 wood.AnimationWoodBroke();
             }
         }
+    }
+
+    IEnumerator ParticuleDesactive()
+    {
+        yield return new WaitForSeconds(0.5f);
+        particulas.DesactiveParticule();
     }
 
     private void OnDrawGizmos()

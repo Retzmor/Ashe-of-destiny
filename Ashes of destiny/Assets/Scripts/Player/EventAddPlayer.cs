@@ -14,8 +14,6 @@ public class EventAddPlayer : MonoBehaviour
 
     public void JumpEvent()
     {
-        if (!playerMovement.IsJumping) return;
-        if (!playerMovement.IsGrounded()) return;
         playerMovement.ApplyJumpForce();
     }
 }

@@ -9,6 +9,7 @@ public class BulletMovement : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float damage;
     [SerializeField] float rotationSpeed = 800f;
+    ParticleSystem particle;
 
     bool alreadyDamage = false;
 
@@ -17,6 +18,7 @@ public class BulletMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        particle = GetComponentInChildren<ParticleSystem>();
         rb.useGravity = false;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
@@ -37,8 +39,9 @@ public class BulletMovement : MonoBehaviour
         dir.Normalize();
         transform.forward = dir;
         rb.linearVelocity = dir * speed;
-        Debug.DrawRay(transform.position, dir * 10f, Color.red, 2f);
+        particle.Play(true);
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {

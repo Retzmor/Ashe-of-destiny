@@ -19,19 +19,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundDistance = 0.3f;
     [SerializeField] Transform pivot;
     [SerializeField] float aimRotationSpeed = 720f;
+    [SerializeField] Particulas particulas;
     private bool _canSprint = false;
+    private bool _isJumping = true;
     internal bool isAiming;
     bool _canMoving = false;
     public bool jump = false;
     Vector3 lookDirection;
     Vector3 currentMoveDir;
     public bool canJumping = true;
-    bool jumpRequested;
-    bool isJumping;
-    bool hasJumped;
+
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
+    public bool IsJumping { get => _isJumping; set => _isJumping = value; }
 
     private void OnEnable()
     {
@@ -55,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        JumpPlayer();
         if (isAiming)
         {
             Vector3 lookDirection = yawTarget.forward;
@@ -66,20 +66,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,Time.deltaTime * 10f);
             }
         }
-    }
-
-    private void Update()
-    {
-        if (IsGrounded() && hasJumped)
-        {
-            isJumping = false;
-            hasJumped = false;
-        }
-    }
-
-    public bool IsJumping
-    {
-        get { return isJumping; }
     }
     public void CanMovement()
     {
@@ -96,11 +82,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 playerComponent.Animator.SetBool("Run", true);
                 playerComponent.Animator.SetBool("Walk", false);
+                particulas.ActivasParticulasLoop();
             }
             else
             {
                 playerComponent.Animator.SetBool("Run", false);
                 playerComponent.Animator.SetBool("Walk", true);
+                particulas.DesactiveParticule();
             }
 
             Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
@@ -146,25 +134,23 @@ public class PlayerMovement : MonoBehaviour
                 playerComponent.Animator.SetBool("Walk", false);
             }
         }
+        JumpPlayer();
     }
     public void JumpPlayer()
     {
         if (!canJumping) return;
         if (!jump) return;
-        if (!IsGrounded()) return;
-        if (isJumping) return;
-        playerComponent.Animator.SetTrigger("Jump");
-        jumpRequested = true;
-        isJumping = true;
-        jump = false;
+
+        if (IsGrounded())
+        {
+            playerComponent.Animator.SetTrigger("Jump");
+            jump = false;
+        }
     }
+
     public void ApplyJumpForce()
     {
-        if (!jumpRequested) return;
-
-        jumpRequested = false;
-        hasJumped = true;
-
+        if (!canJumping) return;
         Vector3 currentVelocity = rb.linearVelocity;
 
         rb.linearVelocity = new Vector3(
@@ -175,9 +161,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-
-
-    public bool IsGrounded()
+    bool IsGrounded()
     {
         return Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, canWalk);
     }

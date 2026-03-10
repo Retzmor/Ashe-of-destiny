@@ -15,9 +15,7 @@ public class AbilitiesPlayer : MonoBehaviour
     public int CurrentSlotIndex => currentSlotIndex;
     public Particulas particulaActual;
     AttackPlayer attackPlayer;
-
     public Button CurrentButton { get => _currentButton; set => _currentButton = value; }
-
     private void Start()
     {
         slotAshes = new Ashes[AshesButton.Length];
@@ -73,9 +71,6 @@ public class AbilitiesPlayer : MonoBehaviour
             }
         }
     }
-
-
-
     public void SelectSlot(int index)
     {
         if (index < 0 || index >= AshesButton.Length)

@@ -45,11 +45,8 @@ public class PlayerController : MonoBehaviour
         if (!inputs.InputsEnabled) return;
         if (!context.started) return;
         if (!movement.canJumping) return;
-        if (!movement.IsGrounded()) return;
-        if (movement.IsJumping) return;
         movement.jump = true;
     }
-
 
     public void SprintPlayer(CallbackContext context)
     {

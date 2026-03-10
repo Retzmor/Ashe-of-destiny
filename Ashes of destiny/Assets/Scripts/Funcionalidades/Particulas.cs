@@ -16,7 +16,7 @@ public class Particulas : MonoBehaviour
 
         var main = particulas.main;
         main.loop = true;
-        particulas.Play();
+        particulas.Play(true);
     }
 
     public void DesactiveParticule()

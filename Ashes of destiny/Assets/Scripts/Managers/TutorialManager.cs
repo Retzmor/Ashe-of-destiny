@@ -76,6 +76,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialMovement()
     {
+        playerMovement.CanMoving = false;
         controller.StopPlayer();
         controller.ActiveTextSpace();
         levelController.CanOpenMenus = false;
@@ -102,6 +103,7 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
+            playerMovement.CanMoving = true;
             goalMovement.SetActive(true);
             controller.StartPlayer();
             playerController.EnableInputs();

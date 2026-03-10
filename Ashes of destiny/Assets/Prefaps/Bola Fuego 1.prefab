@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5806946305895925491}
   - component: {fileID: 7120964115861203977}
   - component: {fileID: 7716749409652699964}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,7 +4851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765926698558699520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particula bola de fuego
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 7805367371643944439}
   - component: {fileID: 8805927700322906844}
   - component: {fileID: 1317684958913606022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9784,6 +9784,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 902251db37a8ace428b209f20e2d6bbc, type: 3}
       propertyPath: m_Name
       value: Bola Fuego 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 902251db37a8ace428b209f20e2d6bbc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

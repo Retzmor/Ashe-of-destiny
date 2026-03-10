@@ -43,17 +43,9 @@ public class AttackPlayer : MonoBehaviour
             playerComponent.Animator.SetTrigger("Shoot");
             Vector3 targetPoint = crosshairController.CurrentAimPoint;
             Vector3 direction = (targetPoint - targetAttack.position).normalized;
-            Vector3 spawnPos = targetAttack.position + direction * 0.2f;
-            GameObject bullet = _container.InstantiatePrefab(
-      ashes.ElementAttack,
-      spawnPos,
-      Quaternion.LookRotation(direction),
-      null
-  );
-
-
+            Vector3 spawnPos = targetAttack.position;
+            GameObject bullet = _container.InstantiatePrefab(ashes.ElementAttack,spawnPos,Quaternion.LookRotation(direction),null);
             bullet.GetComponent<BulletMovement>().SetDirection(direction);
-
             StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }

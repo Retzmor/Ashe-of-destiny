@@ -24,8 +24,8 @@ public class WorldCrossHairController : MonoBehaviour
 
         if(Physics.Raycast(ray, out RaycastHit hit, maxDistance, raycastMask))
         {
-            targetPos = hit.point + hit.normal * crossHairOffSetMultiplier;
-            crossHairUI.rotation = Quaternion.LookRotation(hit.normal);
+            targetPos = hit.point;
+            crossHairUI.forward = aimCamera.transform.forward;
         }
 
         else

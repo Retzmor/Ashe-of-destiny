@@ -162,6 +162,13 @@ public class PlayerMovement : MonoBehaviour
         return Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, canWalk);
     }
 
+    public void StopMovement()
+    {
+        rb.linearVelocity = Vector3.zero;
+        playerComponent.Animator.SetBool("Run", false);
+        playerComponent.Animator.SetBool("Walk", false);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -32,10 +33,30 @@ public class TutorialController : MonoBehaviour
 
     public void StopPlayer()
     {
-        rbPlayer.isKinematic = true;
+        StartCoroutine(SlowStop());
+    }
+
+    IEnumerator SlowStop()
+    {
         player.CanMoving = false;
+
+        while (rbPlayer.linearVelocity.magnitude > 0.1f)
+        {
+            rbPlayer.linearVelocity *= 0.6f;
+            yield return new WaitForFixedUpdate();
+        }
+
+        rbPlayer.linearVelocity = Vector3.zero;
+        rbPlayer.angularVelocity = Vector3.zero;
+
+        player.GetComponent<PlayerComponent>().Animator.SetBool("Run", false);
+        player.GetComponent<PlayerComponent>().Animator.SetBool("Walk", false);
+
+        rbPlayer.isKinematic = true;
         cameraSwitcher.inputAxisController.enabled = false;
     }
+
+
 
     public void StartPlayer()
     {

@@ -72,24 +72,34 @@ public class AttackPlayer : MonoBehaviour
     }
     internal void AttackMelee()
     {
-        Collider[] hitEnemies = Physics.OverlapSphere(targetAttackMelee.position,radiusAttackMelee,layer);
-        if (hitEnemies.Length == 0)
-        {
-            playerComponent.Animator.SetTrigger("AttackMelee");
-            particulas.ActivasParticulas();
-            particula2.ActivasParticulas();
-            StartCoroutine(ParticuleDesactive());
-        }
+        playerComponent.Animator.SetTrigger("AttackMelee");
+    }
+    public void MeleeHit()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(
+            targetAttackMelee.position,
+            radiusAttackMelee,
+            layer
+        );
 
         foreach (Collider enemy in hitEnemies)
         {
+            if (enemy.TryGetComponent(out HealthEnemy health))
+            {
+                health.TakeDamage(5);
+            }
+
             if (enemy.GetComponentInParent<WoodCollision>())
             {
-                playerComponent.Animator.SetTrigger("AttackMelee");
                 WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
                 wood.AnimationWoodBroke();
             }
         }
+
+        particulas.ActivasParticulas();
+        particula2.ActivasParticulas();
+
+        StartCoroutine(ParticuleDesactive());
     }
 
     IEnumerator ParticuleDesactive()

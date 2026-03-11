@@ -11,6 +11,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] CameraSwitcher cameraSwitcher;
     [SerializeField] Weapon[] ashes;
     [SerializeField] TextMeshProUGUI textSpace;
+    [SerializeField] GameObject arrowAnimator;
     int countAshe;
     Rigidbody rbPlayer;
     Vector3 positionPlayerStart;
@@ -54,8 +55,6 @@ public class TutorialController : MonoBehaviour
         cameraSwitcher.inputAxisController.enabled = false;
     }
 
-
-
     public void StartPlayer()
     {
         rbPlayer.isKinematic = false;
@@ -76,5 +75,15 @@ public class TutorialController : MonoBehaviour
     public void ActiveTextSpace()
     {
         textSpace.gameObject.SetActive(true);
+    }
+
+    public void ArrowActive()
+    {
+        arrowAnimator.SetActive(true);
+    }
+
+    public void ArrowDisable()
+    {
+        arrowAnimator.SetActive(false);
     }
 }

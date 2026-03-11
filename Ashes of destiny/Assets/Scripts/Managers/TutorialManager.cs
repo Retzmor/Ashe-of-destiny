@@ -60,6 +60,7 @@ public class TutorialManager : MonoBehaviour
         playerController.DisableInputs();
         controller.DesactiveTextSpace();
         levelController.CanOpenMenus = false;
+        controller.ArrowDisable();
         string[] dialogoInicial = {
             "Bienvenido a este mundo,",                                     //Alejandr@s, si van a añadir algo al texto, hacerlo en esas comillas, este es el primer cuadro que se muestras
             "aquí te vamos explicar a como utilizar tus poderes y moverte por estos mundos.",
@@ -202,6 +203,7 @@ public class TutorialManager : MonoBehaviour
         panelGame.SetActive(false);
         arrowAnimation.SetActive(true);
         StartCoroutine(WaitAnimator());
+        controller.ArrowActive();
         string[] dialogoMovimiento = { "Presiona la tecla Tab", };
         dialogueManager.SetDialogue(dialogoMovimiento);
     }
@@ -212,6 +214,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialShoot()
     {
+        controller.ArrowDisable();
         playerController.DisableInputs();
         levelController.LockCursor();
         controller.ActiveTextSpace();

@@ -5,6 +5,7 @@ public class EventAddPlayer : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] TutorialController tutorialController;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] AttackPlayer playerAttack;
   
     public void EndAnimationTakeAshe()
     {
@@ -15,5 +16,10 @@ public class EventAddPlayer : MonoBehaviour
     public void JumpEvent()
     {
         playerMovement.ApplyJumpForce();
+    }
+
+    public void AttackAnim()
+    {
+        playerAttack.MeleeHit();
     }
 }

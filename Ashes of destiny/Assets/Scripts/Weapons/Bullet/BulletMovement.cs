@@ -69,7 +69,6 @@ public class BulletMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
     }

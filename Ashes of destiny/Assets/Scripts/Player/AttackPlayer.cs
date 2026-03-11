@@ -15,6 +15,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] WorldCrossHairController crosshairController;
     [SerializeField] Transform targetAttackMelee;
     [SerializeField] Particulas particulas;
+    [SerializeField] Particulas particula2;
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
     [Inject] private DiContainer _container;
@@ -76,6 +77,7 @@ public class AttackPlayer : MonoBehaviour
         {
             playerComponent.Animator.SetTrigger("AttackMelee");
             particulas.ActivasParticulas();
+            particula2.ActivasParticulas();
             StartCoroutine(ParticuleDesactive());
         }
 

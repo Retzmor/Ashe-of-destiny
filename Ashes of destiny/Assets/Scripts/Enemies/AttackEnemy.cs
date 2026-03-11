@@ -5,23 +5,43 @@ public class AttackEnemy : MonoBehaviour
 {
     [SerializeField] float damageAttack;
     [SerializeField] float cooldDownAttack;
+
+    Animator anim;
+    HealthPlayer healthPlayer;
     bool canAttack = true;
-    private void OnCollisionStay(Collision collision)
+
+    private void Start()
     {
-        if(collision.gameObject.CompareTag("Player") && canAttack)
-        {
-            if(collision.gameObject.TryGetComponent<HealthPlayer>(out HealthPlayer healthPlayer))
-            {
-                StartCoroutine(CoolDownAttack(healthPlayer));
-            }
-        }
+        anim = GetComponentInChildren<Animator>();
     }
 
-   IEnumerator CoolDownAttack(HealthPlayer health)
+    private void OnCollisionStay(Collision collision)
     {
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+
+        if (!canAttack)
+            return;
+
+        collision.gameObject.TryGetComponent(out healthPlayer);
+
+        anim.SetTrigger("Attack");
+
         canAttack = false;
-        health.ChangeHealth(damageAttack);
-        yield return new WaitForSeconds(cooldDownAttack);
+        StartCoroutine(CoolDownAttack());
+    }
+
+    public void AttackPlayer()
+    {
+        if (healthPlayer == null)
+            return;
+
+        healthPlayer.ChangeHealth(damageAttack);
+    }
+
+    IEnumerator CoolDownAttack()
+    {
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         canAttack = true;
     }
 }

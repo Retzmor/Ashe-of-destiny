@@ -3,7 +3,7 @@ using Zenject;
 
 public class HealthEnemy : MonoBehaviour
 {
-    [Inject] TutorialManager tutorialManager;
+    [InjectOptional] TutorialManager tutorialManager;
 
     [SerializeField] float healthMax;
     [SerializeField] float currentHealth;
@@ -37,7 +37,10 @@ public class HealthEnemy : MonoBehaviour
 
     public void Death()
     {
-        tutorialManager.TutorialWin();
-        Destroy(gameObject);
+        if(tutorialManager != null)
+        {
+            tutorialManager.TutorialWin();
+            Destroy(gameObject);
+        }
     }
 }

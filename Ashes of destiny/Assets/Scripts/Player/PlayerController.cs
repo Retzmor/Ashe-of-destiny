@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour
     AbilitiesPlayer abilitiesPlayer;
     AimPlayer aimPlayer;
     [Inject] LevelController levelController;
-    [Inject] Inventory inventory;
-    [Inject] TutorialManager tutorialManager;
     internal bool isAiming;
     private bool inputsLocked;
 

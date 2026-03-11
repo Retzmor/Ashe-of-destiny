@@ -250,7 +250,7 @@ public class TutorialManager : MonoBehaviour
         {
             playerController.EnableInputs();
             controller.StartPlayer();
-            playerMovement.jump = true;
+            //playerMovement.jump = true;
             controller.DesactiveTextSpace();
         };
     }

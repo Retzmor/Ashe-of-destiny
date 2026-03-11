@@ -248,12 +248,17 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
-            playerController.EnableInputs();
-            controller.StartPlayer();
-            //playerMovement.jump = true;
-            controller.DesactiveTextSpace();
+            StartCoroutine(EnablePlayerDelayed());
         };
     }
+    IEnumerator EnablePlayerDelayed()
+    {
+        yield return null;
+        playerController.EnableInputs();
+        controller.StartPlayer();
+        controller.DesactiveTextSpace();
+    }
+
 
     public void TutorialFinish()
     {

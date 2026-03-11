@@ -13,6 +13,7 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] CameraManager cameraManager;
     PlayerMovement playerMovement;
     PlayerComponent playerComponent;
+    bool isDead = false;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -24,6 +25,8 @@ public class HealthPlayer : MonoBehaviour
 
     public void ChangeHealth(float damage)
     {
+        if (isDead == true)
+            return;
         playerComponent.Animator.SetTrigger("TakeDamage");
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -37,7 +40,8 @@ public class HealthPlayer : MonoBehaviour
 
     public void Die()
     {
-        playerComponent.Animator.SetTrigger("Death");
+        isDead = true;
+        playerComponent.Animator.SetBool("Death", true);
         cameraManager.CameraDie();
         StartCoroutine(DieCameraPlayer());
         StartCoroutine(StopMovementPlayer());

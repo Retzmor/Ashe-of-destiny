@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
-    bool _canMoving = false;
+    bool _canMoving = true;
     public bool jump = false;
     Vector3 lookDirection;
     Vector3 currentMoveDir;
@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(_canMoving, this);
         if (isAiming)
         {
             Vector3 lookDirection = yawTarget.forward;

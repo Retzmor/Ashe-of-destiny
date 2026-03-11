@@ -67,7 +67,10 @@ public class PlayerCollisions : MonoBehaviour
 
     public void PlayPickAshAnimation()
     {
-        controller.StopPlayer();
+        if(controller != null)
+        {
+            controller.StopPlayer();
+        }
         playerController.DisableInputs();
         animator.SetTrigger("Take");
     }

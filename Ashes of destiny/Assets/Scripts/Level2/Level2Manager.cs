@@ -21,8 +21,6 @@ public class Level2Manager : MonoBehaviour
     private void StartLevel()
     {
         playerController.DisableInputs();
-        playerMovement.CanMoving = false;
-        playerMovement.canJumping = false;
         levelController.UnlockCursor();
         foreach (GameObject enemy in enemies)
             enemy.SetActive(true);

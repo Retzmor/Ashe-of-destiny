@@ -48,7 +48,10 @@ public class CameraSwitcher : MonoBehaviour
 
     private void ExitAimMode()
     {
-        tutorialController.StartPlayer();
+        if (tutorialController != null)
+        {
+            tutorialController.StartPlayer();
+        }
         playerComponent.Animator.SetBool("Aim", false);
         cinemachineBrain.DefaultBlend.Time = 0.5f;
         crossHairUI?.SetActive(false);
@@ -75,7 +78,10 @@ public class CameraSwitcher : MonoBehaviour
 
     private void EnterAimMode()
     {
-        tutorialController.StopPlayer();
+        if (tutorialController != null)
+        {
+            tutorialController.StopPlayer();
+        }
         playerComponent.Animator.SetBool("Aim", true);
         cinemachineBrain.DefaultBlend.Time = 0.5f;
         crossHairUI.gameObject.SetActive(true);

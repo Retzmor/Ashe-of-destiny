@@ -56,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_canMoving, this);
         if (isAiming)
         {
             Vector3 lookDirection = yawTarget.forward;

@@ -7,7 +7,7 @@ using Zenject;
 public class Inventory : MonoBehaviour
 {
     [Inject] GameplayUIController gameplayUIController;
-    [Inject] TutorialManager tutorialManager;
+    [InjectOptional] TutorialManager tutorialManager;
     [SerializeField] List<Item> slotsInventory;
     [SerializeField] AbilitiesPlayer abilitiesPlayer;
     [SerializeField] AttackPlayer attackPlayer;
@@ -130,6 +130,9 @@ public class Inventory : MonoBehaviour
     IEnumerator TutorialShoot()
     {
         yield return new WaitForSeconds(1f);
-        tutorialManager.TutorialShoot();
+        if(tutorialManager != null)
+        {
+            tutorialManager.TutorialShoot();
+        }
     }
 }

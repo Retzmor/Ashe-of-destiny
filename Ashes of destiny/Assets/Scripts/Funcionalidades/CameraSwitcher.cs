@@ -106,12 +106,14 @@ public class CameraSwitcher : MonoBehaviour
 
     public void DisableCameraInput()
     {
-        inputAxisController.enabled = false;
+        if (inputAxisController)
+            inputAxisController.enabled = false;
     }
 
     public void EnableCameraInput()
     {
-        inputAxisController.enabled = true;
+        if (inputAxisController)
+            inputAxisController.enabled = true;
     }
 
 }

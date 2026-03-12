@@ -38,6 +38,21 @@ public class PlayerController : MonoBehaviour
         aimPlayer = GetComponent<AimPlayer>();
     }
 
+    private void OnDisable()
+    {
+        inputs.Jump.started -= Saltar;
+        inputs.Sprint.started -= SprintPlayer;
+        inputs.Sprint.canceled -= NoSprintPlayer;
+        inputs.Pause.started -= PauseGame;
+        inputs.Attack.started -= AttackPlayer;
+        inputs.interact.started -= Interact;
+        inputs.interact.canceled -= FinishInteract;
+        inputs.MenuSkills.started -= MenuSkills;
+        inputs.Boton1.started -= Button1;
+        inputs.Boton2.started -= Button2;
+        inputs.Boton3.started -= MeleeAttack;
+    }
+
     public void Saltar(CallbackContext context)
     {
         if (!inputs.InputsEnabled) return;
@@ -65,7 +80,7 @@ public class PlayerController : MonoBehaviour
     public void PauseGame(CallbackContext context)
     {
         if (!inputs.InputsEnabled) return;
-    if (!context.started) return;
+        if (!context.started) return;
         camSwitcher.OpenMenu();
         levelController.PauseGame();
         camSwitcher.DisableCameraInput();

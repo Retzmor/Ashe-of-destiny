@@ -106,7 +106,7 @@ public class AttackPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         particulas.DesactiveParticule();
-        particula2.DesactiveParticule();
+        particula2 .DesactiveParticule();
     }
 
     private void OnDrawGizmos()

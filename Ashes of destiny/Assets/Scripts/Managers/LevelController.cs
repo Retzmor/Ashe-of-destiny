@@ -122,9 +122,16 @@ public class LevelController : MonoBehaviour
 
     public void RestartLevel()
     {
+        CloseAllMenus();
+        Time.timeScale = 1;
         UnlockCursor();
         gameManager.GameStart();
-        Time.timeScale = 1;
+    }
+
+    public void StartLevelOne()
+    {
+        CloseAllMenus();
+        gameManager.Level1Start();
     }
 
     public void MenuSkill()
@@ -152,19 +159,19 @@ public class LevelController : MonoBehaviour
     }
     public void CloseAllMenus()
     {
-        panelPause.SetActive(false);
-        panelSkills.SetActive(false);
-        panelOptions.SetActive(false);
+        if (panelPause) panelPause.SetActive(false);
+        if (panelSkills) panelSkills.SetActive(false);
+        if (panelOptions) panelOptions.SetActive(false);
         pauseState = PauseSubState.Main;
         for (int i = 0; i < particles.Length; i++)
         {
-            if (particles[i].TryGetComponent<CanvasGroup>(out CanvasGroup canva))
+            if (particles[i] && particles[i].TryGetComponent(out CanvasGroup canva))
             {
                 canva.alpha = 1;
             }
         }
         Time.timeScale = 1f;
-        camSwitcher.EnableCameraInput();
+        if (camSwitcher) camSwitcher.EnableCameraInput();
         LockCursor();
     }
     IEnumerator UnlockCursorNextFrame()

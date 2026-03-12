@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public void GameStart()
     {
+        EventBus.Clear();
+        Time.timeScale = 1;
         EventBus.GameStart?.Invoke();
         SceneManager.LoadScene("Game");
     }
@@ -22,5 +24,13 @@ public class GameManager : MonoBehaviour
     public void Despausar()
     {
         Time.timeScale = 1;
+    }
+
+    public void Level1Start()
+    {
+        EventBus.Clear();
+        Time.timeScale = 1;
+        EventBus.GameStart?.Invoke();
+        SceneManager.LoadScene("Level 1");
     }
 }

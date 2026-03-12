@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (_canMoving)
         {
-            float speed = _canSprint ? 8f : 4f;
+            float speed = _canSprint ? 10f : 4f;
 
             if (_canSprint && direction.sqrMagnitude > 0.01f)
             {

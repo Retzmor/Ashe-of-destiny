@@ -26,8 +26,6 @@ public class CameraSwitcher : MonoBehaviour
         inputAxisController = freelookCam.GetComponent<CinemachineInputAxisController>();
         crossHairUI.gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (!inputs.InputsEnabled) return;
@@ -84,7 +82,7 @@ public class CameraSwitcher : MonoBehaviour
         }
         playerComponent.Animator.SetBool("Aim", true);
         cinemachineBrain.DefaultBlend.Time = 0.5f;
-        crossHairUI.gameObject.SetActive(true);
+        crossHairUI.SetActive(true);
         isAiming = true;
         SnapAimCameraToPlayerForward(); 
         aimCam.Priority = 20;

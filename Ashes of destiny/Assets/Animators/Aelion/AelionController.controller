@@ -243,9 +243,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Walk
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Walk
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Death
     m_EventTreshold: 0
@@ -705,13 +702,13 @@ AnimatorStateMachine:
     m_Position: {x: 450, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6286880087561261871}
-    m_Position: {x: 430, y: -50, z: 0}
+    m_Position: {x: 540, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2932623547639619069}
     m_Position: {x: 440, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6965254753543810054}
-    m_Position: {x: 410, y: -100, z: 0}
+    m_Position: {x: 270, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8797902534416680075}
     m_Position: {x: 430, y: -150, z: 0}

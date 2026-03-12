@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         //inputs.Aim.canceled += AimButton;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         aimPlayer = GetComponent<AimPlayer>();
+
     }
 
     private void OnDisable()
@@ -122,7 +123,6 @@ public class PlayerController : MonoBehaviour
 
     public void MenuSkills(CallbackContext context)
     {
-        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
         levelController.MenuSkill();   
         camSwitcher.OpenMenu();
@@ -130,14 +130,12 @@ public class PlayerController : MonoBehaviour
 
     public void Button1(CallbackContext context)
     {
-        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
         abilitiesPlayer.ButtonOne();
     }
 
     public void Button2(CallbackContext context)
     {
-        if (!inputs.InputsEnabled) return;
         if (!context.started) return;
         abilitiesPlayer.ButtonTwo();
     }

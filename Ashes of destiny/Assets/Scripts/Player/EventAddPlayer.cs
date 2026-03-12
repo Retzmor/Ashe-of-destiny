@@ -9,8 +9,8 @@ public class EventAddPlayer : MonoBehaviour
   
     public void EndAnimationTakeAshe()
     {
-        playerController.EnableInputs();
-        tutorialController.StartPlayer();
+            playerController.EnableInputs();
+            tutorialController.StartPlayer();
     }
 
     public void JumpEvent()

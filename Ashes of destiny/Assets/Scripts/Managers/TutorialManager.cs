@@ -42,6 +42,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Image imageE;
     [SerializeField] Image imageQ;
     [SerializeField] PlayerMovement playerMovement;
+    private bool waitingForAbilityKey = false;
 
     [Inject] LevelController levelController;
 
@@ -193,20 +194,23 @@ public class TutorialManager : MonoBehaviour
     public void TutorialWeapons()
     {
         controller.ActiveTextSpace();
-        playerMovement.jump = false;
         levelController.CanOpenMenus = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        controller.StopPlayer();
+
+        playerMovement.CanMoving = false;
+        playerMovement.StopMovement(); 
         imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
         panelGame.SetActive(false);
         arrowAnimation.SetActive(true);
         StartCoroutine(WaitAnimator());
         controller.ArrowActive();
+
         string[] dialogoMovimiento = { "Presiona la tecla Tab", };
         dialogueManager.SetDialogue(dialogoMovimiento);
     }
+
     IEnumerator WaitAnimator()
     {
         yield return new WaitForSeconds(1);
@@ -215,13 +219,12 @@ public class TutorialManager : MonoBehaviour
     public void TutorialShoot()
     {
         controller.ArrowDisable();
-        playerController.DisableInputs();
         levelController.LockCursor();
         controller.ActiveTextSpace();
         imageTab.SetActive(false);
-        controller.StopPlayer();
         imageE.gameObject.SetActive(true);
         imageQ.gameObject.SetActive(true);
+        controller.StopPlayer();
         string[] dialogoMovimiento = { 
         "seleccione las habilidades con las teclas Q y E",
         "se mostrara la seleccionada de manera visual",};
@@ -237,7 +240,6 @@ public class TutorialManager : MonoBehaviour
     public void TutorialAim()
     {
         controller.ActiveTextSpace();
-        playerMovement.jump = false;
         playerController.DisableInputs();
         imageE.gameObject.SetActive(false);
         imageQ.gameObject.SetActive(false);
@@ -258,6 +260,8 @@ public class TutorialManager : MonoBehaviour
     {
         yield return null;
         playerController.EnableInputs();
+        playerMovement.CanMoving = true;
+        playerMovement.jump = true;
         controller.StartPlayer();
         controller.DesactiveTextSpace();
     }

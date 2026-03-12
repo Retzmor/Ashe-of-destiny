@@ -120,11 +120,12 @@ public class PlayerController : MonoBehaviour
         if (!context.started) return;
         playerCollisions.CanInteract = false; 
     }
-
     public void MenuSkills(CallbackContext context)
     {
         if (!context.started) return;
-        levelController.MenuSkill();   
+        if (!levelController.CanOpenMenus) return;
+
+        levelController.MenuSkill();
         camSwitcher.OpenMenu();
     }
 

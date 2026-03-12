@@ -13,6 +13,7 @@ public class ScriptDialogue : MonoBehaviour
     public System.Action OnDialogueEnd;
     private bool isWrite = false;
     private int numberText;
+    private Key requiredKey = Key.None;
 
     PlayerControls input;
     InputAction nextAction;
@@ -36,14 +37,29 @@ public class ScriptDialogue : MonoBehaviour
     private void Update()
     {
         if (!dialoguePanel.activeSelf) return;
-
-        if (nextAction.triggered && Time.time - lastInputTime > inputCooldown)
+        if (Time.time - lastInputTime > inputCooldown)
         {
-            lastInputTime = Time.time;
-            ChangeText();
+            if (requiredKey != Key.None)
+            {
+                if (Keyboard.current[requiredKey].wasPressedThisFrame)
+                {
+                    lastInputTime = Time.time;
+                    ChangeText();
+                }
+            }
+            else if (nextAction.triggered)
+            {
+                lastInputTime = Time.time;
+                ChangeText();
+            }
         }
+
     }
 
+    public void RequireKey(Key key)
+    {
+        requiredKey = key;
+    }
 
     // Start is called before the first frame update
 
@@ -104,9 +120,18 @@ public class ScriptDialogue : MonoBehaviour
 
     private void DesactiveUI()
     {
+        bool pressedTab = requiredKey == Key.Tab;
+
+        requiredKey = Key.None;
         dialoguePanel.SetActive(false);
         OnDialogueEnd?.Invoke();
+
+        if (pressedTab)
+        {
+            FindAnyObjectByType<LevelController>().MenuSkill();
+        }
     }
+
 
     public void SetDialogue(string[] newDialogues)
     {

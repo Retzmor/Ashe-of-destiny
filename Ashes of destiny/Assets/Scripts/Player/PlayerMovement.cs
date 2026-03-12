@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 currentMoveDir;
     public bool canJumping = true;
     [SerializeField] float maxSlopeAngle = 45f;
+    public bool TutorialMovementLocked;
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
@@ -75,6 +76,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
+        if (TutorialMovementLocked)
+        {
+            StopMovement();
+            return;
+        }
         if (!_canMoving)
         {
             StopMovement(); 
@@ -84,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             float speed = _canSprint ? 8f : 4f;
 
-            if (_canSprint)
+            if (_canSprint && direction.sqrMagnitude > 0.01f)
             {
                 playerComponent.Animator.SetBool("Run", true);
                 playerComponent.Animator.SetBool("Walk", false);

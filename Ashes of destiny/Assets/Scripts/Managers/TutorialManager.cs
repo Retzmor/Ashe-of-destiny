@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Windows;
@@ -43,6 +44,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Image imageQ;
     [SerializeField] PlayerMovement playerMovement;
     private bool waitingForAbilityKey = false;
+    public bool BlockPlayerInput;
 
     [Inject] LevelController levelController;
 
@@ -193,23 +195,26 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialWeapons()
     {
-        controller.ActiveTextSpace();
+        playerMovement.TutorialMovementLocked = true;
+        BlockPlayerInput = true;
         levelController.CanOpenMenus = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        controller.StopPlayer();
         playerMovement.CanMoving = false;
-        playerMovement.StopMovement(); 
+        playerMovement.StopMovement();
         imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
         panelGame.SetActive(false);
         arrowAnimation.SetActive(true);
         StartCoroutine(WaitAnimator());
         controller.ArrowActive();
-
-        string[] dialogoMovimiento = { "Presiona la tecla Tab", };
+        string[] dialogoMovimiento = { "Presiona la tecla Tab" };
         dialogueManager.SetDialogue(dialogoMovimiento);
+
+        dialogueManager.RequireKey(Key.Tab);
     }
+
 
     IEnumerator WaitAnimator()
     {
@@ -218,6 +223,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialShoot()
     {
+        playerMovement.TutorialMovementLocked = false;
         controller.ArrowDisable();
         levelController.LockCursor();
         controller.ActiveTextSpace();

@@ -124,9 +124,6 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-
-
     IEnumerator TutorialShoot()
     {
         yield return new WaitForSeconds(1f);

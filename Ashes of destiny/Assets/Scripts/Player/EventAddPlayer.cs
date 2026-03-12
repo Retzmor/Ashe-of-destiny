@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class EventAddPlayer : MonoBehaviour
 {
@@ -6,11 +7,15 @@ public class EventAddPlayer : MonoBehaviour
     [SerializeField] TutorialController tutorialController;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] AttackPlayer playerAttack;
+    [InjectOptional] TutorialManager manager;
   
     public void EndAnimationTakeAshe()
     {
+        if (manager == null || !manager.BlockPlayerInput)
+        {
             playerController.EnableInputs();
             tutorialController.StartPlayer();
+        }
     }
 
     public void JumpEvent()

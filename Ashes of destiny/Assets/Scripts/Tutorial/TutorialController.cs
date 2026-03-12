@@ -16,7 +16,7 @@ public class TutorialController : MonoBehaviour
     Rigidbody rbPlayer;
     Vector3 positionPlayerStart;
     bool _skipTutorial = false;
-
+    public bool CanPlayerMove = true;
     public bool SkipTutorial { get => _skipTutorial; set => _skipTutorial = value; }
 
     private void Start()

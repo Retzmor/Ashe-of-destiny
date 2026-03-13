@@ -36,8 +36,10 @@ public class AttackEnemy : MonoBehaviour
         if (healthPlayer == null)
             return;
 
-        healthPlayer.ChangeHealth(damageAttack);
+        healthPlayer.ChangeHealth(damageAttack, transform.position);
     }
+
+
 
     IEnumerator CoolDownAttack()
     {

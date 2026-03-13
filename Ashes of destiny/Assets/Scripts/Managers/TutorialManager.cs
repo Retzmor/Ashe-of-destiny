@@ -225,6 +225,8 @@ public class TutorialManager : MonoBehaviour
     {
         playerMovement.TutorialMovementLocked = false;
         controller.ArrowDisable();
+        playerMovement.canJumping = false;
+        playerMovement.CanMoving = false;
         levelController.LockCursor();
         controller.ActiveTextSpace();
         imageTab.SetActive(false);
@@ -238,7 +240,6 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.OnDialogueEnd = () =>
         {
             enemy.SetActive(true);
-            playerController.EnableInputs();
             TutorialAim();
         };
     }
@@ -271,8 +272,6 @@ public class TutorialManager : MonoBehaviour
         controller.StartPlayer();
         controller.DesactiveTextSpace();
     }
-
-
     public void TutorialFinish()
     {
         panelTutorialRectTransform.gameObject.SetActive(true);

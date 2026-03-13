@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using FirstGearGames.SmoothCameraShaker;
 
 public class HealthPlayer : MonoBehaviour
 {
@@ -11,32 +12,40 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
     [SerializeField] CameraManager cameraManager;
+    [SerializeField] ShakeData shakeData;
+    [SerializeField] float knockbackForce = 6f;
     PlayerMovement playerMovement;
     PlayerComponent playerComponent;
+    DamageEffect damageEffect;
     bool isDead = false;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerComponent = GetComponent<PlayerComponent>();
+        damageEffect = GetComponent<DamageEffect>();
         healthImage.fillAmount = 1;
         maxHealth = 100;
         currentHealth = maxHealth;
     }
 
-    public void ChangeHealth(float damage)
+    public void ChangeHealth(float damage, Vector3 attackerPosition)
     {
-        if (isDead == true)
-            return;
+        if (isDead) return;
         playerComponent.Animator.SetTrigger("TakeDamage");
+        CameraShakerHandler.Shake(shakeData);
+        damageEffect.TakeDamageEffect();
+        StartCoroutine(KnockbackLock());
+        Vector3 knockbackDir = transform.position - attackerPosition;
+        playerMovement.ApplyKnockback(knockbackDir, knockbackForce);
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthImage.fillAmount = currentHealth / maxHealth;
-
         if (currentHealth <= 0)
         {
             Die();
         }
     }
+
 
     public void Die()
     {
@@ -57,6 +66,15 @@ public class HealthPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         playerMovement.Rb.isKinematic = true;
-
     }
+
+    IEnumerator KnockbackLock()
+    {
+        playerMovement.CanMoving = false;
+
+        yield return new WaitForSeconds(0.15f);
+
+        playerMovement.CanMoving = true;
+    }
+
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canJumping = true;
     [SerializeField] float maxSlopeAngle = 45f;
     public bool TutorialMovementLocked;
+    bool isKnockback;
 
     public bool CanSprint { get => _canSprint; set => _canSprint = value; }
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
@@ -40,12 +42,10 @@ public class PlayerMovement : MonoBehaviour
     {
         EventBus.GameStart += CanMovement;
     }
-
     private void OnDisable()
     {
         EventBus.GameStart -= CanMovement;
     }
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
             cam = Camera.main.transform;
         }
     }
-
     private void FixedUpdate()
     {
         if (isAiming)
@@ -73,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.isKinematic = false;
     }
-
     public void Movement(Vector2 direction)
     {
         if (TutorialMovementLocked)
@@ -89,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         if (_canMoving)
         {
             float speed = _canSprint ? 10f : 4f;
-
             if (_canSprint && direction.sqrMagnitude > 0.01f)
             {
                 playerComponent.Animator.SetBool("Run", true);
@@ -102,33 +99,20 @@ public class PlayerMovement : MonoBehaviour
                 playerComponent.Animator.SetBool("Walk", true);
                 particulas.DesactiveParticule();
             }
-
             Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
-
             if (inputDir.sqrMagnitude > 0.01f)
             {
                 Vector3 forward = isAiming ? transform.forward : cam.forward;
                 Vector3 right = isAiming ? transform.right : cam.right;
-
                 forward.y = 0;
                 right.y = 0;
-
                 forward.Normalize();
                 right.Normalize();
-
                 Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
                 moveDir.Normalize();
-
                 currentMoveDir = moveDir * speed;
-
                 if (Rb.isKinematic) return;
-
-                rb.linearVelocity = new Vector3(
-                    currentMoveDir.x,
-                    Rb.linearVelocity.y,
-                    currentMoveDir.z
-                );
-
+                rb.linearVelocity = new Vector3(currentMoveDir.x,Rb.linearVelocity.y,currentMoveDir.z);
                 if (!isAiming)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(moveDir);
@@ -137,12 +121,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                rb.linearVelocity = new Vector3(
-                    0,
-                    Rb.linearVelocity.y,
-                    0
-                );
-
+                rb.linearVelocity = new Vector3(0,Rb.linearVelocity.y,0);
                 playerComponent.Animator.SetBool("Walk", false);
             }
         }
@@ -165,12 +144,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canJumping) return;
         Vector3 currentVelocity = rb.linearVelocity;
 
-        rb.linearVelocity = new Vector3(
-            currentVelocity.x,
-            0f,
-            currentVelocity.z
-        );
-
+        rb.linearVelocity = new Vector3(currentVelocity.x,0f,currentVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
     bool IsGrounded()
@@ -185,6 +159,20 @@ public class PlayerMovement : MonoBehaviour
         playerComponent.Animator.SetBool("Walk", false);
     }
 
+    public void ApplyKnockback(Vector3 direction, float force)
+    {
+        Debug.Log("Empujon");
+        isKnockback = true;
+        direction.y = 0;
+        direction.Normalize();
+        rb.AddForce(direction * force, ForceMode.Impulse);
+        StartCoroutine(KnockbackRoutine());
+    }
+    IEnumerator KnockbackRoutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isKnockback = false;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform pivot;
     [SerializeField] float aimRotationSpeed = 720f;
     [SerializeField] Particulas particulas;
+    [SerializeField] float acceleration = 18f;
+    [SerializeField] float deceleration = 12f;
+    [SerializeField] float fallMultiplier = 3f;
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
@@ -67,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,Time.deltaTime * 10f);
             }
         }
+        BetterFall();
     }
     public void CanMovement()
     {
@@ -74,20 +78,43 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Movement(Vector2 direction)
     {
+        if (isKnockback)
+            return;
+
         if (TutorialMovementLocked)
         {
             StopMovement();
             return;
         }
+
         if (!_canMoving)
         {
-            StopMovement(); 
-            return;         
+            StopMovement();
+            return;
         }
-        if (_canMoving)
+
+        float speed = _canSprint ? 10f : 4f;
+
+        Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
+
+        Vector3 forward = isAiming ? transform.forward : cam.forward;
+        Vector3 right = isAiming ? transform.right : cam.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
+        moveDir.Normalize();
+
+        Vector3 currentVelocity = rb.linearVelocity;
+        Vector3 targetVelocity = moveDir * speed;
+
+        if (inputDir.sqrMagnitude > 0.01f)
         {
-            float speed = _canSprint ? 10f : 4f;
-            if (_canSprint && direction.sqrMagnitude > 0.01f)
+            if (_canSprint)
             {
                 playerComponent.Animator.SetBool("Run", true);
                 playerComponent.Animator.SetBool("Walk", false);
@@ -99,34 +126,27 @@ public class PlayerMovement : MonoBehaviour
                 playerComponent.Animator.SetBool("Walk", true);
                 particulas.DesactiveParticule();
             }
-            Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
-            if (inputDir.sqrMagnitude > 0.01f)
+            rb.linearVelocity = Vector3.Lerp(
+                currentVelocity,
+                new Vector3(targetVelocity.x, currentVelocity.y, targetVelocity.z),
+                Time.deltaTime * acceleration
+            );
+            if (!isAiming)
             {
-                Vector3 forward = isAiming ? transform.forward : cam.forward;
-                Vector3 right = isAiming ? transform.right : cam.right;
-                forward.y = 0;
-                right.y = 0;
-                forward.Normalize();
-                right.Normalize();
-                Vector3 moveDir = (forward * inputDir.z) + (right * inputDir.x);
-                moveDir.Normalize();
-                currentMoveDir = moveDir * speed;
-                if (Rb.isKinematic) return;
-                rb.linearVelocity = new Vector3(currentMoveDir.x,Rb.linearVelocity.y,currentMoveDir.z);
-                if (!isAiming)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-                    transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
-                }
+                Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
             }
-            else
-            {
-                rb.linearVelocity = new Vector3(0,Rb.linearVelocity.y,0);
-                playerComponent.Animator.SetBool("Walk", false);
-            }
+        }
+        else
+        {
+            rb.linearVelocity = Vector3.Lerp(currentVelocity,new Vector3(0, currentVelocity.y, 0),Time.deltaTime * deceleration);
+            playerComponent.Animator.SetBool("Run", false);
+            playerComponent.Animator.SetBool("Walk", false);
+            particulas.DesactiveParticule();
         }
         JumpPlayer();
     }
+
     public void JumpPlayer()
     {
         if (!canJumping) return;
@@ -158,6 +178,15 @@ public class PlayerMovement : MonoBehaviour
         playerComponent.Animator.SetBool("Run", false);
         playerComponent.Animator.SetBool("Walk", false);
     }
+
+    void BetterFall()
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
+
 
     public void ApplyKnockback(Vector3 direction, float force)
     {

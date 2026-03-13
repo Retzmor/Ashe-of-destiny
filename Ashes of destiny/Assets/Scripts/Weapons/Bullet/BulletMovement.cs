@@ -54,6 +54,7 @@ public class BulletMovement : MonoBehaviour
             if (collision.gameObject.TryGetComponent(out HealthEnemy healthEnemy))
             {
                 healthEnemy.TakeDamage(damage);
+                HitStop.Instance.Stop(0.05f);
             }
 
             Destroy(gameObject);

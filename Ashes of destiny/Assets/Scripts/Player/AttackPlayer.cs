@@ -87,6 +87,7 @@ public class AttackPlayer : MonoBehaviour
             if (enemy.TryGetComponent(out HealthEnemy health))
             {
                 health.TakeDamage(5);
+                HitStop.Instance.Stop(0.05f);
             }
 
             if (enemy.GetComponentInParent<WoodCollision>())

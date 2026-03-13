@@ -5725,6 +5725,50 @@ Transform:
   - {fileID: 770921790}
   m_Father: {fileID: 441092628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &874514601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874514603}
+  - component: {fileID: 874514602}
+  m_Layer: 0
+  m_Name: HitStop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &874514602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874514601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439b7fa5b6f826f41afe8e172e3641c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &874514603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874514601}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 606.24506, y: 160.40083, z: 0.22758421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &879886733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -16520,7 +16564,7 @@ PrefabInstance:
       objectReference: {fileID: 1252342477}
     - target: {fileID: 616142202811073063, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: knockbackForce
-      value: 20
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 894229497296356341, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17232,7 +17276,7 @@ PrefabInstance:
       objectReference: {fileID: 459471501}
     - target: {fileID: 6413033678960841245, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: radiusAttackMelee
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6413033678960841245, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: crosshairController
@@ -17357,6 +17401,10 @@ PrefabInstance:
     - target: {fileID: 7563924508158285851, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 79.21187
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635496615301424859, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: acceleration
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7640306348262258332, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17765,3 +17813,4 @@ SceneRoots:
   - {fileID: 437841723}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 874514603}

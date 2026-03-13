@@ -7,6 +7,7 @@ public class HealthEnemy : MonoBehaviour
 
     [SerializeField] float healthMax;
     [SerializeField] float currentHealth;
+    Animator animator;
 
     EnemyHealthBar healthBar;
 
@@ -17,7 +18,7 @@ public class HealthEnemy : MonoBehaviour
         currentHealth = healthMax;
         enemyMovement = GetComponent<EnemyMovement>();
         healthBar = GetComponent<EnemyHealthBar>();
-
+        animator = GetComponent<Animator>();
         healthBar.SetMaxHealth(healthMax);
     }
 
@@ -26,7 +27,7 @@ public class HealthEnemy : MonoBehaviour
         currentHealth -= damage;
 
         enemyMovement.TakeDamageEffect();
-
+        animator.SetTrigger("TakeDamage");
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -40,6 +41,7 @@ public class HealthEnemy : MonoBehaviour
         if(tutorialManager != null)
         {
             tutorialManager.TutorialWin();
+            //animator.SetBool("Death", true);
             Destroy(gameObject);
         }
     }

@@ -1,9 +1,11 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Zenject;
+using Zenject.SpaceFighter;
 using static UnityEngine.InputSystem.InputAction;
 public class PlayerController : MonoBehaviour
 {
@@ -13,8 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerCollisions playerCollisions;
     [SerializeField] CameraSwitcher camSwitcher;
     [SerializeField] public CinemachineInputAxisController inputAxisController;
+    [SerializeField] CameraSwitcher cameraSwitcher;
     AbilitiesPlayer abilitiesPlayer;
     AimPlayer aimPlayer;
+    PlayerComponent playerComponent;
     [Inject] LevelController levelController;
     internal bool isAiming;
     private bool inputsLocked;
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
         //inputs.Aim.canceled += AimButton;
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         aimPlayer = GetComponent<AimPlayer>();
+        playerComponent = GetComponent<PlayerComponent>();
 
     }
 
@@ -166,12 +171,36 @@ public class PlayerController : MonoBehaviour
     {
        EnableInputs();
     }
-    //public void AimButton(CallbackCon
-    //context)
-    //{
-    //    
-    //}
 
+    public void StopPlayer()
+    {
+        StartCoroutine(SlowStop());
+    }
+
+    IEnumerator SlowStop()
+    {
+        movement.CanMoving = false;
+
+        while (playerComponent.Rb.linearVelocity.magnitude > 0.1f)
+        {
+            playerComponent.Rb.linearVelocity *= 0.6f;
+            yield return new WaitForFixedUpdate();
+        }
+
+        playerComponent.Rb.linearVelocity = Vector3.zero;
+        movement.GetComponent<PlayerComponent>().Animator.SetBool("Run", false);
+        movement.GetComponent<PlayerComponent>().Animator.SetBool("Walk", false);
+
+        playerComponent.Rb.isKinematic = true;
+        cameraSwitcher.inputAxisController.enabled = false;
+    }
+
+    public void StartPlayer()
+    {
+        playerComponent.Rb.isKinematic = false;
+        movement.CanMoving = true;
+        cameraSwitcher.inputAxisController.enabled = true;
+    }
 
     private void FixedUpdate()
     {

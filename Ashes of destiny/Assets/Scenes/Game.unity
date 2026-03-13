@@ -16296,6 +16296,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7516524377185819114}
     - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8130160264058984372}
+    - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 330585545}
@@ -17112,6 +17116,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3952198747642320330, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: camSwitcher
+      value: 
+      objectReference: {fileID: 1252342476}
+    - target: {fileID: 3952198747642320330, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: cameraSwitcher
       value: 
       objectReference: {fileID: 1252342476}
     - target: {fileID: 3952198747642320330, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}

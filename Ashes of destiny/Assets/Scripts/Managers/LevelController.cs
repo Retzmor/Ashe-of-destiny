@@ -35,6 +35,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] Particulas[] particles;
     [SerializeField] Animator animator;
     [SerializeField] CameraSwitcher camSwitcher;
+    [SerializeField] PlayerMovement player;
     public bool CanOpenMenus = true;
 
     CanvasGroup canvas;

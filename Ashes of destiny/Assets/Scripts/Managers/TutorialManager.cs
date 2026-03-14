@@ -269,6 +269,7 @@ public class TutorialManager : MonoBehaviour
         playerController.EnableInputs();
         playerMovement.CanMoving = true;
         playerMovement.jump = true;
+        playerMovement.canJumping = true;
         controller.StartPlayer();
         controller.DesactiveTextSpace();
     }

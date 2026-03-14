@@ -17,7 +17,7 @@ public class AimCameraController : MonoBehaviour
     float yaw;
     public float Yaw => yaw;
     float pitch;
-    float pitchMin = -10f;
+    float pitchMin = -20f;
     float pitchMax = 45f;
 
     float targetCameraSide;

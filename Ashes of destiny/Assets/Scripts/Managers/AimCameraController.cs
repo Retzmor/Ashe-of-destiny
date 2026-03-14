@@ -17,6 +17,9 @@ public class AimCameraController : MonoBehaviour
     float yaw;
     public float Yaw => yaw;
     float pitch;
+    float pitchMin = -10f;
+    float pitchMax = 45f;
+
     float targetCameraSide;
 
     private void Awake()
@@ -62,6 +65,7 @@ public class AimCameraController : MonoBehaviour
 
         yaw += look.x * sensibility;
         pitch -= look.y * sensibility;
+        pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
         yawTarget.rotation = Quaternion.Euler(0, yaw, 0);
         pitchTarget.localRotation = Quaternion.Euler(pitch, 0, 0);
         aimCamera.CameraSide = Mathf.Lerp(aimCamera.CameraSide, targetCameraSide, Time.deltaTime * shoulderSwitchSpeed);

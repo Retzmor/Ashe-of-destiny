@@ -106,7 +106,7 @@ public class Inventory : MonoBehaviour
 
     public void AsheAirButton(Ability ashesData)
     {
-        countItem.TryBuyItemRock();
+        countItem.TryBuyItemAir();
         if (CanBuyItemFire == true)
         {
             if (ashesData == null)

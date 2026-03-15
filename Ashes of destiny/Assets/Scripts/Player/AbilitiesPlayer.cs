@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 using Color = UnityEngine.Color;
 
 public class AbilitiesPlayer : MonoBehaviour
 {
+    [Inject] AudioManager audioManager;
     [SerializeField] private Button[] AshesButton;
     [SerializeField] private Ability[] slotAshes;
     [SerializeField] TutorialController controller;
@@ -111,7 +113,8 @@ public class AbilitiesPlayer : MonoBehaviour
         }
 
         Ability selectedAshes = slotAshes[index];
-
+        audioManager.PlaySFX(selectedAshes.abilitySound, 1f);
+        ActivateHandParticles(slotAshes[index]);
         if (attackPlayer.IsOnCooldown(selectedAshes))
             return;
 
@@ -126,7 +129,6 @@ public class AbilitiesPlayer : MonoBehaviour
             particulaActual = nuevasParticulas;
             particulaActual.ActivasParticulasLoop();
         }
-        ActivateHandParticles(slotAshes[index]);
     }
 
 

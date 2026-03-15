@@ -1,10 +1,16 @@
 using UnityEngine;
 
-public abstract class Ability : ScriptableObject
+[CreateAssetMenu(menuName = "Abilities/Ability")]
+public class Ability : ScriptableObject
 {
     public string abilityName;
+
     public Sprite icon;
-    public ParticleSystem selectionParticles;
-    public float cooldown;
-    public abstract void Execute(AttackPlayer attacker);
+
+    public GameObject attackPrefab;
+
+    public ParticleSystem hudParticles;
+    public ParticleSystem handParticles;
+
+    public float cooldown = 5f;
 }

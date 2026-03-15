@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
@@ -6,9 +8,10 @@ using Color = UnityEngine.Color;
 public class AbilitiesPlayer : MonoBehaviour
 {
     [SerializeField] private Button[] AshesButton;
-    [SerializeField] private Ashes[] slotAshes;
+    [SerializeField] private Ability[] slotAshes;
     [SerializeField] TutorialController controller;
-
+    [SerializeField] Transform[] handsParticule;
+    List<ParticleSystem> currentHandParticles = new List<ParticleSystem>();
     private bool[] slotUsed;
     private int currentSlotIndex = -1;
     Button _currentButton;
@@ -18,7 +21,7 @@ public class AbilitiesPlayer : MonoBehaviour
     public Button CurrentButton { get => _currentButton; set => _currentButton = value; }
     private void Start()
     {
-        slotAshes = new Ashes[AshesButton.Length];
+        slotAshes = new Ability[AshesButton.Length];
         slotUsed = new bool[AshesButton.Length];
         UpdateSlotHighlights();
         attackPlayer = GetComponent<AttackPlayer>();
@@ -36,9 +39,9 @@ public class AbilitiesPlayer : MonoBehaviour
         _currentButton = AshesButton[1];
     }
 
-    public void AddAbility(Ashes ashes, Sprite icon)
+    public void AddAbility(Ability ability)
     {
-        if (ashes == null)
+        if (ability == null)
             return;
 
         for (int i = 0; i < AshesButton.Length; i++)
@@ -47,7 +50,7 @@ public class AbilitiesPlayer : MonoBehaviour
             {
                 if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
                 {
-                    slotAshes[i] = ashes;
+                    slotAshes[i] = ability;
 
                     if (particulasUI.particulas != null)
                     {
@@ -56,14 +59,14 @@ public class AbilitiesPlayer : MonoBehaviour
                     }
 
                     ParticleSystem nuevaParticula = Instantiate(
-                        ashes.ParticulaPrefab,
+                        ability.hudParticles,
                         AshesButton[i].transform
                     );
 
                     particulasUI.particulas = nuevaParticula;
                 }
 
-                AshesButton[i].image.sprite = icon;
+                AshesButton[i].image.sprite = ability.icon;
                 AshesButton[i].image.color = Color.white;
 
                 slotUsed[i] = true;
@@ -71,6 +74,31 @@ public class AbilitiesPlayer : MonoBehaviour
             }
         }
     }
+    public void ActivateHandParticles(Ability ability)
+    {
+        if (ability == null) return;
+
+        foreach (var p in currentHandParticles)
+        {
+            if (p != null)
+                Destroy(p.gameObject);
+        }
+
+        currentHandParticles.Clear();
+
+        foreach (Transform hand in handsParticule)
+        {
+            ParticleSystem p = Instantiate(
+                ability.handParticles,
+                hand.position,
+                hand.rotation,
+                hand
+            );
+
+            currentHandParticles.Add(p);
+        }
+    }
+
     public void SelectSlot(int index)
     {
         if (index < 0 || index >= AshesButton.Length)
@@ -82,7 +110,7 @@ public class AbilitiesPlayer : MonoBehaviour
             return;
         }
 
-        Ashes selectedAshes = slotAshes[index];
+        Ability selectedAshes = slotAshes[index];
 
         if (attackPlayer.IsOnCooldown(selectedAshes))
             return;
@@ -98,6 +126,7 @@ public class AbilitiesPlayer : MonoBehaviour
             particulaActual = nuevasParticulas;
             particulaActual.ActivasParticulasLoop();
         }
+        ActivateHandParticles(slotAshes[index]);
     }
 
 
@@ -140,11 +169,9 @@ public class AbilitiesPlayer : MonoBehaviour
 
         button.image.color = Color.white;
     }
-    public Ashes GetSelectedAshes()
+    public Ability GetSelectedAbility()
     {
-        if (currentSlotIndex < 0 ||
-            currentSlotIndex >= slotAshes.Length ||
-            !slotUsed[currentSlotIndex])
+        if (currentSlotIndex < 0)
             return null;
 
         return slotAshes[currentSlotIndex];

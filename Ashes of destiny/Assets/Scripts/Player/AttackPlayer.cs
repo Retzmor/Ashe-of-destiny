@@ -29,27 +29,47 @@ public class AttackPlayer : MonoBehaviour
         playerComponent = GetComponent<PlayerComponent>();
     }
 
-    public void Attack(Ashes ashes)
+    public void Attack(Ability ability)
     {
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
 
         if (slotIndex < 0)
             return;
+
         if (!cooldowns.ContainsKey(slotIndex))
             cooldowns.Add(slotIndex, null);
+
         if (cooldowns[slotIndex] == null)
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
+
             playerComponent.Animator.SetTrigger("Shoot");
+
             Vector3 targetPoint = crosshairController.CurrentAimPoint;
             Vector3 direction = (targetPoint - targetAttack.position).normalized;
+
             Vector3 spawnPos = targetAttack.position;
-            GameObject bullet = _container.InstantiatePrefab(ashes.ElementAttack,spawnPos,Quaternion.LookRotation(direction),null);
+
+            GameObject bullet = _container.InstantiatePrefab(
+                ability.attackPrefab,
+                spawnPos,
+                Quaternion.LookRotation(direction),
+                null
+            );
+
             bullet.GetComponent<BulletMovement>().SetDirection(direction);
-            StartCoroutine(abilitiesPlayer.CooldownVisual(abilitiesPlayer.CurrentButton, 5f));
+
+            StartCoroutine(
+                abilitiesPlayer.CooldownVisual(
+                    abilitiesPlayer.CurrentButton,
+                    ability.cooldown
+                )
+            );
+
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }
     }
+
 
     IEnumerator CooldownAttack(int slotIndex)
     {
@@ -61,7 +81,7 @@ public class AttackPlayer : MonoBehaviour
             abilitiesPlayer.particulaActual.ActivasParticulasLoop();
     }
 
-    public bool IsOnCooldown(Ashes ashes)
+    public bool IsOnCooldown(Ability ashes)
     {
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
 

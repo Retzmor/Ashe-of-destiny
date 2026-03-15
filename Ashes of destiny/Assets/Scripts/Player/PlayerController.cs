@@ -99,11 +99,11 @@ public class PlayerController : MonoBehaviour
         if (inputsLocked) return;
         if (movement.isAiming)
         {
-            Ashes ashesActiva = abilitiesPlayer.GetSelectedAshes();
+            Ability abilityActiva = abilitiesPlayer.GetSelectedAbility();
 
-            if (ashesActiva != null)
+            if (abilityActiva != null)
             {
-                attackPlayer.Attack(ashesActiva);
+                attackPlayer.Attack(abilityActiva);
             }
         }
         else

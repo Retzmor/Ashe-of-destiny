@@ -40,18 +40,18 @@ public class Inventory : MonoBehaviour
         gameplayUIController.UpdateCount();
     }
 
-    public void AsheFireButton(Ashes ashesData)
+    public void AsheFireButton(Ability ashesData)
     {
         countItem.TryBuyItemFire();
-        Debug.Log(CanBuyItemFire);
         if (CanBuyItemFire == true)
         {
             if (ashesData == null)
                 return;
             Time.timeScale = 1f;
-            ashesData.DesactiveRock();
-            Sprite icon = ashesData.GetComponent<Image>().sprite;
-            abilitiesPlayer.AddAbility(ashesData, icon);
+            //ashesData.DesactiveRock();
+            Sprite icon = ashesData.icon;
+            abilitiesPlayer.AddAbility(ashesData);
+            abilitiesPlayer.ActivateHandParticles(ashesData);
             imageFire.sprite = imageFireActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AsheWaterButton(Ashes ashesData)
+    public void AsheWaterButton(Ability ashesData)
     {
         countItem.TryBuyItemWater();
         if (CanBuyItemFire == true)
@@ -70,9 +70,9 @@ public class Inventory : MonoBehaviour
             if (ashesData == null)
                 return;
             Time.timeScale = 1f;
-            ashesData.DesactiveRock();
-            Sprite icon = ashesData.GetComponent<Image>().sprite;
-            abilitiesPlayer.AddAbility(ashesData, icon);
+            //ashesData.DesactiveRock();
+            Sprite icon = ashesData.icon;
+            abilitiesPlayer.AddAbility(ashesData);
             imageWater.sprite = imageWaterActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AsheRockButton(Ashes ashesData)
+    public void AsheRockButton(Ability ashesData)
     {
         countItem.TryBuyItemRock();
         if (CanBuyItemFire == true)
@@ -91,9 +91,9 @@ public class Inventory : MonoBehaviour
             if (ashesData == null)
                 return;
             Time.timeScale = 1f;
-            ashesData.DesactiveRock();
-            Sprite icon = ashesData.GetComponent<Image>().sprite;
-            abilitiesPlayer.AddAbility(ashesData, icon);
+            //ashesData.DesactiveRock();
+            Sprite icon = ashesData.icon;
+            abilitiesPlayer.AddAbility(ashesData);
             imageAir.sprite = imageAirActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AsheAirButton(Ashes ashesData)
+    public void AsheAirButton(Ability ashesData)
     {
         countItem.TryBuyItemRock();
         if (CanBuyItemFire == true)
@@ -112,9 +112,9 @@ public class Inventory : MonoBehaviour
             if (ashesData == null)
                 return;
             Time.timeScale = 1f;
-            ashesData.DesactiveRock();
-            Sprite icon = ashesData.GetComponent<Image>().sprite;
-            abilitiesPlayer.AddAbility(ashesData, icon);
+            //ashesData.DesactiveRock();
+            Sprite icon = ashesData.icon;
+            abilitiesPlayer.AddAbility(ashesData);
             imageWater.sprite = imageWaterActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();

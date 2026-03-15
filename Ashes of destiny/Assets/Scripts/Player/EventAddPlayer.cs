@@ -7,6 +7,7 @@ public class EventAddPlayer : MonoBehaviour
     [SerializeField] TutorialController tutorialController;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] AttackPlayer playerAttack;
+    [SerializeField] PlayerAudio playerAudio;
     [InjectOptional] TutorialManager manager;
   
     public void EndAnimationTakeAshe()
@@ -26,5 +27,16 @@ public class EventAddPlayer : MonoBehaviour
     public void AttackAnim()
     {
         playerAttack.MeleeHit();
+        playerAudio.PlayAttack();
+    }
+
+    public void SoundWalk()
+    {
+        playerAudio.PlayFootstep();
+    }
+
+    public void SoundRun()
+    {
+        playerAudio.PlayRunStep();
     }
 }

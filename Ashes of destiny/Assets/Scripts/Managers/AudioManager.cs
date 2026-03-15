@@ -4,6 +4,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] AudioSource sfxSource;
 
     string musicKey = "MusicVolume";
     string masterKey = "MasterVolume";
@@ -59,5 +60,20 @@ public class AudioManager : MonoBehaviour
     {
         return sfxVolume;
     }
+    public void PlaySFX(AudioClip clip, float volume)
+    {
+        if (clip == null) return;
+        sfxSource.pitch = Random.Range(0.75f,1.05f);
+        sfxVolume = 0.2f;
+        sfxSource.PlayOneShot(clip, volume);
+    }
+
+    public void PlaySFX3D(AudioClip clip, Vector3 position)
+    {
+        if (clip == null) return;
+
+        AudioSource.PlayClipAtPoint(clip, position);
+    }
+
 }
 

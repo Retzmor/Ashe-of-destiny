@@ -41,8 +41,6 @@ public class BulletMovement : MonoBehaviour
         rb.linearVelocity = dir * speed;
         particle.Play(true);
     }
-
-
     private void OnCollisionEnter(Collision collision)
     {
         if (alreadyDamage) return;
@@ -59,20 +57,8 @@ public class BulletMovement : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Wood"))
-        {
-            if (collision.gameObject.TryGetComponent(out WoodCollision wood))
-            {
-                wood.AnimationWoodBroke();
-            }
-
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
+
 
     private void FixedUpdate()
     {

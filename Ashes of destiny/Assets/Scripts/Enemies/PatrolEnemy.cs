@@ -7,19 +7,26 @@ public class PatrolEnemy : StateMachineBehaviour
     {
         movement = animator.GetComponentInParent<EnemyMovement>();
     }
-
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (movement.PatrolPoints.Count == 0)
             return;
 
-       movement.Agent.SetDestination(movement.PatrolPoints[movement.CurrentPositionPatrol].position);
+        movement.Agent.SetDestination(
+            movement.PatrolPoints[movement.CurrentPositionPatrol].position
+        );
 
-       if (!movement.Agent.pathPending && movement.Agent.remainingDistance <= movement.Agent.stoppingDistance)
-       {
-          movement.CurrentPositionPatrol = Random.Range(0, movement.PatrolPoints.Count);
-       }
+        if (!movement.Agent.pathPending && movement.Agent.remainingDistance <= movement.Agent.stoppingDistance)
+        {
+            movement.CurrentPositionPatrol++;
+
+            if (movement.CurrentPositionPatrol >= movement.PatrolPoints.Count)
+            {
+                movement.CurrentPositionPatrol = 0;
+            }
+        }
     }
+
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

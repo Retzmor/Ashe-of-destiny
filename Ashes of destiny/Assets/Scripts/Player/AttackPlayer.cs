@@ -57,7 +57,13 @@ public class AttackPlayer : MonoBehaviour
                 null
             );
 
-            bullet.GetComponent<BulletMovement>().SetDirection(direction);
+            BulletMovement bulletMovement = bullet.GetComponent<BulletMovement>();
+
+            if (bulletMovement != null)
+            {
+                bulletMovement.SetDirection(direction);
+            }
+
 
             StartCoroutine(
                 abilitiesPlayer.CooldownVisual(

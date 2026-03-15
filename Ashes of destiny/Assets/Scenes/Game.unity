@@ -12659,6 +12659,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1484017730}
   m_SourcePrefab: {fileID: 100100000, guid: 700f777e13b493b49ab11f7e566e4723, type: 3}
+--- !u!4 &1554559493 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1851334372102356213, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+  m_PrefabInstance: {fileID: 7909303783166170529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1565177222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19481,12 +19486,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110337318}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 290.9759, y: 166.40266, z: -3.261601}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -633.0945, y: 15.465332, z: -6.523202}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1554559493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131609005
 GameObject:
@@ -21113,6 +21118,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3359751059815030886, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_Radius
       value: 0.3
@@ -21131,7 +21140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 158.65
+      value: 160.41
       objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22470,6 +22479,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1851334372102356213, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2110337319}
     - targetCorrespondingSourceObject: {fileID: 2739803311883534002, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 58467768}
@@ -22644,7 +22656,6 @@ SceneRoots:
   - {fileID: 650282453}
   - {fileID: 810733468}
   - {fileID: 7909303783166170529}
-  - {fileID: 2110337319}
   - {fileID: 7642988028192111486}
   - {fileID: 411699495}
   - {fileID: 1726161965}

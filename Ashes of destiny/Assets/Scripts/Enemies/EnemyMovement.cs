@@ -8,6 +8,7 @@ public class EnemyMovement : Enemies
     [SerializeField] List<Transform> _patrolPoints;
     int _currentPositionPatrol;
     EnemyDetector detector;
+    public bool IsKnocked = false;
     [SerializeField] float forceMovementImpact;
     public List<Transform> PatrolPoints { get => _patrolPoints; set => _patrolPoints = value; }
     public int CurrentPositionPatrol { get => _currentPositionPatrol; set => _currentPositionPatrol = value; }

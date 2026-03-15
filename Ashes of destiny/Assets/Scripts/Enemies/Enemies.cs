@@ -22,7 +22,5 @@ public class Enemies : MonoBehaviour
         TryGetComponent(out _rb);
         startPosition = transform.position;
         currentHealth = health;
-        _rb.isKinematic = true;
-        _rb.useGravity = false;
     }
 }

@@ -15,13 +15,17 @@ public class FollowEnemy : StateMachineBehaviour
     {
         if (detector.PlayerDetected && detector.PlayerPosition != null)
         {
-            movement.Agent.SetDestination(detector.PlayerPosition.transform.position);
+            if (!movement.IsKnocked && movement.Agent != null && movement.Agent.enabled)
+            {
+                movement.Agent.SetDestination(detector.PlayerPosition.transform.position);
+            }
         }
         else
         {
             animator.SetBool("Follow", false);
         }
     }
+
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 6
-  force: 500
+  force: 25
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512

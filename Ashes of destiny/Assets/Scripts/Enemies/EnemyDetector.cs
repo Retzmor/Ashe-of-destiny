@@ -1,31 +1,29 @@
 using UnityEngine;
 
-public class EnemyDetector : Enemies
+public class EnemyDetector : MonoBehaviour
 {
-    [SerializeField] LayerMask layerPlayer;
-    [SerializeField] float radius;
-    [SerializeField] GameObject _player;
-    bool _playerDetected = false;
+    [SerializeField] float radius = 8f;
+    [SerializeField] LayerMask playerLayer;
 
-    public bool PlayerDetected { get => _playerDetected; set => _playerDetected = value; }
-    public GameObject PlayerPosition { get => _player; set => _player = value; }
+    public Transform Player { get; private set; }
+    public bool PlayerDetected { get; private set; }
 
-    private void Update()
+    void Update()
     {
-        Collider[] zone = Physics.OverlapSphere(transform.position, radius, layerPlayer);
+        Collider[] hit = Physics.OverlapSphere(transform.position, radius, playerLayer);
 
-        if(zone.Length > 0)
+        if (hit.Length > 0)
         {
             PlayerDetected = true;
+            Player = hit[0].transform;
         }
-
         else
         {
             PlayerDetected = false;
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 public class HealthEnemy : MonoBehaviour
@@ -11,6 +12,7 @@ public class HealthEnemy : MonoBehaviour
     [SerializeField] Material materialEnemy;
     [SerializeField] Material materialGray;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
+    [SerializeField] NavMeshAgent agent;
     Material materialCurrent;
     Animator animator;
 
@@ -31,7 +33,7 @@ public class HealthEnemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        enemyMovement.TakeDamageEffect();
+        //enemyMovement.TakeDamageEffect();
         animator.SetTrigger("TakeDamage");
         healthBar.SetHealth(currentHealth);
 
@@ -59,8 +61,9 @@ public class HealthEnemy : MonoBehaviour
         if(tutorialManager != null)
         {
             tutorialManager.TutorialWin();
-            //animator.SetBool("Death", true);
-            Destroy(gameObject);
+            agent.isStopped = true;
+            animator.SetBool("Death", true);
+            Destroy(gameObject, 3f);
         }
     }
 }

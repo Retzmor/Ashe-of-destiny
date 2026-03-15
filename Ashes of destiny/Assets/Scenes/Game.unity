@@ -3051,7 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 736.78
+      value: 745.2
       objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3129,6 +3129,22 @@ PrefabInstance:
       propertyPath: materialEnemy
       value: 
       objectReference: {fileID: 2100000, guid: 31fb9c585d41f6647b4541fdec362bda, type: 2}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1307349540}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1977700484}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1816785204}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1543207214}
     - target: {fileID: 8274720358351241023, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: radius
       value: 30.1
@@ -3137,7 +3153,8 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 6057470235498174247}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7465912612889447861, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3942761995388582852, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
     m_AddedGameObjects:
@@ -16471,6 +16488,22 @@ PrefabInstance:
       propertyPath: materialEnemy
       value: 
       objectReference: {fileID: 2100000, guid: 31fb9c585d41f6647b4541fdec362bda, type: 2}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1307349540}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1977700484}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1816785204}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1543207214}
     - target: {fileID: 8274720358351241023, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: radius
       value: 30.1
@@ -16479,7 +16512,8 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 6057470235498174247}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7465912612889447861, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3942761995388582852, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
     m_AddedGameObjects:
@@ -16865,7 +16899,7 @@ Transform:
   m_GameObject: {fileID: 1816785203}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 172.4, y: -18.18, z: -0.9}
+  m_LocalPosition: {x: 172.4, y: -16.64, z: -14.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21118,10 +21152,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3359751059815030886, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_Radius
       value: 0.3
@@ -21144,7 +21174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29
+      value: 52.53
       objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21214,6 +21244,22 @@ PrefabInstance:
       propertyPath: materialEnemy
       value: 
       objectReference: {fileID: 2100000, guid: 31fb9c585d41f6647b4541fdec362bda, type: 2}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1307349540}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1977700484}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1816785204}
+    - target: {fileID: 8177798861959502002, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'patrolPoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1543207214}
     - target: {fileID: 8274720358351241023, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: radius
       value: 30.1
@@ -21222,7 +21268,8 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 6057470235498174247}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7465912612889447861, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3942761995388582852, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
     m_AddedGameObjects:

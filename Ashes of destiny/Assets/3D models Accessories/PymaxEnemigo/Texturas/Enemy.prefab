@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 4637026621427861015}
   - component: {fileID: 7987485097343047915}
   - component: {fileID: -2240719435658365127}
+  - component: {fileID: -5054661234052706259}
+  - component: {fileID: 8177798861959502002}
   - component: {fileID: 723067432489879921}
   m_Layer: 0
   m_Name: Enemy
@@ -109,7 +111,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -151,11 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c81a84ee6316ed47baf73ade24fe465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPlayer:
+  radius: 15
+  playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  radius: 15
-  _player: {fileID: 0}
 --- !u!114 &7465912612889447861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +174,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  IsKnocked: 0
-  forceMovementImpact: 0.1
 --- !u!114 &4637026621427861015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +218,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
+--- !u!114 &-5054661234052706259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531709431466162575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc5bfb20aeef3b459e3770b4c9fce4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8177798861959502002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531709431466162575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f37fbb8fa291d4e9abf0b97993dbb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!54 &723067432489879921
 Rigidbody:
   m_ObjectHideFlags: 0

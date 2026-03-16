@@ -19,6 +19,7 @@ public class AttackPlayer : MonoBehaviour
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
     [Inject] private DiContainer _container;
+    [Inject] AudioManager audioManager;
     Dictionary<int, Coroutine> cooldowns = new();
 
 
@@ -42,7 +43,7 @@ public class AttackPlayer : MonoBehaviour
         if (cooldowns[slotIndex] == null)
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
-
+            audioManager.PlaySFX(ability.attackSound, 1f);
             playerComponent.Animator.SetTrigger("Shoot");
 
             Vector3 targetPoint = crosshairController.CurrentAimPoint;

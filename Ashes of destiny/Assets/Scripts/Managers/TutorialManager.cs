@@ -30,7 +30,7 @@ public class TutorialManager : MonoBehaviour
     //[SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
     [SerializeField] GameObject countAshe;
-    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject[] enemy;
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
     [SerializeField] Inventory inventory;
@@ -239,7 +239,10 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
-            enemy.SetActive(true);
+            for (int i = 0; i < enemy.Length; i++)
+            {
+                enemy[i].SetActive(true);
+            }
             TutorialAim();
         };
     }
@@ -310,7 +313,6 @@ public class TutorialManager : MonoBehaviour
     public void NoTutorial()
     {
         countAshe.SetActive(true);
-        enemy.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(false);
         panelGame.SetActive(true);
         controller.SkipTutorial = true;

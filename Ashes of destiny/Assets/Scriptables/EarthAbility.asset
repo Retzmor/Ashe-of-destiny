@@ -15,7 +15,9 @@ MonoBehaviour:
   abilityName: EarthBall
   icon: {fileID: 21300000, guid: 9d15790bdee829245afdcc5067c2851b, type: 3}
   attackPrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
-  abilitySound: {fileID: 8300000, guid: 081f95c981f61bc4eb6b417559530052, type: 3}
   hudParticles: {fileID: 5251195224180072733, guid: 441655608ec38d8448027f4c8f00bd1a, type: 3}
   handParticles: {fileID: 7267595855998898302, guid: 4c4d9cd6148c9ec4e8d3f9ae6660df63, type: 3}
   cooldown: 5
+  attackSound: {fileID: 8300000, guid: 5a2a1c35aea36384b977095f13eef325, type: 3}
+  loopSound: {fileID: 8300000, guid: e0ef24bb428e4bb47a5a6f4713b43dba, type: 3}
+  abilitySound: {fileID: 8300000, guid: 081f95c981f61bc4eb6b417559530052, type: 3}

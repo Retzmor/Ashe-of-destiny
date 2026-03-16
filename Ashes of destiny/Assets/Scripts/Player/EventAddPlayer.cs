@@ -39,4 +39,9 @@ public class EventAddPlayer : MonoBehaviour
     {
         playerAudio.PlayRunStep();
     }
+
+    public void SoundTakeAshe()
+    {
+        playerAudio.TakeAshes();
+    }
 }

@@ -6,7 +6,7 @@ using Zenject;
 public class HealthEnemy : MonoBehaviour
 {
     [InjectOptional] TutorialManager tutorialManager;
-
+    [InjectOptional] LevelController levelController;
     [SerializeField] float healthMax;
     [SerializeField] float currentHealth;
     [SerializeField] Material materialEnemy;
@@ -59,7 +59,7 @@ public class HealthEnemy : MonoBehaviour
     {
         if(tutorialManager != null)
         {
-            tutorialManager.TutorialWin();
+            levelController.WinTutorial();
             agent.isStopped = true;
             animator.SetBool("Death", true);
             Destroy(gameObject, 3f);

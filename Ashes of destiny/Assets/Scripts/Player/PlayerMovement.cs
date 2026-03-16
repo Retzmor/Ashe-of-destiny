@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
     PlayerComponent playerComponent;
+    PlayerAudio playerAudio;
     float speed;
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float jumpForce;
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float acceleration = 18f;
     [SerializeField] float deceleration = 12f;
     [SerializeField] float fallMultiplier = 3f;
+    
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
@@ -56,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<PlayerAudio>();
         playerComponent = GetComponent<PlayerComponent>();
         if (cam == null)
         {
@@ -159,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             playerComponent.Animator.SetTrigger("Jump");
+            playerAudio.PlayJump();
             jump = false;
         }
     }
@@ -194,7 +199,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ApplyKnockback(Vector3 direction, float force)
     {
-        Debug.Log("Empujon");
         isKnockback = true;
         direction.y = 0;
         direction.Normalize();

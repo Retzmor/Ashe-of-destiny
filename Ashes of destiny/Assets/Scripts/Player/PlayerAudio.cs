@@ -12,6 +12,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] AudioClip jump;
     [SerializeField] AudioClip breath;
     [SerializeField] AudioClip[] runStep;
+    [SerializeField] AudioClip TakeAshe;
 
     public void PlayFootstep()
     {
@@ -28,6 +29,11 @@ public class PlayerAudio : MonoBehaviour
         audioManager.PlaySFX(attack[Random.Range(0,attack.Length)], 0.3f);
     }
 
+    public void TakeAshes()
+    {
+        audioManager.PlaySFX3D(TakeAshe, transform.position);
+    }
+
     public void PlayHitEnemy()
     {
       //  audioManager.PlaySFX(hitEnemy, transform.position);
@@ -40,6 +46,6 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayJump()
     {
-       // audioManager.PlaySFX(jump, transform.position);
+       audioManager.PlaySFX(jump, 1f);
     }
 }

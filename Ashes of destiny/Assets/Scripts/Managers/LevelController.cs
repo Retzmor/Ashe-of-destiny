@@ -7,6 +7,7 @@ using Zenject;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] PlayerInputs inputs;
+    [InjectOptional] TutorialManager tutorialManager;
     enum MenuState
     {
         None,
@@ -37,11 +38,14 @@ public class LevelController : MonoBehaviour
     [SerializeField] CameraSwitcher camSwitcher;
     [SerializeField] PlayerMovement player;
     public bool CanOpenMenus = true;
+    int _countWin;
 
     CanvasGroup canvas;
 
     bool isActiveMenuSkill;
     bool canMenuSkill;
+
+    public int CountWin { get => _countWin; set => _countWin = value; }
 
     public void Start()
     {
@@ -174,6 +178,15 @@ public class LevelController : MonoBehaviour
         Time.timeScale = 1f;
         if (camSwitcher) camSwitcher.EnableCameraInput();
         LockCursor();
+    }
+
+    public void WinTutorial()
+    {
+        _countWin++;
+        if(_countWin >= 3)
+        {
+            tutorialManager.TutorialWin();
+        }
     }
     IEnumerator UnlockCursorNextFrame()
     {

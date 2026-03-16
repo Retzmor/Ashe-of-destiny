@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     float speed;
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float jumpForce;
+    float _speedWalk = 4;
+    float _speedRun = 10;
     [SerializeField] GameObject zoneJump;
     [SerializeField] GameObject zoneWalk;
     [SerializeField] float radiusJump;
@@ -40,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     public bool CanMoving { get => _canMoving; set => _canMoving = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
     public bool IsJumping { get => _isJumping; set => _isJumping = value; }
+    public float SpeedWalk { get => _speedWalk; set => _speedWalk = value; }
+    public float SpeedRun { get => _speedRun; set => _speedRun = value; }
 
     private void OnEnable()
     {
@@ -93,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        float speed = _canSprint ? 10f : 4f;
+        float speed = _canSprint ? _speedRun : _speedWalk;
 
         Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 

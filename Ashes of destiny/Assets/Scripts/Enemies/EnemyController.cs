@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     NavMeshAgent agent;
     EnemyDetector detector;
-
+    float originalSpeed;
     [SerializeField] Transform[] patrolPoints;
 
     int currentPoint;
@@ -14,7 +15,7 @@ public class EnemyController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         detector = GetComponent<EnemyDetector>();
-
+        originalSpeed = agent.speed;
         currentPoint = Random.Range(0, patrolPoints.Length);
 
         GoToNextPoint();
@@ -55,5 +56,33 @@ public class EnemyController : MonoBehaviour
     void GoToNextPoint()
     {
         agent.SetDestination(patrolPoints[currentPoint].position);
+    }
+
+    public void ApplySlow(float slowAmount, float duration)
+    {
+        StartCoroutine(SlowCoroutine(slowAmount, duration));
+    }
+
+    IEnumerator SlowCoroutine(float slowAmount, float duration)
+    {
+        agent.speed = originalSpeed * slowAmount;
+
+        yield return new WaitForSeconds(duration);
+
+        agent.speed = originalSpeed;
+    }
+
+    public void ApplyStun(float duration)
+    {
+        StartCoroutine(StunCoroutine(duration));
+    }
+
+    IEnumerator StunCoroutine(float duration)
+    {
+        agent.isStopped = true;
+
+        yield return new WaitForSeconds(duration);
+
+        agent.isStopped = false;
     }
 }

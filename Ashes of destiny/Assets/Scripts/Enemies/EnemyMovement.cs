@@ -10,6 +10,11 @@ public class EnemyMovement : Enemies
     public List<Transform> PatrolPoints { get => _patrolPoints; set => _patrolPoints = value; }
     public int CurrentPositionPatrol { get => _currentPositionPatrol; set => _currentPositionPatrol = value; }
 
+    internal void ApplyStun(float stunDuration)
+    {
+        throw new System.NotImplementedException();
+    }
+
     new void Start()
     {
         base.Start();

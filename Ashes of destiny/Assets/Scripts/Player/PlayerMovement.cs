@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float acceleration = 18f;
     [SerializeField] float deceleration = 12f;
     [SerializeField] float fallMultiplier = 3f;
-    
+
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
@@ -72,10 +72,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 lookDirection = yawTarget.forward;
             lookDirection.y = 0;
-            if(lookDirection.sqrMagnitude > 0.01f)
+            if (lookDirection.sqrMagnitude > 0.01f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,Time.deltaTime * 10f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
             }
         }
         BetterFall();
@@ -142,12 +142,12 @@ public class PlayerMovement : MonoBehaviour
             if (!isAiming)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-                transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
         }
         else
         {
-            rb.linearVelocity = Vector3.Lerp(currentVelocity,new Vector3(0, currentVelocity.y, 0),Time.deltaTime * deceleration);
+            rb.linearVelocity = Vector3.Lerp(currentVelocity, new Vector3(0, currentVelocity.y, 0), Time.deltaTime * deceleration);
             playerComponent.Animator.SetBool("Run", false);
             playerComponent.Animator.SetBool("Walk", false);
             particulas.DesactiveParticule();
@@ -170,10 +170,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void ApplyJumpForce()
     {
+        Debug.Log("Puede saltar");
         if (!canJumping) return;
         Vector3 currentVelocity = rb.linearVelocity;
 
-        rb.linearVelocity = new Vector3(currentVelocity.x,0f,currentVelocity.z);
+        rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
     bool IsGrounded()

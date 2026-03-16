@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (!context.started) return;
-        playerCollisions.CanInteract = false; 
+        playerCollisions.CanInteract = false;
     }
     public void MenuSkills(CallbackContext context)
     {
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnPickAshAnimationEnd()
     {
-       EnableInputs();
+        EnableInputs();
     }
 
     public void StopPlayer()

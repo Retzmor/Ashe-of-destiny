@@ -4890,6 +4890,7 @@ GameObject:
   - component: {fileID: 7800600090057931186}
   - component: {fileID: 3823035218720566937}
   - component: {fileID: 5287592970994690237}
+  - component: {fileID: -5262074147894909494}
   m_Layer: 8
   m_Name: Bola Tierra
   m_TagString: Untagged
@@ -5009,7 +5010,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5043,6 +5044,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5262074147894909494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367986746088089123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313f38daf73fcda4eb383360fd0693c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  stunDuration: 2
 --- !u!1 &5793063055616671203
 GameObject:
   m_ObjectHideFlags: 0

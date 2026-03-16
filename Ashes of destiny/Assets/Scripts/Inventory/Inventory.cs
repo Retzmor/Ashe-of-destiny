@@ -94,7 +94,7 @@ public class Inventory : MonoBehaviour
             //ashesData.DesactiveRock();
             Sprite icon = ashesData.icon;
             abilitiesPlayer.AddAbility(ashesData);
-            imageAir.sprite = imageAirActive;
+            imageRock.sprite = imageRockActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
             if (_tutorialSkip == false)
@@ -115,7 +115,7 @@ public class Inventory : MonoBehaviour
             //ashesData.DesactiveRock();
             Sprite icon = ashesData.icon;
             abilitiesPlayer.AddAbility(ashesData);
-            imageWater.sprite = imageWaterActive;
+            imageAir.sprite = imageAirActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
             if (_tutorialSkip == false)

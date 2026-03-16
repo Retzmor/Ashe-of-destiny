@@ -19733,17 +19733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2ea8a565a35314e8b6b96db76085cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &543450651998042838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7050673965130634063, guid: 086b395f18070d5408b234df7f1a7076, type: 3}
-  m_PrefabInstance: {fileID: 5943936633512563623}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed3d497dbb258d408bd85f9bf4c072d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &543450652199584048 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6383426099766262937, guid: a5964fc7a0f633c4a884a464fee5c9b0, type: 3}
@@ -19790,17 +19779,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e2ea8a565a35314e8b6b96db76085cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &543450653704962577 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3171528275325587815, guid: 184ffa4ff3c937f49967a699f4faa997, type: 3}
-  m_PrefabInstance: {fileID: 7007842271687517616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed3d497dbb258d408bd85f9bf4c072d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1611646757696071668 stripped
@@ -20359,7 +20337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3861053424630459147, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: descriptionText
-      value: Teda movilidad en un area
+      value: Hace lento al enemigo
       objectReference: {fileID: 0}
     - target: {fileID: 3869035848467464260, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_margin.x
@@ -20379,8 +20357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3921092419849085915, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: descriptionText
-      value: Crea un muro de tierra que te ayuda bloquear ataques o acorralar a tus
-        enemigos
+      value: Stuena al enemigo
       objectReference: {fileID: 0}
     - target: {fileID: 4662547820367343416, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -20395,9 +20372,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 473050073}
     - target: {fileID: 4675273583350057832, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AsheRockButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675273583350057832, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 543450653704962577}
+      objectReference: {fileID: 11400000, guid: d7974c4977cca2442837a6f5cc639835, type: 2}
+    - target: {fileID: 4675273583350057832, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Ability, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4731321910982853341, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -121
@@ -20537,7 +20522,11 @@ PrefabInstance:
     - target: {fileID: 7644934591963000229, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 543450651998042838}
+      objectReference: {fileID: 11400000, guid: 3d9ee3004023e164c83c5e7a1533d620, type: 2}
+    - target: {fileID: 7644934591963000229, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Ability, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7783030486567466357, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

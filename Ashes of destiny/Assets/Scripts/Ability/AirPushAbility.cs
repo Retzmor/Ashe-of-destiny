@@ -20,7 +20,10 @@ public class AirPushAbility : MonoBehaviour
 
         foreach (Collider enemy in enemies)
         {
-            enemy.GetComponent<EnemyKnockback>().Push(transform.position, force);
+            if (enemy.TryGetComponent(out EnemyKnockback knock))
+            {
+                knock.Push(transform.position, force);
+            }
         }
     }
 }

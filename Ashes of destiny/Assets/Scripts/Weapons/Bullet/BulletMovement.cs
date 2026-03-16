@@ -41,18 +41,17 @@ public class BulletMovement : MonoBehaviour
         rb.linearVelocity = dir * speed;
         particle.Play(true);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if (alreadyDamage) return;
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             alreadyDamage = true;
 
-            if (collision.gameObject.TryGetComponent(out HealthEnemy healthEnemy))
+            if (other.TryGetComponent(out HealthEnemy healthEnemy))
             {
                 healthEnemy.TakeDamage(damage);
-                HitStop.Instance.Stop(0.05f);
             }
 
             Destroy(gameObject);

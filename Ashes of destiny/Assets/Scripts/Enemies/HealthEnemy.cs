@@ -49,7 +49,6 @@ public class HealthEnemy : MonoBehaviour
     }
     IEnumerator WaitForColor()
     {
-        Debug.Log("cambio color del material");
         meshRenderer.material = materialGray;
         yield return new WaitForSeconds(0.2f);
         meshRenderer.material = materialEnemy;

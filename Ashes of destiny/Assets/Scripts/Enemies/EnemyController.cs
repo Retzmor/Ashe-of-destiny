@@ -7,8 +7,9 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     EnemyDetector detector;
     float originalSpeed;
-    [SerializeField] Transform[] patrolPoints;
+    bool isStunned;
 
+    [SerializeField] Transform[] patrolPoints;
     int currentPoint;
 
     void Start()
@@ -23,6 +24,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (isStunned) return;
+
         if (detector.PlayerDetected)
         {
             agent.SetDestination(detector.Player.position);
@@ -32,6 +35,7 @@ public class EnemyController : MonoBehaviour
             Patrol();
         }
     }
+
     void Patrol()
     {
         if (agent.pathPending) return;
@@ -39,15 +43,12 @@ public class EnemyController : MonoBehaviour
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             int newPoint;
-
             do
             {
                 newPoint = Random.Range(0, patrolPoints.Length);
             }
             while (newPoint == currentPoint);
-
             currentPoint = newPoint;
-
             agent.SetDestination(patrolPoints[currentPoint].position);
         }
     }
@@ -66,9 +67,8 @@ public class EnemyController : MonoBehaviour
     IEnumerator SlowCoroutine(float slowAmount, float duration)
     {
         agent.speed = originalSpeed * slowAmount;
-
+        agent.ResetPath();
         yield return new WaitForSeconds(duration);
-
         agent.speed = originalSpeed;
     }
 
@@ -76,13 +76,20 @@ public class EnemyController : MonoBehaviour
     {
         StartCoroutine(StunCoroutine(duration));
     }
-
     IEnumerator StunCoroutine(float duration)
     {
+        isStunned = true;
+        agent.ResetPath();
         agent.isStopped = true;
-
+        agent.velocity = Vector3.zero;
         yield return new WaitForSeconds(duration);
-
         agent.isStopped = false;
+        isStunned = false;
+    }
+
+    public void Push(Vector3 direction, float force)
+    {
+        Vector3 pushPosition = transform.position + direction * force;
+        agent.Warp(pushPosition);
     }
 }

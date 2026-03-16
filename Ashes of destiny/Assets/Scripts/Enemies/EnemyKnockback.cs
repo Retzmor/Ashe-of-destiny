@@ -5,12 +5,13 @@ using UnityEngine.AI;
 public class EnemyKnockback : MonoBehaviour
 {
     NavMeshAgent agent;
-
+    EnemyController controller;
     bool isKnocked;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        controller = GetComponent<EnemyController>();
     }
     public void Push(Vector3 attackerPosition, float force)
     {
@@ -22,6 +23,9 @@ public class EnemyKnockback : MonoBehaviour
     IEnumerator Knockback(Vector3 attackerPosition, float force)
     {
         isKnocked = true;
+
+        controller.enabled = false;
+        agent.isStopped = true;
 
         Vector3 dir = transform.position - attackerPosition;
         dir.y = 0;
@@ -36,6 +40,10 @@ public class EnemyKnockback : MonoBehaviour
             yield return null;
         }
 
+        agent.isStopped = false;
+        controller.enabled = true;
+
         isKnocked = false;
     }
+
 }

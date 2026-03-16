@@ -9,8 +9,8 @@ public class CountItems : MonoBehaviour
     int _countAshesCurrent = 0;
     bool _canBuyItem;
     int _canBuyItemFire = 4;
-    int _canBuyItemWater = 8;
-    int _canBuyItemRock = 6;
+    int _canBuyItemWater = 4;
+    int _canBuyItemRock = 4;
     int _canBuyItemAir = 4;
 
     public int CountAshesCurrent { get => _countAshesCurrent; set => _countAshesCurrent = value; }

@@ -24,6 +24,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (agent.velocity.sqrMagnitude < 0.1f)
+        {
+            agent.nextPosition = transform.position;
+        }
+
         if (isStunned) return;
 
         if (detector.PlayerDetected)
@@ -85,11 +90,5 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         agent.isStopped = false;
         isStunned = false;
-    }
-
-    public void Push(Vector3 direction, float force)
-    {
-        Vector3 pushPosition = transform.position + direction * force;
-        agent.Warp(pushPosition);
     }
 }

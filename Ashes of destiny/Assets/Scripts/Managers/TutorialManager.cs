@@ -43,7 +43,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Image imageE;
     [SerializeField] Image imageQ;
     [SerializeField] PlayerMovement playerMovement;
-    private bool waitingForAbilityKey = false;
     public bool BlockPlayerInput;
 
     [Inject] LevelController levelController;

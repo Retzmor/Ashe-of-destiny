@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundDistance = 0.3f;
     [SerializeField] Transform pivot;
-    [SerializeField] float aimRotationSpeed = 720f;
     [SerializeField] Particulas particulas;
     [SerializeField] float acceleration = 18f;
     [SerializeField] float deceleration = 12f;
@@ -37,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 lookDirection;
     Vector3 currentMoveDir;
     public bool canJumping = true;
-    [SerializeField] float maxSlopeAngle = 45f;
     public bool TutorialMovementLocked;
     bool isKnockback;
 

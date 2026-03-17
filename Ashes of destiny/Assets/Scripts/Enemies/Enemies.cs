@@ -20,9 +20,11 @@ public class Enemies : MonoBehaviour
         TryGetComponent(out _agent);
         TryGetComponent(out _anim);
         TryGetComponent(out _rb);
-        startPosition = transform.position;
-        currentHealth = health;
-        _rb.isKinematic = true;
-        _rb.useGravity = false;
+
+        _rb.isKinematic = false; 
+        _rb.useGravity = true;
+        _rb.linearDamping = 10f;          
+        _rb.angularDamping = 5f;
+        _rb.constraints = RigidbodyConstraints.FreezeRotation; 
     }
 }

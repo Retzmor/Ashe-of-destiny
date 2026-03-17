@@ -5,7 +5,6 @@ public class WorldCrossHairController : MonoBehaviour
     [SerializeField] RectTransform crossHairUI;
     [SerializeField] public Camera aimCamera;
     [SerializeField] float maxDistance = 20f;
-    [SerializeField] float crossHairOffSetMultiplier = 0.01f;
     [SerializeField] LayerMask raycastMask;
     public bool CanPlaceWater { get; private set; }
 

@@ -8,21 +8,22 @@ public class CountItems : MonoBehaviour
     [SerializeField] GameplayUIController gameplayUIController;
     int _countAshesCurrent = 0;
     bool _canBuyItem;
-    int _canBuyItemFire = 4;
+    int _canBuyItemFire = 2;
     int _canBuyItemWater = 4;
     int _canBuyItemRock = 4;
-    int _canBuyItemAir = 4;
+    int _canBuyItemAir = 2;
 
     public int CountAshesCurrent { get => _countAshesCurrent; set => _countAshesCurrent = value; }
     public bool CanBuyItem { get => _canBuyItem; set => _canBuyItem = value; }
 
     public void TryBuyItemFire()
     {
-        if(_countAshesCurrent == _canBuyItemFire)
+        Debug.Log(_countAshesCurrent);
+        if(_countAshesCurrent >= _canBuyItemFire)
         {
             inventory.CanBuyItemFire = true;
-            _countAshesCurrent = 0;
-            gameplayUIController.CountAshe = 0;
+            _countAshesCurrent -= _canBuyItemFire;
+            gameplayUIController.CountAshe = _countAshesCurrent;
             gameplayUIController.TextMeshPro.text = gameplayUIController.CountAshe.ToString();
             StartCoroutine(coolDownClick());
         }
@@ -54,11 +55,11 @@ public class CountItems : MonoBehaviour
 
     public void TryBuyItemAir()
     {
-        if (_countAshesCurrent == _canBuyItemAir)
+        if (_countAshesCurrent >= _canBuyItemAir)
         {
             inventory.CanBuyItemFire = true;
-            _countAshesCurrent = 0;
-            gameplayUIController.CountAshe = 0;
+            _countAshesCurrent -= _canBuyItemAir;
+            gameplayUIController.CountAshe = _countAshesCurrent;
             gameplayUIController.TextMeshPro.text = gameplayUIController.CountAshe.ToString();
             StartCoroutine(coolDownClick());
         }

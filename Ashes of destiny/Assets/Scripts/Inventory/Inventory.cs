@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour
     bool _tutorialSkip = false;
     bool _canBuyItemFire = false;
 
+    public System.Action<string> OnItemPurchased;
+    private int purchaseCount = 0;
 
     public bool TutorialSkip { get => _tutorialSkip; set => _tutorialSkip = value; }
     public bool CanBuyItemFire { get => _canBuyItemFire; set => _canBuyItemFire = value; }
@@ -43,22 +45,17 @@ public class Inventory : MonoBehaviour
     public void AsheFireButton(Ability ashesData)
     {
         countItem.TryBuyItemFire();
-        if (CanBuyItemFire == true)
+        if (CanBuyItemFire)
         {
-            if (ashesData == null)
-                return;
-            Time.timeScale = 1f;
-            //ashesData.DesactiveRock();
-            Sprite icon = ashesData.icon;
+            if (ashesData == null) return;
+
             abilitiesPlayer.AddAbility(ashesData);
             abilitiesPlayer.ActivateHandParticles(ashesData);
             imageFire.sprite = imageFireActive;
-            gameplayUIController.DesactivePanelSkills();
-            gameplayUIController.ActivePanelGame();
-            if (_tutorialSkip == false)
-            {
-                StartCoroutine(TutorialShoot());
-            }
+
+            purchaseCount++;
+            OnItemPurchased?.Invoke("Fire");
+            VerificarFinalizacionCompraTutorial();
         }
     }
 
@@ -107,21 +104,34 @@ public class Inventory : MonoBehaviour
     public void AsheAirButton(Ability ashesData)
     {
         countItem.TryBuyItemAir();
-        if (CanBuyItemFire == true)
+        if (CanBuyItemFire) 
         {
-            if (ashesData == null)
-                return;
-            Time.timeScale = 1f;
-            //ashesData.DesactiveRock();
-            Sprite icon = ashesData.icon;
+            if (ashesData == null) return;
+
             abilitiesPlayer.AddAbility(ashesData);
             imageAir.sprite = imageAirActive;
+
+            purchaseCount++;
+            OnItemPurchased?.Invoke("Air"); 
+
+            VerificarFinalizacionCompraTutorial();
+        }
+    }
+
+    private void VerificarFinalizacionCompraTutorial()
+    {
+        if (!_tutorialSkip && purchaseCount >= 2)
+        {
+            Time.timeScale = 1f;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
-            if (_tutorialSkip == false)
-            {
-                StartCoroutine(TutorialShoot());   
-            }
+            StartCoroutine(TutorialShoot());
+        }
+        else if (_tutorialSkip)
+        {
+            Time.timeScale = 1f;
+            gameplayUIController.DesactivePanelSkills();
+            gameplayUIController.ActivePanelGame();
         }
     }
     IEnumerator TutorialShoot()

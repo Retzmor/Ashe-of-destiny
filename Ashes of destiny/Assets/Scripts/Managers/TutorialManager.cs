@@ -27,14 +27,14 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject imageShift;
     [SerializeField] GameObject imageTab;
     [SerializeField] GameObject goalMovement;
-    //[SerializeField] GameObject treeObstacule;
     [SerializeField] GameObject goalMovement2;
     [SerializeField] GameObject countAshe;
     [SerializeField] GameObject[] enemy;
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
     [SerializeField] Inventory inventory;
-    [SerializeField] GameObject arrowAnimation;
+    [SerializeField] GameObject arrowFire;
+    [SerializeField] GameObject arrowAir;
     [SerializeField] GameObject goalAttackMelee;
     [SerializeField] Animator animArrow;
     [SerializeField] GameObject MouseRight;
@@ -44,16 +44,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Image imageQ;
     [SerializeField] PlayerMovement playerMovement;
     public bool BlockPlayerInput;
-
     [Inject] LevelController levelController;
-
     void Start()
     {
         IniciarTutorial();
         levelController.UnlockCursor();
         // AudioManager.Instance.PlayMusic(musicaTutorial);
     }
-
     public void IniciarTutorial()
     {
         playerMovement.canJumping = false;
@@ -129,20 +126,17 @@ public class TutorialManager : MonoBehaviour
         string[] dialogoMovimiento = {
             "Saltaras con la tecla espacio.",
         };
-
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
             playerMovement.canJumping = true;
             controller.StartPlayer();
             goalMovement2.SetActive(true);
-           // treeObstacule.SetActive(true);
             levelController.CanOpenMenus = true;
             playerController.EnableInputs();
             controller.DesactiveTextSpace();
         };
     }
-
     public void TutorialMelee()
     {
         controller.ActiveTextSpace();
@@ -175,7 +169,6 @@ public class TutorialManager : MonoBehaviour
         goalAttackMelee.SetActive(false);
         countAshe.SetActive(true);
         controller.StopPlayer();
-       // treeObstacule.SetActive(false);
         goalMovement2.SetActive(false);
         imagejump.SetActive(false);
         panelAshe.SetActive(true);
@@ -205,15 +198,14 @@ public class TutorialManager : MonoBehaviour
         imageTab.SetActive(true);
         panelTutorialRectTransform.gameObject.SetActive(true);
         panelGame.SetActive(false);
-        arrowAnimation.SetActive(true);
+        arrowFire.SetActive(true);
+        inventory.OnItemPurchased += HandleTutorialPurchases;
         StartCoroutine(WaitAnimator());
         controller.ArrowActive();
         string[] dialogoMovimiento = { "Presiona la tecla Tab" };
         dialogueManager.SetDialogue(dialogoMovimiento);
-
         dialogueManager.RequireKey(Key.Tab);
     }
-
 
     IEnumerator WaitAnimator()
     {
@@ -245,7 +237,6 @@ public class TutorialManager : MonoBehaviour
             TutorialAim();
         };
     }
-
     public void TutorialAim()
     {
         controller.ActiveTextSpace();
@@ -275,20 +266,6 @@ public class TutorialManager : MonoBehaviour
         controller.StartPlayer();
         controller.DesactiveTextSpace();
     }
-    public void TutorialFinish()
-    {
-        panelTutorialRectTransform.gameObject.SetActive(true);
-        Vector2 vectorXY = new(0, 0);
-        panelTutorialRectTransform.anchoredPosition = vectorXY;
-        Vector2 vectorWH = new(1920, 900);
-        panelTutorialRectTransform.sizeDelta = vectorWH;
-    }
-
-    public void DesactivePanelTutorial()
-    {
-        panelTutorialRectTransform.gameObject.SetActive(false);
-    }
-
     public void TutorialWin()
     {
         EnableCursor();
@@ -308,15 +285,18 @@ public class TutorialManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-
-    public void NoTutorial()
+    private void HandleTutorialPurchases(string skillName)
     {
-        countAshe.SetActive(true);
-        panelTutorialRectTransform.gameObject.SetActive(false);
-        panelGame.SetActive(true);
-        controller.SkipTutorial = true;
-        inventory.TutorialSkip = true;
-        controller.StartPlayer();
+        if (skillName == "Fire")
+        {
+            arrowFire.SetActive(false);
+            arrowAir.SetActive(true);
+        }
+        else if (skillName == "Air")
+        {
+            if (arrowAir != null) arrowAir.SetActive(false);
+            inventory.OnItemPurchased -= HandleTutorialPurchases; 
+        }
     }
 }
 

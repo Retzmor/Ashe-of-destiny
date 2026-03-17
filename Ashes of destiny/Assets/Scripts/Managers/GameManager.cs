@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameManager : MonoBehaviour
 {
+    [Inject] AudioManager audioManager;
     public void GameStart()
     {
         EventBus.Clear();
         Time.timeScale = 1;
         EventBus.GameStart?.Invoke();
-        SceneManager.LoadScene("Game");
+        audioManager.StopMusic();
+        SceneManager.LoadScene("IntroScene");
     }
     
     public void ExitGame()
@@ -24,6 +27,14 @@ public class GameManager : MonoBehaviour
     public void Despausar()
     {
         Time.timeScale = 1;
+    }
+
+    public void TutorialStart()
+    {
+        EventBus.Clear();
+        Time.timeScale = 1;
+        EventBus.GameStart?.Invoke();
+        SceneManager.LoadScene("Game");
     }
 
     public void Level1Start()

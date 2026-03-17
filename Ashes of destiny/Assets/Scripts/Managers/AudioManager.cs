@@ -102,6 +102,10 @@ public class AudioManager : MonoBehaviour
     {
         loopSource.Stop();
     }
-
+    public void StopMusic()
+    {
+        if (musicSource.isPlaying)
+            musicSource.Stop();
+    }
 }
 

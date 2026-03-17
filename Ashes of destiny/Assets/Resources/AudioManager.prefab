@@ -49,6 +49,7 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: a6a78defa28f6f7468e479c5347f0e2a, type: 2}
   sfxSource: {fileID: -5452442789268295838}
   musicSource: {fileID: -4333623408100552585}
+  loopSource: {fileID: -5452442789268295838}
 --- !u!82 &-5452442789268295838
 AudioSource:
   m_ObjectHideFlags: 0

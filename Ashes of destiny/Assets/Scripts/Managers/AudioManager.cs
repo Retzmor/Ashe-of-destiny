@@ -92,15 +92,20 @@ public class AudioManager : MonoBehaviour
     {
         if (clip == null) return;
 
-        if (loopSource.clip == clip) return;
-
+        if (loopSource.clip == clip && loopSource.isPlaying)
+            return;
+        loopSource.Stop();
         loopSource.clip = clip;
         loopSource.loop = true;
         loopSource.Play();
     }
     public void StopLoop()
     {
-        loopSource.Stop();
+        if (loopSource != null && loopSource.isPlaying)
+        {
+            loopSource.Stop();
+            loopSource.clip = null;
+        }
     }
     public void StopMusic()
     {

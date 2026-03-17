@@ -130,7 +130,7 @@ public class LevelController : MonoBehaviour
         CloseAllMenus();
         Time.timeScale = 1;
         UnlockCursor();
-        gameManager.GameStart();
+        gameManager.TutorialStart();
     }
 
     public void StartLevelOne()

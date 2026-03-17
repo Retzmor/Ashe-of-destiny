@@ -24920,6 +24920,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.528931, y: 18.993698, z: 8.154499}
   m_Center: {x: -0.12194824, y: 6.360512, z: -0.0053367615}
+--- !u!1 &2046024093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3550894580153732059, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+  m_PrefabInstance: {fileID: 5554937478183587637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2046024095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4249358082257042984, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+  m_PrefabInstance: {fileID: 5554937478183587637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046024093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2046024097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046024093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425622a83bf515b498864e08003d618f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: Katon
+  descriptionText: Quema a los enemigos por 5 segundos
+  toolTipDelay: 0.5
 --- !u!1 &2067473452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8234750406694002428, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -25947,6 +25978,10 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 829431886}
+    - target: {fileID: 2583150911772929407, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: descriptionText
+      value: Empuja a los enemigos
+      objectReference: {fileID: 0}
     - target: {fileID: 2663732554647319362, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -25959,6 +25994,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a0400be7fddd5ff41af110d372617405, type: 2}
+    - target: {fileID: 4978351304611272532, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: descriptionText
+      value: "Hace da\xF1o al enemigo (se necesitan 2 cenizas para comprar)"
+      objectReference: {fileID: 0}
     - target: {fileID: 5199939218705214392, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -26014,7 +26053,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3550894580153732059, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046024097}
   m_SourcePrefab: {fileID: 100100000, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
 --- !u!1001 &5813739082732354648
 PrefabInstance:
@@ -26049,6 +26091,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1586617340}
     - target: {fileID: 6164101601374385392, guid: d8fee59b36cb7c94da72fe01e0349375, type: 3}
+      propertyPath: imageKaton
+      value: 
+      objectReference: {fileID: 2046024095}
+    - target: {fileID: 6164101601374385392, guid: d8fee59b36cb7c94da72fe01e0349375, type: 3}
       propertyPath: imageWater
       value: 
       objectReference: {fileID: 1361804730}
@@ -26060,6 +26106,10 @@ PrefabInstance:
       propertyPath: abilitiesPlayer
       value: 
       objectReference: {fileID: 5326101537659866635}
+    - target: {fileID: 6164101601374385392, guid: d8fee59b36cb7c94da72fe01e0349375, type: 3}
+      propertyPath: imageKatonActive
+      value: 
+      objectReference: {fileID: 21300000, guid: c62123dabeed93b4d823c1a359b50084, type: 3}
     - target: {fileID: 6164101601374385392, guid: d8fee59b36cb7c94da72fe01e0349375, type: 3}
       propertyPath: 'slotsInventory.Array.data[0]'
       value: 

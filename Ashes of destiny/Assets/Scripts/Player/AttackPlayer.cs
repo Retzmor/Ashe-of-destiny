@@ -21,6 +21,8 @@ public class AttackPlayer : MonoBehaviour
     [Inject] private DiContainer _container;
     [Inject] AudioManager audioManager;
     Dictionary<int, Coroutine> cooldowns = new();
+    [SerializeField] float meleeCooldown = 0.5f; 
+    private bool isMeleeOnCooldown = false;
 
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
@@ -42,7 +44,7 @@ public class AttackPlayer : MonoBehaviour
 
         if (cooldowns[slotIndex] == null)
         {
-            cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex));
+            cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex,ability.cooldown));
             audioManager.PlaySFX(ability.attackSound, 1f);
             playerComponent.Animator.SetTrigger("Shoot");
 
@@ -78,13 +80,11 @@ public class AttackPlayer : MonoBehaviour
     }
 
 
-    IEnumerator CooldownAttack(int slotIndex)
+    IEnumerator CooldownAttack(int slotIndex, float waitTime)
     {
-        yield return new WaitForSeconds(5f);
-
+        yield return new WaitForSeconds(waitTime);
         cooldowns[slotIndex] = null;
-
-        if (abilitiesPlayer.particulaActual != null)
+        if (abilitiesPlayer.CurrentSlotIndex == slotIndex && abilitiesPlayer.particulaActual != null)
             abilitiesPlayer.particulaActual.ActivasParticulasLoop();
     }
 
@@ -99,7 +99,16 @@ public class AttackPlayer : MonoBehaviour
     }
     internal void AttackMelee()
     {
+        if (isMeleeOnCooldown) return;
         playerComponent.Animator.SetTrigger("AttackMelee");
+        StartCoroutine(MeleeCooldownRoutine());
+    }
+
+    private IEnumerator MeleeCooldownRoutine()
+    {
+        isMeleeOnCooldown = true;
+        yield return new WaitForSeconds(meleeCooldown);
+        isMeleeOnCooldown = false;
     }
     public void MeleeHit()
     {

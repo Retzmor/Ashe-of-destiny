@@ -27,19 +27,16 @@ public class AbilitiesPlayer : MonoBehaviour
         UpdateSlotHighlights();
         attackPlayer = GetComponent<AttackPlayer>();
     }
-
     public void ButtonOne()
     {
         SelectSlot(0);
         _currentButton = AshesButton[0];
     }
-
     public void ButtonTwo()
     {
         SelectSlot(1);
         _currentButton = AshesButton[1];
     }
-
     public void AddAbility(Ability ability)
     {
         if (ability == null)
@@ -102,35 +99,28 @@ public class AbilitiesPlayer : MonoBehaviour
 
     public void SelectSlot(int index)
     {
-        if (index < 0 || index >= AshesButton.Length)
-            return;
-
+        if (index < 0 || index >= AshesButton.Length) return;
         if (!slotUsed[index])
         {
             ClearSelection();
             return;
         }
-
         Ability selectedAshes = slotAshes[index];
+        currentSlotIndex = index;
         audioManager.PlaySFX(selectedAshes.abilitySound, 1f);
-        ActivateHandParticles(slotAshes[index]);
-        if (attackPlayer.IsOnCooldown(selectedAshes))
-            return;
-
+        ActivateHandParticles(selectedAshes);
+        UpdateSlotHighlights();
         if (particulaActual != null)
             particulaActual.DesactiveParticule();
-
-        currentSlotIndex = index;
-        UpdateSlotHighlights();
-
         if (AshesButton[index].TryGetComponent(out Particulas nuevasParticulas))
         {
             particulaActual = nuevasParticulas;
-            particulaActual.ActivasParticulasLoop();
+            if (!attackPlayer.IsOnCooldown(selectedAshes))
+            {
+                particulaActual.ActivasParticulasLoop();
+            }
         }
     }
-
-
 
     private void UpdateSlotHighlights()
     {

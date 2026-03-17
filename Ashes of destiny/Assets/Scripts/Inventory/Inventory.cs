@@ -17,10 +17,12 @@ public class Inventory : MonoBehaviour
     [SerializeField] Image imageWater;
     [SerializeField] Image imageRock;
     [SerializeField] Image imageAir;
+    [SerializeField] Image imageKaton;
     [SerializeField] Sprite imageFireActive;
     [SerializeField] Sprite imageWaterActive;
     [SerializeField] Sprite imageRockActive;
     [SerializeField] Sprite imageAirActive;
+    [SerializeField] Sprite imageKatonActive;
     [SerializeField] CountItems countItem;
     PlayerController playerController;
     bool _tutorialSkip = false;
@@ -123,6 +125,7 @@ public class Inventory : MonoBehaviour
         if (!_tutorialSkip && purchaseCount >= 2)
         {
             Time.timeScale = 1f;
+            imageKaton.sprite = imageKatonActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
             StartCoroutine(TutorialShoot());

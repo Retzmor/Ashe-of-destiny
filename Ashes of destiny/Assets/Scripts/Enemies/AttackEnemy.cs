@@ -51,9 +51,6 @@ public class AttackEnemy : MonoBehaviour
             }
         }
     }
-
-
-
     IEnumerator CoolDownAttack()
     {
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);

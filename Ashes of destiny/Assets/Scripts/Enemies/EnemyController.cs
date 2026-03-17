@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] Transform[] patrolPoints;
     int currentPoint;
+    [SerializeField] float combatStoppingDistance = 0.5f;
+    [SerializeField] float patrolStoppingDistance = 0.5f;
 
     void Start()
     {
@@ -22,21 +24,19 @@ public class EnemyController : MonoBehaviour
         GoToNextPoint();
     }
 
+
     void Update()
     {
-        if (agent.velocity.sqrMagnitude < 0.1f)
-        {
-            agent.nextPosition = transform.position;
-        }
-
         if (isStunned) return;
 
         if (detector.PlayerDetected)
         {
+            agent.stoppingDistance = combatStoppingDistance;
             agent.SetDestination(detector.Player.position);
         }
         else
         {
+            agent.stoppingDistance = patrolStoppingDistance;
             Patrol();
         }
     }

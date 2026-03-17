@@ -5,14 +5,18 @@ public class AttackEnemy : MonoBehaviour
 {
     [SerializeField] float damageAttack;
     [SerializeField] float cooldDownAttack;
+    [SerializeField] float attackRange;
+    [SerializeField] Transform zoneAttack;
 
     Animator anim;
     HealthPlayer healthPlayer;
+    EnemyKnockback enemyKnockback;
     bool canAttack = true;
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        enemyKnockback = GetComponent<EnemyKnockback>();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -33,10 +37,19 @@ public class AttackEnemy : MonoBehaviour
 
     public void AttackPlayer()
     {
-        if (healthPlayer == null)
-            return;
+        Collider[] hitPlayers = Physics.OverlapSphere(zoneAttack.position, attackRange);
 
-        healthPlayer.ChangeHealth(damageAttack, transform.position);
+        foreach (Collider col in hitPlayers)
+        {
+            if (col.CompareTag("Player"))
+            {
+                if (col.TryGetComponent(out HealthPlayer hp))
+                {
+                    hp.ChangeHealth(damageAttack, transform.position);
+                    break; 
+                }
+            }
+        }
     }
 
 
@@ -45,5 +58,11 @@ public class AttackEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         canAttack = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(zoneAttack.position, attackRange);
     }
 }

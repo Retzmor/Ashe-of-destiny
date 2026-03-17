@@ -7,56 +7,68 @@ public class EnemyKnockback : MonoBehaviour
     NavMeshAgent agent;
     EnemyController controller;
     bool isKnocked;
+    bool _playerCollision = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         controller = GetComponent<EnemyController>();
     }
+    private Coroutine knockbackRoutine;
+
+    public bool PlayerCollision { get => _playerCollision; set => _playerCollision = value; }
+
     public void Push(Vector3 attackerPosition, float force)
     {
-        if (isKnocked) return;
-
-        StartCoroutine(Knockback(attackerPosition, force));
+        if (knockbackRoutine != null) StopCoroutine(knockbackRoutine);
+        knockbackRoutine = StartCoroutine(Knockback(attackerPosition, force));
     }
 
     IEnumerator Knockback(Vector3 attackerPosition, float force)
     {
         isKnocked = true;
         controller.enabled = false;
-        agent.ResetPath();
-        Vector3 dir = transform.position - attackerPosition;
+        if (agent.isOnNavMesh) agent.isStopped = true;
+        Vector3 dir = (transform.position - attackerPosition).normalized;
         dir.y = 0;
 
-        if (dir == Vector3.zero)
-        {
-            dir = transform.forward;
-        }
-        float timer = 0.25f;
+        float timer = 0.2f;
         while (timer > 0)
         {
-            agent.Move(dir.normalized * force * Time.deltaTime);
+            if (agent.isOnNavMesh)
+                agent.Move(dir * force * Time.deltaTime);
+
             timer -= Time.deltaTime;
             yield return null;
         }
-        if (!agent.isOnNavMesh)
+
+        if (agent.isOnNavMesh)
         {
+            agent.isStopped = false;
             NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 2.0f, NavMesh.AllAreas);
             agent.Warp(hit.position);
         }
+
         controller.enabled = true;
         isKnocked = false;
+        knockbackRoutine = null;
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _playerCollision = true;
             agent.velocity = Vector3.zero;
             if (agent.isOnNavMesh)
             {
                 agent.nextPosition = transform.position;
             }
+        }
+
+        else
+        {
+            _playerCollision = false;
         }
     }
 }

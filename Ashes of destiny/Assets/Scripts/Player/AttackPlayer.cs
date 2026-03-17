@@ -135,10 +135,6 @@ public class AttackPlayer : MonoBehaviour
                 WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
                 wood.AnimationWoodBroke();
             }
-            if (enemy.TryGetComponent(out EnemyKnockback knockback))
-            {
-                knockback.Push(transform.position, 10f); 
-            }
         }
 
         particulas.ActivasParticulas();

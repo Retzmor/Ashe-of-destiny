@@ -7,33 +7,30 @@ public class HealthEnemy : MonoBehaviour
 {
     [InjectOptional] TutorialManager tutorialManager;
     [InjectOptional] LevelController levelController;
+    [Inject] PlayerCollisions playerCollisions;
     [SerializeField] float healthMax;
     [SerializeField] float currentHealth;
     [SerializeField] Material materialEnemy;
-    [SerializeField] Material materialGray;
+    [SerializeField] Material materialDamage;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
     [SerializeField] NavMeshAgent agent;
     Material materialCurrent;
     Animator animator;
-
     EnemyHealthBar healthBar;
-
-    EnemyMovement enemyMovement;
+    EnemyKnockback enemyKnockback;
 
     void Start()
     {
         currentHealth = healthMax;
-        enemyMovement = GetComponent<EnemyMovement>();
         healthBar = GetComponent<EnemyHealthBar>();
         animator = GetComponent<Animator>();
         healthBar.SetMaxHealth(healthMax);
-        materialCurrent = materialEnemy;
+        enemyKnockback = GetComponent<EnemyKnockback>();
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        //enemyMovement.TakeDamageEffect();
         animator.SetTrigger("TakeDamage");
         healthBar.SetHealth(currentHealth);
 
@@ -42,18 +39,15 @@ public class HealthEnemy : MonoBehaviour
             Death();
         }
     }
-
     public void ChangeMaterial()
     {
-        StartCoroutine(WaitForColor());
+        meshRenderer.material = materialDamage;
+        enemyKnockback.Push(playerCollisions.transform.position, 2);
     }
-    IEnumerator WaitForColor()
+    public void BackMaterial()
     {
-        meshRenderer.material = materialGray;
-        yield return new WaitForSeconds(0.2f);
         meshRenderer.material = materialEnemy;
     }
-
 
     public void Death()
     {

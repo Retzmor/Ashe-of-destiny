@@ -27,11 +27,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float acceleration = 18f;
     [SerializeField] float deceleration = 12f;
     [SerializeField] float fallMultiplier = 3f;
-
+    private float attackMultiplier = 1f;
     private bool _canSprint = false;
     private bool _isJumping = true;
     internal bool isAiming;
     bool _canMoving = true;
+    float _speed;
     public bool jump = false;
     Vector3 lookDirection;
     Vector3 currentMoveDir;
@@ -45,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsJumping { get => _isJumping; set => _isJumping = value; }
     public float SpeedWalk { get => _speedWalk; set => _speedWalk = value; }
     public float SpeedRun { get => _speedRun; set => _speedRun = value; }
+    public float Speed { get => _speed; set => _speed = value; }
+    public void SetAttackMultiplier(float value) => attackMultiplier = value;
 
     private void OnEnable()
     {
@@ -99,7 +102,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        float speed = _canSprint ? _speedRun : _speedWalk;
+        float baseSpeed = _canSprint ? _speedRun : _speedWalk;
+        speed = baseSpeed * attackMultiplier;
 
         Vector3 inputDir = new Vector3(direction.x, 0f, direction.y);
 
@@ -193,6 +197,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
+    }
+
+    public void SetAttackSpeedMultiplier(float value)
+    {
+        attackMultiplier = value;
     }
 
 

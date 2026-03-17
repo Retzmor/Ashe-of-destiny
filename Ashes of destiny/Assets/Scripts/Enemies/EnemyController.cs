@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
     {
         if (agent.pathPending) return;
 
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
             int newPoint;
             do

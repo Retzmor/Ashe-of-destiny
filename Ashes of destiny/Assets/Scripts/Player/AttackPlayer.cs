@@ -18,6 +18,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Particulas particula2;
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
+    PlayerMovement playerMovement;
     [Inject] private DiContainer _container;
     [Inject] AudioManager audioManager;
     Dictionary<int, Coroutine> cooldowns = new();
@@ -30,6 +31,7 @@ public class AttackPlayer : MonoBehaviour
     {
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         playerComponent = GetComponent<PlayerComponent>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public void Attack(Ability ability)
@@ -107,7 +109,9 @@ public class AttackPlayer : MonoBehaviour
     private IEnumerator MeleeCooldownRoutine()
     {
         isMeleeOnCooldown = true;
+        playerMovement.SetAttackMultiplier(0.3f);
         yield return new WaitForSeconds(meleeCooldown);
+        playerMovement.SetAttackMultiplier(1f);
         isMeleeOnCooldown = false;
     }
     public void MeleeHit()

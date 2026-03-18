@@ -44,4 +44,14 @@ public class EventAddPlayer : MonoBehaviour
     {
         playerAudio.TakeAshes();
     }
+
+    public void CanAttack()
+    {
+        playerAttack.isAttacking();
+    }
+
+    public void NotCanAttack()
+    {
+        playerAttack.IsntAttacking();
+    }
 }

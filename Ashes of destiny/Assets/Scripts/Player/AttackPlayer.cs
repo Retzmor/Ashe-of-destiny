@@ -16,6 +16,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] Transform targetAttackMelee;
     [SerializeField] Particulas particulas;
     [SerializeField] Particulas particula2;
+    [SerializeField] float comboResetTime = 1.0f;
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
     PlayerMovement playerMovement;
@@ -24,7 +25,9 @@ public class AttackPlayer : MonoBehaviour
     Dictionary<int, Coroutine> cooldowns = new();
     [SerializeField] float meleeCooldown = 0.5f; 
     private bool isMeleeOnCooldown = false;
-
+    private int comboStep = 0;
+    private float lastAttackTime;
+    private bool attacking = false;
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
     private void Start()
@@ -101,11 +104,18 @@ public class AttackPlayer : MonoBehaviour
     }
     internal void AttackMelee()
     {
-        if (isMeleeOnCooldown) return;
+        if (Time.time - lastAttackTime > comboResetTime)
+        {
+            comboStep = 0;
+        }
+        if (isMeleeOnCooldown || attacking) return;
+        playerComponent.Animator.SetInteger("Combo", comboStep);
         playerComponent.Animator.SetTrigger("AttackMelee");
+        lastAttackTime = Time.time;
         StartCoroutine(MeleeCooldownRoutine());
+        comboStep++;
+        if (comboStep > 2) comboStep = 0;
     }
-
     private IEnumerator MeleeCooldownRoutine()
     {
         isMeleeOnCooldown = true;
@@ -116,6 +126,7 @@ public class AttackPlayer : MonoBehaviour
     }
     public void MeleeHit()
     {
+        int currentHitType = playerComponent.Animator.GetInteger("Combo");
         Collider[] hitEnemies = Physics.OverlapSphere(
             targetAttackMelee.position,
             radiusAttackMelee,
@@ -126,6 +137,8 @@ public class AttackPlayer : MonoBehaviour
         {
             if (enemy.TryGetComponent(out HealthEnemy health))
             {
+                float finalDamage = (currentHitType == 2) ? 15f : 5f; 
+                float finalKnockback = (currentHitType == 2) ? 15f : 5f;
                 health.TakeDamage(5);
                 HitStop.Instance.Stop(0.05f);
             }
@@ -141,6 +154,16 @@ public class AttackPlayer : MonoBehaviour
         particula2.ActivasParticulas();
 
         StartCoroutine(ParticuleDesactive());
+    }
+
+    public void isAttacking()
+    {
+        attacking = true;
+    }
+
+    public void IsntAttacking()
+    {
+        attacking = false;
     }
 
     IEnumerator ParticuleDesactive()

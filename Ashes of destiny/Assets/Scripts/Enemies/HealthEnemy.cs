@@ -18,6 +18,7 @@ public class HealthEnemy : MonoBehaviour
     Animator animator;
     EnemyHealthBar healthBar;
     EnemyKnockback enemyKnockback;
+    bool dead = false;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class HealthEnemy : MonoBehaviour
 
     public void TakeDamage(float damage, float knockbackForce)
     {
+        if (dead == true) return;
         currentHealth -= damage;
         animator.SetTrigger("TakeDamage");
         healthBar.SetHealth(currentHealth);
@@ -57,8 +59,11 @@ public class HealthEnemy : MonoBehaviour
     {
         if(tutorialManager != null)
         {
+
             levelController.WinTutorial();
             agent.isStopped = true;
+            agent.enabled = false;
+            if (TryGetComponent(out Collider col)) col.enabled = false;
             animator.SetBool("Death", true);
             Destroy(gameObject, 3f);
         }

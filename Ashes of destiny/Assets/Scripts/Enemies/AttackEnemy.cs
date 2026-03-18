@@ -29,7 +29,7 @@ public class AttackEnemy : MonoBehaviour
 
         collision.gameObject.TryGetComponent(out healthPlayer);
 
-        //anim.SetTrigger("Attack");
+        anim.SetTrigger("Attack");
 
         canAttack = false;
         StartCoroutine(CoolDownAttack());
@@ -45,7 +45,7 @@ public class AttackEnemy : MonoBehaviour
             {
                 if (col.TryGetComponent(out HealthPlayer hp))
                 {
-                    //hp.ChangeHealth(damageAttack, transform.position);
+                    hp.ChangeHealth(damageAttack, transform.position);
                     break; 
                 }
             }

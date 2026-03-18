@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (agent == null || !agent.enabled || !agent.isOnNavMesh) return;
         if (isStunned) return;
 
         if (detector.PlayerDetected)
@@ -43,6 +44,7 @@ public class EnemyController : MonoBehaviour
 
     void Patrol()
     {
+        if (agent == null || !agent.enabled || !agent.isOnNavMesh) return;
         if (agent.pathPending) return;
 
         if (!agent.pathPending && agent.remainingDistance < 0.5f)

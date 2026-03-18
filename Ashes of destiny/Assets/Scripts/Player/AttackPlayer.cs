@@ -104,6 +104,11 @@ public class AttackPlayer : MonoBehaviour
     }
     internal void AttackMelee()
     {
+        if (Time.time - lastAttackTime > 2.0f)
+        {
+            attacking = false;
+            isMeleeOnCooldown = false;
+        }
         if (isMeleeOnCooldown || attacking) return;
         if (Time.time - lastAttackTime > comboResetTime) comboStep = 0;
         int hitIndex = comboStep;

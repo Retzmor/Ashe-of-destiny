@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: Aire
-  descriptionText: Empuja a los enemigos en cierto rango de alcance
+  descriptionText: Empuja a los enemigos
   toolTipDelay: 0.3
 --- !u!1 &1241039649847122163
 GameObject:
@@ -2772,7 +2772,7 @@ Animator:
   m_GameObject: {fileID: 2663732554647319362}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19824c151f0296d41b92e72e63da255b, type: 2}
+  m_Controller: {fileID: 9100000, guid: a0400be7fddd5ff41af110d372617405, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -3149,6 +3149,7 @@ GameObject:
   - component: {fileID: 3986627019050917568}
   - component: {fileID: 5851024058569140239}
   - component: {fileID: 4249358082257042984}
+  - component: {fileID: 5213797659473742899}
   m_Layer: 5
   m_Name: Katon
   m_TagString: Untagged
@@ -3213,6 +3214,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5213797659473742899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550894580153732059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425622a83bf515b498864e08003d618f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: Katon
+  descriptionText: Quema a los enemigos por 5 segundos (Es una pasiva, se activa
+    automaticamente al golpear con fuego y aire a un enemigo)
+  toolTipDelay: 0.5
 --- !u!1 &3782348790374092629
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,7 +4899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: Fuego
-  descriptionText: "Hace da\xF1o al enemigo (se necesitan 4 cenizas para desbloquearlo)"
+  descriptionText: "Hace da\xF1o al enemigo (se necesitan 2 cenizas para comprar)"
   toolTipDelay: 0.3
 --- !u!1 &5459777868969505579
 GameObject:

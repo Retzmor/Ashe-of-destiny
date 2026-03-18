@@ -3,36 +3,35 @@ using UnityEngine;
 
 public class AttackEnemy : MonoBehaviour
 {
-    [SerializeField] float damageAttack;
-    [SerializeField] float cooldDownAttack;
-    [SerializeField] float attackRange;
+    [SerializeField] float damageAttack = 10f;
+    [SerializeField] float cooldownAttack = 3.0f; 
+    [SerializeField] float attackRange = 1.5f;
     [SerializeField] Transform zoneAttack;
 
     Animator anim;
-    HealthPlayer healthPlayer;
-    EnemyKnockback enemyKnockback;
     bool canAttack = true;
+    private HealthEnemy healthEnemy; 
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        enemyKnockback = GetComponent<EnemyKnockback>();
+        healthEnemy = GetComponent<HealthEnemy>();
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
-            return;
+        if (!canAttack) return;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartAttackSequence();
+        }
+    }
 
-        if (!canAttack)
-            return;
-
-        collision.gameObject.TryGetComponent(out healthPlayer);
-
-        anim.SetTrigger("Attack");
-
+    private void StartAttackSequence()
+    {
         canAttack = false;
-        StartCoroutine(CoolDownAttack());
+        anim.SetTrigger("Attack");
+        StartCoroutine(CoolDownRoutine());
     }
 
     public void AttackPlayer()
@@ -46,20 +45,24 @@ public class AttackEnemy : MonoBehaviour
                 if (col.TryGetComponent(out HealthPlayer hp))
                 {
                     hp.ChangeHealth(damageAttack, transform.position);
-                    break; 
+                    break;
                 }
             }
         }
     }
-    IEnumerator CoolDownAttack()
+
+    IEnumerator CoolDownRoutine()
     {
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(cooldownAttack);
         canAttack = true;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(zoneAttack.position, attackRange);
+        if (zoneAttack != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(zoneAttack.position, attackRange);
+        }
     }
 }

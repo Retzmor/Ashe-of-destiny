@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAttack: 5
   cooldDownAttack: 2
-  attackRange: 0.5
+  attackRange: 1.23
   zoneAttack: {fileID: 3642118110221718115}
 --- !u!114 &7987485097343047915
 MonoBehaviour:
@@ -192,7 +192,7 @@ MonoBehaviour:
   healthMax: 100
   currentHealth: 0
   materialEnemy: {fileID: 2100000, guid: 246eba7d77a639842a4c770d9b410c1e, type: 2}
-  materialDamage: {fileID: 0}
+  materialDamage: {fileID: 2100000, guid: acbb9a74e9ed4c94285d8e037c49e918, type: 2}
   meshRenderer: {fileID: 3252802993586555786}
   agent: {fileID: 3359751059815030886}
 --- !u!114 &-2240719435658365127
@@ -237,6 +237,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  combatStoppingDistance: 0
+  patrolStoppingDistance: 0.5
 --- !u!54 &723067432489879921
 Rigidbody:
   m_ObjectHideFlags: 0

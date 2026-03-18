@@ -51,7 +51,7 @@ public class BulletMovement : MonoBehaviour
 
             if (other.TryGetComponent(out HealthEnemy healthEnemy))
             {
-                healthEnemy.TakeDamage(damage);
+                healthEnemy.TakeDamage(damage, 15);
             }
 
             Destroy(gameObject);

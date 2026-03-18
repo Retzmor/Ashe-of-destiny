@@ -106,8 +106,10 @@ public class PlayerController : MonoBehaviour
                 attackPlayer.Attack(abilityActiva);
             }
         }
+
         else
         {
+            Debug.Log("¡Clic de Mouse -> Ataque Melee!");
             attackPlayer.AttackMelee();
         }
     }
@@ -147,9 +149,17 @@ public class PlayerController : MonoBehaviour
     }
     public void MeleeAttack(CallbackContext context)
     {
-        if (!inputs.InputsEnabled) return;
-        if (!context.started) return;
-        attackPlayer.AttackMelee();
+        Debug.Log($"Input recibido. Fase: {context.phase}");
+        if (!inputs.InputsEnabled)
+        {
+            Debug.LogWarning("Input bloqueado por la variable InputsEnabled");
+            return;
+        }
+        if (context.started)
+        {
+            Debug.Log("¡GOLPE DETECTADO EXITOSAMENTE!");
+            attackPlayer.AttackMelee();
+        }
     }
     public void DisableInputs()
     {

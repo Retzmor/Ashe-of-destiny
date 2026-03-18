@@ -28,11 +28,16 @@ public class HealthEnemy : MonoBehaviour
         enemyKnockback = GetComponent<EnemyKnockback>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, float knockbackForce)
     {
         currentHealth -= damage;
         animator.SetTrigger("TakeDamage");
         healthBar.SetHealth(currentHealth);
+
+        if (enemyKnockback != null)
+        {
+            enemyKnockback.Push(playerCollisions.transform.position, knockbackForce);
+        }
 
         if (currentHealth <= 0)
         {
@@ -42,7 +47,6 @@ public class HealthEnemy : MonoBehaviour
     public void ChangeMaterial()
     {
         meshRenderer.material = materialDamage;
-        enemyKnockback.Push(playerCollisions.transform.position, 2);
     }
     public void BackMaterial()
     {

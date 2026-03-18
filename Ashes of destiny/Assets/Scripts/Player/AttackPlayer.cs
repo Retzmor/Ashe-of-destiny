@@ -104,29 +104,39 @@ public class AttackPlayer : MonoBehaviour
     }
     internal void AttackMelee()
     {
-        if (Time.time - lastAttackTime > comboResetTime)
-        {
-            comboStep = 0;
-        }
         if (isMeleeOnCooldown || attacking) return;
+        if (Time.time - lastAttackTime > comboResetTime) comboStep = 0;
+        int hitIndex = comboStep;
         playerComponent.Animator.SetInteger("Combo", comboStep);
         playerComponent.Animator.SetTrigger("AttackMelee");
         lastAttackTime = Time.time;
-        StartCoroutine(MeleeCooldownRoutine());
+        float customCD = (hitIndex == 2) ? 0.8f : 0.1f;
+        StartCoroutine(MeleeCooldownRoutine(customCD));
         comboStep++;
         if (comboStep > 2) comboStep = 0;
     }
-    private IEnumerator MeleeCooldownRoutine()
+
+    private IEnumerator MeleeCooldownRoutine(float delay)
     {
         isMeleeOnCooldown = true;
-        playerMovement.SetAttackMultiplier(0.3f);
-        yield return new WaitForSeconds(meleeCooldown);
+        if (comboStep == 2) playerMovement.SetAttackMultiplier(0.2f);
+        yield return new WaitForSeconds(delay);
         playerMovement.SetAttackMultiplier(1f);
         isMeleeOnCooldown = false;
     }
     public void MeleeHit()
     {
         int currentHitType = playerComponent.Animator.GetInteger("Combo");
+        float damage = 5f;
+        float force = 2f;
+        float stopDuration = 0.05f;
+        if (currentHitType == 2) 
+        {
+            damage = 15f;
+            force = 12f;       
+            stopDuration = 0.12f; 
+        }
+
         Collider[] hitEnemies = Physics.OverlapSphere(
             targetAttackMelee.position,
             radiusAttackMelee,
@@ -137,21 +147,25 @@ public class AttackPlayer : MonoBehaviour
         {
             if (enemy.TryGetComponent(out HealthEnemy health))
             {
-                float finalDamage = (currentHitType == 2) ? 15f : 5f; 
-                float finalKnockback = (currentHitType == 2) ? 15f : 5f;
-                health.TakeDamage(5);
-                HitStop.Instance.Stop(0.05f);
+                health.TakeDamage(damage, force);
+                health.ChangeMaterial();
+                HitStop.Instance.Stop(stopDuration);
             }
 
             if (enemy.GetComponentInParent<WoodCollision>())
             {
-                WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
-                wood.AnimationWoodBroke();
+                enemy.GetComponentInParent<WoodCollision>().AnimationWoodBroke();
             }
         }
 
-        particulas.ActivasParticulas();
-        particula2.ActivasParticulas();
+        if (currentHitType == 2)
+        {
+            particula2.ActivasParticulas();
+        }
+        else
+        {
+            particulas.ActivasParticulas();
+        }
 
         StartCoroutine(ParticuleDesactive());
     }

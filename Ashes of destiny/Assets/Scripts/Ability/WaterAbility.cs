@@ -9,7 +9,7 @@ public class WaterAbility : MonoBehaviour
     {
         if (other.TryGetComponent(out HealthEnemy enemy))
         {
-            enemy.TakeDamage(2);
+            enemy.TakeDamage(20, 15);
 
             if (other.TryGetComponent(out EnemyController movement))
             {

@@ -33,10 +33,12 @@ public class EnemyKnockback : MonoBehaviour
         dir.y = 0;
 
         float timer = 0.2f;
+        float startTimer = timer;
         while (timer > 0)
         {
+            float currentForce = force * (timer / startTimer);
             if (agent.isOnNavMesh)
-                agent.Move(dir * force * Time.deltaTime);
+                agent.Move(dir * currentForce * Time.deltaTime);
 
             timer -= Time.deltaTime;
             yield return null;

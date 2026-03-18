@@ -9,7 +9,7 @@ public class EarthBullet : MonoBehaviour
     {
         if (other.TryGetComponent(out HealthEnemy enemy))
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(damage, 15);
 
             if (other.TryGetComponent(out EnemyController movement))
             {

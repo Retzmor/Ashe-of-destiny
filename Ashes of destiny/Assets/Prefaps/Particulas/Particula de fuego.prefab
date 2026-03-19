@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5281742213143338317}
   - component: {fileID: 5251195224180072733}
   - component: {fileID: 5962390430046070766}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Particula de fuego
   m_TagString: Untagged
   m_Icon: {fileID: 0}

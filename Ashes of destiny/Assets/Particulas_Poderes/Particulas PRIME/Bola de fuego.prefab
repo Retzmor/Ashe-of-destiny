@@ -4852,6 +4852,7 @@ MonoBehaviour:
   speed: 30
   damage: 30
   rotationSpeed: 800
+  forceImpulse: 15
 --- !u!54 &-2675665078882500025
 Rigidbody:
   m_ObjectHideFlags: 0

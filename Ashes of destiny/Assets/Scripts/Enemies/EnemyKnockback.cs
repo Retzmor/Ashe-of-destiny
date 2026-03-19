@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class EnemyKnockback : MonoBehaviour
 {
     NavMeshAgent agent;
@@ -31,7 +30,6 @@ public class EnemyKnockback : MonoBehaviour
         if (agent.isOnNavMesh) agent.isStopped = true;
         Vector3 dir = (transform.position - attackerPosition).normalized;
         dir.y = 0;
-
         float timer = 0.2f;
         float startTimer = timer;
         while (timer > 0)
@@ -39,18 +37,15 @@ public class EnemyKnockback : MonoBehaviour
             float currentForce = force * (timer / startTimer);
             if (agent.isOnNavMesh)
                 agent.Move(dir * currentForce * Time.deltaTime);
-
             timer -= Time.deltaTime;
             yield return null;
         }
-
         if (agent.isOnNavMesh)
         {
             agent.isStopped = false;
             NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 2.0f, NavMesh.AllAreas);
             agent.Warp(hit.position);
         }
-
         controller.enabled = true;
         isKnocked = false;
         knockbackRoutine = null;

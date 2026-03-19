@@ -24,4 +24,9 @@ public class EnemyAudio : MonoBehaviour
             audioManager.PlaySFX3D(clip, transform.position);
         }
     }
+
+    public void DamageEnemy()
+    {
+        audioManager.PlaySFX3D(idleSounds[0], transform.position);
+    }
 }

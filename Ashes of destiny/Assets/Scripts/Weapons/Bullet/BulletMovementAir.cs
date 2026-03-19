@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class BulletMovement : MonoBehaviour
+public class BulletMovementAir : MonoBehaviour
 {
     Rigidbody rb;
     Collider colliderBullet;
@@ -9,7 +9,9 @@ public class BulletMovement : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float damage;
     [SerializeField] float rotationSpeed = 800f;
-    [SerializeField] float forceImpulse;
+    [SerializeField] float initialScale = 0.5f;
+    [SerializeField] float maxScale = 3.0f;
+    [SerializeField] float growthSpeed = 2.0f;
     ParticleSystem particle;
 
     bool alreadyDamage = false;
@@ -25,14 +27,22 @@ public class BulletMovement : MonoBehaviour
     }
     void Start()
     {
+        transform.localScale = Vector3.one * initialScale;
         colliderBullet = GetComponent<Collider>();
-
         foreach (Collider col in player.GetComponentsInChildren<Collider>())
         {
             Physics.IgnoreCollision(colliderBullet, col);
         }
 
         Destroy(gameObject, 3f);
+    }
+
+    private void Update()
+    {
+        if (transform.localScale.x < maxScale)
+        {
+            transform.localScale += Vector3.one * growthSpeed * Time.deltaTime;
+        }
     }
 
     public void SetDirection(Vector3 dir)
@@ -52,13 +62,16 @@ public class BulletMovement : MonoBehaviour
 
             if (other.TryGetComponent(out HealthEnemy healthEnemy))
             {
-                healthEnemy.TakeDamage(damage, forceImpulse);
+                healthEnemy.TakeDamage(damage, 15);
             }
 
+            Destroy(gameObject);
         }
     }
+
+
     private void FixedUpdate()
     {
-        transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
+       transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
     }
 }

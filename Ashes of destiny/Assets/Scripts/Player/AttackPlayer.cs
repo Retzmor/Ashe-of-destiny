@@ -21,10 +21,12 @@ public class AttackPlayer : MonoBehaviour
     PlayerComponent playerComponent;
     PlayerAudio playerAudio;
     PlayerMovement playerMovement;
+    [SerializeField] ParticleSystem attackMeleeParticle;
     [Inject] private DiContainer _container;
     [Inject] AudioManager audioManager;
     Dictionary<int, Coroutine> cooldowns = new();
-    [SerializeField] float meleeCooldown = 0.5f; 
+    [SerializeField] float meleeCooldown = 0.5f;
+    [SerializeField] GameObject hitParticlePrefab;
     private bool isMeleeOnCooldown = false;
     private int comboStep = 0;
     private float lastAttackTime;
@@ -155,10 +157,12 @@ public class AttackPlayer : MonoBehaviour
         {
             if (enemy.TryGetComponent(out HealthEnemy health))
             {
+                Vector3 impactPoint = enemy.ClosestPoint(targetAttackMelee.position);
                 health.TakeDamage(damage, force);
                 playerAudio.PlayHitEnemy();
                 health.ChangeMaterial();
                 HitStop.Instance.Stop(stopDuration);
+                InstantiateHitParticle(impactPoint);
             }
             WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
             if (wood != null)
@@ -190,6 +194,15 @@ public class AttackPlayer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         particulas.DesactiveParticule();
         particula2 .DesactiveParticule();
+    }
+
+    private void InstantiateHitParticle(Vector3 position)
+    {
+        if (hitParticlePrefab != null)
+        {
+            GameObject effect = Instantiate(hitParticlePrefab, position, Quaternion.identity);
+            Destroy(effect, 1.5f); // Se destruye sola tras segundo y medio
+        }
     }
     private void OnDrawGizmos()
     {

@@ -18,6 +18,7 @@ public class HealthEnemy : MonoBehaviour
     Animator animator;
     EnemyHealthBar healthBar;
     EnemyKnockback enemyKnockback;
+    EnemyAudio enemyAudio;
     bool dead = false;
     private Coroutine materialCoroutine;
 
@@ -28,17 +29,15 @@ public class HealthEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
         healthBar.SetMaxHealth(healthMax);
         enemyKnockback = GetComponent<EnemyKnockback>();
+        enemyAudio = GetComponent<EnemyAudio>();
     }
 
     public void TakeDamage(float damage, float knockbackForce)
     {
         if (dead) return;
-
         animator.SetTrigger("TakeDamage");
-
-        // Si ya había una corrutina cambiando el material, la detenemos
+        enemyAudio.DamageEnemy();
         if (materialCoroutine != null) StopCoroutine(materialCoroutine);
-
         ChangeMaterial();
         materialCoroutine = StartCoroutine(ChangeMaterialCorutine());
 
@@ -59,16 +58,11 @@ public class HealthEnemy : MonoBehaviour
 
     IEnumerator ChangeMaterialCorutine()
     {
-        Debug.Log("Impacto registrado en enemigo");
-
-        // Esperamos un frame para que el Animator actualice al estado de "TakeDamage"
         yield return null;
-
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(stateInfo.length);
-
         BackMaterial();
-        materialCoroutine = null; // Limpiamos la referencia
+        materialCoroutine = null; 
     }
 
     public void ChangeMaterial()
@@ -98,6 +92,14 @@ public class HealthEnemy : MonoBehaviour
             if (TryGetComponent(out Collider col)) col.enabled = false;
             animator.SetBool("Death", true);
             Destroy(gameObject, 3f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Viento"))
+        {
+            enemyKnockback.Push(-transform.forward, 100);
         }
     }
 }

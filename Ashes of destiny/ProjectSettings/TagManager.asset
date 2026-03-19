@@ -11,6 +11,9 @@ TagManager:
   - Enemy
   - KillZone
   - Wood
+  - Undefined
+  - Viento
+  - Fire
   layers:
   - Default
   - TransparentFX

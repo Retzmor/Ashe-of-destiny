@@ -42,6 +42,6 @@ public class GameManager : MonoBehaviour
         EventBus.Clear();
         Time.timeScale = 1;
         EventBus.GameStart?.Invoke();
-        SceneManager.LoadScene("Level 1 provicional");
+        SceneManager.LoadScene("Level 1");
     }
 }

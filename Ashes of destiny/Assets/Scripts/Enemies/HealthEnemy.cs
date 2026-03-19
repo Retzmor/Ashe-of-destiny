@@ -99,7 +99,7 @@ public class HealthEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Viento"))
         {
-            enemyKnockback.Push(-transform.forward, 100);
+            enemyKnockback.Push(-transform.forward, 200);
         }
     }
 }

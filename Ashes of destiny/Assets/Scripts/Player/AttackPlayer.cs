@@ -201,7 +201,7 @@ public class AttackPlayer : MonoBehaviour
         if (hitParticlePrefab != null)
         {
             GameObject effect = Instantiate(hitParticlePrefab, position, Quaternion.identity);
-            Destroy(effect, 1.5f); // Se destruye sola tras segundo y medio
+            Destroy(effect, 1.5f); 
         }
     }
     private void OnDrawGizmos()

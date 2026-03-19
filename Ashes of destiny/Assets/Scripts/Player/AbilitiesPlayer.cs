@@ -108,7 +108,7 @@ public class AbilitiesPlayer : MonoBehaviour
         Ability selectedAshes = slotAshes[index];
         currentSlotIndex = index;
         audioManager.PlaySFX(selectedAshes.abilitySound, 1f);
-        audioManager.StopLoop();
+       // audioManager.StopLoop();
         audioManager.PlayLoop(selectedAshes.loopSound);
         ActivateHandParticles(selectedAshes);
         UpdateSlotHighlights();

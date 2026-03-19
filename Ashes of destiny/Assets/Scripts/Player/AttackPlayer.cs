@@ -19,6 +19,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] float comboResetTime = 1.0f;
     AbilitiesPlayer abilitiesPlayer;
     PlayerComponent playerComponent;
+    PlayerAudio playerAudio;
     PlayerMovement playerMovement;
     [Inject] private DiContainer _container;
     [Inject] AudioManager audioManager;
@@ -35,6 +36,7 @@ public class AttackPlayer : MonoBehaviour
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
         playerComponent = GetComponent<PlayerComponent>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerAudio = GetComponent<PlayerAudio>();
     }
 
     public void Attack(Ability ability)
@@ -110,38 +112,53 @@ public class AttackPlayer : MonoBehaviour
             isMeleeOnCooldown = false;
         }
         if (isMeleeOnCooldown || attacking) return;
-        if (Time.time - lastAttackTime > comboResetTime) comboStep = 0;
-        int hitIndex = comboStep;
+        if (Time.time - lastAttackTime > comboResetTime)
+        {
+            comboStep = 0;
+        }
+        playerComponent.Animator.ResetTrigger("AttackMelee");
+        playerAudio.PlayAttack();
         playerComponent.Animator.SetInteger("Combo", comboStep);
         playerComponent.Animator.SetTrigger("AttackMelee");
+        StartCoroutine(ExecuteHitWithTinyDelay(comboStep));
+        attacking = true;
         lastAttackTime = Time.time;
-        float customCD = (hitIndex == 2) ? 0.8f : 0.1f;
-        StartCoroutine(MeleeCooldownRoutine(customCD));
+        float customCD = (comboStep == 2) ? 0.8f : 0.25f;
+        StartCoroutine(MeleeCooldownRoutine(customCD, comboStep));
         comboStep++;
         if (comboStep > 2) comboStep = 0;
     }
 
-    private IEnumerator MeleeCooldownRoutine(float delay)
+    private IEnumerator ExecuteHitWithTinyDelay(int currentStep)
+    {
+        yield return new WaitForSeconds(0.02f);
+        MeleeHit();
+    }
+    private IEnumerator MeleeCooldownRoutine(float delay, int currentStep)
     {
         isMeleeOnCooldown = true;
-        if (comboStep == 2) playerMovement.SetAttackMultiplier(0.2f);
+
+        if (currentStep == 2)
+            playerMovement.SetAttackMultiplier(0.2f);
+
         yield return new WaitForSeconds(delay);
         playerMovement.SetAttackMultiplier(1f);
         isMeleeOnCooldown = false;
+        attacking = false;
     }
+
     public void MeleeHit()
     {
         int currentHitType = playerComponent.Animator.GetInteger("Combo");
         float damage = 5f;
         float force = 2f;
         float stopDuration = 0.05f;
-        if (currentHitType == 2) 
+        if (currentHitType == 2)
         {
             damage = 15f;
             force = 12f;       
             stopDuration = 0.12f; 
         }
-
         Collider[] hitEnemies = Physics.OverlapSphere(
             targetAttackMelee.position,
             radiusAttackMelee,
@@ -157,21 +174,21 @@ public class AttackPlayer : MonoBehaviour
                 HitStop.Instance.Stop(stopDuration);
             }
 
-            if (enemy.GetComponentInParent<WoodCollision>())
+            WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
+            if (wood != null)
             {
-                enemy.GetComponentInParent<WoodCollision>().AnimationWoodBroke();
+                wood.AnimationWoodBroke();
             }
         }
 
         if (currentHitType == 2)
         {
-            particula2.ActivasParticulas();
+            if (particula2 != null) particula2.ActivasParticulas();
         }
         else
         {
-            particulas.ActivasParticulas();
+            if (particulas != null) particulas.ActivasParticulas();
         }
-
         StartCoroutine(ParticuleDesactive());
     }
 

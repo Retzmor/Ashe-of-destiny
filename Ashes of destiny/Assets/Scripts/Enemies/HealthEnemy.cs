@@ -43,6 +43,7 @@ public class HealthEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            dead = true;
             Death();
         }
     }

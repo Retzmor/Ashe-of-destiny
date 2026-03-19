@@ -28,7 +28,7 @@ public class EventAddPlayer : MonoBehaviour
     public void AttackAnim()
     {
         playerAttack.MeleeHit();
-        playerAudio.PlayAttack();
+        
     }
 
     public void SoundWalk()

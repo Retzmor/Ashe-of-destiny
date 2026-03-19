@@ -8,11 +8,12 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] AudioClip footstep;
     [SerializeField] AudioClip[] attack;
     [SerializeField] AudioClip hitEnemy;
-    [SerializeField] AudioClip hitAir;
+    [SerializeField] AudioClip hitWood;
     [SerializeField] AudioClip jump;
     [SerializeField] AudioClip breath;
     [SerializeField] AudioClip[] runStep;
     [SerializeField] AudioClip TakeAshe;
+    [SerializeField] AudioClip hitPlayer;
 
     public void PlayFootstep()
     {
@@ -36,12 +37,12 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayHitEnemy()
     {
-      //  audioManager.PlaySFX(hitEnemy, transform.position);
+      audioManager.PlaySFX(hitEnemy, 1f);
     }
 
-    public void PlayHitAir()
+    public void PlayHitWood()
     {
-        //audioManager.PlaySFX(hitAir, transform.position);
+        audioManager.PlaySFX(hitWood, 1f);
     }
 
     public void PlayJump()

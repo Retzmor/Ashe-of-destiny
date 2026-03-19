@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class AirPushAbility : MonoBehaviour
 {
@@ -10,20 +11,25 @@ public class AirPushAbility : MonoBehaviour
 
     void Start()
     {
-        PushEnemies();
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 3);
     }
 
-    void PushEnemies()
-    {
-        Collider[] enemies = Physics.OverlapSphere(transform.position, radius, enemyLayer);
 
-        foreach (Collider enemy in enemies)
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
         {
-            if (enemy.TryGetComponent(out EnemyKnockback knock))
+            if (collision.gameObject.TryGetComponent(out EnemyKnockback knock))
             {
                 knock.Push(transform.position, force);
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

@@ -19,6 +19,7 @@ public class HealthEnemy : MonoBehaviour
     EnemyHealthBar healthBar;
     EnemyKnockback enemyKnockback;
     bool dead = false;
+    private Coroutine materialCoroutine;
 
     void Start()
     {
@@ -31,9 +32,17 @@ public class HealthEnemy : MonoBehaviour
 
     public void TakeDamage(float damage, float knockbackForce)
     {
-        if (dead == true) return;
-        currentHealth -= damage;
+        if (dead) return;
+
         animator.SetTrigger("TakeDamage");
+
+        // Si ya había una corrutina cambiando el material, la detenemos
+        if (materialCoroutine != null) StopCoroutine(materialCoroutine);
+
+        ChangeMaterial();
+        materialCoroutine = StartCoroutine(ChangeMaterialCorutine());
+
+        currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
         if (enemyKnockback != null)
@@ -47,6 +56,21 @@ public class HealthEnemy : MonoBehaviour
             Death();
         }
     }
+
+    IEnumerator ChangeMaterialCorutine()
+    {
+        Debug.Log("Impacto registrado en enemigo");
+
+        // Esperamos un frame para que el Animator actualice al estado de "TakeDamage"
+        yield return null;
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+
+        BackMaterial();
+        materialCoroutine = null; // Limpiamos la referencia
+    }
+
     public void ChangeMaterial()
     {
         meshRenderer.material = materialDamage;
@@ -54,6 +78,7 @@ public class HealthEnemy : MonoBehaviour
     public void BackMaterial()
     {
         meshRenderer.material = materialEnemy;
+        animator.Play("Patrol");
     }
 
     public void Death()

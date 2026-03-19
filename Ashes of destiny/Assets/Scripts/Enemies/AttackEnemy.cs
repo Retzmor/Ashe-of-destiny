@@ -30,7 +30,7 @@ public class AttackEnemy : MonoBehaviour
     private void StartAttackSequence()
     {
         canAttack = false;
-        anim.SetTrigger("Attack");
+        //anim.SetTrigger("Attack");
         StartCoroutine(CoolDownRoutine());
     }
 
@@ -44,7 +44,7 @@ public class AttackEnemy : MonoBehaviour
             {
                 if (col.TryGetComponent(out HealthPlayer hp))
                 {
-                    hp.ChangeHealth(damageAttack, transform.position);
+                   // hp.ChangeHealth(damageAttack, transform.position);
                     break;
                 }
             }

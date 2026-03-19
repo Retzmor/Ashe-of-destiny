@@ -29,8 +29,10 @@ public class AttackPlayer : MonoBehaviour
     private int comboStep = 0;
     private float lastAttackTime;
     private bool attacking = false;
+    [SerializeField] Vector3 meleeBoxSize = new Vector3(2f, 2f, 2f);
 
     public GameObject CurrentWeapon { get => _currentWeapon; set => _currentWeapon = value; }
+
     private void Start()
     {
         abilitiesPlayer = GetComponent<AbilitiesPlayer>();
@@ -42,51 +44,38 @@ public class AttackPlayer : MonoBehaviour
     public void Attack(Ability ability)
     {
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
-
         if (slotIndex < 0)
             return;
-
         if (!cooldowns.ContainsKey(slotIndex))
             cooldowns.Add(slotIndex, null);
-
         if (cooldowns[slotIndex] == null)
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex,ability.cooldown));
             audioManager.PlaySFX(ability.attackSound, 1f);
             playerComponent.Animator.SetTrigger("Shoot");
-
             Vector3 targetPoint = crosshairController.CurrentAimPoint;
             Vector3 direction = (targetPoint - targetAttack.position).normalized;
-
             Vector3 spawnPos = targetAttack.position;
-
             GameObject bullet = _container.InstantiatePrefab(
                 ability.attackPrefab,
                 spawnPos,
                 Quaternion.LookRotation(direction),
                 null
             );
-
             BulletMovement bulletMovement = bullet.GetComponent<BulletMovement>();
-
             if (bulletMovement != null)
             {
                 bulletMovement.SetDirection(direction);
             }
-
-
             StartCoroutine(
                 abilitiesPlayer.CooldownVisual(
                     abilitiesPlayer.CurrentButton,
                     ability.cooldown
                 )
             );
-
             abilitiesPlayer.particulaActual.DesactiveParticule();
         }
     }
-
-
     IEnumerator CooldownAttack(int slotIndex, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -94,14 +83,11 @@ public class AttackPlayer : MonoBehaviour
         if (abilitiesPlayer.CurrentSlotIndex == slotIndex && abilitiesPlayer.particulaActual != null)
             abilitiesPlayer.particulaActual.ActivasParticulasLoop();
     }
-
     public bool IsOnCooldown(Ability ashes)
     {
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
-
         if (!cooldowns.ContainsKey(slotIndex))
             return false;
-
          return cooldowns[slotIndex] != null;
     }
     internal void AttackMelee()
@@ -128,11 +114,10 @@ public class AttackPlayer : MonoBehaviour
         comboStep++;
         if (comboStep > 2) comboStep = 0;
     }
-
     private IEnumerator ExecuteHitWithTinyDelay(int currentStep)
     {
         yield return new WaitForSeconds(0.02f);
-        MeleeHit();
+       // MeleeHit();
     }
     private IEnumerator MeleeCooldownRoutine(float delay, int currentStep)
     {
@@ -151,7 +136,7 @@ public class AttackPlayer : MonoBehaviour
     {
         int currentHitType = playerComponent.Animator.GetInteger("Combo");
         float damage = 5f;
-        float force = 2f;
+        float force = 0f;
         float stopDuration = 0.05f;
         if (currentHitType == 2)
         {
@@ -159,28 +144,29 @@ public class AttackPlayer : MonoBehaviour
             force = 12f;       
             stopDuration = 0.12f; 
         }
-        Collider[] hitEnemies = Physics.OverlapSphere(
-            targetAttackMelee.position,
-            radiusAttackMelee,
-            layer
-        );
+        Collider[] hitEnemies = Physics.OverlapBox(
+         targetAttackMelee.position,
+         meleeBoxSize,
+         targetAttackMelee.rotation,
+         layer
+     ); ;
 
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy.TryGetComponent(out HealthEnemy health))
             {
                 health.TakeDamage(damage, force);
+                playerAudio.PlayHitEnemy();
                 health.ChangeMaterial();
                 HitStop.Instance.Stop(stopDuration);
             }
-
             WoodCollision wood = enemy.GetComponentInParent<WoodCollision>();
             if (wood != null)
             {
+                playerAudio.PlayHitWood();
                 wood.AnimationWoodBroke();
             }
         }
-
         if (currentHitType == 2)
         {
             if (particula2 != null) particula2.ActivasParticulas();
@@ -191,27 +177,28 @@ public class AttackPlayer : MonoBehaviour
         }
         StartCoroutine(ParticuleDesactive());
     }
-
     public void isAttacking()
     {
         attacking = true;
     }
-
     public void IsntAttacking()
     {
         attacking = false;
     }
-
     IEnumerator ParticuleDesactive()
     {
         yield return new WaitForSeconds(0.5f);
         particulas.DesactiveParticule();
         particula2 .DesactiveParticule();
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(targetAttackMelee.position, radiusAttackMelee);
+        if (targetAttackMelee != null)
+        {
+            Matrix4x4 rotationMatrix = Matrix4x4.TRS(targetAttackMelee.position, targetAttackMelee.rotation, targetAttackMelee.localScale);
+            Gizmos.matrix = rotationMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, meleeBoxSize);
+        }
     }
 }

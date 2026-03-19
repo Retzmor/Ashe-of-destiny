@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     PlayerComponent playerComponent;
     PlayerAudio playerAudio;
+    AttackPlayer playerAttack;
     float speed;
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float jumpForce;
@@ -61,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<PlayerAudio>();
+        playerAttack = GetComponent<AttackPlayer>();
         playerComponent = GetComponent<PlayerComponent>();
         if (cam == null)
         {

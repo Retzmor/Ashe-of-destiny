@@ -69,8 +69,6 @@ public class AudioManager : MonoBehaviour
         sfxSource.pitch = Random.Range(0.75f, 1.05f);
         sfxSource.PlayOneShot(clip, volume);
     }
-
-
     public void PlaySFX3D(AudioClip clip, Vector3 position)
     {
         if (clip == null) return;

@@ -27766,6 +27766,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 09dcf3d6844e3784387cbe86628ab97b, type: 3}
     - target: {fileID: 8919455725667762977, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: TakeAshe
+      value: 
+      objectReference: {fileID: 8300000, guid: ea91d85274f93534c9bddb7f933af829, type: 3}
+    - target: {fileID: 8919455725667762977, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: hitEnemy
       value: 
       objectReference: {fileID: 8300000, guid: 375ee50365ae4e440b16d4455a368ca5, type: 3}

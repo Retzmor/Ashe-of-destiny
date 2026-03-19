@@ -23,6 +23,7 @@ public class GameplayUIController : MonoBehaviour
 
         if(CountAshe >= 4)
         {
+            if (tutorialController == null) return;
             tutorialController.AshesRecolected();
         }
     }

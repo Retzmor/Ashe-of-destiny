@@ -4,7 +4,7 @@ using System.Collections;
 
 public class AirPushAbility : MonoBehaviour
 {
-    public float radius = 6f;
+    public float radius = 8f;
     public float force = 25f;
     public LayerMask enemyLayer;
 

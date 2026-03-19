@@ -109,7 +109,6 @@ public class PlayerController : MonoBehaviour
 
         else
         {
-            Debug.Log("¡Clic de Mouse -> Ataque Melee!");
             attackPlayer.AttackMelee();
         }
     }

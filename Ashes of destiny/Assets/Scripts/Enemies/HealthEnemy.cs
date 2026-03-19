@@ -63,6 +63,12 @@ public class HealthEnemy : MonoBehaviour
             levelController.WinTutorial();
             agent.isStopped = true;
             agent.enabled = false;
+            if (TryGetComponent(out Rigidbody rb))
+            {
+                rb.linearVelocity = Vector3.zero; 
+                rb.isKinematic = true;
+                rb.useGravity = false;
+            }
             if (TryGetComponent(out Collider col)) col.enabled = false;
             animator.SetBool("Death", true);
             Destroy(gameObject, 3f);

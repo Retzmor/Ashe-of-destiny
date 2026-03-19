@@ -15,6 +15,7 @@ public class EventAddPlayer : MonoBehaviour
         if (manager == null || !manager.BlockPlayerInput)
         {
             playerController.EnableInputs();
+            if(tutorialController == null) return;
             tutorialController.StartPlayer();
         }
     }

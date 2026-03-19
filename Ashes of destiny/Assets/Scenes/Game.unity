@@ -25777,6 +25777,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1199327030583724136, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.191
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199327030583724136, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.426
+      objectReference: {fileID: 0}
     - target: {fileID: 2513764076507279835, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: cam
       value: 
@@ -25793,6 +25801,10 @@ PrefabInstance:
       propertyPath: inputAxisController
       value: 
       objectReference: {fileID: 171686225}
+    - target: {fileID: 6413033678960841245, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: radiusAttackMelee
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 6413033678960841245, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: crosshairController
       value: 

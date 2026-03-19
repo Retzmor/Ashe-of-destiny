@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3409395685160323350}
   - component: {fileID: 9106936276826786557}
   - component: {fileID: 2864398064992595082}
+  - component: {fileID: 2300083864829090521}
   m_Layer: 3
   m_Name: Viento
   m_TagString: Untagged
@@ -4833,3 +4834,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2300083864829090521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280546376551752280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8599461c692af524084d6da3aadb6c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 8
+  force: 25
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512

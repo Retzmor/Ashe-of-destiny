@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: AirBall
   icon: {fileID: 21300000, guid: 09d762229bf5c994d892a157190f8d9b, type: 3}
-  attackPrefab: {fileID: 5817106281587626217, guid: 6cdadf2272f5e934cabcb95f85e85989, type: 3}
+  attackPrefab: {fileID: 280546376551752280, guid: 2ebe92568fe069948af57587e8f28589, type: 3}
   hudParticles: {fileID: 5251195224180072733, guid: 1c1d4aecfd8047f4c829f224d1dc1bdd, type: 3}
   handParticles: {fileID: 6715521640664381328, guid: 1141c07b7041531448c0d1f1efddd22d, type: 3}
   cooldown: 5

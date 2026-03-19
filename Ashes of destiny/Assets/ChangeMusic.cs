@@ -4,14 +4,12 @@ using Zenject;
 public class ChangeMusic : MonoBehaviour
 {
     [Inject] AudioManager audioManager;
-    [SerializeField] AudioClip musicFight;
+    [SerializeField] SceneMusic sceneMusic;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            audioManager.StopMusic();
-            audioManager.StopLoop();
-            audioManager.PlayLoop(musicFight);
+            sceneMusic.MusicCombat();
         }
     }
 }

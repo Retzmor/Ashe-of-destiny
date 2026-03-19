@@ -27,6 +27,8 @@ public class Inventory : MonoBehaviour
     PlayerController playerController;
     bool _tutorialSkip = false;
     bool _canBuyItemFire = false;
+    bool isUsedFire = false;
+    bool isUsedAir = false;
 
     public System.Action<string> OnItemPurchased;
     private int purchaseCount = 0;
@@ -46,11 +48,12 @@ public class Inventory : MonoBehaviour
 
     public void AsheFireButton(Ability ashesData)
     {
+        if(isUsedFire == true)return;
         countItem.TryBuyItemFire();
         if (CanBuyItemFire)
         {
             if (ashesData == null) return;
-
+            isUsedFire = true;
             abilitiesPlayer.AddAbility(ashesData);
             abilitiesPlayer.ActivateHandParticles(ashesData);
             imageFire.sprite = imageFireActive;
@@ -105,11 +108,12 @@ public class Inventory : MonoBehaviour
 
     public void AsheAirButton(Ability ashesData)
     {
+        if(isUsedAir == true)return;
         countItem.TryBuyItemAir();
         if (CanBuyItemFire) 
         {
             if (ashesData == null) return;
-
+            isUsedAir = true;
             abilitiesPlayer.AddAbility(ashesData);
             imageAir.sprite = imageAirActive;
 

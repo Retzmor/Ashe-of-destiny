@@ -30,8 +30,6 @@ public class EnemyBullet : MonoBehaviour
         transform.forward = dir;
 
         rb.linearVelocity = dir * speed;
-
-        Debug.Log("Bala disparada hacia: " + dir + " con velocidad: " + speed);
     }
 
     private void OnTriggerEnter(Collider other)

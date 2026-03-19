@@ -21,7 +21,6 @@ public class HealthEnemy : MonoBehaviour
     EnemyAudio enemyAudio;
     bool dead = false;
     private Coroutine materialCoroutine;
-
     void Start()
     {
         currentHealth = healthMax;
@@ -31,7 +30,6 @@ public class HealthEnemy : MonoBehaviour
         enemyKnockback = GetComponent<EnemyKnockback>();
         enemyAudio = GetComponent<EnemyAudio>();
     }
-
     public void TakeDamage(float damage, float knockbackForce)
     {
         if (dead) return;
@@ -52,10 +50,10 @@ public class HealthEnemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             dead = true;
+            if (materialCoroutine != null) StopCoroutine(materialCoroutine);
             Death();
         }
     }
-
     IEnumerator ChangeMaterialCorutine()
     {
         yield return null;
@@ -64,7 +62,6 @@ public class HealthEnemy : MonoBehaviour
         BackMaterial();
         materialCoroutine = null; 
     }
-
     public void ChangeMaterial()
     {
         meshRenderer.material = materialDamage;
@@ -77,7 +74,9 @@ public class HealthEnemy : MonoBehaviour
 
     public void Death()
     {
-        if(tutorialManager != null)
+        if (materialCoroutine != null) StopCoroutine(materialCoroutine);
+        BackMaterial();
+        if (tutorialManager != null)
         {
 
             levelController.WinTutorial();
@@ -94,7 +93,6 @@ public class HealthEnemy : MonoBehaviour
             Destroy(gameObject, 3f);
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Viento"))

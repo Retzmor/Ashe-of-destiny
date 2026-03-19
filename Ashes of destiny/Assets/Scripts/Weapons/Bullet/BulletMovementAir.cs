@@ -8,9 +8,7 @@ public class BulletMovementAir : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float damage;
-    [SerializeField] float rotationSpeed = 800f;
-    [SerializeField] float initialScale = 0.5f;
-    [SerializeField] float maxScale = 3.0f;
+
     [SerializeField] float growthSpeed = 2.0f;
     ParticleSystem particle;
 
@@ -27,7 +25,7 @@ public class BulletMovementAir : MonoBehaviour
     }
     void Start()
     {
-        transform.localScale = Vector3.one * initialScale;
+        
         colliderBullet = GetComponent<Collider>();
         foreach (Collider col in player.GetComponentsInChildren<Collider>())
         {
@@ -37,13 +35,7 @@ public class BulletMovementAir : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    private void Update()
-    {
-        if (transform.localScale.x < maxScale)
-        {
-            transform.localScale += Vector3.one * growthSpeed * Time.deltaTime;
-        }
-    }
+  
 
     public void SetDirection(Vector3 dir)
     {
@@ -72,6 +64,6 @@ public class BulletMovementAir : MonoBehaviour
 
     private void FixedUpdate()
     {
-       transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
+      // transform.Rotate(Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
     }
 }

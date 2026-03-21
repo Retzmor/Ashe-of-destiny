@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -225,5 +226,10 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(zoneJump.transform.position, radiusJump);
         Gizmos.DrawWireSphere(zoneWalk.transform.position, radiusWalk);
+    }
+
+    internal void ExternalJump(float jumpForce)
+    {
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
     }
 }

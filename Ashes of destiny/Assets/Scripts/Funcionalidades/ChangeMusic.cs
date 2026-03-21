@@ -9,7 +9,7 @@ public class ChangeMusic : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            sceneMusic.MusicCombat();
+            //sceneMusic.MusicCombat();
         }
     }
 }

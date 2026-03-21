@@ -175,7 +175,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ApplyJumpForce()
     {
-        Debug.Log("Puede saltar");
         if (!canJumping) return;
         Vector3 currentVelocity = rb.linearVelocity;
 

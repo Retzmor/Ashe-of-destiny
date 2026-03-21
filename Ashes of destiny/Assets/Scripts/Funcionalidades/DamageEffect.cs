@@ -21,9 +21,7 @@ public class DamageEffect : MonoBehaviour
     IEnumerator DamageFlash()
     {
         vignette.intensity.value = 0.2f;
-
         yield return new WaitForSeconds(0.15f);
-
         vignette.intensity.value = 0f;
     }
 }

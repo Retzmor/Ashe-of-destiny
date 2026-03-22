@@ -20,11 +20,14 @@ public class Inventory : MonoBehaviour
     [SerializeField] Image imageRock;
     [SerializeField] Image imageAir;
     [SerializeField] Image imageKaton;
+    [SerializeField] Image imageLodo;
     [SerializeField] Sprite imageFireActive;
     [SerializeField] Sprite imageWaterActive;
     [SerializeField] Sprite imageRockActive;
     [SerializeField] Sprite imageAirActive;
     [SerializeField] Sprite imageKatonActive;
+    [SerializeField] Sprite imageLodoActive;
+    bool boughtFire, boughtWater, boughtAir, boughtRock;
 
     public System.Action<string> OnItemPurchased;
 
@@ -101,16 +104,30 @@ public class Inventory : MonoBehaviour
         {
             case "Fire":
                 if (imageFire != null) imageFire.sprite = imageFireActive;
+                boughtFire = true;
                 break;
             case "Water":
                 if (imageWater != null) imageWater.sprite = imageWaterActive;
+                boughtWater = true;
                 break;
             case "Rock":
                 if (imageRock != null) imageRock.sprite = imageRockActive;
+                boughtRock = true;
                 break;
             case "Air":
                 if (imageAir != null) imageAir.sprite = imageAirActive;
+                boughtAir = true;
                 break;
+        }
+
+        if(boughtFire && boughtAir == true)
+        {
+            imageKaton.sprite = imageKatonActive;
+        }
+
+        if(boughtRock && boughtWater == true)
+        {
+            imageLodo.sprite = imageLodoActive;
         }
     }
 

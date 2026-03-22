@@ -67,6 +67,7 @@ public class AttackPlayer : MonoBehaviour
             BulletMovement bulletMovement = bullet.GetComponent<BulletMovement>();
             if (bulletMovement != null)
             {
+                bulletMovement.SetupBullet(ability);
                 bulletMovement.SetDirection(direction);
             }
             abilitiesPlayer.UseAmmo();

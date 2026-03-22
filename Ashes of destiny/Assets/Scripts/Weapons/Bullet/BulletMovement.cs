@@ -11,7 +11,7 @@ public class BulletMovement : MonoBehaviour
     [SerializeField] float rotationSpeed = 800f;
     [SerializeField] float forceImpulse;
     ParticleSystem particle;
-
+    private Ability _myAbilityData;
     bool alreadyDamage = false;
 
     [Inject] PlayerCollisions player;
@@ -32,6 +32,7 @@ public class BulletMovement : MonoBehaviour
             Physics.IgnoreCollision(colliderBullet, col);
         }
 
+
         Destroy(gameObject, 3f);
     }
 
@@ -41,6 +42,13 @@ public class BulletMovement : MonoBehaviour
         transform.forward = dir;
         rb.linearVelocity = dir * speed;
         particle.Play(true);
+    }
+
+    public void SetupBullet(Ability data)
+    {
+        _myAbilityData = data;
+        // Opcional: Puedes ajustar el daño o la velocidad aquí basado en el ScriptableObject
+        // this.damage = data.damage; 
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -53,6 +61,12 @@ public class BulletMovement : MonoBehaviour
             if (other.TryGetComponent(out HealthEnemy healthEnemy))
             {
                 healthEnemy.TakeDamage(damage, forceImpulse);
+            }
+
+            if (_myAbilityData != null && other.TryGetComponent(out EnemyStatus status))
+            {
+                // Le pasamos el nombre ("Fire", "Water", etc.) y su icono
+                status.ApplyElement(_myAbilityData.abilityName, _myAbilityData.icon);
             }
 
         }

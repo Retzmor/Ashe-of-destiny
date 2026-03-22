@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afb84471d81b654a9158f386d3b8fb4, type: 3}
   m_Name: AirAbility
   m_EditorClassIdentifier: 
-  abilityName: AirBall
+  abilityName: Air
   icon: {fileID: 21300000, guid: 09d762229bf5c994d892a157190f8d9b, type: 3}
   attackPrefab: {fileID: 280546376551752280, guid: 2ebe92568fe069948af57587e8f28589, type: 3}
   maxAmmo: 10
-  currentAmmo: 3
+  currentAmmo: 19
   isInfinite: 0
   hudParticles: {fileID: 5251195224180072733, guid: 1c1d4aecfd8047f4c829f224d1dc1bdd, type: 3}
   handParticles: {fileID: 6715521640664381328, guid: 1141c07b7041531448c0d1f1efddd22d, type: 3}

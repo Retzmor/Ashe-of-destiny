@@ -69,6 +69,7 @@ public class AttackPlayer : MonoBehaviour
             {
                 bulletMovement.SetDirection(direction);
             }
+            abilitiesPlayer.UseAmmo();
             StartCoroutine(
                 abilitiesPlayer.CooldownVisual(
                     abilitiesPlayer.CurrentButton,

@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 1727543649927515288}
   - component: {fileID: 1252052783846887026}
   - component: {fileID: 5845944107898563585}
-  m_Layer: 3
+  - component: {fileID: -8819014505655622194}
+  - component: {fileID: 3700448336000110330}
+  - component: {fileID: 231479186473422851}
+  m_Layer: 0
   m_Name: 'Agua '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4834,6 +4837,70 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-8819014505655622194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287597027779431525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a19ee562e1d1e6439322a0e814f6475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  damage: 20
+  rotationSpeed: 800
+  forceImpulse: 15
+--- !u!54 &3700448336000110330
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287597027779431525}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &231479186473422851
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287597027779431525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8655404510053103076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4845,7 +4912,7 @@ GameObject:
   - component: {fileID: 9171746161410906502}
   - component: {fileID: 4107301997122354166}
   - component: {fileID: 1224368653742030973}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Chorro
   m_TagString: Untagged
   m_Icon: {fileID: 0}

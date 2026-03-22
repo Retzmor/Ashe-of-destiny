@@ -16,6 +16,7 @@ public class AbilitiesPlayer : MonoBehaviour
     private Queue<Ability> waitingAbilities = new Queue<Ability>();
     private bool[] slotUsed;
     private int currentSlotIndex = -1;
+
     Button _currentButton;
     public int CurrentSlotIndex => currentSlotIndex;
     public Particulas particulaActual;
@@ -197,22 +198,37 @@ public class AbilitiesPlayer : MonoBehaviour
 
     public void UseAmmo()
     {
-        if (currentSlotIndex == -1) return;
-        RemoveCurrentAbility();
+        Ability current = GetSelectedAbility();
+        if (current == null) return;
+
+        current.currentAmmo--;
+
+        if (current.currentAmmo <= 0)
+        {
+            Debug.Log("Munición agotada. Rotando habilidad...");
+            RemoveCurrentAbilityAndRotate();
+        }
     }
 
-    public void RemoveCurrentAbility()
+    public void RemoveCurrentAbilityAndRotate()
     {
         int index = currentSlotIndex;
+        if (index == -1) return;
+
         slotUsed[index] = false;
         slotAshes[index] = null;
-        AshesButton[index].image.sprite = null; // O un sprite de "vacío"
-        AshesButton[index].image.color = Color.gray;
+
         if (waitingAbilities.Count > 0)
         {
-            Ability nextAbility = waitingAbilities.Dequeue();
-            FillSlot(index, nextAbility);
+            Ability next = waitingAbilities.Dequeue();
+            FillSlot(index, next);
         }
+        else
+        {
+            AshesButton[index].image.sprite = null;
+            AshesButton[index].image.color = Color.gray;
+        }
+
         ClearSelection();
     }
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayUIController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameplayUIController : MonoBehaviour
     [SerializeField] GameObject panelWin;
     [SerializeField] GameObject panelLose;
     [SerializeField] CountItems countItems;
+    [SerializeField] TextMeshProUGUI ammoTextSlot1;
+    [SerializeField] TextMeshProUGUI ammoTextSlot2;
+    [SerializeField] Image nextAbilityIcon; 
     int _countAshe;
 
     public int CountAshe { get => _countAshe; set => _countAshe = value; }
@@ -26,6 +30,32 @@ public class GameplayUIController : MonoBehaviour
             if (tutorialController == null) return;
             tutorialController.AshesRecolected();
         }
+    }
+
+    public void UpdateAmmoDisplay(int slotIndex, int currentAmmo)
+    {
+        if (slotIndex == 0) ammoTextSlot1.text = currentAmmo.ToString();
+        else if (slotIndex == 1) ammoTextSlot2.text = currentAmmo.ToString();
+    }
+
+    public void UpdateNextPreview(Sprite nextIcon)
+    {
+        if (nextIcon != null)
+        {
+            nextAbilityIcon.sprite = nextIcon;
+            nextAbilityIcon.color = new Color(1, 1, 1, 0.6f); 
+        }
+        else
+        {
+            nextAbilityIcon.sprite = null;
+            nextAbilityIcon.color = new Color(0, 0, 0, 0.2f);
+        }
+    }
+
+    public void ClearAmmoDisplay(int slotIndex)
+    {
+        if (slotIndex == 0) ammoTextSlot1.text = "";
+        else if (slotIndex == 1) ammoTextSlot2.text = "";
     }
 
     public void DesactivePanelSkills()

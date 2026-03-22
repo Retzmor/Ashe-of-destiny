@@ -26739,6 +26739,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5554937478183587638}
     m_Modifications:
+    - target: {fileID: 336619599836094434, guid: 2328db1703c107349b73dba6724dc184, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 336619599836094434, guid: 2328db1703c107349b73dba6724dc184, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 336619599836094434, guid: 2328db1703c107349b73dba6724dc184, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1524411219919061367, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_Name
       value: MiraCanvasUI
@@ -26777,15 +26789,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.273133
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.273133
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_LocalScale.z
-      value: 9.273133
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26797,7 +26809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10248.858
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
       propertyPath: m_LocalRotation.w

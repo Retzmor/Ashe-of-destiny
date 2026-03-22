@@ -295,7 +295,7 @@ public class TutorialManager : MonoBehaviour
         else if (skillName == "Air")
         {
             if (arrowAir != null) arrowAir.SetActive(false);
-            inventory.OnItemPurchased -= HandleTutorialPurchases; 
+           inventory.OnItemPurchased -= HandleTutorialPurchases; 
         }
     }
 }

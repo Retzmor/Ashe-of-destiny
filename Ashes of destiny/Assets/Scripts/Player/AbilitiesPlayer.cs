@@ -13,6 +13,7 @@ public class AbilitiesPlayer : MonoBehaviour
     [SerializeField] TutorialController controller;
     [SerializeField] Transform[] handsParticule;
     List<ParticleSystem> currentHandParticles = new List<ParticleSystem>();
+    private Queue<Ability> waitingAbilities = new Queue<Ability>();
     private bool[] slotUsed;
     private int currentSlotIndex = -1;
     Button _currentButton;
@@ -42,10 +43,17 @@ public class AbilitiesPlayer : MonoBehaviour
         if (ability == null)
             return;
 
+
+
         for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])
             {
+                if (!slotUsed[i])
+                {
+                    FillSlot(i, ability);
+                    return;
+                }
                 if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
                 {
                     slotAshes[i] = ability;
@@ -169,5 +177,42 @@ public class AbilitiesPlayer : MonoBehaviour
 
         return slotAshes[currentSlotIndex];
     }
+    private void FillSlot(int i, Ability ability)
+    {
+        slotAshes[i] = ability;
+        slotUsed[i] = true;
 
+        if (AshesButton[i].TryGetComponent(out Particulas particulasUI))
+        {
+            if (particulasUI.particulas != null) Destroy(particulasUI.particulas);
+
+            if (ability.hudParticles != null)
+            {
+                particulasUI.particulas = Instantiate(ability.hudParticles, AshesButton[i].transform);
+            }
+        }
+        AshesButton[i].image.sprite = ability.icon;
+        AshesButton[i].image.color = Color.white;
+    }
+
+    public void UseAmmo()
+    {
+        if (currentSlotIndex == -1) return;
+        RemoveCurrentAbility();
+    }
+
+    public void RemoveCurrentAbility()
+    {
+        int index = currentSlotIndex;
+        slotUsed[index] = false;
+        slotAshes[index] = null;
+        AshesButton[index].image.sprite = null; // O un sprite de "vacío"
+        AshesButton[index].image.color = Color.gray;
+        if (waitingAbilities.Count > 0)
+        {
+            Ability nextAbility = waitingAbilities.Dequeue();
+            FillSlot(index, nextAbility);
+        }
+        ClearSelection();
+    }
 }

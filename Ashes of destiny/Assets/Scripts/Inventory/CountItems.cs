@@ -8,10 +8,10 @@ public class CountItems : MonoBehaviour
     [SerializeField] GameplayUIController gameplayUIController;
     int _countAshesCurrent = 0;
     bool _canBuyItem;
-    int _canBuyItemFire = 2;
-    int _canBuyItemWater = 4;
-    int _canBuyItemRock = 4;
-    int _canBuyItemAir = 2;
+    int _canBuyItemFire = 1;
+    int _canBuyItemWater = 1;
+    int _canBuyItemRock = 1;
+    int _canBuyItemAir = 1;
 
     public int CountAshesCurrent { get => _countAshesCurrent; set => _countAshesCurrent = value; }
     public bool CanBuyItem { get => _canBuyItem; set => _canBuyItem = value; }
@@ -31,11 +31,11 @@ public class CountItems : MonoBehaviour
 
     public void TryBuyItemWater()
     {
-        if (_countAshesCurrent == _canBuyItemWater)
+        if (_countAshesCurrent >= _canBuyItemWater)
         {
-            inventory.CanBuyItemFire = true;
-            _countAshesCurrent = 0;
-            gameplayUIController.CountAshe = 0;
+            inventory.CanBuyItemWater = true;
+            _countAshesCurrent -= _canBuyItemWater;
+            gameplayUIController.CountAshe = _countAshesCurrent;
             gameplayUIController.TextMeshPro.text = gameplayUIController.CountAshe.ToString();
             StartCoroutine(coolDownClick());
         }
@@ -43,11 +43,11 @@ public class CountItems : MonoBehaviour
 
     public void TryBuyItemRock()
     {
-        if (_countAshesCurrent == _canBuyItemRock)
+        if (_countAshesCurrent >= _canBuyItemRock)
         {
-            inventory.CanBuyItemFire = true;
-            _countAshesCurrent = 0;
-            gameplayUIController.CountAshe = 0;
+            inventory.CanBuyItemRock = true;
+            _countAshesCurrent -= _canBuyItemRock;
+            gameplayUIController.CountAshe = _countAshesCurrent;
             gameplayUIController.TextMeshPro.text = gameplayUIController.CountAshe.ToString();
             StartCoroutine(coolDownClick());
         }
@@ -57,7 +57,7 @@ public class CountItems : MonoBehaviour
     {
         if (_countAshesCurrent >= _canBuyItemAir)
         {
-            inventory.CanBuyItemFire = true;
+            inventory.CanBuyItemAir = true;
             _countAshesCurrent -= _canBuyItemAir;
             gameplayUIController.CountAshe = _countAshesCurrent;
             gameplayUIController.TextMeshPro.text = gameplayUIController.CountAshe.ToString();

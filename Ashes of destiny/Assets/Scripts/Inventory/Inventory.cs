@@ -8,11 +8,13 @@ public class Inventory : MonoBehaviour
 {
     [Inject] GameplayUIController gameplayUIController;
     [InjectOptional] TutorialManager tutorialManager;
-    [SerializeField] List<Item> slotsInventory;
+
     [SerializeField] AbilitiesPlayer abilitiesPlayer;
-    [SerializeField] AttackPlayer attackPlayer;
-    [SerializeField] Button button1;
-    [SerializeField] Button button2;
+    [SerializeField] CountItems countItem;
+    [SerializeField] Ability fireAbility;
+    [SerializeField] Ability waterAbility;
+    [SerializeField] Ability rockAbility;
+    [SerializeField] Ability airAbility;
     [SerializeField] Image imageFire;
     [SerializeField] Image imageWater;
     [SerializeField] Image imageRock;
@@ -23,105 +25,63 @@ public class Inventory : MonoBehaviour
     [SerializeField] Sprite imageRockActive;
     [SerializeField] Sprite imageAirActive;
     [SerializeField] Sprite imageKatonActive;
-    [SerializeField] CountItems countItem;
-    PlayerController playerController;
-    bool _tutorialSkip = false;
-    bool _canBuyItemFire = false;
-    bool isUsedFire = false;
-    bool isUsedAir = false;
 
     public System.Action<string> OnItemPurchased;
+
     private int purchaseCount = 0;
-
+    private bool _tutorialSkip = false;
+    public bool CanBuyItemFire { get; set; }
+    public bool CanBuyItemWater { get; set; }
+    public bool CanBuyItemRock { get; set; }
+    public bool CanBuyItemAir { get; set; }
     public bool TutorialSkip { get => _tutorialSkip; set => _tutorialSkip = value; }
-    public bool CanBuyItemFire { get => _canBuyItemFire; set => _canBuyItemFire = value; }
+    public void BuyFire() { BuyAbility(fireAbility, "Fire"); }
+    public void BuyWater() { BuyAbility(waterAbility, "Water"); }
+    public void BuyRock() { BuyAbility(rockAbility, "Rock"); }
+    public void BuyAir() { BuyAbility(airAbility, "Air"); }
 
-    private void Start()
+    private void BuyAbility(Ability ashesData, string type)
     {
-        playerController = abilitiesPlayer.gameObject.GetComponent<PlayerController>();
+        if (ashesData == null) return;
+
+        CheckFunds(type);
+
+        if (GetPurchasePermission(type))
+        {
+            abilitiesPlayer.AddAbility(ashesData);
+            UpdateSkillPanelImage(type);
+            purchaseCount++;
+            OnItemPurchased?.Invoke(type);
+            VerificarFinalizacionCompraTutorial();
+        }
     }
 
     public void addItemInventory(GameObject objectItem)
     {
-        gameplayUIController.UpdateCount();
+        if (gameplayUIController != null) gameplayUIController.UpdateCount();
     }
 
-    public void AsheFireButton(Ability ashesData)
+    private void CheckFunds(string type)
     {
-        if(isUsedFire == true)return;
-        countItem.TryBuyItemFire();
-        if (CanBuyItemFire)
+        switch (type)
         {
-            if (ashesData == null) return;
-            isUsedFire = true;
-            abilitiesPlayer.AddAbility(ashesData);
-            abilitiesPlayer.ActivateHandParticles(ashesData);
-            imageFire.sprite = imageFireActive;
-
-            purchaseCount++;
-            OnItemPurchased?.Invoke("Fire");
-            VerificarFinalizacionCompraTutorial();
+            case "Fire": countItem.TryBuyItemFire(); break;
+            case "Water": countItem.TryBuyItemWater(); break;
+            case "Rock": countItem.TryBuyItemRock(); break;
+            case "Air": countItem.TryBuyItemAir(); break;
         }
     }
 
-    public void AsheWaterButton(Ability ashesData)
+    private bool GetPurchasePermission(string type)
     {
-        countItem.TryBuyItemWater();
-        if (CanBuyItemFire == true)
+        return type switch
         {
-            if (ashesData == null)
-                return;
-            Time.timeScale = 1f;
-            //ashesData.DesactiveRock();
-            Sprite icon = ashesData.icon;
-            abilitiesPlayer.AddAbility(ashesData);
-            imageWater.sprite = imageWaterActive;
-            gameplayUIController.DesactivePanelSkills();
-            gameplayUIController.ActivePanelGame();
-            if (_tutorialSkip == false)
-            {
-                StartCoroutine(TutorialShoot());
-            }
-        }
-    }
-
-    public void AsheRockButton(Ability ashesData)
-    {
-        countItem.TryBuyItemRock();
-        if (CanBuyItemFire == true)
-        {
-            if (ashesData == null)
-                return;
-            Time.timeScale = 1f;
-            //ashesData.DesactiveRock();
-            Sprite icon = ashesData.icon;
-            abilitiesPlayer.AddAbility(ashesData);
-            imageRock.sprite = imageRockActive;
-            gameplayUIController.DesactivePanelSkills();
-            gameplayUIController.ActivePanelGame();
-            if (_tutorialSkip == false)
-            {
-                StartCoroutine(TutorialShoot());
-            }
-        }
-    }
-
-    public void AsheAirButton(Ability ashesData)
-    {
-        if(isUsedAir == true)return;
-        countItem.TryBuyItemAir();
-        if (CanBuyItemFire) 
-        {
-            if (ashesData == null) return;
-            isUsedAir = true;
-            abilitiesPlayer.AddAbility(ashesData);
-            imageAir.sprite = imageAirActive;
-
-            purchaseCount++;
-            OnItemPurchased?.Invoke("Air"); 
-
-            VerificarFinalizacionCompraTutorial();
-        }
+            "Fire" => CanBuyItemFire,
+            "Water" => CanBuyItemWater,
+            "Rock" => CanBuyItemRock,
+            "Air" => CanBuyItemAir,
+            _ => false
+        };
     }
 
     private void VerificarFinalizacionCompraTutorial()
@@ -129,24 +89,34 @@ public class Inventory : MonoBehaviour
         if (!_tutorialSkip && purchaseCount >= 2)
         {
             Time.timeScale = 1f;
-            imageKaton.sprite = imageKatonActive;
             gameplayUIController.DesactivePanelSkills();
             gameplayUIController.ActivePanelGame();
             StartCoroutine(TutorialShoot());
         }
-        else if (_tutorialSkip)
+    }
+
+    private void UpdateSkillPanelImage(string type)
+    {
+        switch (type)
         {
-            Time.timeScale = 1f;
-            gameplayUIController.DesactivePanelSkills();
-            gameplayUIController.ActivePanelGame();
+            case "Fire":
+                if (imageFire != null) imageFire.sprite = imageFireActive;
+                break;
+            case "Water":
+                if (imageWater != null) imageWater.sprite = imageWaterActive;
+                break;
+            case "Rock":
+                if (imageRock != null) imageRock.sprite = imageRockActive;
+                break;
+            case "Air":
+                if (imageAir != null) imageAir.sprite = imageAirActive;
+                break;
         }
     }
+
     IEnumerator TutorialShoot()
     {
         yield return new WaitForSeconds(1f);
-        if(tutorialManager != null)
-        {
-            tutorialManager.TutorialShoot();
-        }
+        if (tutorialManager != null) tutorialManager.TutorialShoot();
     }
 }

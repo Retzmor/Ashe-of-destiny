@@ -48,8 +48,6 @@ public class BulletMovement : MonoBehaviour
     public void SetupBullet(Ability data)
     {
         _myAbilityData = data;
-        // Opcional: Puedes ajustar el daño o la velocidad aquí basado en el ScriptableObject
-        // this.damage = data.damage; 
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -91,7 +89,6 @@ public class BulletMovement : MonoBehaviour
                 break;
 
             case "Rock":
-                // Stun: El enemigo se queda quieto
                 if (enemy.TryGetComponent(out EnemyKnockback stRock))
                     stRock.Stun(1.5f); // Necesitarías crear esta función en tu script de Knockback
                 break;

@@ -8,6 +8,8 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] Image lastSkillIcon; 
     [SerializeField] GameObject iconContainer;
     [SerializeField] GameObject fireParticlesPrefab;
+    [SerializeField] GameObject fireComboParticles; 
+    [SerializeField] GameObject mudComboParticles;
 
     private string lastElement = "";
     private float comboTimer = 0f;
@@ -65,15 +67,32 @@ public class EnemyStatus : MonoBehaviour
 
     private void ApplyKatonCombo()
     {
-        Debug.Log("¡COMBO KATON APLICADO!");
-        // Aquí disparas el empuje fuerte + fuego 5s
+        Debug.Log("katooon");
+        if (fireComboParticles != null)
+        {
+            GameObject p = Instantiate(fireComboParticles, transform.position, Quaternion.identity, transform);
+            Destroy(p, 5f);
+        }
+
+        StopAllCoroutines(); 
+        StartCoroutine(BurnRoutine(5f, 20f)); 
+
         ResetStatus();
     }
 
     private void ApplyLodoCombo()
     {
-        Debug.Log("¡COMBO LODO APLICADO!");
-        // Idea para Lodo: El enemigo se queda pegado al suelo (Root) y recibe más daño
+        Debug.Log("¡COMBO LODO!");
+        if (mudComboParticles != null)
+        {
+            GameObject p = Instantiate(mudComboParticles, transform.position, Quaternion.identity, transform);
+            Destroy(p, 5f);
+        }
+        if (TryGetComponent(out EnemyKnockback knock))
+        {
+            knock.Stun(5f);
+        }
+
         ResetStatus();
     }
 
@@ -90,7 +109,7 @@ public class EnemyStatus : MonoBehaviour
 
        if (fireParticlesPrefab != null && currentFireParticles == null)
         {
-            currentFireParticles = Instantiate(fireParticlesPrefab, transform.position, Quaternion.identity, transform);
+            //currentFireParticles = Instantiate(fireParticlesPrefab, transform.position, Quaternion.identity, transform);
         }
 
         float elapsed = 0f;
@@ -107,7 +126,7 @@ public class EnemyStatus : MonoBehaviour
 
         if (currentFireParticles != null)
         {
-           Destroy(currentFireParticles);
+        //   Destroy(currentFireParticles);
         }
     }
 }

@@ -15,4 +15,9 @@ public class Ability : ScriptableObject
     public AudioClip attackSound;  
     public AudioClip loopSound;
     public AudioClip abilitySound;
+
+    public void Initialize()
+    {
+        currentAmmo = maxAmmo;
+    }
 }

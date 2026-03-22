@@ -186,6 +186,11 @@ public class AbilitiesPlayer : MonoBehaviour
     }
     private void FillSlot(int i, Ability ability)
     {
+        Ability abilityInstance = Instantiate(ability);
+        abilityInstance.currentAmmo = abilityInstance.maxAmmo;
+        slotAshes[i] = abilityInstance;
+        slotUsed[i] = true;
+        gameplayUIController.UpdateAmmoDisplay(i, abilityInstance.currentAmmo);
         slotAshes[i] = ability;
         slotUsed[i] = true;
 
@@ -205,16 +210,13 @@ public class AbilitiesPlayer : MonoBehaviour
     public void UseAmmo()
     {
         if (currentSlotIndex == -1) return;
+
         Ability current = slotAshes[currentSlotIndex];
         if (current == null) return;
-        if (current.isInfinite)
-        {
-            gameplayUIController.UpdateAmmoDisplay(currentSlotIndex, 0);
-            return;
-        }
+
+        if (current.isInfinite) return;
         current.currentAmmo--;
         gameplayUIController.UpdateAmmoDisplay(currentSlotIndex, current.currentAmmo);
-
         if (current.currentAmmo <= 0)
         {
             RemoveCurrentAbilityAndRotate();
@@ -224,6 +226,14 @@ public class AbilitiesPlayer : MonoBehaviour
     public void RemoveCurrentAbilityAndRotate()
     {
         int index = currentSlotIndex;
+        Ability abilityFinished = slotAshes[index]; 
+
+        if (abilityFinished != null)
+        {
+            abilityFinished.Initialize();
+
+            waitingAbilities.Enqueue(abilityFinished);
+        }
         if (waitingAbilities.Count > 0)
         {
             Ability next = waitingAbilities.Dequeue();
@@ -232,13 +242,7 @@ public class AbilitiesPlayer : MonoBehaviour
             Sprite nextIcon = (waitingAbilities.Count > 0) ? waitingAbilities.Peek().icon : null;
             gameplayUIController.UpdateNextPreview(nextIcon);
         }
-        else
-        {
-            slotUsed[index] = false;
-            slotAshes[index] = null;
-            AshesButton[index].image.sprite = null;
-            gameplayUIController.ClearAmmoDisplay(index);
-        }
+
         ClearSelection();
     }
 }

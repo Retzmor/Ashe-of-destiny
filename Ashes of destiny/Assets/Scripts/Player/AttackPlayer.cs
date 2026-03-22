@@ -45,39 +45,66 @@ public class AttackPlayer : MonoBehaviour
 
     public void Attack(Ability ability)
     {
+        // 1. OBTENER LA INSTANCIA REAL DEL SLOT (la que tiene las balas de verdad)
+        Ability currentEquipped = abilitiesPlayer.GetSelectedAbility();
+
+        // Si por alguna razón no hay nada seleccionado, salimos
+        if (currentEquipped == null) return;
+
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
-        if (slotIndex < 0)
+        if (slotIndex < 0) return;
+
+        // 2. VERIFICAR MUNICIÓN ANTES DE DISPARAR
+        if (currentEquipped.currentAmmo <= 0 && !currentEquipped.isInfinite)
+        {
+            Debug.Log("Sin munición en el slot " + slotIndex);
             return;
+        }
+
         if (!cooldowns.ContainsKey(slotIndex))
             cooldowns.Add(slotIndex, null);
+
         if (cooldowns[slotIndex] == null)
         {
-            cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex,ability.cooldown));
-            audioManager.PlaySFX(ability.attackSound, 1f);
+            // 3. USAR LOS DATOS DE LA INSTANCIA (currentEquipped)
+            cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex, currentEquipped.cooldown));
+            audioManager.PlaySFX(currentEquipped.attackSound, 1f);
+
             playerComponent.Animator.SetTrigger("Shoot");
+
+            // ... Lógica de dirección y spawn ...
             Vector3 targetPoint = crosshairController.CurrentAimPoint;
             Vector3 direction = (targetPoint - targetAttack.position).normalized;
             Vector3 spawnPos = targetAttack.position;
+
             GameObject bullet = _container.InstantiatePrefab(
-                ability.attackPrefab,
+                currentEquipped.attackPrefab, // Usamos la instancia
                 spawnPos,
                 Quaternion.LookRotation(direction),
                 null
             );
+
             BulletMovement bulletMovement = bullet.GetComponent<BulletMovement>();
             if (bulletMovement != null)
             {
-                bulletMovement.SetupBullet(ability);
+                // PASAMOS LA INSTANCIA A LA BALA
+                bulletMovement.SetupBullet(currentEquipped);
                 bulletMovement.SetDirection(direction);
             }
+
+            // 4. RESTAR MUNICIÓN A LA INSTANCIA
             abilitiesPlayer.UseAmmo();
+
+            // Visuales de Cooldown
             StartCoroutine(
                 abilitiesPlayer.CooldownVisual(
                     abilitiesPlayer.CurrentButton,
-                    ability.cooldown
+                    currentEquipped.cooldown
                 )
             );
-            abilitiesPlayer.particulaActual.DesactiveParticule();
+
+            if (abilitiesPlayer.particulaActual != null)
+                abilitiesPlayer.particulaActual.DesactiveParticule();
         }
     }
     IEnumerator CooldownAttack(int slotIndex, float waitTime)

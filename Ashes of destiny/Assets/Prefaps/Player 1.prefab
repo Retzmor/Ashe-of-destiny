@@ -478,7 +478,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7947996683061083135}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdcc3f8e8a1c56e4e92451b2a18ffe9f, type: 3}
   m_Name: 
@@ -677,7 +677,11 @@ MonoBehaviour:
   targetAttackMelee: {fileID: 1199327030583724136}
   particulas: {fileID: 3888838809400711649}
   particula2: {fileID: 2337534867368709721}
+  comboResetTime: 1
+  attackMeleeParticle: {fileID: 0}
   meleeCooldown: 0.5
+  hitParticlePrefab: {fileID: 0}
+  meleeBoxSize: {x: 2, y: 2, z: 2}
 --- !u!114 &7917122234214769940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,7 +787,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2a9a1e10014c8d8468ea5c8b4a22990e, type: 3}
   - {fileID: 8300000, guid: ea35caa8952e0a348937a69e15f6838b, type: 3}
   hitEnemy: {fileID: 0}
-  hitAir: {fileID: 0}
+  hitWood: {fileID: 0}
   jump: {fileID: 8300000, guid: 2a9a1e10014c8d8468ea5c8b4a22990e, type: 3}
   breath: {fileID: 0}
   runStep:
@@ -791,6 +795,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 700c30421f3799a49b696e35d5a04e1c, type: 3}
   - {fileID: 8300000, guid: c8c390f549868d34db0a6f7bb16b4980, type: 3}
   TakeAshe: {fileID: 8300000, guid: 6e7fb09144654b14ab1da985d2004151, type: 3}
+  hitPlayer: {fileID: 0}
 --- !u!1 &8341455285278322148
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,6 +8,7 @@ public class EnemyKnockback : MonoBehaviour
     EnemyController controller;
     bool isKnocked;
     bool _playerCollision = false;
+    float stunEnemyDuration;
 
     void Start()
     {
@@ -67,5 +69,18 @@ public class EnemyKnockback : MonoBehaviour
         {
             _playerCollision = false;
         }
+    }
+
+    internal void Stun(float v)
+    {
+        stunEnemyDuration = v;
+        agent.isStopped = true;
+        StartCoroutine(stunEnemy());
+    }
+
+    IEnumerator stunEnemy()
+    {
+        yield return new WaitForSeconds(stunEnemyDuration);
+        agent.isStopped = false;
     }
 }

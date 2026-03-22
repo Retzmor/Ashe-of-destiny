@@ -2636,6 +2636,11 @@ Transform:
   - {fileID: 30992961}
   m_Father: {fileID: 441092628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &374018071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1524411219919061367, guid: 2328db1703c107349b73dba6724dc184, type: 3}
+  m_PrefabInstance: {fileID: 7698132870781750345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &376032122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3577,11 +3582,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &455808566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1524411219919061367, guid: 2328db1703c107349b73dba6724dc184, type: 3}
-  m_PrefabInstance: {fileID: 7698132870781750345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &455808570 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5073489283053022495, guid: 2328db1703c107349b73dba6724dc184, type: 3}
@@ -26139,10 +26139,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 455808570}
+      addedObject: {fileID: 2097068777}
     - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2097068777}
+      addedObject: {fileID: 455808570}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
 --- !u!224 &5554937478183587638 stripped
@@ -26488,7 +26488,7 @@ PrefabInstance:
     - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: crossHairUI
       value: 
-      objectReference: {fileID: 455808566}
+      objectReference: {fileID: 374018071}
     - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: playerComponent
       value: 
@@ -26653,7 +26653,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7909303783166170529}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6057470235498174247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdcc3f8e8a1c56e4e92451b2a18ffe9f, type: 3}
   m_Name: 

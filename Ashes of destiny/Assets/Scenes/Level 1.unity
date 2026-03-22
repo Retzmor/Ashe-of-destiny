@@ -5370,10 +5370,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3080529690424724590, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3952198747642320330, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: camSwitcher
       value: 
@@ -78796,6 +78792,10 @@ PrefabInstance:
       propertyPath: lastSkillIcon
       value: 
       objectReference: {fileID: 1464307917849836291}
+    - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
+      propertyPath: fireParticlesPrefab
+      value: 
+      objectReference: {fileID: 7991617970750625128, guid: c6b5c25df8ead9c4cb04cb12eacceb64, type: 3}
     - target: {fileID: 110288574939117143, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 

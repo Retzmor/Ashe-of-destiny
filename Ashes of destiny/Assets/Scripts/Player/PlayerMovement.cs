@@ -180,6 +180,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        
     }
     bool IsGrounded()
     {
@@ -195,9 +196,17 @@ public class PlayerMovement : MonoBehaviour
 
     void BetterFall()
     {
-        if (rb.linearVelocity.y < 0)
+        bool grounded = IsGrounded();
+
+        if (rb.linearVelocity.y < -0.1f && !grounded)
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+
+            playerComponent.Animator.SetBool("IsFalling", true);
+        }
+        else if (grounded)
+        {
+            playerComponent.Animator.SetBool("IsFalling", false);
         }
     }
 

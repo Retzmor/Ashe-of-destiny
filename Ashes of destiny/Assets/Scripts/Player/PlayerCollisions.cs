@@ -75,15 +75,15 @@ public class PlayerCollisions : MonoBehaviour
         playerComponent.Rb.angularVelocity = Vector3.zero;
         playerComponent.Rb.isKinematic = true;
         playerMovement.CanMoving = false;
-        StartCoroutine(MovementPlayer());
         playerController.DisableInputs();
         animator.SetTrigger("Take");
     }
 
-    IEnumerator MovementPlayer()
+    public void EndPickAshAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
         playerComponent.Rb.isKinematic = false;
         playerMovement.CanMoving = true;
+        playerController.EnableInputs(); 
+        Debug.Log("Movimiento restaurado tras recoger ceniza");
     }
 }

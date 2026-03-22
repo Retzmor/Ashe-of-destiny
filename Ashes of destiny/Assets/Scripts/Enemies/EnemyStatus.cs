@@ -58,7 +58,7 @@ public class EnemyStatus : MonoBehaviour
     {
         switch (element)
         {
-            case "Fire": StartCoroutine(BurnRoutine(2f, 5f)); break;
+            case "Fire": ; break;
             case "Air":  /* Pushback */ break;
             case "Water": /* Daño + Slow */ break;
             case "Rock": if (TryGetComponent(out EnemyKnockback knock)) knock.Stun(1.5f); break;
@@ -117,7 +117,7 @@ public class EnemyStatus : MonoBehaviour
         {
             if (health != null)
             {
-                health.TakeDamage(damagePerSecond * Time.deltaTime, 0);
+               // health.TakeDamage(damagePerSecond * Time.deltaTime, 0);
             }
 
             elapsed += Time.deltaTime;

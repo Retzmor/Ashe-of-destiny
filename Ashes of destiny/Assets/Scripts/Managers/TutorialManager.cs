@@ -45,11 +45,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     public bool BlockPlayerInput;
     [Inject] LevelController levelController;
-    void Start()
+
+    void OnEnable()
     {
-        IniciarTutorial();
-        levelController.UnlockCursor();
-        // AudioManager.Instance.PlayMusic(musicaTutorial);
+       IniciarTutorial();
+       levelController.UnlockCursor();
+
     }
     public void IniciarTutorial()
     {

@@ -8,6 +8,7 @@ public class Ability : ScriptableObject
     public GameObject attackPrefab;
     public int maxAmmo = 10;
     public int currentAmmo;
+    public bool isInfinite = false;
     public ParticleSystem hudParticles;
     public ParticleSystem handParticles;
     public float cooldown = 5f;

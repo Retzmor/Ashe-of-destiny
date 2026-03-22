@@ -13,11 +13,20 @@ public class GameplayUIController : MonoBehaviour
     [SerializeField] CountItems countItems;
     [SerializeField] TextMeshProUGUI ammoTextSlot1;
     [SerializeField] TextMeshProUGUI ammoTextSlot2;
-    [SerializeField] Image nextAbilityIcon; 
+    [SerializeField] Image nextAbilityIcon;
+    private Sprite defaultNextIcon;
     int _countAshe;
 
     public int CountAshe { get => _countAshe; set => _countAshe = value; }
     public TextMeshProUGUI TextMeshPro { get => textMeshPro; set => textMeshPro = value; }
+
+    private void Awake()
+    {
+        if (nextAbilityIcon != null)
+        {
+            defaultNextIcon = nextAbilityIcon.sprite;
+        }
+    }
 
     public void UpdateCount()
     {
@@ -34,12 +43,19 @@ public class GameplayUIController : MonoBehaviour
 
     public void UpdateAmmoDisplay(int slotIndex, int currentAmmo)
     {
-        if (slotIndex == 0) ammoTextSlot1.text = currentAmmo.ToString();
-        else if (slotIndex == 1) ammoTextSlot2.text = currentAmmo.ToString();
+        if (slotIndex == 0)
+        {
+            if (ammoTextSlot1 != null) ammoTextSlot1.text = currentAmmo.ToString();
+        }
+        else if (slotIndex == 1)
+        {
+            if (ammoTextSlot2 != null) ammoTextSlot2.text = currentAmmo.ToString();
+        }
     }
 
     public void UpdateNextPreview(Sprite nextIcon)
     {
+        if (nextAbilityIcon == null) return;
         if (nextIcon != null)
         {
             nextAbilityIcon.sprite = nextIcon;
@@ -47,15 +63,20 @@ public class GameplayUIController : MonoBehaviour
         }
         else
         {
-            nextAbilityIcon.sprite = null;
-            nextAbilityIcon.color = new Color(0, 0, 0, 0.2f);
+            nextAbilityIcon.sprite = defaultNextIcon;
         }
     }
 
     public void ClearAmmoDisplay(int slotIndex)
     {
-        if (slotIndex == 0) ammoTextSlot1.text = "";
-        else if (slotIndex == 1) ammoTextSlot2.text = "";
+        if (slotIndex == 0 && ammoTextSlot1 != null)
+        {
+            ammoTextSlot1.text = "";
+        }
+        else if (slotIndex == 1 && ammoTextSlot2 != null)
+        {
+            ammoTextSlot2.text = "";
+        }
     }
 
     public void DesactivePanelSkills()

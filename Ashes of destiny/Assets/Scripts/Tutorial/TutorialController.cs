@@ -12,6 +12,8 @@ public class TutorialController : MonoBehaviour
     [SerializeField] Weapon[] ashes;
     [SerializeField] TextMeshProUGUI textSpace;
     [SerializeField] GameObject arrowAnimator;
+    [SerializeField] Ability fireAbility;
+    [SerializeField] Ability airAbility;
     int countAshe;
     Rigidbody rbPlayer;
     Vector3 positionPlayerStart;
@@ -24,6 +26,8 @@ public class TutorialController : MonoBehaviour
         player.TryGetComponent<Rigidbody>(out Rigidbody rb);
         rbPlayer = rb;
         positionPlayerStart = player.transform.position;
+        fireAbility.isInfinite = true;
+        airAbility.isInfinite = true;
     }
 
     public void AshesRecolected()

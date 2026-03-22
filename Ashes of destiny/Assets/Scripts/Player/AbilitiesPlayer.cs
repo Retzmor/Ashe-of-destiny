@@ -8,6 +8,7 @@ using Color = UnityEngine.Color;
 public class AbilitiesPlayer : MonoBehaviour
 {
     [Inject] AudioManager audioManager;
+    [Inject] GameplayUIController gameplayUIController;
     [SerializeField] private Button[] AshesButton;
     [SerializeField] private Ability[] slotAshes;
     [SerializeField] TutorialController controller;
@@ -43,9 +44,17 @@ public class AbilitiesPlayer : MonoBehaviour
     {
         if (ability == null)
             return;
-
-
-
+        for (int i = 0; i < 2; i++)
+        {
+            if (!slotUsed[i])
+            {
+                FillSlot(i, ability);
+                gameplayUIController.UpdateAmmoDisplay(i, ability.currentAmmo);
+                return;
+            }
+        }
+        waitingAbilities.Enqueue(ability);
+        gameplayUIController.UpdateNextPreview(waitingAbilities.Peek().icon);
         for (int i = 0; i < AshesButton.Length; i++)
         {
             if (!slotUsed[i])
@@ -90,9 +99,7 @@ public class AbilitiesPlayer : MonoBehaviour
             if (p != null)
                 Destroy(p.gameObject);
         }
-
         currentHandParticles.Clear();
-
         foreach (Transform hand in handsParticule)
         {
             ParticleSystem p = Instantiate(
@@ -101,7 +108,6 @@ public class AbilitiesPlayer : MonoBehaviour
                 hand.rotation,
                 hand
             );
-
             currentHandParticles.Add(p);
         }
     }
@@ -198,14 +204,19 @@ public class AbilitiesPlayer : MonoBehaviour
 
     public void UseAmmo()
     {
-        Ability current = GetSelectedAbility();
+        if (currentSlotIndex == -1) return;
+        Ability current = slotAshes[currentSlotIndex];
         if (current == null) return;
-
+        if (current.isInfinite)
+        {
+            gameplayUIController.UpdateAmmoDisplay(currentSlotIndex, 0);
+            return;
+        }
         current.currentAmmo--;
+        gameplayUIController.UpdateAmmoDisplay(currentSlotIndex, current.currentAmmo);
 
         if (current.currentAmmo <= 0)
         {
-            Debug.Log("Munición agotada. Rotando habilidad...");
             RemoveCurrentAbilityAndRotate();
         }
     }
@@ -213,22 +224,21 @@ public class AbilitiesPlayer : MonoBehaviour
     public void RemoveCurrentAbilityAndRotate()
     {
         int index = currentSlotIndex;
-        if (index == -1) return;
-
-        slotUsed[index] = false;
-        slotAshes[index] = null;
-
         if (waitingAbilities.Count > 0)
         {
             Ability next = waitingAbilities.Dequeue();
             FillSlot(index, next);
+            gameplayUIController.UpdateAmmoDisplay(index, next.currentAmmo);
+            Sprite nextIcon = (waitingAbilities.Count > 0) ? waitingAbilities.Peek().icon : null;
+            gameplayUIController.UpdateNextPreview(nextIcon);
         }
         else
         {
+            slotUsed[index] = false;
+            slotAshes[index] = null;
             AshesButton[index].image.sprite = null;
-            AshesButton[index].image.color = Color.gray;
+            gameplayUIController.ClearAmmoDisplay(index);
         }
-
         ClearSelection();
     }
 }

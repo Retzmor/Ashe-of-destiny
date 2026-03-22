@@ -71,7 +71,19 @@ public class PlayerCollisions : MonoBehaviour
         {
             controller.StopPlayer();
         }
+        playerComponent.Rb.linearVelocity = Vector3.zero;
+        playerComponent.Rb.angularVelocity = Vector3.zero;
+        playerComponent.Rb.isKinematic = true;
+        playerMovement.CanMoving = false;
+        StartCoroutine(MovementPlayer());
         playerController.DisableInputs();
         animator.SetTrigger("Take");
+    }
+
+    IEnumerator MovementPlayer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerComponent.Rb.isKinematic = false;
+        playerMovement.CanMoving = true;
     }
 }

@@ -220,7 +220,6 @@ public class TutorialManager : MonoBehaviour
         if (tutorialShootStarted) return;
         tutorialShootStarted = true;
         dialogueManager.StopAllCoroutines();
-
         playerMovement.TutorialMovementLocked = false;
         controller.ArrowDisable();
         playerMovement.canJumping = false;
@@ -277,6 +276,7 @@ public class TutorialManager : MonoBehaviour
         playerMovement.canJumping = true;
         controller.StartPlayer();
         controller.DesactiveTextSpace();
+        levelController.CanOpenMenus = true;
     }
     public void TutorialWin()
     {

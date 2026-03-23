@@ -45,19 +45,12 @@ public class AttackPlayer : MonoBehaviour
 
     public void Attack(Ability ability)
     {
-        // 1. OBTENER LA INSTANCIA REAL DEL SLOT (la que tiene las balas de verdad)
         Ability currentEquipped = abilitiesPlayer.GetSelectedAbility();
-
-        // Si por alguna razón no hay nada seleccionado, salimos
         if (currentEquipped == null) return;
-
         int slotIndex = abilitiesPlayer.CurrentSlotIndex;
         if (slotIndex < 0) return;
-
-        // 2. VERIFICAR MUNICIÓN ANTES DE DISPARAR
         if (currentEquipped.currentAmmo <= 0 && !currentEquipped.isInfinite)
         {
-            Debug.Log("Sin munición en el slot " + slotIndex);
             return;
         }
 
@@ -66,19 +59,17 @@ public class AttackPlayer : MonoBehaviour
 
         if (cooldowns[slotIndex] == null)
         {
-            // 3. USAR LOS DATOS DE LA INSTANCIA (currentEquipped)
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex, currentEquipped.cooldown));
             audioManager.PlaySFX(currentEquipped.attackSound, 1f);
 
             playerComponent.Animator.SetTrigger("Shoot");
 
-            // ... Lógica de dirección y spawn ...
             Vector3 targetPoint = crosshairController.CurrentAimPoint;
             Vector3 direction = (targetPoint - targetAttack.position).normalized;
             Vector3 spawnPos = targetAttack.position;
 
             GameObject bullet = _container.InstantiatePrefab(
-                currentEquipped.attackPrefab, // Usamos la instancia
+                currentEquipped.attackPrefab, 
                 spawnPos,
                 Quaternion.LookRotation(direction),
                 null
@@ -87,15 +78,10 @@ public class AttackPlayer : MonoBehaviour
             BulletMovement bulletMovement = bullet.GetComponent<BulletMovement>();
             if (bulletMovement != null)
             {
-                // PASAMOS LA INSTANCIA A LA BALA
                 bulletMovement.SetupBullet(currentEquipped);
                 bulletMovement.SetDirection(direction);
             }
-
-            // 4. RESTAR MUNICIÓN A LA INSTANCIA
             abilitiesPlayer.UseAmmo();
-
-            // Visuales de Cooldown
             StartCoroutine(
                 abilitiesPlayer.CooldownVisual(
                     abilitiesPlayer.CurrentButton,

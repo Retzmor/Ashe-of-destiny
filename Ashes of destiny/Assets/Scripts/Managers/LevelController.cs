@@ -183,7 +183,7 @@ public class LevelController : MonoBehaviour
     public void WinTutorial()
     {
         _countWin++;
-        if(_countWin >= 4)
+        if(_countWin >= 3)
         {
             tutorialManager.TutorialWin();
         }

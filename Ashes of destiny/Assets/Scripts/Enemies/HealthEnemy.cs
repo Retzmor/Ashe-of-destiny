@@ -34,7 +34,7 @@ public class HealthEnemy : MonoBehaviour
     {
         if (dead) return;
         animator.SetTrigger("TakeDamage");
-        enemyAudio.DamageEnemy();
+        enemyAudio.DamageHit();
         if (materialCoroutine != null) StopCoroutine(materialCoroutine);
         ChangeMaterial();
         materialCoroutine = StartCoroutine(ChangeMaterialCorutine());
@@ -90,6 +90,7 @@ public class HealthEnemy : MonoBehaviour
             }
             if (TryGetComponent(out Collider col)) col.enabled = false;
             animator.SetBool("Death", true);
+            enemyAudio.DamageDeath();
             Destroy(gameObject, 3f);
         }
     }

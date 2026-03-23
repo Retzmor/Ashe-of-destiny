@@ -5,11 +5,13 @@ public class ChangeMusic : MonoBehaviour
 {
     [Inject] AudioManager audioManager;
     [SerializeField] SceneMusic sceneMusic;
+    bool musicActive = false;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player") && !musicActive)
         {
-            //sceneMusic.MusicCombat();
+            musicActive = true;
+            sceneMusic.MusicCombat();
         }
     }
 }

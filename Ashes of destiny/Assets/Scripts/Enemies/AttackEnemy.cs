@@ -9,6 +9,7 @@ public class AttackEnemy : MonoBehaviour
     [SerializeField] Transform zoneAttack;
 
     Animator anim;
+    EnemyAudio enemyAudio;
     bool canAttack = true;
     private HealthEnemy healthEnemy; 
 
@@ -16,6 +17,7 @@ public class AttackEnemy : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         healthEnemy = GetComponent<HealthEnemy>();
+        enemyAudio = GetComponent<EnemyAudio>();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -44,6 +46,7 @@ public class AttackEnemy : MonoBehaviour
             {
                 if (col.TryGetComponent(out HealthPlayer hp))
                 {
+                    enemyAudio.DamageAttack();
                     hp.ChangeHealth(damageAttack, transform.position);
                     break;
                 }

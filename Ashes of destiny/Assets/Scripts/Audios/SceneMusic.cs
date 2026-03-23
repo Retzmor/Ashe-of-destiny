@@ -6,6 +6,7 @@ public class SceneMusic : MonoBehaviour
     [SerializeField] AudioClip levelMusic;
     [SerializeField] AudioClip musicCombat;
     [Inject] AudioManager audioManager;
+    private bool isCombatMusicPlaying = false;
     void Start()
     {
         audioManager.PlayMusic(levelMusic);
@@ -18,7 +19,8 @@ public class SceneMusic : MonoBehaviour
 
     public void MusicCombat()
     {
+        if (isCombatMusicPlaying) return;
         audioManager.StopMusic();
-        audioManager.PlayLoop(musicCombat);
+        audioManager.PlayMusic(musicCombat);
     }
 }

@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMusic: {fileID: 8300000, guid: 0c9d9b0b220ba2f468e6d4d3d743aa0e, type: 3}
-  musicCombat: {fileID: 0}
+  musicCombat: {fileID: 8300000, guid: 7ff0a816e97f74d49a3a4ec3bf302ad7, type: 3}
 --- !u!4 &295515574
 Transform:
   m_ObjectHideFlags: 0
@@ -3126,6 +3126,30 @@ PrefabInstance:
       propertyPath: cooldownAttack
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 37ff5b5e75466784491aed537299ab01, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d2b8ce337f31f974d9baab243cafacbc, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d35d8bae44bd91c47b8923ec93708bf0, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: idleSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'idleSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 51e954096afbc7642a8b04998f1badaa, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'idleSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 46c6d044cc6dd1a4f9911bd7def2ea50, type: 3}
     - target: {fileID: 5024430397058586575, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -15041,7 +15065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeee4887cafac684c8d5edc91240b665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusic: {fileID: 0}
+  sceneMusic: {fileID: 295515573}
 --- !u!65 &1424984243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17194,6 +17218,30 @@ PrefabInstance:
       propertyPath: cooldownAttack
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 37ff5b5e75466784491aed537299ab01, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d2b8ce337f31f974d9baab243cafacbc, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d35d8bae44bd91c47b8923ec93708bf0, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: idleSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'idleSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 51e954096afbc7642a8b04998f1badaa, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'idleSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 46c6d044cc6dd1a4f9911bd7def2ea50, type: 3}
     - target: {fileID: 5024430397058586575, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -26761,6 +26809,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 37ff5b5e75466784491aed537299ab01, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d2b8ce337f31f974d9baab243cafacbc, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d35d8bae44bd91c47b8923ec93708bf0, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: idleSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'idleSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 51e954096afbc7642a8b04998f1badaa, type: 3}
+    - target: {fileID: 4746853563401498423, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: 'idleSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 46c6d044cc6dd1a4f9911bd7def2ea50, type: 3}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 729
@@ -28127,7 +28199,7 @@ PrefabInstance:
     - target: {fileID: 8919455725667762977, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: hitWood
       value: 
-      objectReference: {fileID: 8300000, guid: 09dcf3d6844e3784387cbe86628ab97b, type: 3}
+      objectReference: {fileID: 8300000, guid: f099220e65848b748969d421ed9890e4, type: 3}
     - target: {fileID: 8919455725667762977, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: TakeAshe
       value: 
@@ -28239,31 +28311,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713190021189977080, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6713190021189977080, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6713190021189977080, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6971268366083464784, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6971268366083464784, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6971268366083464784, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8707920498964131646, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: m_Name
       value: EnemyRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707920498964131646, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

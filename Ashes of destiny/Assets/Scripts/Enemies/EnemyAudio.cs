@@ -5,8 +5,10 @@ using Zenject;
 public class EnemyAudio : MonoBehaviour
 {
     [Inject] AudioManager audioManager;
-
     [SerializeField] AudioClip[] idleSounds;
+    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip deathSound;
     void Start()
     {
         StartCoroutine(RandomRoar());
@@ -28,5 +30,20 @@ public class EnemyAudio : MonoBehaviour
     public void DamageEnemy()
     {
         audioManager.PlaySFX3D(idleSounds[0], transform.position);
+    }
+
+    public void DamageAttack()
+    {
+        audioManager.PlaySFX(attackSound, 1f);
+    }
+
+    public void DamageHit()
+    {
+        audioManager.PlaySFX(hitSound, 1f);
+    }
+
+    public void DamageDeath()
+    {
+        audioManager.PlaySFX(deathSound, 1f);
     }
 }

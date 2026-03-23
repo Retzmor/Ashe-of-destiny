@@ -196,17 +196,9 @@ public class PlayerMovement : MonoBehaviour
 
     void BetterFall()
     {
-        bool grounded = IsGrounded();
-
-        if (rb.linearVelocity.y < -0.1f && !grounded)
+        if (rb.linearVelocity.y < 0)
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-
-            playerComponent.Animator.SetBool("IsFalling", true);
-        }
-        else if (grounded)
-        {
-            playerComponent.Animator.SetBool("IsFalling", false);
         }
     }
 

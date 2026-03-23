@@ -2059,6 +2059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMusic: {fileID: 8300000, guid: c33983be7e9c8e840975f2b8803927b5, type: 3}
+  musicCombat: {fileID: 8300000, guid: 0c9d9b0b220ba2f468e6d4d3d743aa0e, type: 3}
 --- !u!224 &920861561 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7570589909053700315, guid: 81b5fa7cd9ceedb4e8885f6da2ac50a3, type: 3}

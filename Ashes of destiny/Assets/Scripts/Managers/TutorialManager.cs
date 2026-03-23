@@ -213,21 +213,32 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         animArrow.SetBool("Arrow", true);
     }
+    private bool tutorialShootStarted = false; 
+
     public void TutorialShoot()
     {
+        if (tutorialShootStarted) return;
+        tutorialShootStarted = true;
+        dialogueManager.StopAllCoroutines();
+
         playerMovement.TutorialMovementLocked = false;
         controller.ArrowDisable();
         playerMovement.canJumping = false;
         playerMovement.CanMoving = false;
+
         levelController.LockCursor();
+        levelController.CanOpenMenus = false; 
         controller.ActiveTextSpace();
         imageTab.SetActive(false);
         imageE.gameObject.SetActive(true);
         imageQ.gameObject.SetActive(true);
         controller.StopPlayer();
-        string[] dialogoMovimiento = { 
-        "seleccione las habilidades con las teclas Q y E",
-        "se mostrara la seleccionada de manera visual",};
+
+        string[] dialogoMovimiento = {
+        "Seleccione las habilidades con las teclas Q y E",
+        "Se mostrará la seleccionada de manera visual"
+    };
+
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
@@ -296,7 +307,11 @@ public class TutorialManager : MonoBehaviour
         else if (skillName == "Air")
         {
             if (arrowAir != null) arrowAir.SetActive(false);
-           inventory.OnItemPurchased -= HandleTutorialPurchases; 
+            inventory.OnItemPurchased -= HandleTutorialPurchases;
+            levelController.MenuSkill();
+            levelController.LockCursor();
+            playerController.EnableInputs(); 
+            TutorialShoot();
         }
     }
 }

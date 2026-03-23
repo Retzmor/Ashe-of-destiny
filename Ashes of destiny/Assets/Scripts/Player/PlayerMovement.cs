@@ -72,11 +72,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!CanMoving)
-        {
-            rb.linearVelocity = Vector3.zero;
-            return;
-        }
         if (isAiming)
         {
             Vector3 lookDirection = yawTarget.forward;

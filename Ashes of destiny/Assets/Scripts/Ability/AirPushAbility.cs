@@ -19,6 +19,7 @@ public class AirPushAbility : MonoBehaviour
     }
     private void Update()
     {
+        // Crecimiento del visual
         if (transform.localScale.x < maxScale)
         {
             transform.localScale += Vector3.one * growthSpeed * Time.deltaTime;
@@ -26,11 +27,11 @@ public class AirPushAbility : MonoBehaviour
         Collider[] enemiesHit = Physics.OverlapSphere(transform.position, currentDetectionRadius, enemyLayer);
         foreach (Collider enemy in enemiesHit)
         {
-            Debug.Log(enemiesHit.Length);
             if (enemy.TryGetComponent(out EnemyKnockback knock))
             {
-                Debug.Log("No hay script");
-                //knock.Push(transform.position, force * Time.deltaTime);
+                Vector3 pushDirection = (enemy.transform.position - transform.position).normalized;
+                pushDirection.y = 0.1f;
+                knock.Push(pushDirection, force);
             }
         }
     }

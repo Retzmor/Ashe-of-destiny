@@ -120,14 +120,25 @@ public class ScriptDialogue : MonoBehaviour
 
     private void DesactiveUI()
     {
-        Key spentKey = requiredKey;
+        bool pressedTab = (requiredKey == Key.Tab);
         requiredKey = Key.None;
         dialoguePanel.SetActive(false);
+
         OnDialogueEnd?.Invoke();
-        if (spentKey == Key.Tab)
+
+        if (pressedTab)
         {
-            var levelCtrl = FindAnyObjectByType<LevelController>();
-            if (levelCtrl != null) levelCtrl.MenuSkill();
+            StartCoroutine(OpenMenuNextFrame());
+        }
+    }
+
+    IEnumerator OpenMenuNextFrame()
+    {
+        yield return new WaitForEndOfFrame();
+        var levelCtrl = FindAnyObjectByType<LevelController>();
+        if (levelCtrl != null)
+        {
+            levelCtrl.MenuSkill();
         }
     }
 

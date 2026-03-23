@@ -13,8 +13,14 @@ public class FakeLoadingScreen : MonoBehaviour
         if (_alreadyLoadedOnce)
         {
             loadingUI.SetActive(false);
+            if (tutorialManager != null)
+            {
+                tutorialManager.enabled = true;
+                Debug.Log("Video saltado, tutorial activado directamente.");
+            }
             return;
         }
+
         _alreadyLoadedOnce = true;
         StartCoroutine(PlayLoading());
     }

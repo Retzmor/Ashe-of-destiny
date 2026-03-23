@@ -76,23 +76,25 @@ public class HealthEnemy : MonoBehaviour
     {
         if (materialCoroutine != null) StopCoroutine(materialCoroutine);
         BackMaterial();
-        if (tutorialManager != null)
+        if (tutorialManager != null && levelController != null)
         {
-
             levelController.WinTutorial();
+        }
+        if (agent != null)
+        {
             agent.isStopped = true;
             agent.enabled = false;
-            if (TryGetComponent(out Rigidbody rb))
-            {
-                rb.linearVelocity = Vector3.zero; 
-                rb.isKinematic = true;
-                rb.useGravity = false;
-            }
-            if (TryGetComponent(out Collider col)) col.enabled = false;
-            animator.SetBool("Death", true);
-            enemyAudio.DamageDeath();
-            Destroy(gameObject, 3f);
         }
+        if (TryGetComponent(out Rigidbody rb))
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+        if (TryGetComponent(out Collider col)) col.enabled = false;
+        animator.SetBool("Death", true);
+        enemyAudio.DamageDeath();
+        Destroy(gameObject, 3f);
     }
     private void OnTriggerEnter(Collider other)
     {

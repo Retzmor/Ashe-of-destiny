@@ -5264,6 +5264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.000000011595718
       objectReference: {fileID: 0}
+    - target: {fileID: 1103114986965045457, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: playerCollisions
+      value: 
+      objectReference: {fileID: 1620852211}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 106.8
@@ -59314,6 +59318,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bed72bacc16c23646a47be02785fbf81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1620852211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8116690809501815826, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+  m_PrefabInstance: {fileID: 143956978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee393fca14d99894c977f37a1773dc79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1623417576 stripped

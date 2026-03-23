@@ -13,13 +13,16 @@ public class EventAddPlayer : MonoBehaviour
   
     public void EndAnimationTakeAshe()
     {
+        if (playerCollisions != null)
+        {
+            playerCollisions.EndPickAshAnimation();
+        }
         if (manager == null || !manager.BlockPlayerInput)
         {
             playerController.EnableInputs();
             if(tutorialController == null) return;
             tutorialController.StartPlayer();
         }
-        playerCollisions.EndPickAshAnimation();
     }
 
     public void JumpEvent()

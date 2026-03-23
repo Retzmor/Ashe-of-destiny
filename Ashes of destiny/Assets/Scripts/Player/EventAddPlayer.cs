@@ -7,6 +7,7 @@ public class EventAddPlayer : MonoBehaviour
     [SerializeField] TutorialController tutorialController;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] AttackPlayer playerAttack;
+    [SerializeField] PlayerCollisions playerCollisions;
     [SerializeField] PlayerAudio playerAudio;
     [InjectOptional] TutorialManager manager;
   
@@ -18,6 +19,7 @@ public class EventAddPlayer : MonoBehaviour
             if(tutorialController == null) return;
             tutorialController.StartPlayer();
         }
+        playerCollisions.EndPickAshAnimation();
     }
 
     public void JumpEvent()

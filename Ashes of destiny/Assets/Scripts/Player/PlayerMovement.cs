@@ -72,6 +72,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!CanMoving)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
         if (isAiming)
         {
             Vector3 lookDirection = yawTarget.forward;
@@ -138,6 +143,15 @@ public class PlayerMovement : MonoBehaviour
                 playerComponent.Animator.SetBool("Run", false);
                 playerComponent.Animator.SetBool("Walk", true);
                 particulas.DesactiveParticule();
+            }
+            RaycastHit slopeHit;
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, moveDir, out slopeHit, 0.7f))
+            {
+                float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+                if (angle > 45f)
+                {
+                    targetVelocity = Vector3.zero;
+                }
             }
             rb.linearVelocity = Vector3.Lerp(
                 currentVelocity,

@@ -83,6 +83,8 @@ public class PlayerCollisions : MonoBehaviour
     {
         playerComponent.Rb.isKinematic = false;
         playerMovement.CanMoving = true;
+        playerComponent.Animator.SetBool("Walk", false);
+        playerComponent.Animator.SetBool("Run", false);
         playerController.EnableInputs(); 
         Debug.Log("Movimiento restaurado tras recoger ceniza");
     }

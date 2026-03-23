@@ -9,7 +9,7 @@ public class RocksAshes : MonoBehaviour
     {
         if(playerCollisions != null)
         {
-            playerCollisions.EndPickAshAnimation();
+            //playerCollisions.EndPickAshAnimation();
         }
         ashe.SetActive(false);
     }

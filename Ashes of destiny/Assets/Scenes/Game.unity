@@ -3881,6 +3881,7 @@ Transform:
   - {fileID: 1248117332}
   - {fileID: 1740897838}
   - {fileID: 2034006323}
+  - {fileID: 787754313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &527954503
@@ -6029,6 +6030,59 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2002034116825618722, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
   m_PrefabInstance: {fileID: 5554937478183587637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &787754311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787754313}
+  - component: {fileID: 787754312}
+  m_Layer: 0
+  m_Name: ColliderPiedra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &787754312
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787754311}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 19.450989, y: 7.5759277, z: 1.5539093}
+  m_Center: {x: 1.308075, y: 3.2879639, z: -0.27695465}
+--- !u!4 &787754313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787754311}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.1203003, y: 18.60019, z: 53.03341}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 519299024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788071671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7538,7 +7592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 700f777e13b493b49ab11f7e566e4723, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.401
+      value: 52.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 700f777e13b493b49ab11f7e566e4723, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27224,6 +27278,10 @@ PrefabInstance:
       value: -22.36034
       objectReference: {fileID: 0}
     - target: {fileID: 1103114986965045457, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: playerCollisions
+      value: 
+      objectReference: {fileID: 8130160264058984374}
+    - target: {fileID: 1103114986965045457, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: tutorialController
       value: 
       objectReference: {fileID: 98608805}
@@ -27754,6 +27812,10 @@ PrefabInstance:
     - target: {fileID: 4833801640584697073, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 12.788336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863279862239533686, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4967529375524448852, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28450,6 +28512,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6678f4bb9370714fb6cf37c05ee83fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8130160264058984374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8116690809501815826, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+  m_PrefabInstance: {fileID: 7909303783166170529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057470235498174247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee393fca14d99894c977f37a1773dc79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8199245266879319417

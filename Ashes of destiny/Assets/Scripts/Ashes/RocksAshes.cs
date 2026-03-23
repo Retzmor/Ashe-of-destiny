@@ -4,10 +4,13 @@ using Zenject;
 public class RocksAshes : MonoBehaviour
 {
     [SerializeField] GameObject ashe;
-    [Inject] PlayerCollisions playerCollisions;
+    [InjectOptional] PlayerCollisions playerCollisions;
     public void DesactiveAshe()
     {
-        playerCollisions.EndPickAshAnimation();
+        if(playerCollisions != null)
+        {
+            playerCollisions.EndPickAshAnimation();
+        }
         ashe.SetActive(false);
     }
 }

@@ -19,9 +19,12 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         detector = GetComponent<EnemyDetector>();
         originalSpeed = agent.speed;
-        currentPoint = Random.Range(0, patrolPoints.Length);
+        if (patrolPoints != null && patrolPoints.Length > 0)
+        {
+            agent.enabled = true;
 
-        GoToNextPoint();
+            Invoke(nameof(GoToNextPoint), 0.1f);
+        }
     }
 
 
@@ -44,6 +47,11 @@ public class EnemyController : MonoBehaviour
 
     void Patrol()
     {
+        if (patrolPoints == null || patrolPoints.Length == 0)
+        {
+            agent.destination = transform.position; 
+            return;
+        }
         if (agent == null || !agent.enabled || !agent.isOnNavMesh) return;
         if (agent.pathPending) return;
 
@@ -83,6 +91,22 @@ public class EnemyController : MonoBehaviour
     {
         StartCoroutine(StunCoroutine(duration));
     }
+    public void SetPatrolPoints(Transform[] newPoints)
+    {
+        patrolPoints = newPoints;
+
+        if (patrolPoints != null && patrolPoints.Length > 0)
+        {
+            currentPoint = Random.Range(0, patrolPoints.Length);
+
+            if (agent != null && agent.enabled && agent.isOnNavMesh)
+            {
+                agent.SetDestination(patrolPoints[currentPoint].position);
+            }
+        }
+    }
+
+
     IEnumerator StunCoroutine(float duration)
     {
         isStunned = true;

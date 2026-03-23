@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Height
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3359751059815030886, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5366756320273658250, guid: 2f1a21b9bdfbcde43934db3c1b5970ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -789.42523
@@ -198,4 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastSkillIcon: {fileID: 0}
   iconContainer: {fileID: 0}
+  fireParticlesPrefab: {fileID: 0}
+  fireComboParticles: {fileID: 0}
+  mudComboParticles: {fileID: 0}
   maxComboTime: 4

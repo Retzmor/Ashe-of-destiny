@@ -43,6 +43,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Image imageE;
     [SerializeField] Image imageQ;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] GameObject colliderWood;
+    [SerializeField] GameObject colliderEnemies;
     public bool BlockPlayerInput;
     [Inject] LevelController levelController;
 
@@ -158,6 +160,7 @@ public class TutorialManager : MonoBehaviour
             playerController.EnableInputs();
             controller.DesactiveTextSpace();
             controller.StartPlayer();
+            colliderWood.SetActive(false);
         };
     }
     public void TutorialAshes()
@@ -264,6 +267,7 @@ public class TutorialManager : MonoBehaviour
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.OnDialogueEnd = () =>
         {
+            colliderEnemies.SetActive(false);
             StartCoroutine(EnablePlayerDelayed());
         };
     }

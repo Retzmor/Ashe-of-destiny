@@ -7,9 +7,15 @@ public class FakeLoadingScreen : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject loadingUI;
     [SerializeField] MonoBehaviour tutorialManager;
-
+    private static bool _alreadyLoadedOnce = false;
     void Start()
     {
+        if (_alreadyLoadedOnce)
+        {
+            loadingUI.SetActive(false);
+            return;
+        }
+        _alreadyLoadedOnce = true;
         StartCoroutine(PlayLoading());
     }
 
@@ -20,7 +26,7 @@ public class FakeLoadingScreen : MonoBehaviour
         videoPlayer.Prepare();
         while (!videoPlayer.isPrepared)
         {
-            yield return null; // Esperamos usando tiempo real (null ignora timeScale)
+            yield return null; 
         }
         videoPlayer.Play();
         yield return new WaitForSecondsRealtime((float)videoPlayer.length);

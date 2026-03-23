@@ -2860,6 +2860,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 899957804}
   m_SourcePrefab: {fileID: 100100000, guid: ee1f3cdf5891c224b9812040b1849624, type: 3}
+--- !u!1 &400986595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400986597}
+  - component: {fileID: 400986596}
+  m_Layer: 0
+  m_Name: ColliderMaderaTutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &400986596
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400986595}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 5.5115814, z: 11.831428}
+  m_Center: {x: 0.00000223203, y: 0.8214493, z: -0.26153758}
+--- !u!4 &400986597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400986595}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.42254162, z: -0, w: 0.9063436}
+  m_LocalPosition: {x: 16.540283, y: 19.020187, z: 49.803413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 519299024}
+  m_LocalEulerAnglesHint: {x: 0, y: -49.99, z: 0}
 --- !u!4 &406758929 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -3886,6 +3939,7 @@ Transform:
   - {fileID: 578102363}
   - {fileID: 1819975003}
   - {fileID: 1409292548}
+  - {fileID: 400986597}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &527954503
@@ -6832,6 +6886,73 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 606.24506, y: 160.40083, z: 0.22758421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &875417958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 875417961}
+  - component: {fileID: 875417960}
+  - component: {fileID: 875417959}
+  m_Layer: 0
+  m_Name: CollidersEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &875417959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875417958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeee4887cafac684c8d5edc91240b665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneMusic: {fileID: 295515573}
+--- !u!65 &875417960
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875417958}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 76.79535, y: 5.413391, z: 1}
+  m_Center: {x: -24.204681, y: 2.2066956, z: 0}
+--- !u!4 &875417961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875417958}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 756.73, y: 160.196, z: 80.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16428,6 +16549,8 @@ MonoBehaviour:
   imageE: {fileID: 87115756}
   imageQ: {fileID: 243919387}
   playerMovement: {fileID: 1637541115101384257}
+  colliderWood: {fileID: 400986595}
+  colliderEnemies: {fileID: 875417958}
   BlockPlayerInput: 0
 --- !u!1 &1522529486 stripped
 GameObject:
@@ -28846,6 +28969,7 @@ SceneRoots:
   - {fileID: 1257863183}
   - {fileID: 5554937478183587637}
   - {fileID: 1424984244}
+  - {fileID: 875417961}
   - {fileID: 810733468}
   - {fileID: 7909303783166170529}
   - {fileID: 7642988028192111486}

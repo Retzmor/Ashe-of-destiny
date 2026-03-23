@@ -144,15 +144,6 @@ public class PlayerMovement : MonoBehaviour
                 playerComponent.Animator.SetBool("Walk", true);
                 particulas.DesactiveParticule();
             }
-            RaycastHit slopeHit;
-            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, moveDir, out slopeHit, 0.7f))
-            {
-                float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-                if (angle > 45f)
-                {
-                    targetVelocity = Vector3.zero;
-                }
-            }
             rb.linearVelocity = Vector3.Lerp(
                 currentVelocity,
                 new Vector3(targetVelocity.x, currentVelocity.y, targetVelocity.z),

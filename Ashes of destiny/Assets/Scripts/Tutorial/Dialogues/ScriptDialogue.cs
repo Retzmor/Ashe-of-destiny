@@ -65,13 +65,12 @@ public class ScriptDialogue : MonoBehaviour
 
     public void ChangeText()
     {
-        if (isWrite)
+        if (isWrite && requiredKey == Key.None)
         {
             StopAllCoroutines();
             text.text = dialogues[numberText];
             isWrite = false;
         }
-
         else
         {
             NextLine();
@@ -137,6 +136,7 @@ public class ScriptDialogue : MonoBehaviour
         if (levelCtrl != null)
         {
             levelCtrl.MenuSkill();
+            levelCtrl.CanOpenMenus = true;
         }
     }
     public void SetDialogue(string[] newDialogues)

@@ -193,7 +193,7 @@ public class TutorialManager : MonoBehaviour
     {
         playerMovement.TutorialMovementLocked = true;
         BlockPlayerInput = true;
-        levelController.CanOpenMenus = true;
+        levelController.CanOpenMenus = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         controller.StopPlayer();
@@ -206,6 +206,7 @@ public class TutorialManager : MonoBehaviour
         inventory.OnItemPurchased += HandleTutorialPurchases;
         StartCoroutine(WaitAnimator());
         controller.ArrowActive();
+
         string[] dialogoMovimiento = { "Presiona la tecla Tab" };
         dialogueManager.SetDialogue(dialogoMovimiento);
         dialogueManager.RequireKey(Key.Tab);

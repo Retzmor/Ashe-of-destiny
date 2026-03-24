@@ -44,4 +44,10 @@ public class GameManager : MonoBehaviour
         EventBus.GameStart?.Invoke();
         SceneManager.LoadScene("Level 1");
     }
+
+    public void StartCredits()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Creditos");
+    }
 }

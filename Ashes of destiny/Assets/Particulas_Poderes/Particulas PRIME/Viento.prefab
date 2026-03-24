@@ -4853,7 +4853,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  rotationSpeed: 800
+  airIcon: {fileID: 21300000, guid: 36d83a5b07f25ee43ad27303de037204, type: 3}
   initialScale: 0.5
   maxScale: 3
   growthSpeed: 2

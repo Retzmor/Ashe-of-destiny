@@ -28,12 +28,21 @@ public class BulletMovement : MonoBehaviour
     {
         colliderBullet = GetComponent<Collider>();
 
-        foreach (Collider col in player.GetComponentsInChildren<Collider>())
+        if (player == null)
         {
-            Physics.IgnoreCollision(colliderBullet, col);
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.GetComponent<PlayerCollisions>();
         }
 
-
+        if (player != null)
+        {
+            foreach (Collider col in player.GetComponentsInChildren<Collider>())
+            {
+                if (col != null && colliderBullet != null)
+                    Physics.IgnoreCollision(colliderBullet, col);
+            }
+        }
         Destroy(gameObject, 3f);
     }
 
@@ -64,7 +73,6 @@ public class BulletMovement : MonoBehaviour
 
             if (_myAbilityData != null && other.TryGetComponent(out EnemyStatus status))
             {
-                // Le pasamos el nombre ("Fire", "Water", etc.) y su icono
                 status.ApplyElement(_myAbilityData.abilityName, _myAbilityData.icon);
             }
             ApplyUniqueElementEffect(other.gameObject);

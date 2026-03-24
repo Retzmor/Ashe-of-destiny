@@ -25215,6 +25215,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 473050073}
   gameplayUIController: {fileID: 1165488460}
+  _canBuyItemFire: 2
+  _canBuyItemWater: 10
+  _canBuyItemRock: 10
+  _canBuyItemAir: 2
 --- !u!4 &2035252231
 Transform:
   m_ObjectHideFlags: 0

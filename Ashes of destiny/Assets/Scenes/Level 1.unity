@@ -683,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2248,6 +2248,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1708927526}
     m_Modifications:
+    - target: {fileID: 2637752735533821675, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -2682,7 +2686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5696,6 +5700,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1708927526}
     m_Modifications:
+    - target: {fileID: 2637752735533821675, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -8649,6 +8657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1708927526}
     m_Modifications:
+    - target: {fileID: 2637752735533821675, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -21293,6 +21305,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1708927526}
     m_Modifications:
+    - target: {fileID: 2637752735533821675, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -26461,7 +26477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30341,7 +30357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34364,7 +34380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37363,6 +37379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1708927526}
     m_Modifications:
+    - target: {fileID: 2637752735533821675, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -57568,7 +57588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57866,7 +57886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -73895,6 +73915,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1708927526}
     m_Modifications:
+    - target: {fileID: 2637752735533821675, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -77754,7 +77778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78945,7 +78969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -86810,7 +86834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -87193,7 +87217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859261738533627796, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

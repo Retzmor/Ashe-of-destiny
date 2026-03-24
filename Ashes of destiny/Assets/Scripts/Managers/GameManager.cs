@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void StartCredits()
     {
+        Cursor.visible = true;
         Time.timeScale = 1;
         SceneManager.LoadScene("Creditos");
     }

@@ -8,10 +8,10 @@ public class CountItems : MonoBehaviour
     [SerializeField] GameplayUIController gameplayUIController;
     int _countAshesCurrent = 0;
     bool _canBuyItem;
-    int _canBuyItemFire = 1;
-    int _canBuyItemWater = 1;
-    int _canBuyItemRock = 1;
-    int _canBuyItemAir = 1;
+    int _canBuyItemFire = 4;
+    int _canBuyItemWater = 4;
+    int _canBuyItemRock = 4;
+    int _canBuyItemAir = 4;
 
     public int CountAshesCurrent { get => _countAshesCurrent; set => _countAshesCurrent = value; }
     public bool CanBuyItem { get => _canBuyItem; set => _canBuyItem = value; }

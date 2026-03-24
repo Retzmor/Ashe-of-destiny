@@ -10,19 +10,26 @@ public class EventAddPlayer : MonoBehaviour
     [SerializeField] PlayerCollisions playerCollisions;
     [SerializeField] PlayerAudio playerAudio;
     [InjectOptional] TutorialManager manager;
-  
+
     public void EndAnimationTakeAshe()
     {
         if (playerCollisions != null)
         {
             playerCollisions.EndPickAshAnimation();
         }
+
         if (manager == null || !manager.BlockPlayerInput)
         {
-            playerController.EnableInputs();
-            if(tutorialController == null) return;
-            tutorialController.StartPlayer();
+            if (playerController != null)
+            {
+                playerController.EnableInputs();
+            }
+            if (tutorialController != null)
+            {
+                tutorialController.StartPlayer();
+            }
         }
+        Debug.Log("Final de animación de ceniza procesado. Manager: " + (manager != null));
     }
 
     public void JumpEvent()

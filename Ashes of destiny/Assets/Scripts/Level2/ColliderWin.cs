@@ -6,6 +6,7 @@ public class ColliderWin : MonoBehaviour
     [Inject] GameManager gameManager;
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("fgdnhskjfbdkj");
         if(collision.gameObject.CompareTag("Player"))
         {
             gameManager.StartCredits();

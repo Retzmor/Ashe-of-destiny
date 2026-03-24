@@ -14,6 +14,7 @@ public class HealthPlayer : MonoBehaviour
     [SerializeField] CameraManager cameraManager;
     [SerializeField] ShakeData shakeData;
     [SerializeField] float knockbackForce = 6f;
+    [SerializeField] GameObject panelLose;
     PlayerMovement playerMovement;
     PlayerComponent playerComponent;
     DamageEffect damageEffect;
@@ -59,7 +60,17 @@ public class HealthPlayer : MonoBehaviour
     IEnumerator DieCameraPlayer()
     {
         yield return new WaitForSeconds(3f);
-        tutorialManager.TutorialLose();
+        if(tutorialManager != null)
+        {
+            tutorialManager.TutorialLose();
+        }
+
+        if (tutorialManager == null)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            panelLose.SetActive(true);
+        }
     }
 
     IEnumerator StopMovementPlayer()

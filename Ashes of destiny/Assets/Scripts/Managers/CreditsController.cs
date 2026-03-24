@@ -4,7 +4,7 @@ using Zenject;
 
 public class CreditsController : MonoBehaviour
 {
-    [Inject] GameManager gameManager;
+    [Inject] LevelController levelController;
 
     private void Start()
     {
@@ -14,6 +14,8 @@ public class CreditsController : MonoBehaviour
     IEnumerator ContinueMenuStart()
     {
         yield return new WaitForSeconds(5f);
-        gameManager.TutorialStart();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        levelController.MenuStart();
     }
 }

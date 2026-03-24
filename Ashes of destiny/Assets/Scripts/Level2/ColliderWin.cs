@@ -3,13 +3,16 @@ using Zenject;
 
 public class ColliderWin : MonoBehaviour
 {
-    [Inject] GameManager gameManager;
+    [SerializeField] GameObject panelCreditos;
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] CreditsController creditsController;
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("fgdnhskjfbdkj");
         if(collision.gameObject.CompareTag("Player"))
         {
-            gameManager.StartCredits();
+            playerMovement.CanMoving = false;
+            panelCreditos.SetActive(true);
+            creditsController.enabled = true;
         }
     }
 }

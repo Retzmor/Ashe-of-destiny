@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6539158820239378350}
   - component: {fileID: 6083898049288380887}
   - component: {fileID: 1841885939476185960}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,7 +4851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6132263943019679694}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Particula bola de fuego
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,12 +4886,10 @@ GameObject:
   - component: {fileID: 9045925850230630206}
   - component: {fileID: 1881065022778944306}
   - component: {fileID: 3689303863787087838}
-  - component: {fileID: 8125599013040531281}
-  - component: {fileID: 7800600090057931186}
   - component: {fileID: 3823035218720566937}
   - component: {fileID: 5287592970994690237}
-  - component: {fileID: -5262074147894909494}
-  m_Layer: 8
+  - component: {fileID: -3249899218362306763}
+  m_Layer: 0
   m_Name: Bola Tierra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4967,34 +4965,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8125599013040531281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5367986746088089123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a19ee562e1d1e6439322a0e814f6475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  damage: 30
-  rotationSpeed: 300
---- !u!114 &7800600090057931186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5367986746088089123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2ea8a565a35314e8b6b96db76085cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TypeWeapon: 0
 --- !u!64 &3823035218720566937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5044,7 +5014,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5262074147894909494
+--- !u!114 &-3249899218362306763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5053,11 +5023,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5367986746088089123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 313f38daf73fcda4eb383360fd0693c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 077babd7d01c016488b2f8d046088d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
-  stunDuration: 2
+  speed: 15
+  damage: 10
+  lifeTime: 5
+  vfx: {fileID: 0}
 --- !u!1 &5793063055616671203
 GameObject:
   m_ObjectHideFlags: 0
@@ -5069,7 +5041,7 @@ GameObject:
   - component: {fileID: 8289640588580354081}
   - component: {fileID: 2135093909284622763}
   - component: {fileID: 1112230273717220022}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

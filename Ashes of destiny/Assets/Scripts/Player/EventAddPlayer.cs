@@ -29,7 +29,6 @@ public class EventAddPlayer : MonoBehaviour
                 tutorialController.StartPlayer();
             }
         }
-        Debug.Log("Final de animación de ceniza procesado. Manager: " + (manager != null));
     }
 
     public void JumpEvent()

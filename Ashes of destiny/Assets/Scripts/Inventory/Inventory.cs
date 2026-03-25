@@ -46,6 +46,10 @@ public class Inventory : MonoBehaviour
     private void BuyAbility(Ability ashesData, string type)
     {
         if (ashesData == null) return;
+        if (IsAlreadyBought(type))
+        {
+            return;
+        }
 
         CheckFunds(type);
 
@@ -57,6 +61,18 @@ public class Inventory : MonoBehaviour
             OnItemPurchased?.Invoke(type);
             VerificarFinalizacionCompraTutorial();
         }
+    }
+
+    private bool IsAlreadyBought(string type)
+    {
+        return type switch
+        {
+            "Fire" => boughtFire,
+            "Water" => boughtWater,
+            "Rock" => boughtRock,
+            "Air" => boughtAir,
+            _ => false
+        };
     }
 
     public void addItemInventory(GameObject objectItem)

@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] GameObject fireParticlesPrefab;
     [SerializeField] GameObject fireComboParticles; 
     [SerializeField] GameObject mudComboParticles;
+    [SerializeField] ShakeData shakeData;
 
     private string lastElement = "";
     private float comboTimer = 0f;
@@ -61,7 +63,7 @@ public class EnemyStatus : MonoBehaviour
             case "Fire": ; break;
             case "Air":  /* Pushback */ break;
             case "Water": /* Daño + Slow */ break;
-            case "Rock": if (TryGetComponent(out EnemyKnockback knock)) knock.Stun(1.5f); break;
+            case "Rock": if (TryGetComponent(out EnemyController knock)) knock.ApplyStun(1.5f); break;
         }
     }
 
@@ -71,6 +73,7 @@ public class EnemyStatus : MonoBehaviour
         if (fireComboParticles != null)
         {
             GameObject p = Instantiate(fireComboParticles, transform.position, Quaternion.identity, transform);
+            CameraMovement();
             Destroy(p, 5f);
         }
 
@@ -82,18 +85,18 @@ public class EnemyStatus : MonoBehaviour
 
     private void ApplyLodoCombo()
     {
-        Debug.Log("¡COMBO LODO!");
         if (mudComboParticles != null)
         {
             GameObject p = Instantiate(mudComboParticles, transform.position, Quaternion.identity, transform);
             Destroy(p, 5f);
         }
-        if (TryGetComponent(out EnemyKnockback knock))
+        if (TryGetComponent(out EnemyController knock))
         {
-            knock.Stun(5f);
+            knock.ApplyStun(5f);
+            CameraMovement();
         }
 
-        ResetStatus();
+        ResetStatus(); 
     }
 
     public void ResetStatus()
@@ -107,7 +110,7 @@ public class EnemyStatus : MonoBehaviour
     {
         HealthEnemy health = GetComponent<HealthEnemy>();
 
-       if (fireParticlesPrefab != null && currentFireParticles == null)
+        if (fireParticlesPrefab != null && currentFireParticles == null)
         {
             //currentFireParticles = Instantiate(fireParticlesPrefab, transform.position, Quaternion.identity, transform);
         }
@@ -117,17 +120,22 @@ public class EnemyStatus : MonoBehaviour
         {
             if (health != null)
             {
-               // health.TakeDamage(damagePerSecond * Time.deltaTime, 0);
+                // health.TakeDamage(damagePerSecond * Time.deltaTime, 0);
             }
 
             elapsed += Time.deltaTime;
-            yield return null; 
+            yield return null;
         }
 
         if (currentFireParticles != null)
         {
-        //   Destroy(currentFireParticles);
+            //   Destroy(currentFireParticles);
         }
+    }
+
+    public void CameraMovement()
+    {
+        CameraShakerHandler.Shake(shakeData);
     }
 }
 

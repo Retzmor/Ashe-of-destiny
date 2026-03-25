@@ -25,7 +25,6 @@ public class AttackPlayer : MonoBehaviour
     [Inject] private DiContainer _container;
     [Inject] AudioManager audioManager;
     Dictionary<int, Coroutine> cooldowns = new();
-    [SerializeField] float meleeCooldown = 0.5f;
     [SerializeField] GameObject hitParticlePrefab;
     private bool isMeleeOnCooldown = false;
     private int comboStep = 0;
@@ -53,17 +52,13 @@ public class AttackPlayer : MonoBehaviour
         {
             return;
         }
-
         if (!cooldowns.ContainsKey(slotIndex))
             cooldowns.Add(slotIndex, null);
-
         if (cooldowns[slotIndex] == null)
         {
             cooldowns[slotIndex] = StartCoroutine(CooldownAttack(slotIndex, currentEquipped.cooldown));
             audioManager.PlaySFX(currentEquipped.attackSound, 1f);
-
             playerComponent.Animator.SetTrigger("Shoot");
-
             Vector3 targetPoint = crosshairController.CurrentAimPoint;
             Vector3 direction = (targetPoint - targetAttack.position).normalized;
             Vector3 spawnPos = targetAttack.position;

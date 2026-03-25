@@ -5,11 +5,8 @@ public class BulletMovementAir : MonoBehaviour
 {
     Rigidbody rb;
     Collider colliderBullet;
-
     [SerializeField] float speed;
     [SerializeField] float damage;
-
-    [SerializeField] float growthSpeed = 2.0f;
     ParticleSystem particle;
 
     bool alreadyDamage = false;

@@ -75,40 +75,7 @@ public class BulletMovement : MonoBehaviour
             {
                 status.ApplyElement(_myAbilityData.abilityName, _myAbilityData.icon);
             }
-            ApplyUniqueElementEffect(other.gameObject);
         }
-    }
-
-    private void ApplyUniqueElementEffect(GameObject enemy)
-    {
-        if (_myAbilityData == null) return;
-
-        switch (_myAbilityData.abilityName)
-        {
-            case "Fire":
-                // Quema básica: 2 segundos de daño extra
-                if (enemy.TryGetComponent(out EnemyStatus stFire))
-                    stFire.StartCoroutine(stFire.BurnRoutine(2f, 5f));
-                break;
-
-            case "Water":
-                if (enemy.TryGetComponent(out UnityEngine.AI.NavMeshAgent agent))
-                    StartCoroutine(SlowRoutine(agent, 2f));
-                break;
-
-            case "Rock":
-                if (enemy.TryGetComponent(out EnemyKnockback stRock))
-                    stRock.Stun(1.5f); // Necesitarías crear esta función en tu script de Knockback
-                break;
-        }
-    }
-
-    IEnumerator SlowRoutine(UnityEngine.AI.NavMeshAgent agent, float duration)
-    {
-        float originalSpeed = agent.speed;
-        agent.speed *= 0.5f; // Reduce a la mitad
-        yield return new WaitForSeconds(duration);
-        if (agent != null) agent.speed = originalSpeed;
     }
     private void FixedUpdate()
     {

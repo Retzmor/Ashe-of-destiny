@@ -71,16 +71,25 @@ public class EnemyKnockback : MonoBehaviour
         }
     }
 
-    internal void Stun(float v)
+    private Coroutine activeStunCoroutine; 
+
+    internal void Stun(float duration)
     {
-        stunEnemyDuration = v;
-        agent.isStopped = true;
-        StartCoroutine(stunEnemy());
+        if (activeStunCoroutine != null)
+            StopCoroutine(activeStunCoroutine);
+
+        activeStunCoroutine = StartCoroutine(StunRoutine(duration));
     }
 
-    IEnumerator stunEnemy()
+    IEnumerator StunRoutine(float duration)
     {
-        yield return new WaitForSeconds(stunEnemyDuration);
-        agent.isStopped = false;
+        agent.isStopped = true;
+        yield return new WaitForSeconds(duration);
+        if (agent != null) 
+        {
+            agent.isStopped = false;
+        }
+
+        activeStunCoroutine = null;
     }
 }

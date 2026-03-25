@@ -76,6 +76,12 @@ public class AttackPlayer : MonoBehaviour
                 bulletMovement.SetupBullet(currentEquipped);
                 bulletMovement.SetDirection(direction);
             }
+            AirPushAbility airPush = bullet.GetComponent<AirPushAbility>();
+            AirPushAbility air = bullet.GetComponentInChildren<AirPushAbility>();
+            if (air != null)
+            {
+                air.SetWorldDirection(direction);
+            }
             abilitiesPlayer.UseAmmo();
             StartCoroutine(
                 abilitiesPlayer.CooldownVisual(

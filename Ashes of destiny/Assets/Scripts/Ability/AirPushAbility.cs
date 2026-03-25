@@ -10,9 +10,10 @@ public class AirPushAbility : MonoBehaviour
     [SerializeField] float maxScale = 3.0f;
     [SerializeField] float growthSpeed = 2.0f;
     [SerializeField] float currentDetectionRadius;
-
-    private List<Collider> enemiesAlreadyHit = new List<Collider>();
-
+    private Vector3 worldDirection;
+    private bool hasDirection = false;
+    private Dictionary<Collider, float> nextHitTime = new Dictionary<Collider, float>();
+    [SerializeField] float timeBetweenHits = 0.5f;
     void Start()
     {
         transform.localScale = Vector3.one * initialScale;
@@ -21,33 +22,39 @@ public class AirPushAbility : MonoBehaviour
 
     private void Update()
     {
-        // 1. Crecimiento visual
+        Debug.DrawRay(transform.position, worldDirection * 5f, Color.red);
         if (transform.localScale.x < maxScale)
         {
             transform.localScale += Vector3.one * growthSpeed * Time.deltaTime;
         }
 
-        // 2. Detección de enemigos
         Collider[] enemiesHit = Physics.OverlapSphere(transform.position, currentDetectionRadius, enemyLayer);
 
         foreach (Collider enemy in enemiesHit)
         {
-            if (!enemiesAlreadyHit.Contains(enemy))
+            if (!nextHitTime.ContainsKey(enemy))
+                nextHitTime.Add(enemy, 0f);
+
+            if (Time.time >= nextHitTime[enemy])
             {
                 if (enemy.TryGetComponent(out EnemyStatus status))
-                {
                     status.ApplyElement("Air", airIcon);
-                }
+
                 if (enemy.TryGetComponent(out EnemyKnockback knock))
                 {
-                    Vector3 pushDirection = (enemy.transform.position - transform.position).normalized;
-                    pushDirection.y = 0.1f;
-                    knock.Push(pushDirection, force);
-                }
+                    Vector3 pushDir = hasDirection ? worldDirection : transform.forward;
+                    knock.Push(pushDir.normalized, force);
 
-                enemiesAlreadyHit.Add(enemy);
+                    nextHitTime[enemy] = Time.time + timeBetweenHits;
+                }
             }
         }
+    }
+    public void SetWorldDirection(Vector3 dir)
+    {
+        worldDirection = dir.normalized;
+        worldDirection.y = 0; 
+        hasDirection = true;
     }
 
     private void OnDrawGizmos()

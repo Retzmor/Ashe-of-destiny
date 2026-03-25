@@ -18,7 +18,6 @@ public class CountItems : MonoBehaviour
 
     public void TryBuyItemFire()
     {
-        Debug.Log(_countAshesCurrent);
         if(_countAshesCurrent >= _canBuyItemFire)
         {
             inventory.CanBuyItemFire = true;

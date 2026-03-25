@@ -19,29 +19,32 @@ public class EnemyKnockback : MonoBehaviour
 
     public bool PlayerCollision { get => _playerCollision; set => _playerCollision = value; }
 
-    public void Push(Vector3 attackerPosition, float force)
+    public void Push(Vector3 pushDirection, float force)
     {
         if (knockbackRoutine != null) StopCoroutine(knockbackRoutine);
-        knockbackRoutine = StartCoroutine(Knockback(attackerPosition, force));
+        knockbackRoutine = StartCoroutine(Knockback(pushDirection, force));
     }
 
-    IEnumerator Knockback(Vector3 attackerPosition, float force)
+    IEnumerator Knockback(Vector3 pushDirection, float force)
     {
         isKnocked = true;
         controller.enabled = false;
         if (agent.isOnNavMesh) agent.isStopped = true;
-        Vector3 dir = (transform.position - attackerPosition).normalized;
-        dir.y = 0;
+        Vector3 dir = pushDirection.normalized;
+        dir.y = 0; 
         float timer = 0.2f;
         float startTimer = timer;
         while (timer > 0)
         {
             float currentForce = force * (timer / startTimer);
             if (agent.isOnNavMesh)
+            {
                 agent.Move(dir * currentForce * Time.deltaTime);
+            }
             timer -= Time.deltaTime;
             yield return null;
         }
+
         if (agent.isOnNavMesh)
         {
             agent.isStopped = false;

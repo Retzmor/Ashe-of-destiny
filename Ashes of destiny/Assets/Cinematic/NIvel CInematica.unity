@@ -53078,7 +53078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 280546376551752280, guid: 995bc3ed1c177be4c9bc3cff11a4619e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3409395685160323350, guid: 995bc3ed1c177be4c9bc3cff11a4619e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53121,12 +53121,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9106936276826786557, guid: 995bc3ed1c177be4c9bc3cff11a4619e, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106936276826786557, guid: 995bc3ed1c177be4c9bc3cff11a4619e, type: 3}
       propertyPath: randomSeed
       value: 5076
       objectReference: {fileID: 0}
     - target: {fileID: 9106936276826786557, guid: 995bc3ed1c177be4c9bc3cff11a4619e, type: 3}
       propertyPath: lengthInSec
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9106936276826786557, guid: 995bc3ed1c177be4c9bc3cff11a4619e, type: 3}
       propertyPath: autoRandomSeed

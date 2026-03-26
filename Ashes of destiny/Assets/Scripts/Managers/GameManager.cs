@@ -51,4 +51,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("Creditos");
     }
+
+    public void StartCinematic()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 1;
+        SceneManager.LoadScene("NIvel CInematica");
+    }
 }

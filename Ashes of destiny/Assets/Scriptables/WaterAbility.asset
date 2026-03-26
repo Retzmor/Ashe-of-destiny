@@ -21,6 +21,6 @@ MonoBehaviour:
   hudParticles: {fileID: 5251195224180072733, guid: f7d7d7f962cf1f8419a928477c2d20f3, type: 3}
   handParticles: {fileID: 3501985977456368259, guid: 4ad96e00c2cde854a8ad3fef68494d81, type: 3}
   cooldown: 5
-  attackSound: {fileID: 0}
-  loopSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: b0777c185cbd6b44baed70412cbd70da, type: 3}
+  loopSound: {fileID: 8300000, guid: b91e2952933088748996600792bb2061, type: 3}
   abilitySound: {fileID: 0}

@@ -64,11 +64,26 @@ public class HealthEnemy : MonoBehaviour
     }
     public void ChangeMaterial()
     {
-        meshRenderer.material = materialDamage;
+        Material[] materials = meshRenderer.materials;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            materials[i] = materialDamage;
+        }
+
+        meshRenderer.materials = materials;
     }
+
     public void BackMaterial()
     {
-        meshRenderer.material = materialEnemy;
+        Material[] materials = meshRenderer.materials;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            materials[i] = materialEnemy;
+        }
+
+        meshRenderer.materials = materials;
         animator.Play("Patrol");
     }
 

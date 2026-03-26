@@ -22,11 +22,7 @@ public class AirPushAbility : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(transform.position, worldDirection * 5f, Color.red);
-        if (transform.localScale.x < maxScale)
-        {
-            transform.localScale += Vector3.one * growthSpeed * Time.deltaTime;
-        }
+        currentDetectionRadius = transform.localScale.x;
 
         Collider[] enemiesHit = Physics.OverlapSphere(transform.position, currentDetectionRadius, enemyLayer);
 
@@ -34,19 +30,18 @@ public class AirPushAbility : MonoBehaviour
         {
             if (!nextHitTime.ContainsKey(enemy))
                 nextHitTime.Add(enemy, 0f);
-
             if (Time.time >= nextHitTime[enemy])
             {
                 if (enemy.TryGetComponent(out EnemyStatus status))
+                {
                     status.ApplyElement("Air", airIcon);
-
+                }
                 if (enemy.TryGetComponent(out EnemyKnockback knock))
                 {
                     Vector3 pushDir = hasDirection ? worldDirection : transform.forward;
                     knock.Push(pushDir.normalized, force);
-
-                    nextHitTime[enemy] = Time.time + timeBetweenHits;
                 }
+                nextHitTime[enemy] = Time.time + timeBetweenHits;
             }
         }
     }

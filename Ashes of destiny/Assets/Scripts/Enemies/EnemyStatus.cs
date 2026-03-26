@@ -36,6 +36,7 @@ public class EnemyStatus : MonoBehaviour
     }
     public void ApplyElement(string element, Sprite icon)
     {
+        if (lastElement == element) return;
         if ((lastElement == "Fire" && element == "Air") || (lastElement == "Air" && element == "Fire"))
         {
             ApplyKatonCombo();

@@ -162,13 +162,8 @@ public class AttackPlayer : MonoBehaviour
             force = 12f;       
             stopDuration = 0.12f; 
         }
-        Collider[] hitEnemies = Physics.OverlapBox(
-         targetAttackMelee.position,
-         meleeBoxSize,
-         targetAttackMelee.rotation,
-         layer
-     ); ;
-
+        Vector3 halfExtents = meleeBoxSize / 2f;
+        Collider[] hitEnemies = Physics.OverlapBox(targetAttackMelee.position, halfExtents,targetAttackMelee.rotation,layer);
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy.TryGetComponent(out HealthEnemy health))

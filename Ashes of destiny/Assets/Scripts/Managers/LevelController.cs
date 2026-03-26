@@ -139,6 +139,11 @@ public class LevelController : MonoBehaviour
         gameManager.Level1Start();
     }
 
+    public void StartCinematic()
+    {
+        gameManager.StartCinematic();
+    }
+
     public void MenuSkill()
     {
         if (!CanOpenMenus) return;

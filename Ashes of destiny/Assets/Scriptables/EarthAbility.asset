@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Rock
   icon: {fileID: 21300000, guid: 9d15790bdee829245afdcc5067c2851b, type: 3}
-  attackPrefab: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+  attackPrefab: {fileID: 1287597027779431525, guid: c963e62d3dc04384b9e56cd0a6846fff, type: 3}
   maxAmmo: 10
-  currentAmmo: 1
+  currentAmmo: 10
   isInfinite: 0
   hudParticles: {fileID: 5251195224180072733, guid: 441655608ec38d8448027f4c8f00bd1a, type: 3}
   handParticles: {fileID: 5597057715381244248, guid: d2866d5a791527c40b92b169b4ff67e2, type: 3}

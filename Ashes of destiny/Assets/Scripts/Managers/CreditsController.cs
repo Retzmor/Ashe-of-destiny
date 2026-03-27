@@ -13,7 +13,7 @@ public class CreditsController : MonoBehaviour
 
     IEnumerator ContinueMenuStart()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         levelController.MenuStart();

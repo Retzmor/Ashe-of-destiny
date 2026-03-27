@@ -2957,6 +2957,7 @@ MonoBehaviour:
   panelCreditos: {fileID: 604652524}
   playerMovement: {fileID: 143956979}
   creditsController: {fileID: 604652525}
+  panelContinue: {fileID: 107800031}
 --- !u!1 &58670050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7000,7 +7001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.7
+      value: 2099
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20422,8 +20423,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423950658}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10412068, y: 0.00008488487, z: -0.000008886572, w: 0.9945647}
-  m_LocalPosition: {x: 102, y: -512.5529, z: 18.16283}
+  m_LocalRotation: {x: 0.10409257, y: -0.000000012176109, z: 0.0000000012743652, w: 0.99456763}
+  m_LocalPosition: {x: 102, y: -512.5529, z: 2089.463}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31385,57 +31386,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &638457881
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 638457883}
-  - component: {fileID: 638457882}
-  m_Layer: 0
-  m_Name: PointSpam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &638457882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638457881}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a81728316d1c024baee361066e9b2cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneID: 1
-  patrolPointsForThisZone:
-  - {fileID: 1877291634}
-  - {fileID: 58670051}
-  - {fileID: 168224011}
-  - {fileID: 978796494}
-  - {fileID: 525235988}
---- !u!4 &638457883
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638457881}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.1, y: -514.8219, z: 385.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &638757524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47401,56 +47351,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2832250006122358947, guid: 265715887bf8cf14e940761358ce3de5, type: 3}
---- !u!1 &994231138
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 994231140}
-  - component: {fileID: 994231139}
-  m_Layer: 0
-  m_Name: EnemySpam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &994231139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994231138}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39800bf47ac01c444bacdc948b0e9b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8618676420768749418, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
-  poolSize: 10
-  spawnPoints:
-  - {fileID: 638457882}
-  spawnInterval: 10
-  maxActiveEnemies: 10
---- !u!4 &994231140
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994231138}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 151.67656, y: -369.65073, z: 1367.5846}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994314901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
@@ -49445,7 +49345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456617460474399032, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9818.7295
+      value: 11890.029
       objectReference: {fileID: 0}
     - target: {fileID: 1534674237391624868, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49529,23 +49429,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9811.628
+      value: 11882.928
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99456614
+      value: 0.9945677
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.104106605
+      value: 0.10409255
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000042442487
+      value: -0.000000012176107
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000044426843
+      value: 0.0000000012743651
       objectReference: {fileID: 0}
     - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: inputs
@@ -58599,6 +58499,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6896e82387320c84686e9ec847d68e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1271564770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271564772}
+  - component: {fileID: 1271564771}
+  m_Layer: 0
+  m_Name: MusicLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1271564771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271564770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b0a54b822f0d549b8f1e2b0798e1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelMusic: {fileID: 8300000, guid: 7ff0a816e97f74d49a3a4ec3bf302ad7, type: 3}
+  musicCombat: {fileID: 0}
+--- !u!4 &1271564772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271564770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.1, y: -514.8219, z: 385.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1274393871
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -83385,7 +83331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: Lodo
-  descriptionText: Stunea al enemigo por 5 segundos
+  descriptionText: Stunea al enemigo por 5 segundos (Se activa al golpear con agua
+    y tierra)
   toolTipDelay: 0.5
 --- !u!1001 &1817883826
 PrefabInstance:
@@ -95422,7 +95369,7 @@ PrefabInstance:
       objectReference: {fileID: 1296022195}
     - target: {fileID: 2583150911772929407, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: descriptionText
-      value: Empuja a los enemigos (Se necesitan 2 cenizas para compralo)
+      value: Empuja a los enemigos (Se necesitan 4 cenizas para compralo)
       objectReference: {fileID: 0}
     - target: {fileID: 3045532089801087657, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -95434,16 +95381,20 @@ PrefabInstance:
       objectReference: {fileID: 2139266848}
     - target: {fileID: 3861053424630459147, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: descriptionText
-      value: Hace lento al enemigo (Se necesitan 2 cenizas)
+      value: Hace lento al enemigo (Se necesitan 4 cenizas)
       objectReference: {fileID: 0}
     - target: {fileID: 3921092419849085915, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: descriptionText
-      value: Stuena al enemigo (Se necesitan 2 cenizas)
+      value: Stuena al enemigo (Se necesitan 4 cenizas)
       objectReference: {fileID: 0}
     - target: {fileID: 4675273583350057832, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1296022195}
+    - target: {fileID: 4978351304611272532, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: descriptionText
+      value: "Hace da\xF1o al enemigo (se necesitan 4 cenizas para comprar)"
+      objectReference: {fileID: 0}
     - target: {fileID: 5199939218705214392, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -99329,7 +99280,6 @@ SceneRoots:
   - {fileID: 84428096}
   - {fileID: 1519965863}
   - {fileID: 1708927526}
-  - {fileID: 994231140}
-  - {fileID: 638457883}
   - {fileID: 1565278810}
   - {fileID: 25810010}
+  - {fileID: 1271564772}

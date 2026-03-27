@@ -7000,7 +7000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2072
+      value: 27.7
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13540,8 +13540,8 @@ MonoBehaviour:
   inventory: {fileID: 1296022195}
   gameplayUIController: {fileID: 1827227017}
   _canBuyItemFire: 4
-  _canBuyItemWater: 4
-  _canBuyItemRock: 4
+  _canBuyItemWater: 1
+  _canBuyItemRock: 1
   _canBuyItemAir: 4
 --- !u!4 &273991232
 Transform:
@@ -20422,8 +20422,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423950658}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10409115, y: 0.000000030552656, z: -0.0000000031976313, w: 0.99456775}
-  m_LocalPosition: {x: 102, y: -512.5529, z: 2062.463}
+  m_LocalRotation: {x: 0.10412068, y: 0.00008488487, z: -0.000008886572, w: 0.9945647}
+  m_LocalPosition: {x: 102, y: -512.5529, z: 18.16283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49445,7 +49445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456617460474399032, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11889.029
+      value: 9818.7295
       objectReference: {fileID: 0}
     - target: {fileID: 1534674237391624868, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49529,23 +49529,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11855.928
+      value: 9811.628
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99456775
+      value: 0.99456614
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10409115
+      value: 0.104106605
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000030552656
+      value: 0.000042442487
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000031976313
+      value: -0.0000044426843
       objectReference: {fileID: 0}
     - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: inputs

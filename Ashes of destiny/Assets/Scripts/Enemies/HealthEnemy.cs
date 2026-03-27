@@ -44,7 +44,8 @@ public class HealthEnemy : MonoBehaviour
 
         if (enemyKnockback != null)
         {
-            enemyKnockback.Push(playerCollisions.transform.position, knockbackForce);
+            Vector3 dir = (transform.position - playerCollisions.transform.position).normalized;
+            enemyKnockback.Push(dir, knockbackForce);
         }
 
         if (currentHealth <= 0)
@@ -110,12 +111,5 @@ public class HealthEnemy : MonoBehaviour
         animator.SetBool("Death", true);
         enemyAudio.DamageDeath();
         Destroy(gameObject, 3f);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Viento"))
-        {
-            enemyKnockback.Push(-transform.forward, 200);
-        }
     }
 }

@@ -21,6 +21,8 @@ public class EnemyKnockback : MonoBehaviour
 
     public void Push(Vector3 pushDirection, float force)
     {
+        if (isKnocked) return;
+
         if (knockbackRoutine != null) StopCoroutine(knockbackRoutine);
         knockbackRoutine = StartCoroutine(Knockback(pushDirection, force));
     }

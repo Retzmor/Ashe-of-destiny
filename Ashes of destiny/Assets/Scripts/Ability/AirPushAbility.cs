@@ -13,7 +13,7 @@ public class AirPushAbility : MonoBehaviour
     private Vector3 worldDirection;
     private bool hasDirection = false;
 
-    private HashSet<Collider> enemiesAlreadyHit = new HashSet<Collider>();
+    private HashSet<Transform> hitRoots = new HashSet<Transform>();
 
     void Start()
     {
@@ -29,23 +29,23 @@ public class AirPushAbility : MonoBehaviour
         }
         currentDetectionRadius = transform.localScale.x;
 
-        Collider[] enemiesHit = Physics.OverlapSphere(transform.position, currentDetectionRadius, enemyLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, currentDetectionRadius, enemyLayer);
 
-        foreach (Collider enemy in enemiesHit)
+        foreach (Collider col in colliders)
         {
-            if (!enemiesAlreadyHit.Contains(enemy))
+            EnemyKnockback knock = col.GetComponentInParent<EnemyKnockback>();
+
+            if (knock != null && !hitRoots.Contains(knock.transform))
             {
-                enemiesAlreadyHit.Add(enemy);
-                if (enemy.TryGetComponent(out EnemyStatus status))
+                hitRoots.Add(knock.transform);
+
+                if (knock.TryGetComponent(out EnemyStatus status))
                 {
                     status.ApplyElement("Air", airIcon);
                 }
-                if (enemy.TryGetComponent(out EnemyKnockback knock))
-                {
-                    Vector3 pushDir = hasDirection ? worldDirection : transform.forward;
-                    knock.Push(pushDir.normalized, force);
-                }
-
+                Vector3 pushDir = hasDirection ? worldDirection : transform.forward;
+                knock.Push(pushDir.normalized, force);
+                Debug.Log($"Golpe único a: {knock.gameObject.name}");
             }
         }
     }

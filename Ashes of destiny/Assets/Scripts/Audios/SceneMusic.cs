@@ -7,9 +7,11 @@ public class SceneMusic : MonoBehaviour
     [SerializeField] AudioClip musicCombat;
     [Inject] AudioManager audioManager;
     private bool isCombatMusicPlaying = false;
+    
     void Start()
     {
         audioManager.PlayMusic(levelMusic);
+        audioManager.StopLoop(); 
     }
 
     public void StopMusic()

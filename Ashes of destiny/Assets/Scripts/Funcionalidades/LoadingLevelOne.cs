@@ -2,43 +2,44 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class FakeLoadingScreen : MonoBehaviour
+public class LoadingLevelOne : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject loadingUI;
-    [SerializeField] MonoBehaviour tutorialManager;
-    private static bool _alreadyLoadedOnce = false;
+    [SerializeField] MonoBehaviour levelOneLogic; 
+    private static bool _levelOneIntroDone = false;
+
     void Start()
     {
-        if (_alreadyLoadedOnce)
+        if (_levelOneIntroDone)
         {
             loadingUI.SetActive(false);
-            if (tutorialManager != null)
-            {
-                tutorialManager.enabled = true;
-            }
+            if (levelOneLogic != null) levelOneLogic.enabled = true;
+            Time.timeScale = 1f;
             return;
         }
 
-        _alreadyLoadedOnce = true;
+        _levelOneIntroDone = true;
         StartCoroutine(PlayLoading());
     }
 
     IEnumerator PlayLoading()
     {
         Time.timeScale = 0f;
+        if (levelOneLogic != null) levelOneLogic.enabled = false;
+
         loadingUI.SetActive(true);
         videoPlayer.Prepare();
-        while (!videoPlayer.isPrepared)
-        {
-            yield return null; 
-        }
+
+        while (!videoPlayer.isPrepared) yield return null;
+
         videoPlayer.Play();
         yield return new WaitForSecondsRealtime((float)videoPlayer.length);
+
         loadingUI.SetActive(false);
         videoPlayer.Stop();
         Time.timeScale = 1f;
-        if (tutorialManager != null)
-            tutorialManager.enabled = true;
+
+        if (levelOneLogic != null) levelOneLogic.enabled = true;
     }
 }

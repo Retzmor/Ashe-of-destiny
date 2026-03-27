@@ -8419,7 +8419,7 @@ MonoBehaviour:
   tutorialController: {fileID: 98608805}
   panelSkills: {fileID: 1004533126}
   panelGame: {fileID: 1166882070}
-  panelWin: {fileID: 0}
+  panelWin: {fileID: 1322989068}
   panelLose: {fileID: 91692083}
   countItems: {fileID: 2035252230}
   ammoTextSlot1: {fileID: 0}

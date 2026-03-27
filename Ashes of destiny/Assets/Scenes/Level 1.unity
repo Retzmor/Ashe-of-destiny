@@ -56753,6 +56753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2cc805b6293074aa1280601b4da856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenWoodLayer: 8
 --- !u!1 &1229206450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -75118,6 +75119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2cc805b6293074aa1280601b4da856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenWoodLayer: 8
 --- !u!1001 &1639465231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95528,6 +95530,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1296022195}
+    - target: {fileID: 1146571888035967219, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1454977910647082342, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -95567,6 +95573,14 @@ PrefabInstance:
     - target: {fileID: 2583150911772929407, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: descriptionText
       value: Empuja a los enemigos (Se necesitan 4 cenizas para compralo)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879164573757538512, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879164573757538512, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3045532089801087657, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -95986,6 +96000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2cc805b6293074aa1280601b4da856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenWoodLayer: 8
 --- !u!1001 &2091055710
 PrefabInstance:
   m_ObjectHideFlags: 0

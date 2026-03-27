@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EarthAbility
   m_EditorClassIdentifier: 
   abilityName: Rock
-  icon: {fileID: 21300000, guid: 9d15790bdee829245afdcc5067c2851b, type: 3}
+  icon: {fileID: 21300000, guid: 57662408df8176c4b97e2b95c73d0ee0, type: 3}
   attackPrefab: {fileID: 1287597027779431525, guid: c963e62d3dc04384b9e56cd0a6846fff, type: 3}
   maxAmmo: 10
   currentAmmo: 10

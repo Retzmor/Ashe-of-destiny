@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireAbility
   m_EditorClassIdentifier: 
   abilityName: Fire
-  icon: {fileID: 21300000, guid: fd2b69b59d6c3a24eb324cc08da65ea8, type: 3}
+  icon: {fileID: 21300000, guid: 247bffd764a69bc4ca67bf7ab615d046, type: 3}
   attackPrefab: {fileID: 1771670589166304465, guid: 4eeba2ed681350346b7ab0fba0f71d21, type: 3}
   maxAmmo: 10
   currentAmmo: 1

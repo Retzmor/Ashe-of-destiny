@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterAbility
   m_EditorClassIdentifier: 
   abilityName: Water
-  icon: {fileID: 21300000, guid: 8a3bde53a61c76941822f851e1eefcd6, type: 3}
+  icon: {fileID: 21300000, guid: 29def8bf475aa084283125df4437a7c5, type: 3}
   attackPrefab: {fileID: 1287597027779431525, guid: de61d629fcdf60a4690c6fa4e8e85709, type: 3}
   maxAmmo: 10
   currentAmmo: 3

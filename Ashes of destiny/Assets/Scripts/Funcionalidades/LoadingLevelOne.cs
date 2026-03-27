@@ -16,7 +16,12 @@ public class LoadingLevelOne : MonoBehaviour
         if (_levelOneIntroDone)
         {
             loadingUI.SetActive(false);
+            if (cameraManager != null)
+            {
+                cameraManager.CameraLevelOnePlayer();
+            }
             if (levelOneLogic != null) levelOneLogic.enabled = true;
+            player.CanMoving = true;
             Time.timeScale = 1f;
             return;
         }

@@ -7,6 +7,8 @@ public class LoadingLevelOne : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject loadingUI;
     [SerializeField] MonoBehaviour levelOneLogic; 
+    [SerializeField] PlayerMovement player;
+    [SerializeField] CameraManager cameraManager;
     private static bool _levelOneIntroDone = false;
 
     void Start()
@@ -35,11 +37,11 @@ public class LoadingLevelOne : MonoBehaviour
 
         videoPlayer.Play();
         yield return new WaitForSecondsRealtime((float)videoPlayer.length);
-
+        cameraManager.CameraLevelOne();
         loadingUI.SetActive(false);
         videoPlayer.Stop();
         Time.timeScale = 1f;
-
+        player.CanMoving = false;
         if (levelOneLogic != null) levelOneLogic.enabled = true;
     }
 }

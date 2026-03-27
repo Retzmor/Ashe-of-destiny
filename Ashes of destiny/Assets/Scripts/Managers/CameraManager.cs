@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachineCamera cameraAsheTutorial;
     [SerializeField] CinemachineCamera cameraPlayerDie;
     [SerializeField] CinemachineBrain mainCamera;
+    [SerializeField] CinemachineCamera cameraLvlOne;
+    [SerializeField] PlayerMovement player;
     public void CameraAsheTutorial()
     {
         mainCamera.DefaultBlend.Time = 2f;
@@ -31,5 +34,27 @@ public class CameraManager : MonoBehaviour
         cameraAimPerson.Priority = 1;
         cameraThirdPerson.Priority = 1;
         cameraPlayerDie.Priority = 2;
+    }
+
+    public void CameraLevelOne()
+    {
+        mainCamera.DefaultBlend.Time = 5f;
+        cameraLvlOne.Priority = 2;
+        cameraThirdPerson.Priority= 1;
+        StartCoroutine(ChangeCameraLevelOne());
+    }
+
+    IEnumerator ChangeCameraLevelOne()
+    {
+        yield return new WaitForSeconds(5);
+        CameraLevelOnePlayer();
+    }
+
+    public void CameraLevelOnePlayer()
+    {
+        mainCamera.DefaultBlend.Time = 5f;
+        cameraLvlOne.Priority = 1;
+        cameraThirdPerson.Priority = 2;
+        player.CanMoving = true;
     }
 }

@@ -8002,6 +8002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2cc805b6293074aa1280601b4da856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenWoodLayer: 8
 --- !u!4 &1075226874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -27662,6 +27663,10 @@ PrefabInstance:
     - target: {fileID: 7947996683061083135, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947996683061083135, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8116690809501815826, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: controller

@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
 {
     [SerializeField] PlayerInputs inputs;
     [InjectOptional] TutorialManager tutorialManager;
+    private bool _hasWon = false;
     enum MenuState
     {
         None,
@@ -187,9 +188,11 @@ public class LevelController : MonoBehaviour
 
     public void WinTutorial()
     {
+        if (_hasWon) return;
         _countWin++;
         if(_countWin >= 3)
         {
+            _hasWon = true;
             tutorialManager.TutorialWin();
         }
     }

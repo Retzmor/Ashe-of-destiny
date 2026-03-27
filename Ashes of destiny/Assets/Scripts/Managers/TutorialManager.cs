@@ -285,9 +285,18 @@ public class TutorialManager : MonoBehaviour
     }
     public void TutorialWin()
     {
-        EnableCursor();
-        panelWin.SetActive(true);
+        playerController.DisableInputs();
         controller.StopPlayer();
+        panelWin.SetActive(true);
+        StartCoroutine(SafeEnableCursor());
+    }
+    IEnumerator SafeEnableCursor()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void TutorialLose()

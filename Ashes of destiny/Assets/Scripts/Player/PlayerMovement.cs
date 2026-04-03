@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     float _speedWalk = 4;
     float _speedRun = 10;
+    public bool IsTrampolineJumping;
     [SerializeField] GameObject zoneJump;
     [SerializeField] GameObject zoneWalk;
     [SerializeField] float radiusJump;
@@ -101,7 +102,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (!_canMoving)
         {
-            StopMovement();
+            if (!IsTrampolineJumping)
+            {
+                StopMovement();
+            }
             return;
         }
 

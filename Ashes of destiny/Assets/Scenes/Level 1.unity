@@ -4641,7 +4641,7 @@ PrefabInstance:
       objectReference: {fileID: 1620852211}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 103.4
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4649,7 +4649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 854.2
+      value: 38.1
       objectReference: {fileID: 0}
     - target: {fileID: 1120540107933925831, guid: 91bf35c26b3af824aa98059a5a1462ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5838,6 +5838,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
   m_PrefabInstance: {fileID: 2112325877}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &151686979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151686980}
+  m_Layer: 0
+  m_Name: PosicionDeCaida (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151686980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151686979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 73.69, y: -513.99, z: 395.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &157488102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9215,7 +9246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 25
-  jumpParticles: {fileID: 0}
+  animationName: CaidaAelion
+  minAirTime: 0.5
+  targetLandingPoint: {fileID: 0}
 --- !u!65 &304207772
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9920,15 +9953,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280977735452669282, guid: ee1f3cdf5891c224b9812040b1849624, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -31.5
+      value: -30.85
       objectReference: {fileID: 0}
     - target: {fileID: 2280977735452669282, guid: ee1f3cdf5891c224b9812040b1849624, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.539978
+      value: -7.17
       objectReference: {fileID: 0}
     - target: {fileID: 2280977735452669282, guid: ee1f3cdf5891c224b9812040b1849624, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -201.4
+      value: -200.26
       objectReference: {fileID: 0}
     - target: {fileID: 2280977735452669282, guid: ee1f3cdf5891c224b9812040b1849624, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14607,6 +14640,73 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4444728127320036556, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+--- !u!1 &502491854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 502491857}
+  - component: {fileID: 502491856}
+  - component: {fileID: 502491855}
+  m_Layer: 0
+  m_Name: ColliderCaida
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &502491855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502491854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f107c2b8f7c86488c8b811d7771c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallAnimName: 
+--- !u!65 &502491856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502491854}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.833374, y: 4.3626084, z: 1}
+  m_Center: {x: 0.55480194, y: 0.94996524, z: 7.1103334e-16}
+--- !u!4 &502491857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502491854}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 72.81, y: -512.18, z: 374.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &508432566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21740,7 +21840,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 15
-  jumpParticles: {fileID: 0}
+  animationName: CaidaAelion
+  minAirTime: 0.5
+  targetLandingPoint: {fileID: 2055858812}
 --- !u!65 &754327369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28088,6 +28190,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2552218263747335738, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
+--- !u!1 &962558648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 962558649}
+  m_Layer: 0
+  m_Name: PosicionDeCaida (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &962558649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962558648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.945, y: -508.02, z: 428.122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &964922205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28869,7 +29002,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 15
-  jumpParticles: {fileID: 0}
+  animationName: CaidaAelion
+  minAirTime: 1
+  targetLandingPoint: {fileID: 1373692576}
 --- !u!65 &989716995
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28900,7 +29035,7 @@ Transform:
   m_GameObject: {fileID: 989716993}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6962052, y: -0, z: -0, w: 0.7178428}
-  m_LocalPosition: {x: -259.6, y: 634.27, z: -1564.52}
+  m_LocalPosition: {x: -257.39, y: 634.27, z: -1564.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30408,7 +30543,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 456617460474399032, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.3607
+      value: 45.9607
       objectReference: {fileID: 0}
     - target: {fileID: 456617460474399032, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30416,7 +30551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456617460474399032, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10645.2295
+      value: 9829.13
       objectReference: {fileID: 0}
     - target: {fileID: 1534674237391624868, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30500,7 +30635,7 @@ PrefabInstance:
       objectReference: {fileID: 1842673253}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.614586
+      value: 45.214584
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30508,23 +30643,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10638.128
+      value: 9813.728
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9945581
+      value: 0.9945552
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10418371
+      value: 0.10421149
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00013326666
+      value: -0.00000002964007
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000013960185
+      value: 0.0000000031057459
       objectReference: {fileID: 0}
     - target: {fileID: 5668294007669702450, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: inputs
@@ -30744,7 +30879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 50
-  jumpParticles: {fileID: 0}
+  animationName: CaidaAelion
+  minAirTime: 1
+  targetLandingPoint: {fileID: 1828487924}
 --- !u!65 &1043016152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34291,7 +34428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 15
-  jumpParticles: {fileID: 0}
+  animationName: CaidaAelion
+  minAirTime: 1
+  targetLandingPoint: {fileID: 151686980}
 --- !u!65 &1192711532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39094,6 +39233,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1373692575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373692576}
+  m_Layer: 0
+  m_Name: PosicionDeCaida (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373692576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373692575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 73.69, y: -511.57, z: 413.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1379725671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -42997,7 +43167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 15
-  jumpParticles: {fileID: 0}
+  animationName: CaidaAelion
+  minAirTime: 1
+  targetLandingPoint: {fileID: 962558649}
 --- !u!65 &1506171659
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51920,6 +52092,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1370370571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1828487923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1828487924}
+  m_Layer: 0
+  m_Name: PosicionDeCaida (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1828487924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828487923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 77.47, y: -515.6, z: 498.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1830164201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -58319,6 +58522,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &2055858811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055858812}
+  m_Layer: 0
+  m_Name: PosicionDeCaida
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055858812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055858811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 73.69, y: -513.99, z: 386.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2067607507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61726,9 +61960,15 @@ SceneRoots:
   - {fileID: 489162238}
   - {fileID: 55720205}
   - {fileID: 723674753}
+  - {fileID: 2055858812}
+  - {fileID: 151686980}
+  - {fileID: 1373692576}
+  - {fileID: 962558649}
+  - {fileID: 1828487924}
   - {fileID: 2090118635}
   - {fileID: 261701603}
   - {fileID: 1665909243}
+  - {fileID: 502491857}
   - {fileID: 232002732}
   - {fileID: 733013016}
   - {fileID: 1051829103}

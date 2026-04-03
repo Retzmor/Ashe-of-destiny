@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,12 @@ public class LevelController : MonoBehaviour
     [SerializeField] PlayerInputs inputs;
     [InjectOptional] TutorialManager tutorialManager;
     private bool _hasWon = false;
+    private bool _hasCheckpointActivated = false;
+    private Vector3 _lastCheckpointPos;
+    [SerializeField] HealthPlayer playerHealth;
+    [SerializeField] GameObject panelLose;
+    [SerializeField] CanvasGroup fadeCanvasGroup;
+    [SerializeField] CanvasGroup checkpointMessageGroup;
     enum MenuState
     {
         None,
@@ -51,6 +58,7 @@ public class LevelController : MonoBehaviour
     public void Start()
     {
         LockCursor();
+        _lastCheckpointPos = player.transform.position;
     }
 
     public void LockCursor()
@@ -201,5 +209,100 @@ public class LevelController : MonoBehaviour
         yield return null;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    internal void SetCheckpoint(Vector3 position)
+    {
+        _lastCheckpointPos = position;
+        _hasCheckpointActivated = true;
+        ShowCheckpointFeedback();
+    }
+    public void HandlePlayerDeath()
+    {
+        if (_hasCheckpointActivated)
+        {
+            StartCoroutine(DirectRespawnSequence());
+        }
+        else
+        {
+            panelLose.SetActive(true);
+            UnlockCursor();
+        }
+    }
+    IEnumerator DirectRespawnSequence()
+    {
+        float timer = 0;
+        float fadeDuration = 1; 
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = Mathf.Lerp(0, 1, timer / fadeDuration);
+            yield return null;
+        }
+        fadeCanvasGroup.alpha = 1;
+        yield return new WaitForSecondsRealtime(0.5f);
+        RespawnPlayer();
+        timer = 0;
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = Mathf.Lerp(1, 0, timer / fadeDuration);
+            yield return null;
+        }
+        fadeCanvasGroup.alpha = 0;
+    }
+
+    public void RespawnPlayer()
+    {
+        if (playerHealth != null)
+        {
+            playerHealth.ResetHealth();
+            PlayerComponent playerComponent = playerHealth.GetComponent<PlayerComponent>();
+            playerComponent.Animator.Play("Idle");
+        }
+        player.transform.position = _lastCheckpointPos;
+        Time.timeScale = 1f;
+        LockCursor();
+        if (player.TryGetComponent(out Rigidbody rb))
+        {
+            rb.isKinematic = true; 
+            rb.linearVelocity = Vector3.zero; 
+            rb.angularVelocity = Vector3.zero;
+
+            player.transform.position = _lastCheckpointPos;
+            Physics.SyncTransforms();
+            rb.isKinematic = false;
+        }
+    }
+
+    public void ShowCheckpointFeedback()
+    {
+        StopCoroutine(nameof(FadeCheckpointMessage));
+        StartCoroutine(FadeCheckpointMessage());
+    }
+
+    IEnumerator FadeCheckpointMessage()
+    {
+        float duration = 0.5f; 
+        float waitTime = 2f;   
+        float timer = 0;
+
+        // 1. Fade In (Aparecer)
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            checkpointMessageGroup.alpha = Mathf.Lerp(0, 1, timer / duration);
+            yield return null;
+        }
+        checkpointMessageGroup.alpha = 1;
+        yield return new WaitForSeconds(waitTime);
+        timer = 0;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            checkpointMessageGroup.alpha = Mathf.Lerp(1, 0, timer / duration);
+            yield return null;
+        }
+        checkpointMessageGroup.alpha = 0;
     }
 }

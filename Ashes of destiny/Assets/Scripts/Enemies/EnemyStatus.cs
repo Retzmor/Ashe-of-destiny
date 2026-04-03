@@ -70,7 +70,6 @@ public class EnemyStatus : MonoBehaviour
 
     private void ApplyKatonCombo()
     {
-        Debug.Log("katooon");
         if (fireComboParticles != null)
         {
             GameObject p = Instantiate(fireComboParticles, transform.position, Quaternion.identity, transform);

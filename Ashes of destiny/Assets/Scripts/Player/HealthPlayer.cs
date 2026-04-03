@@ -7,6 +7,7 @@ using FirstGearGames.SmoothCameraShaker;
 
 public class HealthPlayer : MonoBehaviour
 {
+    [Inject] LevelController levelController;
     [InjectOptional] TutorialManager tutorialManager;
     [SerializeField] Image healthImage;
     [SerializeField] float maxHealth;
@@ -53,23 +54,22 @@ public class HealthPlayer : MonoBehaviour
         isDead = true;
         playerComponent.Animator.SetBool("Death", true);
         cameraManager.CameraDie();
+        StopAllCoroutines();
         StartCoroutine(DieCameraPlayer());
         StartCoroutine(StopMovementPlayer());
     }
 
     IEnumerator DieCameraPlayer()
     {
-        yield return new WaitForSeconds(3f);
-        if(tutorialManager != null)
+        yield return new WaitForSeconds(1f);
+
+        if (tutorialManager != null)
         {
             tutorialManager.TutorialLose();
         }
-
-        if (tutorialManager == null)
+        else
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            panelLose.SetActive(true);
+            levelController.HandlePlayerDeath();
         }
     }
 
@@ -88,4 +88,18 @@ public class HealthPlayer : MonoBehaviour
         playerMovement.CanMoving = true;
     }
 
+    internal void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        isDead = false;
+        if (healthImage != null)
+        {
+            healthImage.fillAmount = 1f; 
+        }
+        playerMovement.Rb.isKinematic = false;
+        playerMovement.CanMoving = true;
+        playerComponent.Animator.SetBool("Death", false);
+        playerComponent.Animator.Play("Idle");
+        cameraManager.CameraPlayer();
+    }
 }

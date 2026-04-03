@@ -45,7 +45,6 @@ public class AirPushAbility : MonoBehaviour
                 }
                 Vector3 pushDir = hasDirection ? worldDirection : transform.forward;
                 knock.Push(pushDir.normalized, force);
-                Debug.Log($"Golpe único a: {knock.gameObject.name}");
             }
         }
     }

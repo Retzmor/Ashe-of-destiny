@@ -50,7 +50,6 @@ public class TutorialController : MonoBehaviour
             rbPlayer.linearVelocity *= 0.6f;
             yield return new WaitForFixedUpdate();
         }
-
         rbPlayer.linearVelocity = Vector3.zero;
         player.GetComponent<PlayerComponent>().Animator.SetBool("Run", false);
         player.GetComponent<PlayerComponent>().Animator.SetBool("Walk", false);

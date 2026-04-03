@@ -27,7 +27,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         if (agent == null || !agent.enabled || !agent.isOnNavMesh) return;
@@ -37,10 +36,12 @@ public class EnemyController : MonoBehaviour
         {
             agent.stoppingDistance = combatStoppingDistance;
             agent.SetDestination(detector.Player.position);
+            agent.speed = 5;
         }
         else
         {
             agent.stoppingDistance = patrolStoppingDistance;
+            agent.speed = 3.5f;
             Patrol();
         }
     }
@@ -67,8 +68,6 @@ public class EnemyController : MonoBehaviour
             agent.SetDestination(patrolPoints[currentPoint].position);
         }
     }
-
-
     void GoToNextPoint()
     {
         agent.SetDestination(patrolPoints[currentPoint].position);
@@ -94,7 +93,6 @@ public class EnemyController : MonoBehaviour
     public void SetPatrolPoints(Transform[] newPoints)
     {
         patrolPoints = newPoints;
-
         if (patrolPoints != null && patrolPoints.Length > 0)
         {
             currentPoint = Random.Range(0, patrolPoints.Length);
@@ -105,8 +103,6 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
-
     IEnumerator StunCoroutine(float duration)
     {
         isStunned = true;

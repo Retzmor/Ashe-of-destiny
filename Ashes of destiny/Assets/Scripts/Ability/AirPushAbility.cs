@@ -46,6 +46,12 @@ public class AirPushAbility : MonoBehaviour
                 Vector3 pushDir = hasDirection ? worldDirection : transform.forward;
                 knock.Push(pushDir.normalized, force);
             }
+
+            if (col.CompareTag("Wood"))
+            {
+                if (col.TryGetComponent(out WoodCollision wood))
+                    wood.AnimationWoodBroke();
+            }
         }
     }
 

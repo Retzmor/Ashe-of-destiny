@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: fedde36477a0560469dee3fb06772ea2
+  m_OcclusionCullingData: {fileID: 36300000, guid: a0941c5a57254854b9c520f5db1a291a, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -3455,7 +3455,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4249358082257042984, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
   m_PrefabInstance: {fileID: 2084983093}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 708616509}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -21692,6 +21692,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &708616509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3550894580153732059, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+  m_PrefabInstance: {fileID: 2084983093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &710086937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -27723,7 +27728,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!108 &888907468
 Light:
@@ -33602,7 +33607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -8286314281140370495, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33782,7 +33787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6843433073990496314, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -6838714127978467532, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33802,7 +33807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6833536956916536025, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -6798817970454067205, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -34082,7 +34087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4370111678170979691, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -4358926015201697617, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -34138,7 +34143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4062310587735040466, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -4012486443535237576, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -34198,7 +34203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3468249275224592183, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -3457137915669908666, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
@@ -34214,7 +34219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3196511607817033700, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: -3184958341635111089, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
@@ -34794,11 +34799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 1034492966124835306, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -35762,6 +35767,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1081139581}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1081139582}
     - targetCorrespondingSourceObject: {fileID: -8904874651361687571, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 270585196}
@@ -35901,6 +35909,25 @@ MonoBehaviour:
   boss: {fileID: 270585195}
   player: {fileID: 1620852215}
   damage: 30
+--- !u!114 &1081139582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081139573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9542934b386be504b87ecfa4e5e7f47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastSkillIcon: {fileID: 0}
+  iconContainer: {fileID: 0}
+  fireParticlesPrefab: {fileID: 0}
+  fireComboParticles: {fileID: 708616509}
+  mudComboParticles: {fileID: 1442158270}
+  shakeData: {fileID: 11400000, guid: cfb5721468f522e4984b6e517151f6d8, type: 2}
+  maxComboTime: 4
 --- !u!1001 &1084828044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39347,7 +39374,7 @@ GameObject:
   - component: {fileID: 1229113094}
   m_Layer: 9
   m_Name: Tablones rompibles3
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2
@@ -51194,7 +51221,7 @@ GameObject:
   - component: {fileID: 1639362779}
   m_Layer: 9
   m_Name: TablonesRompibles2
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2
@@ -65621,7 +65648,7 @@ GameObject:
   - component: {fileID: 2090365009}
   m_Layer: 9
   m_Name: TablonesRompibles1
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2

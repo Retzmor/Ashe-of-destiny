@@ -14,6 +14,7 @@ TagManager:
   - Undefined
   - Viento
   - Fire
+  - Boss
   layers:
   - Default
   - TransparentFX

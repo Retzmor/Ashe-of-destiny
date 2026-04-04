@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour
     NavMeshAgent _agent;
     Rigidbody _rb;
     Animator _anim;
+    private bool isStunned = false;
     public float distanceToBasicAttack = 1.5f;
     public float distanceToJumpAttack = 12f;
     [SerializeField] private float explosionRadius = 10f;
@@ -100,5 +101,30 @@ public class BossController : MonoBehaviour
             array[i] = array[j];
             array[j] = temp;
         }
+    }
+
+    internal void ApplyStun(float duration)
+    {
+        if (!gameObject.activeInHierarchy) return;
+        StartCoroutine(BossStunCoroutine(duration));
+    }
+
+    IEnumerator BossStunCoroutine(float duration)
+    {
+        isStunned = true;
+        // Si usas NavMeshAgent en el Boss:
+        if (_agent != null && _agent.isOnNavMesh)
+        {
+            _agent.isStopped = true;
+            _agent.velocity = Vector3.zero;
+        }
+        yield return new WaitForSeconds(duration);
+
+        if (_agent != null && _agent.isOnNavMesh)
+        {
+            _agent.isStopped = false;
+        }
+
+        isStunned = false;
     }
 }

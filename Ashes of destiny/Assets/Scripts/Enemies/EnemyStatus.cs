@@ -64,7 +64,8 @@ public class EnemyStatus : MonoBehaviour
             case "Fire": ; break;
             case "Air":  /* Pushback */ break;
             case "Water": /* Daño + Slow */ break;
-            case "Rock": if (TryGetComponent(out EnemyController knock)) knock.ApplyStun(1.5f); break;
+            case "Rock": if (TryGetComponent(out EnemyController knock)) knock.ApplyStun(1.5f);
+            if (TryGetComponent(out BossController boss)) boss.ApplyStun(1.5f); break;
         }
     }
 

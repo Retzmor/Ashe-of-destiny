@@ -72,15 +72,21 @@ public class BulletMovement : MonoBehaviour
         if (!other.gameObject.activeInHierarchy) return;
         if (_hitEnemies.Contains(other.gameObject)) return;
 
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
         {
             _hitEnemies.Add(other.gameObject);
             _targetsHit++;
 
-            // 3. APLICAMOS DAÑO
             if (other.TryGetComponent(out HealthEnemy healthEnemy))
             {
                 healthEnemy.TakeDamage(damage, forceImpulse);
+            }
+
+            else if (other.TryGetComponent(out HealthBoss hBoss))
+            {
+                hBoss.TakeDamage(damage);
+                hBoss.ChangeMaterial();
+                hBoss.Invoke("SetNormalMaterial", 0.2f);
             }
 
             if (_myAbilityData != null && other.TryGetComponent(out EnemyStatus status))
@@ -93,10 +99,12 @@ public class BulletMovement : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (other.gameObject.isStatic || other.CompareTag("Untagged"))
-        {
-            Destroy(gameObject);
-        }
+            WoodCollision wood = other.GetComponentInParent<WoodCollision>();
+            if (wood != null)
+            {
+                wood.AnimationWoodBroke();
+                if (!canPierce) Destroy(gameObject);
+            }
     }
 
     private void FixedUpdate()

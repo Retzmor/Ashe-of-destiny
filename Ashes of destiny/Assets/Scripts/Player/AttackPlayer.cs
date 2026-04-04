@@ -181,6 +181,11 @@ public class AttackPlayer : MonoBehaviour
                 playerAudio.PlayHitWood();
                 wood.AnimationWoodBroke();
             }
+
+            if(enemy.TryGetComponent(out HealthBoss healthBoss))
+            {
+                healthBoss.TakeDamage(damage);
+            } 
         }
         if (currentHitType == 2)
         {

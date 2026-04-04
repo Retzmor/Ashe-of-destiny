@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         
     }
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, canWalk);
     }

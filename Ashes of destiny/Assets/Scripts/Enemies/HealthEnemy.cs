@@ -110,6 +110,6 @@ public class HealthEnemy : MonoBehaviour
         if (TryGetComponent(out Collider col)) col.enabled = false;
         animator.SetBool("Death", true);
         enemyAudio.DamageDeath();
-        Destroy(gameObject, 3f);
+        gameObject.SetActive(false);
     }
 }

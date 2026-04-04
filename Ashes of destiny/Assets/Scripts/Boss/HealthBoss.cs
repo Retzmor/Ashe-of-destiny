@@ -6,6 +6,8 @@ public class HealthBoss : MonoBehaviour
     float _maxHealth = 100;
     float _minHealth;
     float _currentHealth;
+    private float _lastSummonHealth;
+    private float _summonThreshold = 20f;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
     [SerializeField] Material materialDamage;
     private Material[] originalMaterials;
@@ -18,6 +20,7 @@ public class HealthBoss : MonoBehaviour
         controller = GetComponent<BossController>();
         _currentHealth = MaxHealth;
         _minHealth = _maxHealth / 2;
+        _lastSummonHealth = MaxHealth;
         originalMaterials = meshRenderer.materials;
     }
 
@@ -25,10 +28,20 @@ public class HealthBoss : MonoBehaviour
     {
         controller.Anim.SetTrigger("TakeDamage");
         _currentHealth -= damage;
-        if( _currentHealth < 0 )
+        if (_currentHealth <= _lastSummonHealth - (MaxHealth * (_summonThreshold / 100f)))
+        {
+            TriggerSummonPhase();
+        }
+        if ( _currentHealth < 0 )
         {
             //Death();
         }
+    }
+
+    private void TriggerSummonPhase()
+    {
+        _lastSummonHealth = _currentHealth; 
+        controller.Anim.SetTrigger("Invoke"); 
     }
 
     public void Death()

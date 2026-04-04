@@ -75,6 +75,7 @@ public class EnemyController : MonoBehaviour
 
     public void ApplySlow(float slowAmount, float duration)
     {
+        if (!gameObject.activeInHierarchy) return;
         StartCoroutine(SlowCoroutine(slowAmount, duration));
     }
 
@@ -88,6 +89,7 @@ public class EnemyController : MonoBehaviour
 
     public void ApplyStun(float duration)
     {
+        if (!gameObject.activeInHierarchy) return;
         StartCoroutine(StunCoroutine(duration));
     }
     public void SetPatrolPoints(Transform[] newPoints)

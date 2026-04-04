@@ -74,7 +74,6 @@ public class BulletMovement : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            // 2. REGISTRAMOS AL ENEMIGO EN LA LISTA (para no repetir daño ni combos)
             _hitEnemies.Add(other.gameObject);
             _targetsHit++;
 

@@ -802,6 +802,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -858,6 +862,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (11)
@@ -865,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1478,6 +1490,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2227,7 +2243,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &55720205
 Transform:
@@ -4511,6 +4527,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -4567,6 +4587,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (1)
@@ -4574,6 +4598,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5716,7 +5744,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -5930,7 +5958,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -7382,6 +7410,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7550,6 +7582,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -7606,6 +7642,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (6)
@@ -7613,6 +7653,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7783,6 +7827,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8945,6 +8993,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arbusto (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9303,6 +9355,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10390,6 +10446,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11759,6 +11819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arbusto (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12803,6 +12867,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13482,6 +13550,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -14308,7 +14380,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &485274293
 Transform:
@@ -14544,6 +14616,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14752,6 +14828,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -15376,6 +15456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arbusto (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15479,6 +15563,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16184,6 +16272,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -16240,6 +16332,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (7)
@@ -16247,6 +16343,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16722,6 +16822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Roca Peque\xF1a (3)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17136,6 +17240,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -17188,9 +17296,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 88.102
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18545,6 +18661,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: KillZone
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18622,7 +18742,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &601046350
 Transform:
@@ -19015,6 +19135,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20137,6 +20261,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21328,6 +21456,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -21380,9 +21512,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 88.102
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21805,6 +21945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -21857,9 +22001,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.014
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22051,7 +22203,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &723674753
 Transform:
@@ -24799,6 +24951,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -24855,6 +25011,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (3)
@@ -24862,6 +25022,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27946,6 +28110,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28593,6 +28761,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28854,6 +29026,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29136,6 +29312,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29442,7 +29622,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -29877,6 +30057,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -29929,9 +30113,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 88.102
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30041,6 +30233,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30364,6 +30560,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30593,7 +30793,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -31333,6 +31533,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
       objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
@@ -31686,6 +31890,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33080,6 +33288,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33288,6 +33500,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8904874651361687571, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -8903073541812931090, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -33383,6 +33599,10 @@ PrefabInstance:
     - target: {fileID: -8391222552659086748, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -8286314281140370495, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33560,6 +33780,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -6843433073990496314, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -6838714127978467532, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 7.336558
@@ -33575,6 +33799,10 @@ PrefabInstance:
     - target: {fileID: -6833536956916536025, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -6833536956916536025, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -6798817970454067205, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33852,6 +34080,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -4370111678170979691, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -4358926015201697617, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 13.355942
@@ -33903,6 +34135,10 @@ PrefabInstance:
     - target: {fileID: -4062310587735040466, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4062310587735040466, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -4012486443535237576, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33960,6 +34196,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -3468249275224592183, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -3457137915669908666, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -33971,6 +34211,10 @@ PrefabInstance:
     - target: {fileID: -3196511607817033700, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -3196511607817033700, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -3184958341635111089, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_Layer
@@ -34550,7 +34794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af5a78326babc3144924a1753fc15b9f, type: 3}
       propertyPath: m_TagString
@@ -36010,6 +36254,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36292,6 +36540,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -36348,6 +36600,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera
@@ -36355,6 +36611,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36989,6 +37249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arbusto (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37408,6 +37672,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -38305,7 +38573,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -38511,7 +38779,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1191661377
 Transform:
@@ -38745,6 +39013,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39078,7 +39350,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1229113093
 Transform:
@@ -39623,6 +39895,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -39679,6 +39955,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (2)
@@ -39686,6 +39966,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39793,6 +40077,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
       propertyPath: m_Name
       value: "Roca Peque\xF1a (4)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40619,6 +40907,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -40675,6 +40967,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (4)
@@ -40682,6 +40978,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40718,6 +41018,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -40770,9 +41074,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.014
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41899,6 +42211,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
       objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
@@ -42653,6 +42969,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43550,7 +43870,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -44416,6 +44736,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44912,6 +45236,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
       objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
@@ -45335,7 +45663,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -45558,6 +45886,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45723,6 +46055,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45894,7 +46230,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -46846,6 +47182,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47055,6 +47395,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47595,6 +47939,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -47651,6 +47999,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (9)
@@ -47658,6 +48010,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47692,6 +48048,10 @@ PrefabInstance:
     - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
@@ -47749,6 +48109,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (8)
@@ -47756,6 +48120,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49057,6 +49425,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -50825,7 +51197,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1639362778
 Transform:
@@ -52091,6 +52463,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
       propertyPath: m_Name
       value: "Roca Peque\xF1a"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a57780cb7232c44faf08dbeccf4a64c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53399,6 +53775,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Name
       value: Tronco (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55090,6 +55470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -55142,9 +55526,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.014
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55662,6 +56054,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55895,6 +56291,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -56145,6 +56545,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -56201,6 +56605,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (10)
@@ -56208,6 +56616,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56462,6 +56874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -56514,9 +56930,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 88.102
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57298,7 +57722,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!64 &1830466138
 MeshCollider:
@@ -57845,6 +58269,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58496,6 +58924,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -58552,6 +58984,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (5)
@@ -58559,6 +58995,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59013,7 +59453,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: mudComboParticles
       value: 
-      objectReference: {fileID: 7732538619405424760, guid: 872d5caf3452ba2499fdac87fae14f4e, type: 3}
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
@@ -60637,6 +61077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arbusto
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61346,6 +61790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arbusto (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61604,6 +62052,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -61656,9 +62108,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.014
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63437,7 +63897,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &2050372192
 Transform:
@@ -63530,6 +63990,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -64251,6 +64715,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -64428,6 +64896,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050372192}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -64480,9 +64952,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.014
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
       propertyPath: m_Name
       value: tablon madera (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bc08ac8c2f69f7468e6bacf2e9ffb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -65144,7 +65624,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &2090365008
 Transform:
@@ -65620,6 +66100,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
       propertyPath: m_Name
       value: Arbusto (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c6e8bba0fc22fa459c428150b40aba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66357,6 +66841,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
       objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
@@ -66935,6 +67423,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: fireComboParticles
       value: 
       objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
@@ -67452,6 +67944,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67527,6 +68023,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e9d34f3b88eb840a088eaa56f230ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67645,6 +68145,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1519965863}
     m_Modifications:
+    - target: {fileID: 581653442466404854, guid: 03f4fb5d2c531854da3c3105fc137550, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: 675317574327706496, guid: 03f4fb5d2c531854da3c3105fc137550, type: 3}
       propertyPath: m_LocalPosition.x
       value: -789.42523
@@ -68084,6 +68588,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6832486086949840578, guid: 77dafc8fa9cc73644b396e8c5be753ff, type: 3}
+      propertyPath: mudComboParticles
+      value: 
+      objectReference: {fileID: 7732538619405424760, guid: 8335ab638ea314d4a9d1fb2937ed7179, type: 3}
     - target: {fileID: 6869858814400165151, guid: 77dafc8fa9cc73644b396e8c5be753ff, type: 3}
       propertyPath: m_Layer
       value: 9

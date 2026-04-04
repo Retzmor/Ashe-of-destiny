@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireComboParticles
       value: 
-      objectReference: {fileID: 1771670589166304465, guid: 4eeba2ed681350346b7ab0fba0f71d21, type: 3}
+      objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
     - target: {fileID: -4914138114387139303, guid: df1b568b05b5f3a47969ea0108141d5a, type: 3}
       propertyPath: fireParticlesPrefab
       value: 

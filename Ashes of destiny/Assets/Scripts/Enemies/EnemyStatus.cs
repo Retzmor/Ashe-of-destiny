@@ -70,9 +70,11 @@ public class EnemyStatus : MonoBehaviour
 
     private void ApplyKatonCombo()
     {
+        if (!gameObject.activeInHierarchy) return;
         if (fireComboParticles != null)
         {
             GameObject p = Instantiate(fireComboParticles, transform.position, Quaternion.identity, transform);
+            Debug.Log("Katon Shine Baku Rambu");
             CameraMovement();
             Destroy(p, 5f);
         }
@@ -85,6 +87,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void ApplyLodoCombo()
     {
+        if (!gameObject.activeInHierarchy) return;
         if (mudComboParticles != null)
         {
             GameObject p = Instantiate(mudComboParticles, transform.position, Quaternion.identity, transform);

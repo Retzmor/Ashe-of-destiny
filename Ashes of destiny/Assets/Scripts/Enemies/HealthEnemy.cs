@@ -108,6 +108,12 @@ public class HealthEnemy : MonoBehaviour
             rb.useGravity = false;
         }
         if (TryGetComponent(out Collider col)) col.enabled = false;
+        EnemyStatus status = GetComponent<EnemyStatus>();
+        if (status != null)
+        {
+            status.StopAllCoroutines();
+            status.ResetStatus();
+        }
         animator.SetBool("Death", true);
         enemyAudio.DamageDeath();
         gameObject.SetActive(false);

@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4228761668650847971, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
+      propertyPath: fireComboParticles
+      value: 
+      objectReference: {fileID: 1771670589166304465, guid: 2ae62bb9e63f254428360bf6889955f1, type: 3}
     - target: {fileID: 4315243586679387285, guid: 5ace501e812b01a47afbd606b34dad12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.11

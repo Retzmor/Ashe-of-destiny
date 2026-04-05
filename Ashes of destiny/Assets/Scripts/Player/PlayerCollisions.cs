@@ -6,6 +6,7 @@ using Zenject;
 public class PlayerCollisions : MonoBehaviour
 {
     [Inject] Inventory inventory;
+    [Inject] LevelController levelController;
     [SerializeField] Animator animator;
     [SerializeField] TutorialController controller;
     bool _canInteract = false;
@@ -15,6 +16,9 @@ public class PlayerCollisions : MonoBehaviour
     PlayerComponent playerComponent;
     PlayerController playerController;
     PlayerMovement playerMovement;
+    [SerializeField] WinAsh winAsh;
+    
+    bool canWin = false;
 
 
     private void Start()
@@ -25,6 +29,7 @@ public class PlayerCollisions : MonoBehaviour
         playerComponent = GetComponent<PlayerComponent>();
         playerController = GetComponent<PlayerController>();
         playerMovement = GetComponent<PlayerMovement>();
+        canWin = false;
     }
 
     public bool CanInteract { get => _canInteract; set => _canInteract = value; }
@@ -35,6 +40,11 @@ public class PlayerCollisions : MonoBehaviour
         if (collision.gameObject.CompareTag("Ceniza"))
         {
             currentItem = collision.gameObject;
+        }
+
+        else if(collision.gameObject.CompareTag("CenizaWin"))
+        {
+            canWin = true;
         }
     }
 
@@ -48,6 +58,10 @@ public class PlayerCollisions : MonoBehaviour
 
     public void TryInteract()
     {
+        if(canWin == true)
+        {
+           // levelController.
+        }
         if (currentItem == null) return;
         PlayPickAshAnimation();
         inventory.addItemInventory(currentItem);

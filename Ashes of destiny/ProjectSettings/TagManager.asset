@@ -15,6 +15,7 @@ TagManager:
   - Viento
   - Fire
   - Boss
+  - CenizaWin
   layers:
   - Default
   - TransparentFX

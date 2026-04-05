@@ -17,6 +17,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] CanvasGroup checkpointMessageGroup;
     [SerializeField] HealthBoss healthBoss;
+    [SerializeField] GameObject panelCreditos;
     [SerializeField] BossArenaTrigger bossArenaTrigger;
     enum MenuState
     {
@@ -60,6 +61,7 @@ public class LevelController : MonoBehaviour
     public void Start()
     {
         LockCursor();
+        if(_lastCheckpointPos != null)
         _lastCheckpointPos = player.transform.position;
     }
 
@@ -307,5 +309,11 @@ public class LevelController : MonoBehaviour
             yield return null;
         }
         checkpointMessageGroup.alpha = 0;
+    }
+
+    public void WinLevelOne()
+    {
+        player.CanMoving = false;
+        panelCreditos.SetActive(true);
     }
 }

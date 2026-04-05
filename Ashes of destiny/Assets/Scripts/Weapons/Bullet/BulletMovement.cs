@@ -102,6 +102,8 @@ public class BulletMovement : MonoBehaviour
             WoodCollision wood = other.GetComponentInParent<WoodCollision>();
             if (wood != null)
             {
+            PlayerAudio player = FindAnyObjectByType<PlayerAudio>();
+            player.PlayHitWood();
                 wood.AnimationWoodBroke();
                 if (!canPierce) Destroy(gameObject);
             }

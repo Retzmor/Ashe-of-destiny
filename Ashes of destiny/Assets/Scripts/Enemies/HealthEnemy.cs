@@ -116,6 +116,12 @@ public class HealthEnemy : MonoBehaviour
         }
         animator.SetBool("Death", true);
         enemyAudio.DamageDeath();
+        StartCoroutine(AnimationDeath());
+    }
+
+    IEnumerator AnimationDeath()
+    {
+        yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
     }
 }

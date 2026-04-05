@@ -11,12 +11,19 @@ public class BossArenaTrigger : MonoBehaviour
     [SerializeField] private float fadeDuration = 1.5f;
     [SerializeField] private GameObject rock1;
     [SerializeField] private GameObject rock2;
+    [SerializeField] private HealthBoss healthBoss;
+    [SerializeField] GameObject barraVidaBoss;
+    private Transform bossPosition;
     private bool _hasTriggered = false;
+
+    private void Start()
+    {
+        bossPosition = bossGo.transform;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (!_hasTriggered && other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            _hasTriggered = true;
             StartCoroutine(TransitionToBoss());
         }
     }
@@ -45,14 +52,12 @@ public class BossArenaTrigger : MonoBehaviour
 
         if (playerRb != null)
         {
-            playerRb.isKinematic = false; // Devolvemos las físicas
+            playerRb.isKinematic = false; 
         }
 
         yield return StartCoroutine(Fade(0));
-
+        barraVidaBoss.SetActive(true);
         playerMovement.CanMoving = true;
-        Debug.Log("¡QUE COMIENCE LA BATALLA!");
-        Destroy(gameObject);
     }
 
     private IEnumerator Fade(float targetAlpha)
@@ -67,5 +72,19 @@ public class BossArenaTrigger : MonoBehaviour
             yield return null;
         }
         blackScreenGroup.alpha = targetAlpha;
+    }
+
+    public void ResetBoss()
+    {
+        
+        bossGo.transform.position = bossPosition.position;
+        if(healthBoss == null)
+        {
+            Debug.Log("dfjksbfkds");
+        }
+        healthBoss.ResetHealth();
+        rock1.SetActive(false);
+        rock2.SetActive(false);
+        bossGo.gameObject.SetActive(false);
     }
 }

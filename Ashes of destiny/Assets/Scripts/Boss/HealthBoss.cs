@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBoss : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class HealthBoss : MonoBehaviour
     private float _summonThreshold = 20f;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
     [SerializeField] Material materialDamage;
+    [SerializeField] Image healthImage;
     private Material[] originalMaterials;
     public float MaxHealth { get => _maxHealth; set => _maxHealth = value; }
     public float MinHealth { get => _minHealth; set => _minHealth = value; }
@@ -22,19 +24,23 @@ public class HealthBoss : MonoBehaviour
         _minHealth = _maxHealth / 2;
         _lastSummonHealth = MaxHealth;
         originalMaterials = meshRenderer.materials;
+        healthImage.fillAmount = 1;
     }
 
     public void TakeDamage(float damage)
     {
         controller.Anim.SetTrigger("TakeDamage");
         _currentHealth -= damage;
+        _currentHealth -= damage;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealth);
+        healthImage.fillAmount = _currentHealth / MaxHealth;
         if (_currentHealth <= _lastSummonHealth - (MaxHealth * (_summonThreshold / 100f)))
         {
             TriggerSummonPhase();
         }
         if ( _currentHealth < 0 )
         {
-            //Death();
+            Death();
         }
     }
 
@@ -62,5 +68,11 @@ public class HealthBoss : MonoBehaviour
     public void SetNormalMaterial()
     {
         meshRenderer.materials = originalMaterials;
+    }
+
+    public void ResetHealth()
+    {
+        _currentHealth = MaxHealth;
+        healthImage.fillAmount = 1;
     }
 }

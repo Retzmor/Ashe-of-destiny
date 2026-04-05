@@ -34,6 +34,11 @@ public class CameraSwitcher : MonoBehaviour
         bool aimPressed = inputs.Aim.IsPressed();
         playerController.isAiming = aimPressed;
 
+        if(!playerController.IsGrounded())
+        {
+            return;
+        }
+        
         if(!isAiming && aimPressed)
         {
             EnterAimMode();
@@ -47,6 +52,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void ExitAimMode()
     {
+
         player.StartPlayer();
         playerComponent.Animator.SetBool("Aim", false);
         cinemachineBrain.DefaultBlend.Time = 0.5f;

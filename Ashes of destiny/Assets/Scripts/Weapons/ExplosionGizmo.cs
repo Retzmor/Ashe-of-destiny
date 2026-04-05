@@ -12,7 +12,7 @@ public class ExplosionGizmo : MonoBehaviour
 
         if (currentRadius >= maxRadius)
         {
-            Destroy(gameObject, 0.1f);
+           // Destroy(gameObject, 0.1f);
         }
     }
 }

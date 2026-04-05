@@ -16,6 +16,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject panelLose;
     [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] CanvasGroup checkpointMessageGroup;
+    [SerializeField] HealthBoss healthBoss;
+    [SerializeField] BossArenaTrigger bossArenaTrigger;
     enum MenuState
     {
         None,
@@ -263,6 +265,7 @@ public class LevelController : MonoBehaviour
         player.transform.position = _lastCheckpointPos;
         Time.timeScale = 1f;
         LockCursor();
+        bossArenaTrigger.ResetBoss();
         if (player.TryGetComponent(out Rigidbody rb))
         {
             rb.isKinematic = true; 

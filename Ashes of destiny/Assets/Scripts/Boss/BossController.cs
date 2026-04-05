@@ -19,6 +19,7 @@ public class BossController : MonoBehaviour
     public GameObject[] manualMinions;
     public Transform[] spawnPoints;
     public GameObject summonParticles;
+    public ParticleSystem particule;
 
     public PlayerCollisions Player { get => _player; set => _player = value; }
     public NavMeshAgent Agent { get => _agent; set => _agent = value; }
@@ -34,14 +35,7 @@ public class BossController : MonoBehaviour
 
     public void OnBossLandDamage()
     {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = transform.position;
-        Destroy(sphere.GetComponent<SphereCollider>());
-        Renderer rend = sphere.GetComponent<Renderer>();
-        rend.material.color = new Color(1, 0, 0, 0.5f); 
-
-        ExplosionGizmo gizmo = sphere.AddComponent<ExplosionGizmo>();
-        gizmo.maxRadius = explosionRadius; 
+        particule.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (var hitCollider in hitColliders)
         {

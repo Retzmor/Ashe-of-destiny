@@ -2591,6 +2591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossGo: {fileID: 1081139573}
+  portalBoss: {fileID: 0}
   playerArenaPoint: {fileID: 484204649}
   playerMovement: {fileID: 143956979}
   blackScreenGroup: {fileID: 1810307368}
@@ -65335,7 +65336,7 @@ Transform:
   m_GameObject: {fileID: 2021927925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: -0, z: 0.0135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,6 +5,7 @@ using UnityEngine.UI; // Necesario para el Image de la pantalla negra
 public class BossArenaTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject bossGo;
+    [SerializeField] private GameObject portalBoss;
     [SerializeField] private Transform playerArenaPoint;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private CanvasGroup blackScreenGroup;
@@ -47,7 +48,7 @@ public class BossArenaTrigger : MonoBehaviour
         if (bossGo != null) bossGo.SetActive(true);
         rock1.SetActive(true);
         rock2.SetActive(true);
-
+        portalBoss.SetActive(false);
         yield return new WaitForSeconds(1f);
 
         if (playerRb != null)
@@ -81,6 +82,8 @@ public class BossArenaTrigger : MonoBehaviour
          healthBoss.ResetHealth();
         rock1.SetActive(false);
         rock2.SetActive(false);
+        portalBoss.SetActive(true);
+        barraVidaBoss.SetActive(false);
         bossGo.gameObject.SetActive(false);
     }
 }

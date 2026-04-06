@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
         {
             agent.stoppingDistance = combatStoppingDistance;
             agent.SetDestination(detector.Player.position);
-            agent.speed = 5;
+            agent.speed = 9;
         }
         else
         {

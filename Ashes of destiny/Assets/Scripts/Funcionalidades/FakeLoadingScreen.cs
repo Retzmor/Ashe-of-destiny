@@ -18,6 +18,7 @@ public class FakeLoadingScreen : MonoBehaviour
         if (_alreadyLoadedOnce)
         {
             loadingUI.SetActive(false);
+            if (imageBlack != null) imageBlack.SetActive(false);
             if (tutorialManager != null) tutorialManager.enabled = true;
             return;
         }

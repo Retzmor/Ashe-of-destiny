@@ -14,6 +14,7 @@ public class HealthEnemy : MonoBehaviour
     [SerializeField] Material materialDamage;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] CombatCount combat;
     Material materialCurrent;
     Animator animator;
     EnemyHealthBar healthBar;
@@ -21,6 +22,7 @@ public class HealthEnemy : MonoBehaviour
     EnemyAudio enemyAudio;
     bool dead = false;
     private Coroutine materialCoroutine;
+    int _enemyDeath = 0;
     void Start()
     {
         currentHealth = healthMax;
@@ -96,6 +98,11 @@ public class HealthEnemy : MonoBehaviour
         {
             levelController.WinTutorial();
         }
+
+        if(combat != null)
+        {
+            combat.RegisterEnemyDeath();
+        }
         if (agent != null)
         {
             agent.isStopped = true;
@@ -123,5 +130,38 @@ public class HealthEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
+    }
+
+    public void ResetEnemy()
+    {
+        dead = false;
+        currentHealth = healthMax;
+
+        if (meshRenderer != null) BackMaterial();
+        if (animator != null)
+        {
+            animator.SetBool("Death", false);
+            animator.Play("Patrol"); // O tu animación inicial
+        }
+
+        if (agent != null)
+        {
+            agent.enabled = true;
+            agent.isStopped = false;
+        }
+
+        if (TryGetComponent(out Collider col)) col.enabled = true;
+
+        if (TryGetComponent(out Rigidbody rb))
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(healthMax);
+            healthBar.SetHealth(currentHealth);
+        }
     }
 }

@@ -12,6 +12,7 @@ public class LoadingLevelOne : MonoBehaviour
     [SerializeField] PlayerMovement player;
     [SerializeField] CameraManager cameraManager;
     [SerializeField] GameObject imageBlack;
+    [SerializeField] GameObject textFight;
     private static bool _levelOneIntroDone = false;
 
     // Se ejecuta ANTES que el Start, para asegurar que sea invisible desde el segundo 0
@@ -47,7 +48,6 @@ public class LoadingLevelOne : MonoBehaviour
         while (!videoPlayer.isPrepared) yield return null;
 
         videoPlayer.Play();
-
         // Pequeña espera de seguridad para que el video no tape el inicio del fade
         yield return new WaitForSecondsRealtime(0.2f);
         if (imageBlack != null) imageBlack.SetActive(false);
@@ -71,7 +71,7 @@ public class LoadingLevelOne : MonoBehaviour
         cameraManager.CameraLevelOne();
         loadingUI.SetActive(false);
         videoPlayer.Stop();
-
+        textFight.SetActive(true);
         Time.timeScale = 1f;
         player.CanMoving = false;
         if (levelOneLogic != null) levelOneLogic.enabled = true;

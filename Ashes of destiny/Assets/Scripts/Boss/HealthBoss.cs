@@ -7,7 +7,7 @@ public class HealthBoss : MonoBehaviour
 {
     BossController controller;
     BossAudio bossAudio;
-    float _maxHealth = 100;
+    float _maxHealth = 300;
     float _minHealth;
     public float _currentHealth;
     private float _lastSummonHealth;

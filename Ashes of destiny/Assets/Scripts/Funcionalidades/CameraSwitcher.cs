@@ -31,6 +31,7 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (Time.timeScale == 0) return;
+       // if (cameraPlayerFall.Priority > cameraThirdPerson.Priority) return;
         bool aimPressed = inputs.Aim.IsPressed();
         playerController.isAiming = aimPressed;
 

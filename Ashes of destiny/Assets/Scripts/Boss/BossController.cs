@@ -75,12 +75,15 @@ public class BossController : MonoBehaviour
     {
         if (summonParticles != null)
             Instantiate(summonParticles, position, Quaternion.identity);
+
         yield return new WaitForSeconds(1.5f);
-        NavMeshAgent agent = minion.GetComponent<NavMeshAgent>();
-        if (agent != null) agent.enabled = false;
+
         minion.transform.position = position;
         minion.SetActive(true);
-        yield return new WaitForEndOfFrame(); 
+        yield return new WaitForEndOfFrame();
+        HealthEnemy health = minion.GetComponent<HealthEnemy>();
+        if (health != null) health.ResetEnemy();
+        NavMeshAgent agent = minion.GetComponent<NavMeshAgent>();
         if (agent != null)
         {
             agent.enabled = true;

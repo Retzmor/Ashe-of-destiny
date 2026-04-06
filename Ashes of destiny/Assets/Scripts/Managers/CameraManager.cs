@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachineBrain mainCamera;
     [SerializeField] CinemachineCamera cameraLvlOne;
     [SerializeField] CinemachineCamera cameraPlayerFall;
+    [SerializeField] CameraSwitcher cameraSwitcher;
     [SerializeField] PlayerMovement player;
     public void CameraAsheTutorial()
     {
@@ -61,6 +62,8 @@ public class CameraManager : MonoBehaviour
 
     public void CameraFall()
     {
+        if (cameraSwitcher != null) cameraSwitcher.DisableCameraInput();
+        if (player != null) player.CanMoving = false;
         mainCamera.DefaultBlend.Time = 1f;
         cameraPlayerFall.Priority = 100;
         cameraThirdPerson.Priority = 2;
@@ -78,5 +81,11 @@ public class CameraManager : MonoBehaviour
         mainCamera.DefaultBlend.Time = 1f;
         cameraPlayerFall.Priority = 1;
         cameraThirdPerson.Priority = 2;
+        if (cameraSwitcher != null)
+        {
+            cameraSwitcher.EnableCameraInput();
+            cameraThirdPerson.ForceCameraPosition(cameraPlayerFall.transform.position, cameraPlayerFall.transform.rotation);
+        }
+        if (player != null) player.CanMoving = true;
     }
 }

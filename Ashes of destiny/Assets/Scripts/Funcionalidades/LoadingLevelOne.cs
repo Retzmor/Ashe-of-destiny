@@ -11,6 +11,7 @@ public class LoadingLevelOne : MonoBehaviour
     [SerializeField] MonoBehaviour levelOneLogic;
     [SerializeField] PlayerMovement player;
     [SerializeField] CameraManager cameraManager;
+    [SerializeField] GameObject imageBlack;
     private static bool _levelOneIntroDone = false;
 
     // Se ejecuta ANTES que el Start, para asegurar que sea invisible desde el segundo 0
@@ -48,7 +49,7 @@ public class LoadingLevelOne : MonoBehaviour
 
         // Pequeña espera de seguridad para que el video no tape el inicio del fade
         yield return new WaitForSecondsRealtime(0.2f);
-
+        if (imageBlack != null) imageBlack.SetActive(false);
         // 1. APARECER (Fade In)
         yield return StartCoroutine(FadeCanvasGroup(0, 1, fadeDuration));
 

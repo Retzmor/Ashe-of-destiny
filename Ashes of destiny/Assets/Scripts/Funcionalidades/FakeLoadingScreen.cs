@@ -9,6 +9,7 @@ public class FakeLoadingScreen : MonoBehaviour
     [SerializeField] CanvasGroup textCanvasGroup; // Arrastra el Canvas Group del texto aquí
     [SerializeField] float fadeDuration = 1.5f; // Tiempo de desvanecimiento
     [SerializeField] MonoBehaviour tutorialManager;
+    [SerializeField] GameObject imageBlack;
 
     private static bool _alreadyLoadedOnce = false;
 
@@ -39,7 +40,9 @@ public class FakeLoadingScreen : MonoBehaviour
         }
 
         videoPlayer.Play();
+        yield return new WaitForSecondsRealtime(0.1f);
 
+        if (imageBlack != null) imageBlack.SetActive(false);
         StartCoroutine(FadeCanvasGroup(0, 1, fadeDuration));
 
         float videoLength = (float)videoPlayer.length;

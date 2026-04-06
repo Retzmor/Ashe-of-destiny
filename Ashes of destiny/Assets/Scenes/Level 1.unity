@@ -26244,6 +26244,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0029888926, y: 0.03844523, z: 0.008230399}
   m_Center: {x: -0.0003930407, y: 0.007329298, z: -0.00007237379}
+--- !u!1 &801335155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801335156}
+  - component: {fileID: 801335157}
+  m_Layer: 0
+  m_Name: collidres piedra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &801335156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801335155}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.70671886, z: -0, w: 0.70749456}
+  m_LocalPosition: {x: -316.5, y: 639, z: -1157.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2090118635}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.937, z: 0}
+--- !u!65 &801335157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801335155}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.14938, y: 57.857574, z: 126.0614}
+  m_Center: {x: -4.903944, y: 13.491104, z: 11.282097}
 --- !u!1 &805607367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fc517ed084565a4181f85ea508102f7, type: 3}
@@ -73318,6 +73371,7 @@ Transform:
   - {fileID: 304207770}
   - {fileID: 1043016153}
   - {fileID: 1420421515}
+  - {fileID: 801335156}
   - {fileID: 57915193}
   - {fileID: 188033843}
   - {fileID: 928641791}

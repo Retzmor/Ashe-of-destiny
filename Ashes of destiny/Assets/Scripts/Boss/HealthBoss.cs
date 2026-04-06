@@ -41,6 +41,11 @@ public class HealthBoss : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        bossAudio = GetComponent<BossAudio>();
+    }
+
     private void TriggerSummonPhase()
     {
         _lastSummonHealth = _currentHealth; 

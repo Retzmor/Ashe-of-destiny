@@ -184,7 +184,11 @@ public class AttackPlayer : MonoBehaviour
 
             if(enemy.TryGetComponent(out HealthBoss healthBoss))
             {
+                playerAudio.PlayHitEnemy();
+                Vector3 impactPoint = enemy.ClosestPoint(targetAttackMelee.position);
                 healthBoss.TakeDamage(damage, true);
+                HitStop.Instance.Stop(stopDuration);
+                InstantiateHitParticle(impactPoint);
             } 
         }
         if (currentHitType == 2)

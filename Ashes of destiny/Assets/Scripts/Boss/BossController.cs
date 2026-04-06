@@ -20,7 +20,7 @@ public class BossController : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject summonParticles;
     public ParticleSystem particule;
-
+    BossAudio bossAudio;
     public PlayerCollisions Player { get => _player; set => _player = value; }
     public NavMeshAgent Agent { get => _agent; set => _agent = value; }
     public Rigidbody Rb { get => _rb; set => _rb = value; }
@@ -37,6 +37,7 @@ public class BossController : MonoBehaviour
     {
         particule.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        bossAudio.PlayDamage();
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Player"))

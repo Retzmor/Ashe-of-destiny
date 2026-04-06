@@ -6,10 +6,12 @@ public class AttackBoss : MonoBehaviour
     [SerializeField] PlayerDetectedBoss boss;
     [SerializeField] HealthPlayer player;
     [SerializeField] float damage;
+    BossAudio bossAudio;
 
     private void Start()
     {
         bossController = GetComponent<BossController>();
+        bossAudio = GetComponent<BossAudio>();
     }
 
     public void AttackPlayer()
@@ -17,6 +19,7 @@ public class AttackBoss : MonoBehaviour
         if(boss.CanAttackPlayer == true)
         {
             player.ChangeHealth(damage, transform.position);
+            bossAudio.PlayAttack();
         }
     }
 }

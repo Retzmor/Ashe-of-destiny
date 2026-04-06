@@ -33966,7 +33966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9834.128
+      value: 9832.6875
       objectReference: {fileID: 0}
     - target: {fileID: 4531747041054612523, guid: d6e7080ea0435bc40849450708ade419, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59263,8 +59263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.68, y: 0.00032043}
-  m_SizeDelta: {x: 1941.4, y: 1080}
+  m_AnchoredPosition: {x: 4.178, y: -9.995399}
+  m_SizeDelta: {x: 2175.9, y: 1186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1810307368
 CanvasGroup:
@@ -59274,7 +59274,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810307366}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

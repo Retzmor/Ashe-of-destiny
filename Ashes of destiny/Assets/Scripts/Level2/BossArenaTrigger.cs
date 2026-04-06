@@ -76,13 +76,9 @@ public class BossArenaTrigger : MonoBehaviour
 
     public void ResetBoss()
     {
-        
-        bossGo.transform.position = bossPosition.position;
-        if(healthBoss == null)
-        {
-            Debug.Log("dfjksbfkds");
-        }
-        healthBoss.ResetHealth();
+         bossGo.transform.position = bossPosition.position;
+        if (healthBoss.gameObject.activeSelf)
+         healthBoss.ResetHealth();
         rock1.SetActive(false);
         rock2.SetActive(false);
         bossGo.gameObject.SetActive(false);

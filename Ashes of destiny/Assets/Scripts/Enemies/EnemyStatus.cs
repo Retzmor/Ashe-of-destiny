@@ -12,7 +12,6 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] GameObject fireComboParticles; 
     [SerializeField] GameObject mudComboParticles;
     [SerializeField] ShakeData shakeData;
-
     private string lastElement = "";
     private float comboTimer = 0f;
     [SerializeField] float maxComboTime = 4f;
@@ -56,7 +55,6 @@ public class EnemyStatus : MonoBehaviour
         }
         ApplyBaseEffect(element);
     }
-
     private void ApplyBaseEffect(string element)
     {
         switch (element)
@@ -79,10 +77,8 @@ public class EnemyStatus : MonoBehaviour
             CameraMovement();
             Destroy(p, 5f);
         }
-
         StopAllCoroutines(); 
         StartCoroutine(BurnRoutine(5f, 20f)); 
-
         ResetStatus();
     }
 
@@ -97,6 +93,11 @@ public class EnemyStatus : MonoBehaviour
         if (TryGetComponent(out EnemyController knock))
         {
             knock.ApplyStun(5f);
+            CameraMovement();
+        }
+        else if (TryGetComponent(out BossController boss))
+        {
+            boss.ApplyStun(3f); 
             CameraMovement();
         }
 

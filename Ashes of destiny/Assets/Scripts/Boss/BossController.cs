@@ -28,11 +28,11 @@ public class BossController : MonoBehaviour
 
     void Awake()
     {
+        bossAudio = GetComponent<BossAudio>();
         _agent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
     }
-
     public void OnBossLandDamage()
     {
         particule.Play();

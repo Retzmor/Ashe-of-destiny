@@ -23,14 +23,22 @@ public class HealthBoss : MonoBehaviour
     public float MinHealth { get => _minHealth; set => _minHealth = value; }
     public float CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
 
-    void Start()
+    void Awake() 
     {
         controller = GetComponent<BossController>();
         _currentHealth = MaxHealth;
         _minHealth = _maxHealth / 2;
         _lastSummonHealth = MaxHealth;
-        originalMaterials = meshRenderer.materials;
-        healthImage.fillAmount = 1;
+        if (meshRenderer == null) meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        if (meshRenderer != null)
+        {
+            originalMaterials = meshRenderer.sharedMaterials; 
+        }
+        else
+        {
+            Debug.LogError("¡No hay MeshRenderer asignado en el Boss!");
+        }
     }
 
     private void TriggerSummonPhase()
@@ -82,12 +90,14 @@ public class HealthBoss : MonoBehaviour
 
     public void SetNormalMaterial()
     {
+        if(gameObject.activeSelf)
         meshRenderer.materials = originalMaterials;
     }
 
     public void ResetHealth()
     {
-        _currentHealth = MaxHealth;
+        if (gameObject.activeSelf)
+            _currentHealth = MaxHealth;
         _lastSummonHealth = MaxHealth; 
         healthImage.fillAmount = 1;
 

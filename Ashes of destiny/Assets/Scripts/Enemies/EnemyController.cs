@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             agent.stoppingDistance = patrolStoppingDistance;
-            agent.speed = 3.5f;
+            //agent.speed = 3.5f;
             Patrol();
         }
     }

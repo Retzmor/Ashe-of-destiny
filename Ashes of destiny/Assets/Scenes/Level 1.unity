@@ -34923,7 +34923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -17.299988, y: 54.399994}
+  m_AnchoredPosition: {x: -17.300049, y: 54.400024}
   m_SizeDelta: {x: 550.073, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1041530309
@@ -73908,6 +73908,12 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 1041530308}
     - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 853082472}
+    - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1708424232}
+    - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 604652526}
     - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
@@ -73918,13 +73924,7 @@ PrefabInstance:
       addedObject: {fileID: 1618372968}
     - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 853082472}
-    - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2129143821}
-    - targetCorrespondingSourceObject: {fileID: 379430103043959953, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1708424232}
     - targetCorrespondingSourceObject: {fileID: 5400828994937051574, guid: 463658e10910a5e40afa3799cffc7f01, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1297266575}

@@ -80,11 +80,11 @@ public class CameraManager : MonoBehaviour
     {
         mainCamera.DefaultBlend.Time = 1f;
         cameraPlayerFall.Priority = 1;
-        cameraThirdPerson.Priority = 2;
+        cameraThirdPerson.Priority = 10;
         if (cameraSwitcher != null)
         {
-            cameraSwitcher.EnableCameraInput();
             cameraThirdPerson.ForceCameraPosition(cameraPlayerFall.transform.position, cameraPlayerFall.transform.rotation);
+            cameraSwitcher.EnableCameraInput();
         }
         if (player != null) player.CanMoving = true;
     }

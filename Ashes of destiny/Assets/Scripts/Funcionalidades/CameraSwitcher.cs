@@ -19,6 +19,8 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] PlayerController player;
     [SerializeField] PlayerInputs inputs;
     [SerializeField] TutorialController tutorialController;
+    [SerializeField] CinemachineCamera cameraPlayerFall; 
+    [SerializeField] CinemachineCamera cameraThirdPerson;
     bool isAiming = false;
     AimCameraController aimCamController;
     void Start()
@@ -31,7 +33,10 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (!inputs.InputsEnabled) return;
         if (Time.timeScale == 0) return;
-       // if (cameraPlayerFall.Priority > cameraThirdPerson.Priority) return;
+        if (cameraPlayerFall != null && cameraThirdPerson != null)
+        {
+            if (cameraPlayerFall.Priority > cameraThirdPerson.Priority) return;
+        }
         bool aimPressed = inputs.Aim.IsPressed();
         playerController.isAiming = aimPressed;
 
@@ -115,5 +120,4 @@ public class CameraSwitcher : MonoBehaviour
         if (inputAxisController)
             inputAxisController.enabled = true;
     }
-
 }

@@ -122,4 +122,25 @@ public class BossController : MonoBehaviour
 
         isStunned = false;
     }
+
+    public void ResetBossController()
+    {
+        StopAllCoroutines();
+        isStunned = false;
+
+        if (manualMinions != null)
+        {
+            foreach (GameObject minion in manualMinions)
+            {
+                if (minion != null)
+                {
+                    minion.SetActive(false);
+                }
+            }
+        }
+        if (_agent != null && _agent.isOnNavMesh)
+        {
+            _agent.isStopped = false;
+        }
+    }
 }

@@ -17,6 +17,7 @@ public class HealthBoss : MonoBehaviour
     [SerializeField] Image healthImage;
     [SerializeField] GameObject specialAshPrefab;
     [SerializeField] GameObject ashe;
+    float meleeDamageMultiplier = 0.1f;
     private Material[] originalMaterials;
     public float MaxHealth { get => _maxHealth; set => _maxHealth = value; }
     public float MinHealth { get => _minHealth; set => _minHealth = value; }
@@ -38,11 +39,12 @@ public class HealthBoss : MonoBehaviour
         controller.Anim.SetTrigger("Invoke"); 
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage,bool isMelee = false)
     {
-        if (_currentHealth <= 0) return; 
+        if (_currentHealth <= 0) return;
+        float finalDamage = isMelee ? damage * meleeDamageMultiplier : damage;
         controller.Anim.SetTrigger("TakeDamage");
-        _currentHealth -= damage; 
+        _currentHealth -= finalDamage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealth);
         healthImage.fillAmount = _currentHealth / MaxHealth;
         if (_currentHealth <= _lastSummonHealth - (MaxHealth * (_summonThreshold / 100f)))
@@ -86,6 +88,15 @@ public class HealthBoss : MonoBehaviour
     public void ResetHealth()
     {
         _currentHealth = MaxHealth;
+        _lastSummonHealth = MaxHealth; 
         healthImage.fillAmount = 1;
+
+        if (TryGetComponent(out Collider col)) col.enabled = true;
+        SetNormalMaterial();
+
+        controller.Anim.SetBool("Death", false);
+        controller.Anim.Play("Idle");
+        controller.ResetBossController();
+        if (ashe != null) ashe.SetActive(false);
     }
 }

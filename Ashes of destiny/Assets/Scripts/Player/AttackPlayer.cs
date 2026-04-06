@@ -184,7 +184,7 @@ public class AttackPlayer : MonoBehaviour
 
             if(enemy.TryGetComponent(out HealthBoss healthBoss))
             {
-                healthBoss.TakeDamage(damage);
+                healthBoss.TakeDamage(damage, true);
             } 
         }
         if (currentHitType == 2)

@@ -6,6 +6,7 @@ using Zenject;
 public class HealthBoss : MonoBehaviour
 {
     BossController controller;
+    BossAudio bossAudio;
     float _maxHealth = 100;
     float _minHealth;
     public float _currentHealth;
@@ -37,7 +38,6 @@ public class HealthBoss : MonoBehaviour
         }
         else
         {
-            Debug.LogError("¡No hay MeshRenderer asignado en el Boss!");
         }
     }
 
@@ -52,6 +52,7 @@ public class HealthBoss : MonoBehaviour
         if (_currentHealth <= 0) return;
         float finalDamage = isMelee ? damage * meleeDamageMultiplier : damage;
         controller.Anim.SetTrigger("TakeDamage");
+        bossAudio.PlayFootstep();
         _currentHealth -= finalDamage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealth);
         healthImage.fillAmount = _currentHealth / MaxHealth;
@@ -66,6 +67,7 @@ public class HealthBoss : MonoBehaviour
     }
     public void Death()
     {
+        bossAudio.PlayDeath();
         controller.Agent.isStopped = true;
         controller.Agent.speed = 0;
         controller.Anim.SetBool("Death", true);
@@ -96,8 +98,8 @@ public class HealthBoss : MonoBehaviour
 
     public void ResetHealth()
     {
-        if (gameObject.activeSelf)
-            _currentHealth = MaxHealth;
+
+        _currentHealth = MaxHealth;
         _lastSummonHealth = MaxHealth; 
         healthImage.fillAmount = 1;
 

@@ -10,7 +10,7 @@ public class WinAsh : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Invoke(nameof(LoadCredits), 2f);
+            Invoke(nameof(LoadCredits), 1f);
         }
     }
      public  void LoadCredits()

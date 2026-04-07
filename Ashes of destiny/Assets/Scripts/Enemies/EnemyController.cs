@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     int currentPoint;
     [SerializeField] float combatStoppingDistance = 0.5f;
     [SerializeField] float patrolStoppingDistance = 0.5f;
-
+    [SerializeField] bool isStaticEnemy = false;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -36,6 +36,11 @@ public class EnemyController : MonoBehaviour
         {
             agent.stoppingDistance = combatStoppingDistance;
             agent.SetDestination(detector.Player.position);
+            if(isStaticEnemy == true)
+            {
+                agent.speed = 0;
+                return;
+            }
             agent.speed = 9;
         }
         else

@@ -8713,7 +8713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 1453648416}
@@ -11046,7 +11046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 2060272182}
@@ -13465,7 +13465,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6601875193123493258, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5378473819256336941, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 645253781}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8707920498964131646, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       insertIndex: -1
@@ -17400,7 +17403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 238267433}
@@ -20380,12 +20383,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645253780}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -843.3, y: 1011.24, z: 1199.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1708927526}
+  m_Father: {fileID: 442439657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650676763 stripped
 GameObject:
@@ -23453,7 +23456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 1033793549}
@@ -35241,7 +35244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 111951494}
@@ -42734,6 +42737,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
+      propertyPath: isStaticEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633755468466864858, guid: ca884a2f3bcb6984d9a3818e3edcb5e8, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 1877291634}
@@ -42881,7 +42888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 35
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 1264713316}
@@ -54003,7 +54010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 1640577007}
@@ -56798,7 +56805,6 @@ Transform:
   - {fileID: 1770744465}
   - {fileID: 53191585}
   - {fileID: 603524385}
-  - {fileID: 645253781}
   - {fileID: 442439657}
   - {fileID: 1744660175}
   - {fileID: 530998452}
@@ -57560,7 +57566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 1575724528}
@@ -65994,7 +66000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 550930809}
@@ -73760,7 +73766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 172816689}
@@ -74121,7 +74127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 851503883}
@@ -75578,7 +75584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4733dc54d5e2764a901d99a88227736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 20
   fireRate: 2
   projectilePrefab: {fileID: 5367986746088089123, guid: 39581311c25fa3a42b2534b9e326413f, type: 3}
   firePoint: {fileID: 2135786778}

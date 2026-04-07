@@ -66833,6 +66833,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002356014, y: 0.03743899, z: 0.008999998}
   m_Center: {x: -0.000065820044, y: -0.006655699, z: 0.0000029909409}
+--- !u!1 &2016286651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016286652}
+  - component: {fileID: 2016286653}
+  m_Layer: 0
+  m_Name: Colliders boss (3)
+  m_TagString: KillZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2016286652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016286651}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.48306006, y: -0.5318638, z: 0.4670633, w: 0.51538897}
+  m_LocalPosition: {x: -251.6, y: 558.5, z: -479.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2090118635}
+  m_LocalEulerAnglesHint: {x: -0.063, y: -91.86, z: 84.433}
+--- !u!65 &2016286653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016286651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.14938, y: 149.31886, z: 459.17346}
+  m_Center: {x: -4.9039435, y: 59.22175, z: -86.18964}
 --- !u!1001 &2016596569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75003,6 +75056,7 @@ Transform:
   - {fileID: 188033843}
   - {fileID: 928641791}
   - {fileID: 1551909790}
+  - {fileID: 2016286652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2090365007
